@@ -19,8 +19,12 @@ This skill designs systems using DDD and BMAD V6 methodology. It does not write 
 - **QA**: `@qa-lead` (You review their Test Strategy)
 
 ## Documentation Strategy
-> **CRITICAL**: Before making architectural decisions, use `mcp_context7` to check latest patterns.
-> Query: "BMAD V6 architecture patterns Go Nuxt"
+> **CRITICAL**: Before making architectural decisions, use `mcp_context7` for latest patterns.
+
+**Recommended queries:**
+1. BMAD Methodology: `libraryId: /bmadcode/bmad-method`, query: "V6 workflow phases agents orchestration"
+2. DDD Patterns: `libraryId: /domain-driven-design`, query: "Event Storming Context Mapping bounded context"
+3. Go Architecture: Use `@backend-go-expert` for implementation patterns
 
 ## Workflow
 
