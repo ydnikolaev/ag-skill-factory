@@ -21,67 +21,145 @@ This skill uses a "Design First, Code Second" approach. Your goal is not just to
     -   Use `task_boundary` for long-running workflows.
     -   Assume the agent knows nothing about the file structure until it runs `ls`.
 
+## Repository Structure
+
+This repository is a **Skill Factory** that separates the **creator** from the **products**:
+
+```
+ag-skill-factory/
+├── .agent/skills/         # Factory tooling (only skill-creator)
+│   └── skill-creator/     # This skill - creates other skills
+├── squads/                # Generated skills live here
+│   ├── backend-go-expert/
+│   ├── frontend-nuxt/
+│   └── ...
+└── Makefile               # Links skills to global brain
+```
+
+> **IMPORTANT**: All new skills MUST be created in `squads/`, NOT in `.agent/skills/` or directly in the global brain.
+
 ## Skill Creation Workflow
 
-### Phase 1: design (Mental Step)
+### Phase 1: Design (Mental Step)
 Before running any script, answer these questions:
 1.  **What is the Trigger?** What user intent triggers this skill? (Write this in the Description).
 2.  **What is the Decision Tree?** Does the skill have one path or multiple? (If multiple, plan a "Decision Tree" section).
 3.  **What are the Resources?** Do I need a Python script for logic? A Markdown template for output?
 
 ### Phase 2: Scaffold
-Run the initialization script to create the standard structure. This script pulls a high-quality template.
+Run the initialization script to create the standard structure in `squads/`:
 
 ```bash
+# ALWAYS create skills in squads/ directory
 python3 .agent/skills/skill-creator/scripts/init_skill.py <skill-name>
-# Add --global to install to ~/.gemini/antigravity/skills/
 ```
 
-### Phase 3: Refine
-Edit the generated `SKILL.md`.
-1.  **Fill the Decision Tree**: Map user inputs to actions.
-2.  **Write the Workflow**: Step-by-step instructions.
-3.  **Clean up**: Remove unused sections from the template.
-
-### Phase 4: Verify
-1.  Read `.agent/skills/<skill-name>/references/checklist.md`.
-2.  Verify your skill against every item in that checklist.
-
-## Anatomy of a Skill
+This creates:
 ```
-skill-name/
+squads/<skill-name>/
 ├── SKILL.md          # The "Brain": Logic, Decisions, Workflow.
 ├── scripts/          # The "Hands": Python/Bash scripts for execution.
 ├── resources/        # The "Tools": Templates, Configs (e.g., Dockerfile).
+├── examples/         # The "Demos": Usage examples.
 └── references/       # The "Library": Documentation, Cheatsheets.
 ```
 
-## Repository Structure
+### Phase 3: Refine
+Edit the generated files:
+1.  **Fill the Decision Tree**: Map user inputs to actions.
+2.  **Write the Workflow**: Step-by-step instructions.
+3.  **Clean up**: Remove unused sections from the template.
+4.  **Adapt the checklist**: Rewrite `references/checklist.md` for this skill's domain.
+    - The template checklist is generic — make it specific!
+    - Example: For an MCP skill, add checks for "stdio transport", "tool descriptions", etc.
 
-This repository separates the **factory** from the **products**:
-
-```
-ag-skill-factory/
-├── .agent/skills/         # Factory (only skill-creator lives here)
-│   └── skill-creator/
-└── squads/                # Products (generated squad skills)
-    ├── backend-go-expert/
-    ├── frontend-nuxt/
-    └── ...
-```
-
-### Installing Skills
+### Phase 4: Verify
+Run the validation script:
 
 ```bash
-make install           # Install factory + squads
-make install-factory   # Install only skill-creator
-make install-squads    # Install only squad skills
+make validate SKILL=<skill-name>
 ```
 
-### Creating New Skills
+This checks:
+- Frontmatter, length (<500 lines)
+- Team Collaboration & When to Delegate sections
+- Customized checklist in `references/`
+- No large embedded code blocks
 
-When creating new skills for a team/squad, place them in `squads/`:
+Fix all errors before installing.
+
+### Phase 5: Install (Link to Global Brain)
+After creating and refining the skill, link it to the global brain:
+
 ```bash
-python3 .agent/skills/skill-creator/scripts/init_skill.py my-skill --output squads/
+make install    # Validates all, generates TEAM.md, then links
 ```
+
+This creates symlinks from `squads/<skill-name>/` → `~/.gemini/antigravity/skills/<skill-name>/`.
+
+## Makefile Commands
+
+| Command | Description |
+|---------|-------------|
+| `make install` | Validate all, generate TEAM.md, link all skills |
+| `make validate SKILL=<name>` | Validate a single skill (detailed output) |
+| `make validate-all` | Validate all skills |
+| `make generate-team` | Regenerate `squads/TEAM.md` |
+| `make install-factory` | Install only skill-creator |
+| `make install-squads` | Install only skills from `squads/` |
+| `make uninstall` | Remove all symlinks |
+
+## Anti-Patterns
+
+❌ **DO NOT** create skills directly in `~/.gemini/antigravity/skills/`
+❌ **DO NOT** use the `--global` flag in init_skill.py
+❌ **DO NOT** place new skills in `.agent/skills/` (reserved for factory tooling)
+
+✅ **DO** create skills in `squads/`
+✅ **DO** use `make install-squads` to link them globally
+
+## Content Organization Rules
+
+**SKILL.md should contain:**
+- Decisions, workflows, and logic (the "brain")
+- Brief inline examples (max 5-10 lines)
+- References to detailed examples: `See examples/python-server.py`
+
+**examples/ should contain:**
+- Full working code examples (complete files)
+- Configuration samples
+- Complete templates
+
+**references/ should contain:**
+- Cheatsheets and quick reference guides
+- External documentation links
+- Troubleshooting guides
+
+**resources/ should contain:**
+- Templates for generation
+- Config files
+- Static assets
+
+> **CRITICAL**: Do NOT embed large code blocks (>10 lines) in SKILL.md. 
+> Instead, create files in `examples/` and reference them.
+
+## Team Collaboration
+
+Every skill should know about the team. Add these sections to SKILL.md:
+
+**Team Collaboration** — List related skills by role:
+```markdown
+## Team Collaboration
+- **<Role>**: `@<skill-name>` (Brief description of collaboration)
+- **<Role>**: `@<skill-name>` (Brief description of collaboration)
+```
+
+**When to Delegate** — When to hand off to another skill:
+```markdown
+## When to Delegate
+- ✅ **Delegate to `@<skill-name>`** when: <Condition for handoff>
+- ⬅️ **Return to `@<skill-name>`** if: <Condition to return>
+```
+
+> **Team Reference**: See `squads/TEAM.md` for the full list of available skills.
 

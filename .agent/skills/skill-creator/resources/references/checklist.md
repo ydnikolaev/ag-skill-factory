@@ -3,21 +3,24 @@
 Use this checklist to verify your skill before finishing.
 
 ## 1. Structure & Paths
-- [ ] **Folder Structure**: Does the skill follow `.agent/skills/<skill-name>/`?
+- [ ] **Folder Structure**: Does the skill follow `squads/<skill-name>/`?
 - [ ] **Resources**: Are scripts in `scripts/`, templates in `resources/`?
-- [ ] **Absolute Paths**: Does the skill use absolute paths or relative paths correctly (relative to the workspace root)? *Note: Scripts usually run from workspace root.*
+- [ ] **Examples**: Are code examples in `examples/`, NOT embedded in SKILL.md?
+- [ ] **References**: Are documentation/cheatsheets in `references/`?
+- [ ] **Absolute Paths**: Does the skill use absolute paths where needed?
 
 ## 2. SKILL.md Content
 - [ ] **Frontmatter**: Is the YAML valid? (`name`, `description` only).
-- [ ] **Description**: Is it in the third person? Does it clearly explain *when* to trigger the skill?
+- [ ] **Description**: Is it in third person? Does it explain *when* to trigger?
 - [ ] **Conciseness**: Is the file under 500 lines?
-- [ ] **No Fluff**: Did you remove "Usage" sections that just repeat standard agent behavior?
-- [ ] **Decision Tree**: Does it guide the agent on *how* to choose the right tools/scripts?
+- [ ] **No Embedded Code**: Are large code examples moved to `examples/`?
+- [ ] **Decision Tree**: Does it guide the agent on *how* to choose actions?
+- [ ] **References to Examples**: Does SKILL.md reference `examples/` files instead of embedding code?
 
 ## 3. Best Practices (Antigravity Specific)
-- [ ] **Task Boundaries**: If the skill involves a complex workflow, does it instruct the agent to use `task_boundary`?
+- [ ] **Task Boundaries**: For complex workflows, does it instruct to use `task_boundary`?
 - [ ] **User Interaction**: Does it instruct when to use `notify_user`?
-- [ ] **Tools**: Does it reference standard MCP tools (e.g., `run_command`, `write_to_file`) correctly?
+- [ ] **Tools**: Does it reference standard MCP tools correctly?
 
 ## 4. Scripts
 - [ ] **Help**: Do scripts support a `--help` flag?
@@ -25,4 +28,21 @@ Use this checklist to verify your skill before finishing.
 - [ ] **Permissions**: Are scripts executable (`chmod +x`)?
 
 ## 5. IDE Considerations
-- [ ] **Context**: Does the skill assume the agent knows the file structure? (It often does not, so `ls -R` or `find` instructions are helpful).
+- [ ] **Context**: Does the skill assume the agent knows file structure? (Often not, so `ls` instructions help).
+
+## 6. Content Organization Rules
+
+**SKILL.md should contain:**
+- Decisions, workflows, and logic (the "brain")
+- Brief inline examples (max 10 lines)
+- References to detailed examples: `See examples/python-server.py`
+
+**examples/ should contain:**
+- Full working code examples
+- Configuration samples
+- Complete templates
+
+**references/ should contain:**
+- Cheatsheets
+- External documentation links
+- Troubleshooting guides
