@@ -21,6 +21,10 @@ This skill defines the **Product**. It handles Vision, Roadmap, and User Stories
 2.  Draft `docs/roadmap.md`.
 3.  Prioritize Backlog.
 
+## When to Delegate
+- ✅ **Delegate to `@systems-analyst`** when: User Stories are approved and need technical specs.
+- ❌ **Do NOT delegate** if: Business requirements are still unclear — keep refining with user.
+
 ## Antigravity Best Practices
 - Use `task_boundary` when drafting Roadmap or major Feature specs.
 - Use `notify_user` to confirm user priorities before finalizing.

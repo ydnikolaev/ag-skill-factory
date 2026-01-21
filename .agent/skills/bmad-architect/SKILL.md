@@ -41,6 +41,11 @@ This skill designs systems using DDD and BMAD V6 methodology. It does not write 
 1.  Create `specs/backend-api.yaml` for `@backend-go-expert`.
 2.  Create `specs/ui-mockups.md` for `@frontend-nuxt-tma`.
 
+## When to Delegate
+- ✅ **Delegate to `@backend-go-expert`** when: Context Map and API contracts are finalized.
+- ✅ **Delegate to `@frontend-nuxt-tma`** when: UI wireframes and data requirements are defined.
+- ⬅️ **Return to `@systems-analyst`** if: Requirements need clarification or are missing.
+
 ## Antigravity Best Practices
 - Use `task_boundary` when starting multi-phase workflows.
 - Use `notify_user` before major architectural decisions that need user approval.

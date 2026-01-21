@@ -22,6 +22,11 @@ This skill translates "Wants" into "Specs". It creates requirements and API cont
 2.  Create `docs/specs/requirements.md`.
 3.  Draft Sequence Diagrams (Mermaid).
 
+## When to Delegate
+- ✅ **Delegate to `@bmad-architect`** when: Specs are complete and need architectural decisions (bounded contexts, microservices split).
+- ⬅️ **Return to `@product-manager`** if: Requirements are ambiguous or conflicting.
+- ❌ **Do NOT delegate** if: API contracts are still being clarified with stakeholders.
+
 ## Antigravity Best Practices
 - Use `task_boundary` when drafting complex specifications.
 - Use `notify_user` to validate specs with Product and Architect.
