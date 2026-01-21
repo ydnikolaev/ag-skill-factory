@@ -14,7 +14,7 @@ This skill is the **Gatekeeper**. Nothing ships without its `[x]` approval.
 
 ## Collaboration
 - **Analyst**: `@systems-analyst` (Did we build what was asked?)
-- **Backend/Frontend**: `@backend-go-expert` / `@frontend-nuxt-tma` (Fix these bugs!)
+- **Backend/Frontend**: `@backend-go-expert` / `@frontend-nuxt` (Fix these bugs!)
 
 ## Workflow
 1.  Review Specs.
@@ -24,7 +24,7 @@ This skill is the **Gatekeeper**. Nothing ships without its `[x]` approval.
 
 ## When to Delegate
 - ⬅️ **Return bugs to `@backend-go-expert`** when: Backend logic fails tests.
-- ⬅️ **Return bugs to `@frontend-nuxt-tma`** when: UI/UX issues found.
+- ⬅️ **Return bugs to `@frontend-nuxt`** when: UI/UX issues found.
 - ✅ **Approve to `@devops-sre`** when: All tests pass and ready for deployment.
 
 ## Antigravity Best Practices

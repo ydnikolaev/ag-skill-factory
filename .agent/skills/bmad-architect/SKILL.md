@@ -14,7 +14,7 @@ This skill designs systems using DDD and BMAD V6 methodology. It does not write 
 
 ## Team Collaboration
 - **Backend**: `@backend-go-expert` (You define their API contracts)
-- **Frontend**: `@frontend-nuxt-tma` (You allow their UI data needs)
+- **Frontend**: `@frontend-nuxt` (You allow their UI data needs)
 - **Telegram**: `@telegram-mechanic` (You integrate their Auth flow)
 - **QA**: `@qa-lead` (You review their Test Strategy)
 
@@ -43,7 +43,7 @@ This skill designs systems using DDD and BMAD V6 methodology. It does not write 
 
 ## When to Delegate
 - ✅ **Delegate to `@backend-go-expert`** when: Context Map and API contracts are finalized.
-- ✅ **Delegate to `@frontend-nuxt-tma`** when: UI wireframes and data requirements are defined.
+- ✅ **Delegate to `@frontend-nuxt`** when: UI wireframes and data requirements are defined.
 - ⬅️ **Return to `@systems-analyst`** if: Requirements need clarification or are missing.
 
 ## Antigravity Best Practices

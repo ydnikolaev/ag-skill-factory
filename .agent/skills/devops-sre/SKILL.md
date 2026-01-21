@@ -25,7 +25,7 @@ This skill delivers the code. It handles Docker, CI/CD, and deployments.
 
 ## When to Delegate
 - ⬅️ **Return to `@qa-lead`** if: Deployment reveals bugs that need testing.
-- ⬅️ **Return to `@backend-go-expert` / `@frontend-nuxt-tma`** if: Build fails.
+- ⬅️ **Return to `@backend-go-expert` / `@frontend-nuxt`** if: Build fails.
 - ✅ **Final step**: Deployment is the end of the pipeline — notify user!
 
 ## Antigravity Best Practices

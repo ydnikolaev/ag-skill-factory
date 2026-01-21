@@ -25,10 +25,11 @@ Unlike simple scaffolding scripts, this tool enforces a **Design-First Philosoph
 -   **🛠️ Python Scaffolding**: `init_skill.py` automates directory creation, adhering to strict standards.
 -   **📚 Design Guide**: The `skill-creator` serves as a textbook for agents on *how* to design good tools.
 
-## 👥 TMA Squad (10 Skills)
+## 👥 Development Squad (11 Skills)
 
-A pre-built team of specialized skills for **Telegram Mini App** development (Go 1.25 + Nuxt 4 + DDD/BMAD V6).
+A pre-built team of specialized skills for **full-stack development** (Go 1.25 + Nuxt 4 + DDD/BMAD V6).
 
+### Core Pipeline
 ```
 📋 Product Manager  →  📝 Systems Analyst  →  🧠 BMAD Architect
        ↓                      ↓                      ↓
@@ -36,16 +37,19 @@ A pre-built team of specialized skills for **Telegram Mini App** development (Go
                                                    ↓
                     ┌──────────────────────────────┴──────────────────────────────┐
                     ↓                              ↓                              ↓
-            ⚙️ Backend Go               🎨 Frontend Nuxt              🤖 Telegram Mechanic
+          ⚙️ Backend Go                   🎨 Frontend Nuxt                 🤖 Telegram Mechanic
                     ↓                              ↓                              ↓
                     └──────────────────────────────┬──────────────────────────────┘
                                                    ↓
-                                            🛡️ QA Lead
-                                                   ↓
-                                            🚀 DevOps SRE
+                                            🛡️ QA Lead  →  🚀 DevOps SRE
 ```
 
-**CLI Add-ons**: `cli-architect` + `tui-charm-expert` for terminal applications.
+### Specialized Add-ons
+| Add-on | Purpose |
+|---|---|
+| `tma-expert` | Telegram Mini Apps (uses `@tma.js/sdk`) |
+| `cli-architect` | CLI tools (Cobra/Viper) |
+| `tui-charm-expert` | Terminal UIs (BubbleTea/Lipgloss) |
 
 Each skill knows **when to delegate** and **when to return** to ensure smooth handoffs.
 

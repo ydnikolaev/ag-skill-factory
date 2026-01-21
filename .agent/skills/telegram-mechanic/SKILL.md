@@ -14,7 +14,7 @@ This skill is the **Gateway**. It manages the Bot, Webhooks, and Security.
 
 ## Collaboration
 - **Backend**: `@backend-go-expert` (You provide the Auth Middleware logic)
-- **Frontend**: `@frontend-nuxt-tma` (You provide the `start_param` parsing)
+- **Frontend**: `@tma-expert` (You provide the `start_param` parsing)
 
 ## Workflow
 1.  Register Bot in `@BotFather`.
@@ -24,7 +24,7 @@ This skill is the **Gateway**. It manages the Bot, Webhooks, and Security.
 
 ## When to Delegate
 - ✅ **Provide to `@backend-go-expert`**: Auth middleware code and validation logic.
-- ✅ **Provide to `@frontend-nuxt-tma`**: Deep link format and start_param parsing.
+- ✅ **Provide to `@tma-expert`**: Deep link format and start_param parsing.
 - ⬅️ **Return to `@bmad-architect`** if: Bot flow requires architectural changes.
 
 ## Antigravity Best Practices

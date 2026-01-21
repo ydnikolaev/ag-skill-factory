@@ -20,7 +20,7 @@ This skill builds the **Core** of the system using Go 1.25+ and Clean Architectu
 
 ## Team Collaboration
 - **Architect**: `@bmad-architect` (Follow their Context Map)
-- **Frontend**: `@frontend-nuxt-tma` (Serve their JSON needs)
+- **Frontend**: `@frontend-nuxt` (Serve their JSON needs)
 - **Telegram**: `@telegram-mechanic` (Trust their `initData` validation)
 
 ## Workflow
