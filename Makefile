@@ -1,25 +1,34 @@
 .PHONY: install uninstall
 
 # Paths
-SKILLS_DIR := $(HOME)/.gemini/antigravity/skills
-SKILL_NAME := skill-creator
-SOURCE_DIR := $(shell pwd)/.agent/skills/$(SKILL_NAME)
-TARGET_LINK := $(SKILLS_DIR)/$(SKILL_NAME)
+GLOBAL_SKILLS_DIR := $(HOME)/.gemini/antigravity/skills
+LOCAL_SKILLS_DIR := $(shell pwd)/.agent/skills
 
 install:
-	@echo "🚀 Installing $(SKILL_NAME) to $(SKILLS_DIR)..."
-	@mkdir -p $(SKILLS_DIR)
-	@# Remove existing directory or symlink to ensure clean state
-	@if [ -e "$(TARGET_LINK)" ]; then \
-		echo "   Removing existing installation..."; \
-		rm -rf "$(TARGET_LINK)"; \
-	fi
-	@# Create symbolic link for SSOT
-	@ln -s "$(SOURCE_DIR)" "$(TARGET_LINK)"
-	@echo "✅ Success! $(SKILL_NAME) is now linked globally."
-	@echo "   Source: $(SOURCE_DIR)"
-	@echo "   Link:   $(TARGET_LINK)"
+	@echo "🚀 Installing all skills from $(LOCAL_SKILLS_DIR) to $(GLOBAL_SKILLS_DIR)..."
+	@mkdir -p $(GLOBAL_SKILLS_DIR)
+	@for skill in $(LOCAL_SKILLS_DIR)/*; do \
+		if [ -d "$$skill" ]; then \
+			skill_name=$$(basename "$$skill"); \
+			target_link="$(GLOBAL_SKILLS_DIR)/$$skill_name"; \
+			echo "   🔗 Linking $$skill_name..."; \
+			if [ -e "$$target_link" ]; then \
+				rm -rf "$$target_link"; \
+			fi; \
+			ln -s "$$skill" "$$target_link"; \
+		fi \
+	done
+	@echo "✅ Success! All skills are linked globally."
 
 uninstall:
-	@rm -rf "$(TARGET_LINK)"
-	@echo "🗑️  Uninstalled $(SKILL_NAME)"
+	@echo "🗑️  Uninstalling skills..."
+	@for skill in $(LOCAL_SKILLS_DIR)/*; do \
+		if [ -d "$$skill" ]; then \
+			skill_name=$$(basename "$$skill"); \
+			target_link="$(GLOBAL_SKILLS_DIR)/$$skill_name"; \
+			if [ -L "$$target_link" ]; then \
+				rm "$$target_link"; \
+				echo "   Removed $$skill_name"; \
+			fi \
+		fi \
+	done

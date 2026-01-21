@@ -1,0 +1,59 @@
+package handler
+
+import (
+	"encoding/json"
+	"net/http"
+)
+
+// {{.Name}}Handler handles {{.Resource}} HTTP requests.
+type {{.Name}}Handler struct {
+	useCase {{.Name}}UseCase
+}
+
+// New{{.Name}}Handler creates a new handler instance.
+func New{{.Name}}Handler(uc {{.Name}}UseCase) *{{.Name}}Handler {
+	return &{{.Name}}Handler{useCase: uc}
+}
+
+// Get handles GET /{{.resource}}/:id
+func (h *{{.Name}}Handler) Get(w http.ResponseWriter, r *http.Request) {
+	// TODO: Extract ID from path
+	// id := chi.URLParam(r, "id")
+
+	// result, err := h.useCase.Get(r.Context(), id)
+	// if err != nil {
+	//     respondError(w, err)
+	//     return
+	// }
+
+	respondJSON(w, http.StatusOK, nil)
+}
+
+// Create handles POST /{{.resource}}
+func (h *{{.Name}}Handler) Create(w http.ResponseWriter, r *http.Request) {
+	var req Create{{.Name}}Request
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		respondError(w, http.StatusBadRequest, "invalid request body")
+		return
+	}
+
+	// result, err := h.useCase.Create(r.Context(), req)
+	// if err != nil {
+	//     respondError(w, err)
+	//     return
+	// }
+
+	respondJSON(w, http.StatusCreated, nil)
+}
+
+func respondJSON(w http.ResponseWriter, status int, data any) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(status)
+	if data != nil {
+		json.NewEncoder(w).Encode(data)
+	}
+}
+
+func respondError(w http.ResponseWriter, status int, message string) {
+	respondJSON(w, status, map[string]string{"error": message})
+}
