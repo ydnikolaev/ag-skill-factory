@@ -55,3 +55,33 @@ skill-name/
 ├── resources/        # The "Tools": Templates, Configs (e.g., Dockerfile).
 └── references/       # The "Library": Documentation, Cheatsheets.
 ```
+
+## Repository Structure
+
+This repository separates the **factory** from the **products**:
+
+```
+ag-skill-factory/
+├── .agent/skills/         # Factory (only skill-creator lives here)
+│   └── skill-creator/
+└── squads/                # Products (generated squad skills)
+    ├── backend-go-expert/
+    ├── frontend-nuxt/
+    └── ...
+```
+
+### Installing Skills
+
+```bash
+make install           # Install factory + squads
+make install-factory   # Install only skill-creator
+make install-squads    # Install only squad skills
+```
+
+### Creating New Skills
+
+When creating new skills for a team/squad, place them in `squads/`:
+```bash
+python3 .agent/skills/skill-creator/scripts/init_skill.py my-skill --output squads/
+```
+

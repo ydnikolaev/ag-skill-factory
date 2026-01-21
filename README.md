@@ -16,16 +16,58 @@ Unlike simple scaffolding scripts, this tool enforces a **Design-First Philosoph
 2.  **IDE-Aware**: Generates skills that understand absolute paths, `task_boundary`, and local environments.
 3.  **Self-Verifying**: Includes built-in QA checklists for agents to validate their own work.
 
-## ✨ Features
+## 📂 Repository Structure
 
--   **🧠 Smart Templates**: Starts every skill with a "Decision Tree" and "Phased Workflow" structure.
--   **🏆 Gold Standard Example**: Includes a reference `hello-world` skill to demonstrate best practices.
--   **🛡️ Strict Validation**: `validate_skill.py` enforces the 500-line limit and checks for IDE-aware tool usage.
--   **✅ Auto-Checklists**: Generates `checklist.md` for quality assurance.
--   **🛠️ Python Scaffolding**: `init_skill.py` automates directory creation, adhering to strict standards.
--   **📚 Design Guide**: The `skill-creator` serves as a textbook for agents on *how* to design good tools.
+This repository separates the **factory** from the **products**:
 
-## 👥 Development Squad (11 Skills)
+```
+ag-skill-factory/
+├── .agent/skills/         # 🏭 Factory (the skill-creator itself)
+│   └── skill-creator/     # The meta-skill that creates other skills
+│       ├── SKILL.md
+│       ├── scripts/
+│       └── resources/
+│
+├── squads/                # 👥 Products (pre-built squad skills)
+│   ├── backend-go-expert/
+│   ├── frontend-nuxt/
+│   ├── tma-expert/
+│   ├── cli-architect/
+│   └── ...11 skills total
+│
+├── Makefile               # Installation automation
+└── README.md
+```
+
+## 📦 Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/ydnikolaev/ag-skill-factory.git
+cd ag-skill-factory
+
+# Install everything (factory + squads)
+make install
+
+# Or install separately:
+make install-factory   # Only skill-creator
+make install-squads    # Only squad skills
+```
+
+## 🚀 Usage
+
+Once installed, simply ask your Antigravity agent:
+
+> "Create a new skill called 'docker-manager' that helps me handle containers."
+
+Or run it manually:
+
+```bash
+# Create a new skill in squads/
+python3 ~/.gemini/antigravity/skills/skill-creator/scripts/init_skill.py docker-manager --output squads/
+```
+
+## 👥 Pre-built Development Squad (11 Skills)
 
 A pre-built team of specialized skills for **full-stack development** (Go 1.25 + Nuxt 4 + DDD/BMAD V6).
 
@@ -47,50 +89,11 @@ A pre-built team of specialized skills for **full-stack development** (Go 1.25 +
 ### Specialized Add-ons
 | Add-on | Purpose |
 |---|---|
-| `tma-expert` | Telegram Mini Apps (uses `@tma.js/sdk`) |
+| `tma-expert` | Telegram Mini Apps (`@tma.js/sdk`) |
 | `cli-architect` | CLI tools (Cobra/Viper) |
 | `tui-charm-expert` | Terminal UIs (BubbleTea/Lipgloss) |
 
 Each skill knows **when to delegate** and **when to return** to ensure smooth handoffs.
-
-## 📦 Installation
-
-This repository implements a **Single Source of Truth (SSOT)** approach. Instead of copying files, we link them globally so updates are instant.
-
-```bash
-# Clone the repository
-git clone https://github.com/ydnikolaev/ag-skill-factory.git
-cd ag-skill-factory
-
-# Install globally via symlink (Recommended)
-make install
-```
-
-## 🚀 Usage
-
-Once installed, simply ask your Antigravity agent:
-
-> "Create a new skill called 'docker-manager' that helps me handle containers."
-
-Or run it manually:
-
-```bash
-# Create a new skill in your current project
-python3 ~/.gemini/antigravity/skills/skill-creator/scripts/init_skill.py docker-manager
-```
-
-## 📂 Structure
-
-```
-ag-skill-factory/
-├── .agent/skills/         # The core skills
-│   └── skill-creator/     # The meta-skill
-│       ├── SKILL.md       # "The Brain" - Design Philosophy
-│       ├── scripts/       # "The Hands" - init_skill.py, validate_skill.py
-│       └── resources/     # "The Tools" - Templates, Checklists
-├── Makefile               # Installation automation
-└── README.md
-```
 
 ## 🤝 Contributing
 
