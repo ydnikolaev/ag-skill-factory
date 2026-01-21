@@ -21,6 +21,10 @@ This skill makes the terminal beautiful using BubbleTea and Lipgloss.
 3.  Implement `View()` (Lipgloss layout).
 4.  Ensure responsive terminal resizing.
 
+## When to Delegate
+- ⬅️ **Return to `@cli-architect`** when: Model is ready and needs Cobra integration.
+- 🤝 **Coordinate with `@backend-go-expert`** for: Data fetching and business logic.
+
 ## Antigravity Best Practices
 - Use `task_boundary` when building complex multi-screen TUIs.
 - Use `notify_user` to show user the TUI mockup before full implementation.

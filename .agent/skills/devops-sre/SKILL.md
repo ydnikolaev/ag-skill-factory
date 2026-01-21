@@ -23,6 +23,11 @@ This skill delivers the code. It handles Docker, CI/CD, and deployments.
 2.  **Compose**: `docker-compose.yml` for local dev (Database + Apps).
 3.  **Deploy**: GitHub Actions -> SSH -> Server.
 
+## When to Delegate
+- ⬅️ **Return to `@qa-lead`** if: Deployment reveals bugs that need testing.
+- ⬅️ **Return to `@backend-go-expert` / `@frontend-nuxt-tma`** if: Build fails.
+- ✅ **Final step**: Deployment is the end of the pipeline — notify user!
+
 ## Antigravity Best Practices
 - Use `task_boundary` when setting up CI/CD pipelines.
 - Use `notify_user` before deploying to production.

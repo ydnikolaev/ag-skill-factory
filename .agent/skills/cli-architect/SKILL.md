@@ -21,6 +21,10 @@ This skill designs the Command Line Interface using Cobra, Viper, and POSIX stan
 2.  Define Flags (Persistent vs Local).
 3.  Handle OS Signals (Graceful Shutdown).
 
+## When to Delegate
+- ✅ **Delegate to `@tui-charm-expert`** when: Interactive UI is needed for a command.
+- 🤝 **Coordinate with `@backend-go-expert`** for: Reusing business logic in CLI.
+
 ## Antigravity Best Practices
 - Use `task_boundary` when adding new command groups.
 - Use `notify_user` if breaking changes to CLI interface are needed.

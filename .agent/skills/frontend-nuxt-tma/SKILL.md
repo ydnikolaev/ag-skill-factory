@@ -43,6 +43,11 @@ This skill builds the **Face** of the system. The UI must look and feel like a n
 1.  Test in Telegram Web (Desktop) and Mobile.
 2.  Notify `@qa-lead`.
 
+## When to Delegate
+- ✅ **Delegate to `@qa-lead`** when: UI is implemented and needs testing.
+- ⬅️ **Return to `@bmad-architect`** if: Wireframes or data requirements need changes.
+- 🤝 **Coordinate with `@telegram-mechanic`** for: Deep links and TMA SDK specifics.
+
 ## Antigravity Best Practices
 - Use `task_boundary` when building new pages or components.
 - Use `notify_user` if design deviates from wireframes (needs Architect approval).

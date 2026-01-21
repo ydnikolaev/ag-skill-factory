@@ -41,6 +41,11 @@ This skill builds the **Core** of the system using Go 1.25+ and Clean Architectu
 1.  Run `go test ./...`
 2.  Notify `@qa-lead`.
 
+## When to Delegate
+- ✅ **Delegate to `@qa-lead`** when: Feature is implemented and needs testing.
+- ⬅️ **Return to `@bmad-architect`** if: API contract needs changes.
+- 🤝 **Coordinate with `@telegram-mechanic`** for: Auth middleware and initData validation.
+
 ## Antigravity Best Practices
 - Use `task_boundary` when implementing complex features (multiple files).
 - Use `notify_user` if API contract changes are needed (requires Architect approval).

@@ -25,6 +25,30 @@ Unlike simple scaffolding scripts, this tool enforces a **Design-First Philosoph
 -   **🛠️ Python Scaffolding**: `init_skill.py` automates directory creation, adhering to strict standards.
 -   **📚 Design Guide**: The `skill-creator` serves as a textbook for agents on *how* to design good tools.
 
+## 👥 TMA Squad (10 Skills)
+
+A pre-built team of specialized skills for **Telegram Mini App** development (Go 1.25 + Nuxt 4 + DDD/BMAD V6).
+
+```
+📋 Product Manager  →  📝 Systems Analyst  →  🧠 BMAD Architect
+       ↓                      ↓                      ↓
+   "Why?"               "What?"                "How?"
+                                                   ↓
+                    ┌──────────────────────────────┴──────────────────────────────┐
+                    ↓                              ↓                              ↓
+            ⚙️ Backend Go               🎨 Frontend Nuxt              🤖 Telegram Mechanic
+                    ↓                              ↓                              ↓
+                    └──────────────────────────────┬──────────────────────────────┘
+                                                   ↓
+                                            🛡️ QA Lead
+                                                   ↓
+                                            🚀 DevOps SRE
+```
+
+**CLI Add-ons**: `cli-architect` + `tui-charm-expert` for terminal applications.
+
+Each skill knows **when to delegate** and **when to return** to ensure smooth handoffs.
+
 ## 📦 Installation
 
 This repository implements a **Single Source of Truth (SSOT)** approach. Instead of copying files, we link them globally so updates are instant.

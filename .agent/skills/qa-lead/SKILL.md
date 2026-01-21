@@ -22,6 +22,11 @@ This skill is the **Gatekeeper**. Nothing ships without its `[x]` approval.
 3.  Execute Tests (Manual + Automated).
 4.  Sign-off Release.
 
+## When to Delegate
+- ⬅️ **Return bugs to `@backend-go-expert`** when: Backend logic fails tests.
+- ⬅️ **Return bugs to `@frontend-nuxt-tma`** when: UI/UX issues found.
+- ✅ **Approve to `@devops-sre`** when: All tests pass and ready for deployment.
+
 ## Antigravity Best Practices
 - Use `task_boundary` when writing comprehensive test suites.
 - Use `notify_user` to report critical bugs or before signing off release.
