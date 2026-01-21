@@ -25,15 +25,15 @@ Unlike simple scaffolding scripts, this tool enforces a **Design-First Philosoph
 
 ## 📦 Installation
 
-This repository allows you to install the `skill-creator` globally or locally.
+This repository implements a **Single Source of Truth (SSOT)** approach. Instead of copying files, we link them globally so updates are instant.
 
 ```bash
 # Clone the repository
 git clone https://github.com/ydnikolaev/ag-skill-factory.git
 cd ag-skill-factory
 
-# Install the skill creator globally for Antigravity
-python3 .agent/skills/skill-creator/scripts/init_skill.py skill-creator --global
+# Install globally via symlink (Recommended)
+make install
 ```
 
 ## 🚀 Usage
@@ -58,6 +58,7 @@ ag-skill-factory/
 │       ├── SKILL.md       # "The Brain" - Design Philosophy
 │       ├── scripts/       # "The Hands" - init_skill.py, validate_skill.py
 │       └── resources/     # "The Tools" - Templates, Checklists
+├── Makefile               # Installation automation
 └── README.md
 ```
 
