@@ -16,27 +16,27 @@ Unlike simple scaffolding scripts, this tool enforces a **Design-First Philosoph
 2.  **IDE-Aware**: Generates skills that understand absolute paths, `task_boundary`, and local environments.
 3.  **Self-Verifying**: Includes built-in QA checklists for agents to validate their own work.
 
-## 📂 Repository Structure
+## ✨ Features
 
-This repository separates the **factory** from the **products**:
+-   **🧠 Smart Templates**: Starts every skill with a "Decision Tree" and "Phased Workflow" structure.
+-   **🏆 Gold Standard Example**: Includes a reference `hello-world` skill to demonstrate best practices.
+-   **🛡️ Strict Validation**: `validate_skill.py` enforces the 500-line limit and checks for IDE-aware tool usage.
+-   **✅ Auto-Checklists**: Generates `checklist.md` for quality assurance.
+-   **🛠️ Python Scaffolding**: `init_skill.py` automates directory creation, adhering to strict standards.
+-   **📚 Design Guide**: The `skill-creator` serves as a textbook for agents on *how* to design good tools.
+
+## 📂 Repository Structure
 
 ```
 ag-skill-factory/
-├── .agent/skills/         # 🏭 Factory (the skill-creator itself)
+├── .agent/skills/         # 🏭 The Factory
 │   └── skill-creator/     # The meta-skill that creates other skills
-│       ├── SKILL.md
-│       ├── scripts/
-│       └── resources/
+│       ├── SKILL.md       # Design philosophy
+│       ├── scripts/       # init_skill.py, validate_skill.py
+│       └── resources/     # Templates, checklists
 │
-├── squads/                # 👥 Products (pre-built squad skills)
-│   ├── backend-go-expert/
-│   ├── frontend-nuxt/
-│   ├── tma-expert/
-│   ├── cli-architect/
-│   └── ...11 skills total
-│
-├── Makefile               # Installation automation
-└── README.md
+└── squads/                # 👥 Your Skills (gitignored, user-specific)
+    └── ...                # Skills you create live here
 ```
 
 ## 📦 Installation
@@ -46,12 +46,8 @@ ag-skill-factory/
 git clone https://github.com/ydnikolaev/ag-skill-factory.git
 cd ag-skill-factory
 
-# Install everything (factory + squads)
+# Install the skill-creator globally
 make install
-
-# Or install separately:
-make install-factory   # Only skill-creator
-make install-squads    # Only squad skills
 ```
 
 ## 🚀 Usage
@@ -63,37 +59,19 @@ Once installed, simply ask your Antigravity agent:
 Or run it manually:
 
 ```bash
-# Create a new skill in squads/
-python3 ~/.gemini/antigravity/skills/skill-creator/scripts/init_skill.py docker-manager --output squads/
+# Create a new skill in squads/ (your local skills folder)
+python3 ~/.gemini/antigravity/skills/skill-creator/scripts/init_skill.py my-skill --output squads/
+
+# Install your custom skills
+make install-squads
 ```
 
-## 👥 Pre-built Development Squad (11 Skills)
+## 📖 How It Works
 
-A pre-built team of specialized skills for **full-stack development** (Go 1.25 + Nuxt 4 + DDD/BMAD V6).
-
-### Core Pipeline
-```
-📋 Product Manager  →  📝 Systems Analyst  →  🧠 BMAD Architect
-       ↓                      ↓                      ↓
-   "Why?"               "What?"                "How?"
-                                                   ↓
-                    ┌──────────────────────────────┴──────────────────────────────┐
-                    ↓                              ↓                              ↓
-          ⚙️ Backend Go                   🎨 Frontend Nuxt                 🤖 Telegram Mechanic
-                    ↓                              ↓                              ↓
-                    └──────────────────────────────┬──────────────────────────────┘
-                                                   ↓
-                                            🛡️ QA Lead  →  🚀 DevOps SRE
-```
-
-### Specialized Add-ons
-| Add-on | Purpose |
-|---|---|
-| `tma-expert` | Telegram Mini Apps (`@tma.js/sdk`) |
-| `cli-architect` | CLI tools (Cobra/Viper) |
-| `tui-charm-expert` | Terminal UIs (BubbleTea/Lipgloss) |
-
-Each skill knows **when to delegate** and **when to return** to ensure smooth handoffs.
+1.  **Design First**: Before creating a skill, answer: What triggers it? What's the decision tree?
+2.  **Scaffold**: Run `init_skill.py` to create the standard structure.
+3.  **Refine**: Edit `SKILL.md` with your logic and workflows.
+4.  **Verify**: Use the built-in checklist to validate quality.
 
 ## 🤝 Contributing
 
