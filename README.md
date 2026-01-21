@@ -19,6 +19,8 @@ Unlike simple scaffolding scripts, this tool enforces a **Design-First Philosoph
 ## ✨ Features
 
 -   **🧠 Smart Templates**: Starts every skill with a "Decision Tree" and "Phased Workflow" structure.
+-   **🏆 Gold Standard Example**: Includes a reference `hello-world` skill to demonstrate best practices.
+-   **🛡️ Strict Validation**: `validate_skill.py` enforces the 500-line limit and checks for IDE-aware tool usage.
 -   **✅ Auto-Checklists**: Generates `checklist.md` for quality assurance.
 -   **🛠️ Python Scaffolding**: `init_skill.py` automates directory creation, adhering to strict standards.
 -   **📚 Design Guide**: The `skill-creator` serves as a textbook for agents on *how* to design good tools.
