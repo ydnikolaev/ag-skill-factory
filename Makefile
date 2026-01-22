@@ -75,12 +75,12 @@ install-factory:
 	@for skill in $(FACTORY_SKILLS_DIR)/*; do \
 		if [ -d "$$skill" ]; then \
 			skill_name=$$(basename "$$skill"); \
-			target_link="$(GLOBAL_SKILLS_DIR)/$$skill_name"; \
-			echo "   🔗 Linking $$skill_name..."; \
-			if [ -e "$$target_link" ]; then \
-				rm -rf "$$target_link"; \
+			target_dir="$(GLOBAL_SKILLS_DIR)/$$skill_name"; \
+			echo "   📦 Copying $$skill_name..."; \
+			if [ -e "$$target_dir" ]; then \
+				rm -rf "$$target_dir"; \
 			fi; \
-			ln -s "$$skill" "$$target_link"; \
+			cp -r "$$skill" "$$target_dir"; \
 		fi \
 	done
 	@echo "✅ Skill Factory installed."
@@ -92,12 +92,12 @@ install-squads:
 		for skill in $(SQUADS_DIR)/*; do \
 			if [ -d "$$skill" ]; then \
 				skill_name=$$(basename "$$skill"); \
-				target_link="$(GLOBAL_SKILLS_DIR)/$$skill_name"; \
-				echo "   🔗 Linking $$skill_name..."; \
-				if [ -e "$$target_link" ]; then \
-					rm -rf "$$target_link"; \
+				target_dir="$(GLOBAL_SKILLS_DIR)/$$skill_name"; \
+				echo "   📦 Copying $$skill_name..."; \
+				if [ -e "$$target_dir" ]; then \
+					rm -rf "$$target_dir"; \
 				fi; \
-				ln -s "$$skill" "$$target_link"; \
+				cp -r "$$skill" "$$target_dir"; \
 			fi \
 		done; \
 		echo "✅ Squad skills installed."; \
@@ -110,9 +110,9 @@ uninstall:
 	@for skill in $(FACTORY_SKILLS_DIR)/*; do \
 		if [ -d "$$skill" ]; then \
 			skill_name=$$(basename "$$skill"); \
-			target_link="$(GLOBAL_SKILLS_DIR)/$$skill_name"; \
-			if [ -L "$$target_link" ]; then \
-				rm "$$target_link"; \
+			target_dir="$(GLOBAL_SKILLS_DIR)/$$skill_name"; \
+			if [ -e "$$target_dir" ]; then \
+				rm -rf "$$target_dir"; \
 				echo "   Removed $$skill_name"; \
 			fi \
 		fi \
@@ -121,9 +121,9 @@ uninstall:
 		for skill in $(SQUADS_DIR)/*; do \
 			if [ -d "$$skill" ]; then \
 				skill_name=$$(basename "$$skill"); \
-				target_link="$(GLOBAL_SKILLS_DIR)/$$skill_name"; \
-				if [ -L "$$target_link" ]; then \
-					rm "$$target_link"; \
+				target_dir="$(GLOBAL_SKILLS_DIR)/$$skill_name"; \
+				if [ -e "$$target_dir" ]; then \
+					rm -rf "$$target_dir"; \
 					echo "   Removed $$skill_name"; \
 				fi \
 			fi \

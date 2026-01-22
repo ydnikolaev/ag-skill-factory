@@ -19,24 +19,28 @@ Unlike simple scaffolding scripts, this tool enforces a **Design-First Philosoph
 ## ✨ Features
 
 -   **🧠 Smart Templates**: Starts every skill with a "Decision Tree" and "Phased Workflow" structure.
--   **🏆 Gold Standard Example**: Includes a reference `hello-world` skill to demonstrate best practices.
 -   **🛡️ Strict Validation**: `validate_skill.py` enforces the 500-line limit and checks for IDE-aware tool usage.
 -   **✅ Auto-Checklists**: Generates `checklist.md` for quality assurance.
 -   **🛠️ Python Scaffolding**: `init_skill.py` automates directory creation, adhering to strict standards.
 -   **📚 Design Guide**: The `skill-creator` serves as a textbook for agents on *how* to design good tools.
+-   **📦 Physical Install**: Skills are copied (not symlinked) to the global brain for Antigravity compatibility.
 
 ## 📂 Repository Structure
 
 ```
 ag-skill-factory/
-├── .agent/skills/         # 🏭 The Factory
-│   └── skill-creator/     # The meta-skill that creates other skills
-│       ├── SKILL.md       # Design philosophy
-│       ├── scripts/       # init_skill.py, validate_skill.py
-│       └── resources/     # Templates, checklists
+├── .agent/skills/           # 🏭 The Factory (internal tooling)
+│   ├── skill-creator/       # Meta-skill that creates other skills
+│   └── skill-factory-expert/# Project expert (gitignored, local)
 │
-└── squads/                # 👥 Your Skills (gitignored, user-specific)
-    └── ...                # Skills you create live here
+├── squads/                  # 👥 Your Skills (gitignored, user-specific)
+│   ├── backend-go-expert/
+│   ├── frontend-nuxt/
+│   ├── mcp-expert/
+│   └── ...
+│
+├── Makefile                 # Validates and installs skills
+└── README.md
 ```
 
 ## 📦 Installation
@@ -46,9 +50,11 @@ ag-skill-factory/
 git clone https://github.com/ydnikolaev/ag-skill-factory.git
 cd ag-skill-factory
 
-# Install the skill-creator globally
+# Install all skills to global brain (validates first)
 make install
 ```
+
+This **copies** skills to `~/.gemini/antigravity/skills/` (physical copy, not symlink).
 
 ## 🚀 Usage
 
@@ -59,26 +65,43 @@ Once installed, simply ask your Antigravity agent:
 Or run it manually:
 
 ```bash
-# Create a new skill in squads/ (your local skills folder)
-python3 ~/.gemini/antigravity/skills/skill-creator/scripts/init_skill.py my-skill --output squads/
+# Create a new skill in squads/
+python3 .agent/skills/skill-creator/scripts/init_skill.py my-skill
 
-# Install your custom skills
+# Validate your skill
+make validate SKILL=my-skill
+
+# Install to global brain
 make install-squads
 ```
+
+## 🔧 Makefile Commands
+
+| Command | Description |
+|---------|-------------|
+| `make install` | Validate all, generate TEAM.md, install everything |
+| `make validate SKILL=<name>` | Validate a single skill |
+| `make validate-all` | Validate all skills in squads/ |
+| `make generate-team` | Regenerate `squads/TEAM.md` |
+| `make install-factory` | Install only factory skills (.agent/skills/) |
+| `make install-squads` | Install only squad skills |
+| `make uninstall` | Remove all skills from global brain |
 
 ## 📖 How It Works
 
 1.  **Design First**: Before creating a skill, answer: What triggers it? What's the decision tree?
-2.  **Scaffold**: Run `init_skill.py` to create the standard structure.
+2.  **Scaffold**: Run `init_skill.py` to create the standard structure in `squads/`.
 3.  **Refine**: Edit `SKILL.md` with your logic and workflows.
-4.  **Verify**: Use the built-in checklist to validate quality.
+4.  **Validate**: Run `make validate SKILL=<name>` to check quality.
+5.  **Install**: Run `make install-squads` to copy to global brain.
 
 ## 🤝 Contributing
 
 We welcome contributions! Please follow the **Design-First** philosophy:
-1.  Keep instructions concise.
-2.  Move details to `resources/`.
-3.  Always include a verification step.
+1.  Keep instructions concise (<500 lines).
+2.  Move details to `resources/` or `examples/`.
+3.  Always include Team Collaboration and When to Delegate sections.
+4.  Customize the checklist for your skill's domain.
 
 ## License
 
