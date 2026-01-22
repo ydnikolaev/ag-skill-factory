@@ -8,13 +8,22 @@ description: {{SKILL_DESCRIPTION}}
 {{SKILL_PURPOSE_SUMMARY}}
 
 > [!IMPORTANT]
-> ## First Step: Read Project Config
+> ## First Step: Read Project Config & MCP
 > Before making technical decisions, **always check**:
-> ```
-> project/CONFIG.yaml
-> ```
-> This file defines: stack versions, modules, architecture style, features.
-> **Never assume defaults — verify against CONFIG.yaml first.**
+> 
+> | File | Purpose |
+> |------|---------|
+> | `project/CONFIG.yaml` | Stack versions, modules, architecture |
+> | `mcp.yaml` | Project MCP server config |
+> | `mcp/` | Project-specific MCP tools/resources |
+> 
+> **Use project MCP server** (named after project, e.g. `mcp_xlinefitness-bot_*`):
+> - `list_resources` → see available project data
+> - `*_tools` → project-specific actions (db, cache, jobs, etc.)
+> 
+> **Use `mcp_context7`** for library docs:
+> - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
+> - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
 
 ## When to use this skill
 

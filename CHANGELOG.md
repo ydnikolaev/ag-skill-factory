@@ -13,6 +13,10 @@ All notable changes to this project will be documented in this file.
   - Prevents wrong library suggestions (e.g., Chi instead of stdlib)
   - Added "First Step" protocol to skill-creator template
   - Mass-updated all 16 squad skills with awareness block
+- **Project MCP Awareness**: Skills now know about project-level MCP servers.
+  - Check `mcp.yaml` for project MCP config
+  - Use project MCP tools/resources (named after project)
+  - Reference `mcp.yaml → context7.default_libraries` for pre-configured docs
 - **Artifact Persistence**: Enforced "Dual-Write Pattern" across the factory.
   - Updated `checklist.md` template with **MANDATORY** persistence check.
   - Updated `SKILL.md` template with `Artifact Ownership` and `Handoff Protocol` sections.
