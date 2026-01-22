@@ -97,7 +97,7 @@ TODO: Add instructions.
     print(f"   2. Add resources/scripts as needed")
     print(f"   3. Run: make install-squads")
     print()
-    print("This will link the skill to ~/.gemini/antigravity/skills/")
+    print("This will link the skill to ~/.gemini/antigravity/global_skills/")
 
 
 if __name__ == "__main__":

@@ -54,7 +54,7 @@ cd ag-skill-factory
 make install
 ```
 
-This **copies** skills to `~/.gemini/antigravity/skills/` (physical copy, not symlink).
+This **copies** skills to `~/.gemini/antigravity/global_skills/` (physical copy, not symlink).
 
 ## 🚀 Usage
 

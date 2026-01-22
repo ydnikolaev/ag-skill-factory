@@ -1,7 +1,7 @@
 .PHONY: install uninstall install-factory install-squads generate-team validate validate-all
 
 # Paths
-GLOBAL_SKILLS_DIR := $(HOME)/.gemini/antigravity/skills
+GLOBAL_SKILLS_DIR := $(HOME)/.gemini/antigravity/global_skills
 FACTORY_SKILLS_DIR := $(shell pwd)/.agent/skills
 SQUADS_DIR := $(shell pwd)/squads
 VALIDATOR := $(FACTORY_SKILLS_DIR)/skill-creator/scripts/validate_skill.py

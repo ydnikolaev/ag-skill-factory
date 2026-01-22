@@ -95,7 +95,7 @@ After creating and refining the skill, link it to the global brain:
 make install    # Validates all, generates TEAM.md, then links
 ```
 
-This creates symlinks from `squads/<skill-name>/` → `~/.gemini/antigravity/skills/<skill-name>/`.
+This copies skills from `squads/<skill-name>/` → `~/.gemini/antigravity/global_skills/<skill-name>/`.
 
 ## Makefile Commands
 
@@ -111,7 +111,7 @@ This creates symlinks from `squads/<skill-name>/` → `~/.gemini/antigravity/ski
 
 ## Anti-Patterns
 
-❌ **DO NOT** create skills directly in `~/.gemini/antigravity/skills/`
+❌ **DO NOT** create skills directly in `~/.gemini/antigravity/global_skills/`
 ❌ **DO NOT** use the `--global` flag in init_skill.py
 ❌ **DO NOT** place new skills in `.agent/skills/` (reserved for factory tooling)
 
