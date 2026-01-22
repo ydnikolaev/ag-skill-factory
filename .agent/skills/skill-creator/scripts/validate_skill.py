@@ -79,6 +79,9 @@ def validate_skill(path: str) -> bool:
     if "## Handoff Protocol" not in content:
         warnings.append("Missing '## Handoff Protocol' section (New Requirement)")
     
+    if "## Iteration Protocol" not in content and "Iteration Protocol" not in content:
+        warnings.append("Missing '## Iteration Protocol' section explaining brain→docs flow")
+    
     # ========================================
     # 5. Examples Check (no large code blocks in SKILL.md)
     # ========================================

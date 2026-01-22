@@ -20,10 +20,20 @@ This skill uses a "Design First, Code Second" approach. Your goal is not just to
     -   Always use absolute paths.
     -   Use `task_boundary` for long-running workflows.
     -   Assume the agent knows nothing about the file structure until it runs `ls`.
-4.  **Artifact Persistence (Dual-Write)**:
-    -   **Rule**: Artifacts (`brain/...`) are ephemeral. Documents (`docs/...`) are permanent.
+4.  **Artifact Persistence (Dual-Write Pattern)**:
+    
+    > [!IMPORTANT]
+    > **Phase 1: Draft in Brain (Ephemeral)**
+    > Create artifacts in `brain/` directory. Iterate with user via `notify_user`.
+    > All Q&A, sketches, and intermediate versions stay here.
+    > 
+    > **Phase 2: Persist on Approval (Permanent)**
+    > ONLY after user says "Looks good" → copy final content to `docs/` path.
+    > The `docs/` folder is the **only** memory that survives between sessions.
+    
+    -   **Why Two Phases?** Brain = safe iteration space (no git pollution). Docs = approved truth.
     -   **Requirement**: Every skill MUST save its final output to `docs/` before handoff.
-    -   **Protocol**: Update `docs/AGENTS.md` registry.
+    -   **Registry**: Update `docs/AGENTS.md` to signal the baton is ready.
 
 ## Repository Structure
 

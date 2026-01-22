@@ -3,13 +3,18 @@
 ## 🚨 Document Persistence (MANDATORY)
 
 > [!CAUTION]
-> **BEFORE handing off to another skill, you MUST:**
+> **Verify the Dual-Write Pattern was followed:**
 
-- [ ] **Final document exists in `docs/`** at the path defined in Artifact Ownership
+### Iteration Protocol
+- [ ] **Drafts stayed in brain** — no unapproved content written to `docs/`
+- [ ] **User approved** — got "Looks good" via `notify_user` before persisting
+
+### Persistence
+- [ ] **Final document exists in `docs/`** at path defined in Artifact Ownership
+- [ ] **File status changed** from `Draft` to `Approved` in header/frontmatter
 - [ ] **AGENTS.md updated** with status ✅ Done and Last Updated date
-- [ ] **Artifact synced** — if you used an artifact, copy final content to `docs/`
 
-**Why?** Artifacts don't persist between sessions. Without `docs/` file, the next skill cannot continue.
+**Why?** Brain artifacts are wiped every session. Without `docs/` file, next skill cannot continue.
 
 Use this checklist to verify your skill before finishing.
 

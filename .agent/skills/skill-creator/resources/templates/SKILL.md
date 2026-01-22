@@ -42,9 +42,18 @@ Before acting, determine the specific scenario:
 2.  Notify user...
 
 
-## Artifact Persistence
-Agents work with ephemeral Artifacts, but humans and other agents need persistent files.
-**Rule:** always write your final output to the `docs/` directory defined in "Artifact Ownership".
+## Iteration Protocol (Ephemeral → Persistent)
+
+> [!IMPORTANT]
+> **Phase 1: Draft in Brain**
+> - Create drafts as UI Artifacts (in `brain/` conversation directory)
+> - Iterate with user via `notify_user` until approved
+> - Keep Q&A and sketches here — do NOT pollute `docs/`
+>
+> **Phase 2: Persist on Approval**
+> - ONLY after "Looks good" → write final to `docs/` path
+> - Update file status: `Draft` → `Approved` in header
+> - The `docs/` folder is the ONLY memory that survives sessions
 
 ## Artifact Ownership
 
@@ -54,14 +63,13 @@ Agents work with ephemeral Artifacts, but humans and other agents need persisten
 
 ## Handoff Protocol
 
-
 > [!CAUTION]
-> **BEFORE handoff:**
-> 1. Save final document to `docs/` path
-> 2. Change file status from `Draft` to `Approved` in header/frontmatter
-> 3. Update `docs/AGENTS.md` status to ✅ Done
-> 4. Use `notify_user` for final approval
-> 5. THEN delegate to next skill
+> **BEFORE delegating to next skill:**
+> 1. ✅ Final document exists in `docs/` (not just brain artifact)
+> 2. ✅ File header changed from `Draft` to `Approved`
+> 3. ✅ `docs/AGENTS.md` updated to ✅ Done
+> 4. ✅ User approved via `notify_user`
+> 5. THEN delegate
 
 ## Resources
 
