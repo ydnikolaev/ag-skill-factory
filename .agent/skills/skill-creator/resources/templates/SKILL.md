@@ -7,6 +7,15 @@ description: {{SKILL_DESCRIPTION}}
 
 {{SKILL_PURPOSE_SUMMARY}}
 
+> [!IMPORTANT]
+> ## First Step: Read Project Config
+> Before making technical decisions, **always check**:
+> ```
+> project/CONFIG.yaml
+> ```
+> This file defines: stack versions, modules, architecture style, features.
+> **Never assume defaults — verify against CONFIG.yaml first.**
+
 ## When to use this skill
 
 - **Trigger 1**: Description of situation...

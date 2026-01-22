@@ -25,6 +25,8 @@ Unlike simple scaffolding scripts, this tool enforces a **Design-First Philosoph
 -   **📚 Design Guide**: The `skill-creator` serves as a textbook for agents on *how* to design good tools.
 -   **📦 Physical Install**: Skills are copied (not symlinked) to the global brain for Antigravity compatibility.
 -   **📝 Dual-Write Pattern**: Enforces artifact persistence to `docs/` before handoff.
+-   **⚙️ CONFIG.yaml Awareness**: All skills read `project/CONFIG.yaml` to understand stack and versions.
+-   **🤙 Project Bro**: Utility skill that answers \"where are we?\" and tracks project state.
 
 ## 📂 Repository Structure
 
