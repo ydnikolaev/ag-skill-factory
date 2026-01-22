@@ -20,6 +20,10 @@ This skill uses a "Design First, Code Second" approach. Your goal is not just to
     -   Always use absolute paths.
     -   Use `task_boundary` for long-running workflows.
     -   Assume the agent knows nothing about the file structure until it runs `ls`.
+4.  **Artifact Persistence (Dual-Write)**:
+    -   **Rule**: Artifacts (`brain/...`) are ephemeral. Documents (`docs/...`) are permanent.
+    -   **Requirement**: Every skill MUST save its final output to `docs/` before handoff.
+    -   **Protocol**: Update `docs/AGENTS.md` registry.
 
 ## Repository Structure
 
@@ -70,8 +74,10 @@ Edit the generated files:
 2.  **Write the Workflow**: Step-by-step instructions.
 3.  **Clean up**: Remove unused sections from the template.
 4.  **Adapt the checklist**: Rewrite `references/checklist.md` for this skill's domain.
-    - The template checklist is generic — make it specific!
-    - Example: For an MCP skill, add checks for "stdio transport", "tool descriptions", etc.
+    -   **Mandatory**: Keep the `🚨 Document Persistence` section!
+    -   The template checklist is generic — make it specific!
+    -   Example: For an MCP skill, add checks for "stdio transport", "tool descriptions", etc.
+5.  **Define Artifact Ownership**: What files does this skill own in `docs/`?
 
 ### Phase 4: Verify
 Run the validation script:
@@ -122,6 +128,8 @@ This copies skills from `squads/<skill-name>/` → `~/.gemini/antigravity/global
 
 **SKILL.md should contain:**
 - Decisions, workflows, and logic (the "brain")
+- **Artifact Ownership**: What docs this skill creates/updates
+- **Handoff Protocol**: Rules for passing the baton
 - Brief inline examples (max 5-10 lines)
 - References to detailed examples: `See examples/python-server.py`
 
@@ -142,6 +150,21 @@ This copies skills from `squads/<skill-name>/` → `~/.gemini/antigravity/global
 
 > **CRITICAL**: Do NOT embed large code blocks (>10 lines) in SKILL.md. 
 > Instead, create files in `examples/` and reference them.
+
+## Language Requirements
+
+> **CRITICAL**: All skill files MUST be written in **English**.
+
+**Why English?**
+- Skills are consumed by AI agents globally
+- English ensures consistent parsing and understanding
+- Easier to maintain and contribute
+
+**Localization rule:**
+- `SKILL.md`, `references/`, `resources/`, `examples/` → **English only**
+- Agent runtime communication → **User's language** (agent adapts automatically)
+
+> Validation will check for Cyrillic characters and fail if found in skill files.
 
 ## Team Collaboration
 

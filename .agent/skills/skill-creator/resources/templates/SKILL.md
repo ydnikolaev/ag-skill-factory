@@ -41,6 +41,21 @@ Before acting, determine the specific scenario:
 1.  Run validation checks...
 2.  Notify user...
 
+## Artifact Ownership
+
+- **Creates**: `docs/<category>/<artifact>.md`
+- **Reads**: `<previous skill artifacts>`
+- **Updates**: `docs/AGENTS.md` (status + timestamp)
+
+## Handoff Protocol
+
+> [!CAUTION]
+> **BEFORE handoff:**
+> 1. Save final document to `docs/` path
+> 2. Update `docs/AGENTS.md` status to ✅ Done
+> 3. Use `notify_user` for final approval
+> 4. THEN delegate to next skill
+
 ## Resources
 
 - `scripts/`:

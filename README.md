@@ -24,6 +24,7 @@ Unlike simple scaffolding scripts, this tool enforces a **Design-First Philosoph
 -   **🛠️ Python Scaffolding**: `init_skill.py` automates directory creation, adhering to strict standards.
 -   **📚 Design Guide**: The `skill-creator` serves as a textbook for agents on *how* to design good tools.
 -   **📦 Physical Install**: Skills are copied (not symlinked) to the global brain for Antigravity compatibility.
+-   **📝 Dual-Write Pattern**: Enforces artifact persistence to `docs/` before handoff.
 
 ## 📂 Repository Structure
 
@@ -86,6 +87,11 @@ make install-squads
 | `make install-factory` | Install only factory skills (.agent/skills/) |
 | `make install-squads` | Install only squad skills |
 | `make uninstall` | Remove all skills from global brain |
+
+## Artifact Persistence Rule (Dual-Write)
+
+Antigravity artifacts (`brain/...`) are ephemeral. Documents (`docs/...`) are permanent.
+**Rule**: Every skill MUST save its final output (e.g., `discovery-brief.md`) to the `docs/` directory **BEFORE** handing off to the next skill. This is enforced by mandatory checklist items.
 
 ## 📖 How It Works
 

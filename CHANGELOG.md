@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+- **Artifact Persistence**: Enforced "Dual-Write Pattern" across the factory.
+  - Updated `checklist.md` template with **MANDATORY** persistence check.
+  - Updated `SKILL.md` template with `Artifact Ownership` and `Handoff Protocol` sections.
+  - Batch updated ALL 15 existing skill checklists in `squads/`.
+- **Validation**: `validate_skill.py` now warns if `Artifact Ownership` or `Handoff Protocol` sections are missing.
+
 ### Fixed
 - **Critical**: Fixed global skills path from `~/.gemini/antigravity/skills/` to `~/.gemini/antigravity/global_skills/` per updated Antigravity documentation
   - Updated `Makefile` GLOBAL_SKILLS_DIR variable

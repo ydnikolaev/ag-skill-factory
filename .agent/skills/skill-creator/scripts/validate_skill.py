@@ -73,6 +73,12 @@ def validate_skill(path: str) -> bool:
     if "## When to Delegate" not in content:
         warnings.append("Missing '## When to Delegate' section")
     
+    if "## Artifact Ownership" not in content:
+        warnings.append("Missing '## Artifact Ownership' section (New Requirement)")
+        
+    if "## Handoff Protocol" not in content:
+        warnings.append("Missing '## Handoff Protocol' section (New Requirement)")
+    
     # ========================================
     # 5. Examples Check (no large code blocks in SKILL.md)
     # ========================================
@@ -96,7 +102,27 @@ def validate_skill(path: str) -> bool:
         warnings.append(f"Large code block found ({max_code_block} lines). Consider moving to examples/")
     
     # ========================================
-    # 6. Directory Structure Check
+    # 6. Language Check (English only)
+    # ========================================
+    # Check for Cyrillic characters (Russian, Ukrainian, etc.)
+    cyrillic_pattern = re.compile(r'[\u0400-\u04FF]')
+    cyrillic_lines = []
+    for i, line in enumerate(lines, 1):
+        if cyrillic_pattern.search(line):
+            # Skip if it's just a comment or quote
+            if not line.strip().startswith('#') and not line.strip().startswith('>'):
+                cyrillic_lines.append(i)
+    
+    if cyrillic_lines:
+        if len(cyrillic_lines) > 5:
+            errors.append(f"SKILL.md contains Cyrillic text (lines: {cyrillic_lines[:5]}... and {len(cyrillic_lines) - 5} more). Skills must be in English.")
+        else:
+            errors.append(f"SKILL.md contains Cyrillic text (lines: {cyrillic_lines}). Skills must be in English.")
+    else:
+        print("✅ Language: English")
+    
+    # ========================================
+    # 7. Directory Structure Check
     # ========================================
     expected_dirs = ["examples", "references", "resources", "scripts"]
     for dir_name in expected_dirs:
