@@ -91,7 +91,7 @@ make install-squads
 ## Artifact Persistence Rule (Dual-Write)
 
 Antigravity artifacts (`brain/...`) are ephemeral. Documents (`docs/...`) are permanent.
-**Rule**: Every skill MUST save its final output (e.g., `discovery-brief.md`) to the `docs/` directory **BEFORE** handing off to the next skill. This is enforced by mandatory checklist items.
+**Rule**: Every skill MUST save its final output (e.g., `discovery-brief.md`) to the `docs/` directory and **change its status to "Approved"** BEFORE handing off to the next skill. This is enforced by mandatory checklist items.
 
 ## 📖 How It Works
 

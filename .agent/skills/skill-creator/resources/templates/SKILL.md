@@ -41,6 +41,11 @@ Before acting, determine the specific scenario:
 1.  Run validation checks...
 2.  Notify user...
 
+
+## Artifact Persistence
+Agents work with ephemeral Artifacts, but humans and other agents need persistent files.
+**Rule:** always write your final output to the `docs/` directory defined in "Artifact Ownership".
+
 ## Artifact Ownership
 
 - **Creates**: `docs/<category>/<artifact>.md`
@@ -49,12 +54,14 @@ Before acting, determine the specific scenario:
 
 ## Handoff Protocol
 
+
 > [!CAUTION]
 > **BEFORE handoff:**
 > 1. Save final document to `docs/` path
-> 2. Update `docs/AGENTS.md` status to ✅ Done
-> 3. Use `notify_user` for final approval
-> 4. THEN delegate to next skill
+> 2. Change file status from `Draft` to `Approved` in header/frontmatter
+> 3. Update `docs/AGENTS.md` status to ✅ Done
+> 4. Use `notify_user` for final approval
+> 5. THEN delegate to next skill
 
 ## Resources
 
