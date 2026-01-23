@@ -42,7 +42,6 @@ Synchronizes your local skills with the factory source.
 
 func runUpdate(_ *cobra.Command, _ []string) error {
 	source := viper.GetString("source")
-	globalPath := viper.GetString("global_path")
 
 	cwd, err := os.Getwd()
 	if err != nil {
@@ -58,7 +57,7 @@ func runUpdate(_ *cobra.Command, _ []string) error {
 	}
 
 	// Create installer
-	inst := installer.New(source, target, globalPath)
+	inst := installer.New(source, target)
 
 	// Run update with diff
 	result, err := inst.Update()

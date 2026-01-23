@@ -28,7 +28,6 @@ Creates the complete skill infrastructure in your project:
 ` + header("NOTES") + `
   • Skills are ` + cmd("copied") + `, not symlinked (agents need local files)
   • Rules get YAML frontmatter for workspace-local injection
-  • Also copies to global path for legacy Antigravity support
 
 ` + header("EXAMPLE") + `
   $ cd my-project
@@ -39,7 +38,6 @@ Creates the complete skill infrastructure in your project:
 
 func runInstall(_ *cobra.Command, _ []string) error {
 	source := viper.GetString("source")
-	globalPath := viper.GetString("global_path")
 
 	cwd, err := os.Getwd()
 	if err != nil {
@@ -55,7 +53,7 @@ func runInstall(_ *cobra.Command, _ []string) error {
 	}
 
 	// Create installer
-	inst := installer.New(source, target, globalPath)
+	inst := installer.New(source, target)
 
 	// Run installation
 	result, err := inst.Install()

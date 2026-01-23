@@ -60,7 +60,7 @@ func runBackport(_ *cobra.Command, args []string) error {
 	}
 
 	// Create installer
-	inst := installer.New(source, filepath.Join(cwd, ".agent"), "")
+	inst := installer.New(source, filepath.Join(cwd, ".agent"))
 
 	// Run backport with diff
 	err = inst.Backport(skillName)

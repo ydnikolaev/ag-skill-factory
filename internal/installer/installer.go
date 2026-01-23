@@ -15,9 +15,8 @@ import (
 
 // Installer handles skill installation and synchronization.
 type Installer struct {
-	Source     string
-	Target     string
-	GlobalPath string
+	Source string
+	Target string
 }
 
 // InstallResult holds the result of an install operation.
@@ -32,11 +31,10 @@ type UpdateResult struct {
 }
 
 // New creates a new Installer.
-func New(source, target, globalPath string) *Installer {
+func New(source, target string) *Installer {
 	return &Installer{
-		Source:     source,
-		Target:     target,
-		GlobalPath: globalPath,
+		Source: source,
+		Target: target,
 	}
 }
 
@@ -55,8 +53,6 @@ func (i *Installer) Install() (*InstallResult, error) {
 	if err := i.copyMetaFilesToRules(result); err != nil {
 		return nil, err
 	}
-
-	i.syncToGlobalIfNeeded()
 
 	return result, nil
 }
@@ -150,16 +146,6 @@ func (i *Installer) copyMetaFilesToRules(result *InstallResult) error {
 	return nil
 }
 
-// syncToGlobalIfNeeded copies to global path if specified.
-func (i *Installer) syncToGlobalIfNeeded() {
-	if i.GlobalPath == "" {
-		return
-	}
-	if err := i.copyToGlobal(); err != nil {
-		color.Yellow("Warning: failed to copy to global: %v", err)
-	}
-}
-
 // Update updates skills from source, showing diffs.
 func (i *Installer) Update() (*UpdateResult, error) {
 	result := &UpdateResult{}
@@ -176,8 +162,6 @@ func (i *Installer) Update() (*UpdateResult, error) {
 		}
 		i.updateSingleSkill(entry.Name(), localSkillsPath, result)
 	}
-
-	i.syncToGlobalIfNeeded()
 
 	return result, nil
 }
@@ -301,41 +285,6 @@ func extractFirstHeading(content string) string {
 		}
 	}
 	return "Rule"
-}
-
-// copyToGlobal copies skills to global path.
-func (i *Installer) copyToGlobal() error {
-	entries, err := os.ReadDir(i.Source)
-	if err != nil {
-		return err
-	}
-
-	for _, entry := range entries {
-		if err := i.copyEntryToGlobal(entry); err != nil {
-			return err
-		}
-	}
-
-	return nil
-}
-
-// copyEntryToGlobal copies a single entry to global path.
-func (i *Installer) copyEntryToGlobal(entry os.DirEntry) error {
-	if !entry.IsDir() || entry.Name() == "references" {
-		return nil
-	}
-
-	srcPath := filepath.Join(i.Source, entry.Name())
-	dstPath := filepath.Join(i.GlobalPath, entry.Name())
-
-	if entry.Name() != "_standards" {
-		skillFile := filepath.Join(srcPath, "SKILL.md")
-		if _, err := os.Stat(skillFile); os.IsNotExist(err) {
-			return nil
-		}
-	}
-
-	return copyDir(srcPath, dstPath)
 }
 
 // copyDir copies a directory recursively.

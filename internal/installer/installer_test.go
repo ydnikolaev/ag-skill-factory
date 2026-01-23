@@ -7,7 +7,7 @@ import (
 )
 
 func TestNew(t *testing.T) {
-	inst := New("/source", "/target", "/global")
+	inst := New("/source", "/target")
 
 	if inst.Source != "/source" {
 		t.Errorf("Expected source /source, got %s", inst.Source)
@@ -15,15 +15,11 @@ func TestNew(t *testing.T) {
 	if inst.Target != "/target" {
 		t.Errorf("Expected target /target, got %s", inst.Target)
 	}
-	if inst.GlobalPath != "/global" {
-		t.Errorf("Expected global /global, got %s", inst.GlobalPath)
-	}
 }
 
 func TestInstall_CreatesDirectoryStructure(t *testing.T) {
 	sourceDir := t.TempDir()
 	targetDir := filepath.Join(t.TempDir(), ".agent")
-	globalDir := t.TempDir()
 
 	skillDir := filepath.Join(sourceDir, "test-skill")
 	mustMkdirAll(t, skillDir)
@@ -33,7 +29,7 @@ func TestInstall_CreatesDirectoryStructure(t *testing.T) {
 	mustMkdirAll(t, standardsDir)
 	mustWriteFile(t, filepath.Join(standardsDir, "TEST_PROTOCOL.md"), []byte("# Test Protocol\n\nContent here"))
 
-	inst := New(sourceDir, targetDir, globalDir)
+	inst := New(sourceDir, targetDir)
 	result, err := inst.Install()
 	if err != nil {
 		t.Fatalf("Install failed: %v", err)
@@ -67,7 +63,7 @@ func TestInstall_SkipsIfAgentExists(t *testing.T) {
 
 	mustMkdirAll(t, targetDir)
 
-	inst := New(sourceDir, targetDir, "")
+	inst := New(sourceDir, targetDir)
 	result, err := inst.Install()
 	if err != nil {
 		t.Fatalf("Unexpected error: %v", err)
@@ -85,7 +81,7 @@ func TestConvertToRule_AddsYAMLFrontmatter(t *testing.T) {
 	srcFile := filepath.Join(sourceDir, "TEST.md")
 	mustWriteFile(t, srcFile, []byte("# My Protocol\n\nSome content"))
 
-	inst := New(sourceDir, targetDir, "")
+	inst := New(sourceDir, targetDir)
 	dstFile := filepath.Join(targetDir, "test.md")
 
 	err := inst.convertToRule(srcFile, dstFile)
@@ -153,7 +149,7 @@ func TestBackport_DetectsNoChanges(t *testing.T) {
 	mustMkdirAll(t, localSkill)
 	mustWriteFile(t, filepath.Join(localSkill, "SKILL.md"), skillContent)
 
-	_ = New(sourceDir, targetDir, "")
+	_ = New(sourceDir, targetDir)
 
 	_, err := os.Stat(filepath.Join(localSkill, "SKILL.md"))
 	if err != nil {
