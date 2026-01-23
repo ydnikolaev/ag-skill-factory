@@ -5,6 +5,8 @@ __pycache__/
 .vscode/
 dist/
 build/
+bin/
+docs/
 *.egg-info/
 
 # User-specific content (not part of core skill-factory)

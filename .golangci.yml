@@ -1,0 +1,92 @@
+# golangci-lint v2 configuration
+# Go 1.25 + Clean Code Standards
+# Balanced strictness
+
+version: "2"
+
+run:
+  timeout: 5m
+  tests: true
+  concurrency: 4
+  go: "1.25"
+  build-tags:
+    - ""
+  exclude-dirs:
+    - squads
+    - reference
+
+formatters:
+  enable:
+    - gofumpt
+    - goimports
+  settings:
+    goimports:
+      local-prefixes:
+        - github.com/yuranikolaev/ag-skill-factory
+
+linters:
+  # Start with default enabled linters (errcheck, govet, ineffassign, staticcheck, unused)
+  default: standard
+  enable:
+    # Additional quality linters
+    - gocritic       # Code quality
+    - prealloc       # Pre-allocate slices
+    - cyclop         # Cyclomatic complexity
+    - funlen         # Function length
+  disable:
+    # Too strict/noisy
+    - wsl
+    - nlreturn
+    - godot
+    - funcorder
+    - gochecknoinits
+    - forbidigo
+    - noinlineerr
+    - mirror
+
+linters-settings:
+  funlen:
+    lines: 100
+    statements: 60
+  
+  cyclop:
+    max-complexity: 15
+  
+  errcheck:
+    check-type-assertions: true
+    check-blank: false
+    exclude-functions:
+      - fmt.Fprintf
+      - fmt.Printf
+      - fmt.Println
+      - (github.com/fatih/color.Color).Printf
+  
+  gocritic:
+    enabled-tags:
+      - diagnostic
+      - performance
+    disabled-checks:
+      - appendAssign
+
+issues:
+  max-issues-per-linter: 50
+  max-same-issues: 3
+
+  exclude-rules:
+    - path: "_test\\.go"
+      linters:
+        - errcheck
+        - funlen
+        - dupl
+
+    - path: "squads/"
+      linters:
+        - all
+
+severity:
+  default: error
+
+output:
+  formats:
+    text:
+      print-linter-name: true
