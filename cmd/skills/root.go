@@ -11,6 +11,12 @@ import (
 
 var cfgFile string
 
+// Version info (set via ldflags during build).
+var (
+	version = "0.1.0"
+	commit  = "dev"
+)
+
 // Color shortcuts for consistent styling.
 var (
 	header  = color.New(color.FgHiCyan, color.Bold).SprintFunc()
