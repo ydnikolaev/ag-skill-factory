@@ -79,6 +79,16 @@ Before acting, determine the specific scenario:
 - **Reads**: `<previous skill artifacts>`
 - **Updates**: `docs/AGENTS.md` (status + timestamp)
 
+## TDD Protocol
+
+> [!CAUTION]
+> **NO CODE WITHOUT FAILING TEST.**
+> - **Red**: Write test → Fail.
+> - **Green**: Write code → Pass.
+> - **Refactor**: Clean up.
+> **NEVER write implementation code without a failing test.**
+> **NEVER fix a bug without a reproduction case.**
+
 ## Handoff Protocol
 
 > [!CAUTION]

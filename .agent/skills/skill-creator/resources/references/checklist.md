@@ -2,6 +2,13 @@
 
 ## 🚨 Document Persistence (MANDATORY)
 
+## 0. TDD Compliance (HARD STOP)
+> [!CAUTION]
+> **Does this skill enforce Red-Green-Refactor?**
+- [ ] **Hard Block**: Does it say "Refuse to write code without a failing test"? (Ref: `squads/TDD_PROTOCOL.md`)
+- [ ] **Debugging**: Does it require a reproduction case before fixing bugs?
+- [ ] **Planning**: Does it require a Verification Strategy in plans?
+
 > [!CAUTION]
 > **Verify the Dual-Write Pattern was followed:**
 
