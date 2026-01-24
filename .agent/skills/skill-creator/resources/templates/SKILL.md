@@ -66,18 +66,18 @@ Before acting, determine the specific scenario:
 > **Phase 1: Draft in Brain**
 > - Create drafts as UI Artifacts (in `brain/` conversation directory)
 > - Iterate with user via `notify_user` until approved
-> - Keep Q&A and sketches here — do NOT pollute `docs/`
+> - Keep Q&A and sketches here — do NOT pollute `project/docs/`
 >
 > **Phase 2: Persist on Approval**
-> - ONLY after "Looks good" → write final to `docs/` path
+> - ONLY after "Looks good" → write final to `project/docs/` path
 > - Update file status: `Draft` → `Approved` in header
-> - The `docs/` folder is the ONLY memory that survives sessions
+> - The `project/docs/` folder is the ONLY memory that survives sessions
 
 ## Artifact Ownership
 
-- **Creates**: `docs/<category>/<artifact>.md`
+- **Creates**: `project/docs/<category>/<artifact>.md`
 - **Reads**: `<previous skill artifacts>`
-- **Updates**: `docs/AGENTS.md` (status + timestamp)
+- **Updates**: `project/docs/AGENTS.md` (status + timestamp)
 
 ## TDD Protocol
 
@@ -93,9 +93,9 @@ Before acting, determine the specific scenario:
 
 > [!CAUTION]
 > **BEFORE delegating to next skill:**
-> 1. ✅ Final document exists in `docs/` (not just brain artifact)
+> 1. ✅ Final document exists in `project/docs/` (not just brain artifact)
 > 2. ✅ File header changed from `Draft` to `Approved`
-> 3. ✅ `docs/AGENTS.md` updated to ✅ Done
+> 3. ✅ `project/docs/AGENTS.md` updated to ✅ Done
 > 4. ✅ User approved via `notify_user`
 > 5. THEN delegate
 

@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added
+- **`skill-interviewer` meta-skill**: Creative partner for ideating new skills.
+  - Interview-first approach with gap analysis
+  - Anti-pattern detection (too big, too small, too vague)
+  - Writes skill specs for `@skill-creator` to execute
+- **`workflow-creator` meta-skill**: Designs and creates `.agent/workflows/`.
+  - Interview-based workflow design
+  - Duplicate checking against existing workflows
+  - Turbo annotation guidance (`// turbo`, `// turbo-all`)
+- **`/commit` workflow**: Pre-commit automation for ag-skill-factory.
+  - Branch protection with auto-branch creation
+  - Self-evolve sync as first step
+  - CHANGELOG update (Keep a Changelog format)
+  - Conventional Commits message generation
+- **`/push` workflow**: Full push pipeline.
+  - Runs `/commit` first
+  - Runs `make install` before push
+  - Pushes to remote
+
+### Changed
+- **`project/docs/` convention**: All artifact paths in skill-creator templates now use `project/docs/` prefix.
+  - Updated `AGENTS.md` template
+  - Updated `checklist.md` template
+  - Updated `SKILL.md` template
+
+### Added
 - **`project-bro` skill**: New utility skill that understands project state, reads docs, analyzes code.
   - Answers "where are we?", "what's done?", "what's next?"
   - Reads `project/CONFIG.yaml`, `docs/AGENTS.md`, and codebase

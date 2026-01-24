@@ -13,15 +13,15 @@
 > **Verify the Dual-Write Pattern was followed:**
 
 ### Iteration Protocol
-- [ ] **Drafts stayed in brain** — no unapproved content written to `docs/`
+- [ ] **Drafts stayed in brain** — no unapproved content written to `project/docs/`
 - [ ] **User approved** — got "Looks good" via `notify_user` before persisting
 
 ### Persistence
-- [ ] **Final document exists in `docs/`** at path defined in Artifact Ownership
+- [ ] **Final document exists in `project/docs/`** at path defined in Artifact Ownership
 - [ ] **File status changed** from `Draft` to `Approved` in header/frontmatter
 - [ ] **AGENTS.md updated** with status ✅ Done and Last Updated date
 
-**Why?** Brain artifacts are wiped every session. Without `docs/` file, next skill cannot continue.
+**Why?** Brain artifacts are wiped every session. Without `project/docs/` file, next skill cannot continue.
 
 Use this checklist to verify your skill before finishing.
 

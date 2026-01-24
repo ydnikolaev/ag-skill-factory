@@ -28,12 +28,12 @@ This skill uses a "Design First, Code Second" approach. Your goal is not just to
     > All Q&A, sketches, and intermediate versions stay here.
     > 
     > **Phase 2: Persist on Approval (Permanent)**
-    > ONLY after user says "Looks good" → copy final content to `docs/` path.
-    > The `docs/` folder is the **only** memory that survives between sessions.
+    > ONLY after user says "Looks good" → copy final content to `project/docs/` path.
+    > The `project/docs/` folder is the **only** memory that survives between sessions.
     
     -   **Why Two Phases?** Brain = safe iteration space (no git pollution). Docs = approved truth.
-    -   **Requirement**: Every skill MUST save its final output to `docs/` before handoff.
-    -   **Registry**: Update `docs/AGENTS.md` to signal the baton is ready.
+    -   **Requirement**: Every skill MUST save its final output to `project/docs/` before handoff.
+    -   **Registry**: Update `project/docs/AGENTS.md` to signal the baton is ready.
 
 ## Repository Structure
 
@@ -87,7 +87,7 @@ Edit the generated files:
     -   **Mandatory**: Keep the `🚨 Document Persistence` section!
     -   The template checklist is generic — make it specific!
     -   Example: For an MCP skill, add checks for "stdio transport", "tool descriptions", etc.
-5.  **Define Artifact Ownership**: What files does this skill own in `docs/`?
+5.  **Define Artifact Ownership**: What files does this skill own in `project/docs/`?
 
 ### Phase 4: Verify
 Run the validation script:

@@ -4,14 +4,14 @@
 
 | Artifact | Owner | Path | Status | Last Updated |
 |----------|-------|------|--------|--------------|
-| Discovery Brief | @idea-interview | `docs/discovery/discovery-brief.md` | ⏳ Pending | - |
-| Roadmap | @product-analyst | `docs/product/roadmap.md` | ⏳ Pending | - |
-| User Stories | @product-analyst | `docs/product/user-stories.md` | ⏳ Pending | - |
-| Requirements | @product-analyst | `docs/specs/requirements.md` | ⏳ Pending | - |
-| Context Map | @bmad-architect | `docs/architecture/context-map.md` | ⏳ Pending | - |
-| API Contracts | @bmad-architect | `docs/architecture/api-contracts.yaml` | ⏳ Pending | - |
-| Test Cases | @qa-lead | `docs/qa/test-cases.md` | ⏳ Pending | - |
-| Design Tokens | @ux-designer | `docs/design/tokens.json` | ⏳ Pending | - |
+| Discovery Brief | @idea-interview | `project/docs/discovery/discovery-brief.md` | ⏳ Pending | - |
+| Roadmap | @product-analyst | `project/docs/product/roadmap.md` | ⏳ Pending | - |
+| User Stories | @product-analyst | `project/docs/product/user-stories.md` | ⏳ Pending | - |
+| Requirements | @product-analyst | `project/docs/specs/requirements.md` | ⏳ Pending | - |
+| Context Map | @bmad-architect | `project/docs/architecture/context-map.md` | ⏳ Pending | - |
+| API Contracts | @bmad-architect | `project/docs/architecture/api-contracts.yaml` | ⏳ Pending | - |
+| Test Cases | @qa-lead | `project/docs/qa/test-cases.md` | ⏳ Pending | - |
+| Design Tokens | @ux-designer | `project/docs/design/tokens.json` | ⏳ Pending | - |
 
 ## Status Legend
 
@@ -22,7 +22,7 @@
 
 ## Versioning
 
-Git-based. Use `git log docs/<path>` to see history.
+Git-based. Use `git log project/docs/<path>` to see history.
 
 ## Rules
 
