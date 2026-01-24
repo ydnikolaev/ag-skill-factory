@@ -1,4 +1,4 @@
-module github.com/yuranikolaev/ag-skill-factory
+module github.com/ydnikolaev/ag-skill-factory
 
 go 1.25
 

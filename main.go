@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/yuranikolaev/ag-skill-factory/cmd/skills"
+	"github.com/ydnikolaev/ag-skill-factory/cmd/skills"
 )
 
 func main() {

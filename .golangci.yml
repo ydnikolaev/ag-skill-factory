@@ -22,7 +22,7 @@ formatters:
   settings:
     goimports:
       local-prefixes:
-        - github.com/yuranikolaev/ag-skill-factory
+        - github.com/ydnikolaev/ag-skill-factory
 
 linters:
   # Start with default enabled linters (errcheck, govet, ineffassign, staticcheck, unused)

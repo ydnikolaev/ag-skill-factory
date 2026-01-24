@@ -8,7 +8,7 @@ import (
 
 	"github.com/fatih/color"
 
-	"github.com/yuranikolaev/ag-skill-factory/internal/diff"
+	"github.com/ydnikolaev/ag-skill-factory/internal/diff"
 )
 
 // createTargetDirs creates the target directory structure.

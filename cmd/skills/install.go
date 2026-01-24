@@ -9,7 +9,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"github.com/yuranikolaev/ag-skill-factory/internal/installer"
+	"github.com/ydnikolaev/ag-skill-factory/internal/installer"
 )
 
 var installCmd = &cobra.Command{

@@ -26,6 +26,9 @@ All notable changes to this project will be documented in this file.
 - **Tightened lint rules**: funlen (80/50), cyclop (12), added gocognit/lll
 - **Added `make check-loc`**: Enforce max 300 LOC per file
 
+### Fixed
+- **Module path**: Corrected GitHub username `yuranikolaev` → `ydnikolaev` in go.mod and all imports
+
 ### Added
 - **Command tests**: Added 13+ test cases for `cmd/skills/` commands
   - `list_test.go`, `install_test.go`, `update_test.go`, `backport_test.go`
