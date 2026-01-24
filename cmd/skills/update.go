@@ -12,6 +12,8 @@ import (
 	"github.com/yuranikolaev/ag-skill-factory/internal/installer"
 )
 
+var forceUpdate bool
+
 var updateCmd = &cobra.Command{
 	Use:   "update",
 	Short: "Pull latest skill changes from factory",
@@ -25,10 +27,13 @@ Synchronizes your local skills with the factory source.
   3. Asks for ` + cmd("confirmation") + ` before applying
   4. Updates only confirmed skills
 
+` + header("FLAGS") + `
+  --force    Skip diff comparison, refresh all skills
+
 ` + header("NOTES") + `
   • Safe operation — prompts before each change
   • Preserves local-only skills (not in factory)
-  • Also updates global skills path
+  • Also updates rules/standards
 
 ` + header("EXAMPLE") + `
   $ skills update
@@ -36,7 +41,10 @@ Synchronizes your local skills with the factory source.
   ` + dimmed("- old line") + `
   ` + success("+ new line") + `
   Apply changes? [y/n]: y
-  ✅ Updated 3 skills`,
+  ✅ Updated 3 skills
+
+  $ skills update --force
+  ✅ Force refreshed 15 skills`,
 	RunE: runUpdate,
 }
 
@@ -59,20 +67,30 @@ func runUpdate(_ *cobra.Command, _ []string) error {
 	// Create installer
 	inst := installer.New(source, target)
 
-	// Run update with diff
-	result, err := inst.Update()
-	if err != nil {
-		return fmt.Errorf("update failed: %w", err)
-	}
-
-	if result.UpdatedCount == 0 {
-		color.Green("✅ Everything up to date")
+	if forceUpdate {
+		// Force refresh all skills
+		result, err := inst.ForceRefresh()
+		if err != nil {
+			return fmt.Errorf("force refresh failed: %w", err)
+		}
+		color.Green("✅ Force refreshed %d skills", result.SkillCount)
 	} else {
-		color.Green("✅ Updated %d skills", result.UpdatedCount)
+		// Normal update with diff
+		result, err := inst.Update()
+		if err != nil {
+			return fmt.Errorf("update failed: %w", err)
+		}
+
+		if result.UpdatedCount == 0 {
+			color.Green("✅ Everything up to date")
+		} else {
+			color.Green("✅ Updated %d skills", result.UpdatedCount)
+		}
 	}
 	return nil
 }
 
 func init() {
+	updateCmd.Flags().BoolVarP(&forceUpdate, "force", "f", false, "Force refresh all skills (skip diff)")
 	rootCmd.AddCommand(updateCmd)
 }

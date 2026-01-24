@@ -57,6 +57,50 @@ func (i *Installer) Install() (*InstallResult, error) {
 	return result, nil
 }
 
+// ForceRefresh copies all skills with path rewriting, skipping diff check.
+func (i *Installer) ForceRefresh() (*InstallResult, error) {
+	result := &InstallResult{}
+
+	color.Cyan("🔄 Force refreshing all skills...")
+
+	// Read all skills from source
+	entries, err := os.ReadDir(i.Source)
+	if err != nil {
+		return nil, fmt.Errorf("failed to read source: %w", err)
+	}
+
+	for _, entry := range entries {
+		if !entry.IsDir() {
+			continue
+		}
+
+		name := entry.Name()
+		if name == "_standards" || name == "references" {
+			continue
+		}
+
+		srcPath := filepath.Join(i.Source, name)
+		skillFile := filepath.Join(srcPath, "SKILL.md")
+		if _, err := os.Stat(skillFile); os.IsNotExist(err) {
+			continue
+		}
+
+		targetPath := filepath.Join(i.Target, "skills", name)
+		if err := i.copyDirWithRewrite(srcPath, targetPath); err != nil {
+			color.Yellow("Warning: failed to copy %s: %v", name, err)
+			continue
+		}
+		result.SkillCount++
+	}
+
+	// Also refresh rules
+	if err := i.updateRules(); err != nil {
+		color.Yellow("Warning: failed to update rules: %v", err)
+	}
+
+	return result, nil
+}
+
 // createTargetDirs creates the target directory structure.
 func (i *Installer) createTargetDirs() error {
 	dirs := []string{
