@@ -5,6 +5,7 @@
 
 [![Antigravity](https://img.shields.io/badge/Antigravity-Native-purple)](https://antigravity.google)
 [![Go](https://img.shields.io/badge/Go-1.25-00ADD8)](https://go.dev)
+[![Coverage](https://img.shields.io/badge/coverage-95.9%25-brightgreen)](./internal/installer/)
 [![Agent Skills](https://img.shields.io/badge/Agent-Skills-blue)](https://github.com/anthropics/skills)
 
 ## What is this?
