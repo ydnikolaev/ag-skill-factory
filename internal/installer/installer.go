@@ -150,6 +150,7 @@ func (i *Installer) copyMetaFilesToRules(result *InstallResult) error {
 func (i *Installer) Update() (*UpdateResult, error) {
 	result := &UpdateResult{}
 
+	// Update skills
 	localSkillsPath := filepath.Join(i.Target, "skills")
 	entries, err := os.ReadDir(localSkillsPath)
 	if err != nil {
@@ -163,7 +164,38 @@ func (i *Installer) Update() (*UpdateResult, error) {
 		i.updateSingleSkill(entry.Name(), localSkillsPath, result)
 	}
 
+	// Update rules/standards
+	if err := i.updateRules(); err != nil {
+		color.Yellow("Warning: failed to update rules: %v", err)
+	}
+
 	return result, nil
+}
+
+// updateRules syncs _standards and meta files to rules folder.
+func (i *Installer) updateRules() error {
+	// Convert _standards to rules
+	standardsPath := filepath.Join(i.Source, "_standards")
+	if _, err := os.Stat(standardsPath); err == nil {
+		if _, err := i.convertStandardsToRules(standardsPath); err != nil {
+			return err
+		}
+	}
+
+	// Copy meta files (TEAM.md, PIPELINE.md)
+	files := []string{"TEAM.md", "PIPELINE.md"}
+	for _, file := range files {
+		src := filepath.Join(i.Source, file)
+		if _, err := os.Stat(src); err != nil {
+			continue
+		}
+		dst := filepath.Join(i.Target, "rules", strings.ToLower(file))
+		if err := i.convertToRule(src, dst); err != nil {
+			color.Yellow("Warning: failed to convert %s: %v", file, err)
+		}
+	}
+
+	return nil
 }
 
 // updateSingleSkill updates a single skill with diff confirmation.
