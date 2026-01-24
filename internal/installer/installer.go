@@ -121,11 +121,54 @@ func (i *Installer) copySkillIfValid(name, srcPath string, result *InstallResult
 	}
 
 	targetPath := filepath.Join(i.Target, "skills", name)
-	if err := copyDir(srcPath, targetPath); err != nil {
+	if err := i.copyDirWithRewrite(srcPath, targetPath); err != nil {
 		return fmt.Errorf("failed to copy skill %s: %w", name, err)
 	}
 	result.SkillCount++
 	return nil
+}
+
+// copyDirWithRewrite copies a directory, rewriting paths in .md files.
+// Transforms: _standards/X.md → .agent/rules/x.md
+func (i *Installer) copyDirWithRewrite(src, dst string) error {
+	_ = os.RemoveAll(dst)
+
+	return filepath.Walk(src, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+
+		relPath, err := filepath.Rel(src, path)
+		if err != nil {
+			return err
+		}
+
+		dstPath := filepath.Join(dst, relPath)
+
+		if info.IsDir() {
+			return os.MkdirAll(dstPath, info.Mode())
+		}
+
+		// Rewrite paths in markdown files
+		if strings.HasSuffix(path, ".md") {
+			return i.copyFileWithRewrite(path, dstPath)
+		}
+
+		return copyFile(path, dstPath)
+	})
+}
+
+// copyFileWithRewrite copies a file, rewriting _standards paths.
+func (i *Installer) copyFileWithRewrite(src, dst string) error {
+	content, err := os.ReadFile(src)
+	if err != nil {
+		return err
+	}
+
+	// Rewrite _standards references to .agent/rules
+	newContent := rewriteStandardsPaths(string(content))
+
+	return os.WriteFile(dst, []byte(newContent), 0o644)
 }
 
 // copyMetaFilesToRules copies TEAM.md and PIPELINE.md to rules.
@@ -370,3 +413,53 @@ func confirm(message string) bool {
 	response = strings.TrimSpace(strings.ToLower(response))
 	return response == "y" || response == "yes"
 }
+
+// rewriteStandardsPaths transforms _standards/ references to .agent/rules/.
+// Example: `_standards/TDD_PROTOCOL.md` → `.agent/rules/tdd_protocol.md`
+func rewriteStandardsPaths(content string) string {
+	// Pattern: _standards/SOMETHING.md → .agent/rules/something.md
+	lines := strings.Split(content, "\n")
+	for i, line := range lines {
+		if strings.Contains(line, "_standards/") {
+			lines[i] = rewriteStandardsLine(line)
+		}
+	}
+	return strings.Join(lines, "\n")
+}
+
+// rewriteStandardsLine rewrites a single line's _standards references.
+func rewriteStandardsLine(line string) string {
+	// Find _standards/XXX.md patterns and replace
+	// Handle: `_standards/TDD_PROTOCOL.md` → `.agent/rules/tdd_protocol.md`
+	result := line
+
+	// Find all occurrences of _standards/something.md
+	idx := strings.Index(result, "_standards/")
+	for idx != -1 {
+		// Find the end of the path (space, `, ), ], or end of line)
+		endIdx := idx + len("_standards/")
+		for endIdx < len(result) {
+			c := result[endIdx]
+			if c == ' ' || c == '`' || c == ')' || c == ']' || c == '"' || c == '\'' {
+				break
+			}
+			endIdx++
+		}
+
+		oldPath := result[idx:endIdx]
+		// Extract filename from _standards/FILENAME.md
+		filename := strings.TrimPrefix(oldPath, "_standards/")
+		newPath := ".agent/rules/" + strings.ToLower(filename)
+
+		result = result[:idx] + newPath + result[endIdx:]
+
+		// Look for next occurrence
+		idx = strings.Index(result[idx+len(newPath):], "_standards/")
+		if idx != -1 {
+			idx += idx + len(newPath)
+		}
+	}
+
+	return result
+}
+
