@@ -301,7 +301,7 @@ idea-interview → product-analyst → bmad-architect → tech-spec-writer → i
 
 See `squads/PIPELINE.md` for visual diagram and handoff matrix.
 
-## Current Squad Roster (20 skills)
+## Current Squad Roster (21 skills)
 
 | Skill | Focus |
 |-------|-------|
@@ -324,6 +324,7 @@ See `squads/PIPELINE.md` for visual diagram and handoff matrix.
 | `timeweb-sysadmin` | Timeweb Cloud, VPS (optional) |
 | `project-bro` | Project awareness, "where are we?" (utility) |
 | `refactor-architect` | Analyzes codebase, designs modular refactoring specs |
+| `doc-janitor` | Document cleanup, archive, lifecycle enforcement (utility) |
 | `debugger` | Systematic 7-step bug investigation (utility) |
 
 ## When to Delegate
