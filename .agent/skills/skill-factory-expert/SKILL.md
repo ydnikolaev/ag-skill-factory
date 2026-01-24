@@ -74,13 +74,13 @@ ag-skill-factory/
 │   ├── mcp-expert/
 │   └── ...
 ├── Makefile                 # Links skills to global brain
-├── AGENTS.md                # 📋 AI Agent Context (READ THIS FIRST)
+├── ARTIFACT_REGISTRY.md                # 📋 AI Agent Context (READ THIS FIRST)
 ├── README.md                # Project documentation
 └── docs/                    # Documentation
 ```
 
 > [!TIP]
-> **Always read `AGENTS.md` first!** It contains full project context, CLI commands, and development rules.
+> **Always read `ARTIFACT_REGISTRY.md` first!** It contains full project context, CLI commands, and development rules.
 
 ## Core Concepts
 

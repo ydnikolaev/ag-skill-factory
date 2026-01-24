@@ -46,7 +46,7 @@ Use this template when writing skill specifications.
 ## Artifacts
 - **Creates**: `project/docs/[path]`
 - **Reads**: `[files or paths]`
-- **Updates**: `project/docs/AGENTS.md`
+- **Updates**: `project/docs/ARTIFACT_REGISTRY.md`
 
 ## Technical Requirements
 - **Scripts needed**: [Yes/No, describe if yes]

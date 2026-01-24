@@ -77,7 +77,7 @@ Before acting, determine the specific scenario:
 
 - **Creates**: `project/docs/<category>/<artifact>.md`
 - **Reads**: `<previous skill artifacts>`
-- **Updates**: `project/docs/AGENTS.md` (status + timestamp)
+- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
 
 ## TDD Protocol
 
@@ -95,7 +95,7 @@ Before acting, determine the specific scenario:
 > **BEFORE delegating to next skill:**
 > 1. ✅ Final document exists in `project/docs/` (not just brain artifact)
 > 2. ✅ File header changed from `Draft` to `Approved`
-> 3. ✅ `project/docs/AGENTS.md` updated to ✅ Done
+> 3. ✅ `project/docs/ARTIFACT_REGISTRY.md` updated to ✅ Done
 > 4. ✅ User approved via `notify_user`
 > 5. THEN delegate
 

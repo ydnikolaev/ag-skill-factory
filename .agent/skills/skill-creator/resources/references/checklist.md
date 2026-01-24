@@ -19,7 +19,7 @@
 ### Persistence
 - [ ] **Final document exists in `project/docs/`** at path defined in Artifact Ownership
 - [ ] **File status changed** from `Draft` to `Approved` in header/frontmatter
-- [ ] **AGENTS.md updated** with status ✅ Done and Last Updated date
+- [ ] **ARTIFACT_REGISTRY.md updated** with status ✅ Done and Last Updated date
 
 **Why?** Brain artifacts are wiped every session. Without `project/docs/` file, next skill cannot continue.
 

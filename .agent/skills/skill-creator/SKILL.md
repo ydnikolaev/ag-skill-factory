@@ -33,7 +33,7 @@ This skill uses a "Design First, Code Second" approach. Your goal is not just to
     
     -   **Why Two Phases?** Brain = safe iteration space (no git pollution). Docs = approved truth.
     -   **Requirement**: Every skill MUST save its final output to `project/docs/` before handoff.
-    -   **Registry**: Update `project/docs/AGENTS.md` to signal the baton is ready.
+    -   **Registry**: Update `project/docs/ARTIFACT_REGISTRY.md` to signal the baton is ready.
 
 ## Repository Structure
 
