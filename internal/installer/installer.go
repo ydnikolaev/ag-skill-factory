@@ -271,7 +271,7 @@ func (i *Installer) showChangesAndApply(name string, changes []string, src, dst 
 	}
 
 	if confirm("Apply these changes?") {
-		if err := copyDir(src, dst); err != nil {
+		if err := i.copyDirWithRewrite(src, dst); err != nil {
 			color.Red("Failed to update %s: %v", name, err)
 		} else {
 			result.UpdatedCount++
