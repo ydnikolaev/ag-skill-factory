@@ -2,18 +2,18 @@ package installer
 
 import (
 	"fmt"
-	"os"
 	"path/filepath"
 	"strings"
 
 	"github.com/fatih/color"
+	"github.com/spf13/afero"
 )
 
 // convertStandardsToRules converts _standards files to rule format.
 func (i *Installer) convertStandardsToRules(standardsPath string) (int, error) {
 	count := 0
 
-	entries, err := os.ReadDir(standardsPath)
+	entries, err := afero.ReadDir(i.Fs, standardsPath)
 	if err != nil {
 		return 0, err
 	}
@@ -37,7 +37,7 @@ func (i *Installer) convertStandardsToRules(standardsPath string) (int, error) {
 
 // convertToRule converts a markdown file to rule format with YAML frontmatter.
 func (i *Installer) convertToRule(src, dst string) error {
-	content, err := os.ReadFile(src)
+	content, err := afero.ReadFile(i.Fs, src)
 	if err != nil {
 		return err
 	}
@@ -50,7 +50,7 @@ func (i *Installer) convertToRule(src, dst string) error {
 	builder.WriteString("---\n\n")
 	builder.WriteString(string(content))
 
-	return os.WriteFile(dst, []byte(builder.String()), 0o644)
+	return afero.WriteFile(i.Fs, dst, []byte(builder.String()), 0o644)
 }
 
 // extractFirstHeading extracts the first markdown heading.
@@ -69,7 +69,7 @@ func (i *Installer) copyMetaFilesToRules(result *InstallResult) error {
 	files := []string{"TEAM.md", "PIPELINE.md"}
 	for _, file := range files {
 		src := filepath.Join(i.Source, file)
-		if _, err := os.Stat(src); err != nil {
+		if _, err := i.Fs.Stat(src); err != nil {
 			continue
 		}
 		dst := filepath.Join(i.Target, "rules", strings.ToLower(file))

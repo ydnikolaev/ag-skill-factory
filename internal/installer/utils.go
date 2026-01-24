@@ -1,19 +1,18 @@
 package installer
 
 import (
-	"bufio"
-	"fmt"
 	"io"
 	"os"
 	"path/filepath"
-	"strings"
+
+	"github.com/spf13/afero"
 )
 
-// copyDir copies a directory recursively.
-func copyDir(src, dst string) error {
-	_ = os.RemoveAll(dst)
+// copyDir copies a directory recursively using the Installer's Fs.
+func (i *Installer) copyDir(src, dst string) error {
+	_ = i.Fs.RemoveAll(dst)
 
-	return filepath.Walk(src, func(path string, info os.FileInfo, err error) error {
+	return afero.Walk(i.Fs, src, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
@@ -26,22 +25,22 @@ func copyDir(src, dst string) error {
 		dstPath := filepath.Join(dst, relPath)
 
 		if info.IsDir() {
-			return os.MkdirAll(dstPath, info.Mode())
+			return i.Fs.MkdirAll(dstPath, info.Mode())
 		}
 
-		return copyFile(path, dstPath)
+		return i.copyFile(path, dstPath)
 	})
 }
 
-// copyFile copies a single file.
-func copyFile(src, dst string) error {
-	srcFile, err := os.Open(src)
+// copyFile copies a single file using the Installer's Fs.
+func (i *Installer) copyFile(src, dst string) error {
+	srcFile, err := i.Fs.Open(src)
 	if err != nil {
 		return err
 	}
 	defer func() { _ = srcFile.Close() }()
 
-	dstFile, err := os.Create(dst)
+	dstFile, err := i.Fs.Create(dst)
 	if err != nil {
 		return err
 	}
@@ -50,13 +49,4 @@ func copyFile(src, dst string) error {
 	_, err = io.Copy(dstFile, srcFile)
 
 	return err
-}
-
-// confirm asks for user confirmation.
-func confirm(message string) bool {
-	fmt.Printf("%s [y/n]: ", message)
-	reader := bufio.NewReader(os.Stdin)
-	response, _ := reader.ReadString('\n')
-	response = strings.TrimSpace(strings.ToLower(response))
-	return response == "y" || response == "yes"
 }

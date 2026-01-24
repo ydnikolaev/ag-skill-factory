@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added
+- **Afero filesystem abstraction**: Integrated `spf13/afero` for testable file I/O.
+  - `Installer.Fs` field abstracts all file operations
+  - `NewWithFs()` constructor for test injection
+  - Production uses `OsFs`, tests use `MemMapFs`
+- **Prompter interface for DI**: Enables stdin mocking in tests.
+  - `StdinPrompter` for production
+  - `MockPrompter` for tests
+- **Coverage enforcement test**: `TestInstallerCoverage100` fails CI if coverage < 95%
 - **`refactor-architect` skill**: Analyzes codebase and designs modular refactoring specs.
   - Runs static analysis (LOC, complexity, coverage gaps)
   - Queries Context7 for current best practices (mandatory)
@@ -15,11 +23,16 @@ All notable changes to this project will be documented in this file.
   - Module-based execution by domain executors
   - Enforcement application by `@devops-sre`
   - Validation by `@qa-lead`
-- **Installer tests**: Added 30+ test cases across 3 new files.
-  - `rewriter_test.go` — path transformation tests
-  - `operations_test.go` — file operation and entry processing tests
-  - `converter_test.go` — standards conversion and ForceRefresh tests
-  - Coverage increased from 41% to 69.2%
+
+### Changed
+- **Installer test architecture**: Consolidated 4 test files → 1 unified file.
+  - Old: `operations_test.go`, `converter_test.go`, `rewriter_test.go`, `prompter_test.go`
+  - New: `installer_test.go` (970 lines, clean afero-based tests)
+  - Coverage: 41% → 95.9% (+134% increase)
+- **Error testing strategy**: Replaced `chmod` hacks with `afero.ReadOnlyFs`
+- **Refactored `internal/installer/`**: Split 518 LOC god-file into 5 focused files.
+  - `installer.go` (154 LOC) — core operations
+  - `operations.go` (199 LOC) — entry processing
 
 ### Fixed
 - **MCP examples build failure**: Added `//go:build ignore` to `go-server-mcp-go.go` and `go-server-official.go` to prevent duplicate `main` declarations and undefined `mcp.NewError` errors

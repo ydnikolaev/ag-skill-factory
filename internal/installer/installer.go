@@ -3,18 +3,20 @@ package installer
 
 import (
 	"fmt"
-	"os"
 	"path/filepath"
 
 	"github.com/fatih/color"
+	"github.com/spf13/afero"
 
 	"github.com/ydnikolaev/ag-skill-factory/internal/diff"
 )
 
 // Installer handles skill installation and synchronization.
 type Installer struct {
-	Source string
-	Target string
+	Source   string
+	Target   string
+	Prompter Prompter
+	Fs       afero.Fs
 }
 
 // InstallResult holds the result of an install operation.
@@ -28,11 +30,33 @@ type UpdateResult struct {
 	UpdatedCount int
 }
 
-// New creates a new Installer.
+// New creates a new Installer with default StdinPrompter and OsFs.
 func New(source, target string) *Installer {
 	return &Installer{
-		Source: source,
-		Target: target,
+		Source:   source,
+		Target:   target,
+		Prompter: &StdinPrompter{},
+		Fs:       afero.NewOsFs(),
+	}
+}
+
+// NewWithPrompter creates an Installer with a custom Prompter (for testing).
+func NewWithPrompter(source, target string, prompter Prompter) *Installer {
+	return &Installer{
+		Source:   source,
+		Target:   target,
+		Prompter: prompter,
+		Fs:       afero.NewOsFs(),
+	}
+}
+
+// NewWithFs creates an Installer with custom Prompter and Fs (for testing).
+func NewWithFs(source, target string, prompter Prompter, fs afero.Fs) *Installer {
+	return &Installer{
+		Source:   source,
+		Target:   target,
+		Prompter: prompter,
+		Fs:       fs,
 	}
 }
 
@@ -62,7 +86,7 @@ func (i *Installer) ForceRefresh() (*InstallResult, error) {
 	color.Cyan("🔄 Force refreshing all skills...")
 
 	// Read all skills from source
-	entries, err := os.ReadDir(i.Source)
+	entries, err := afero.ReadDir(i.Fs, i.Source)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read source: %w", err)
 	}
@@ -79,7 +103,7 @@ func (i *Installer) ForceRefresh() (*InstallResult, error) {
 
 		srcPath := filepath.Join(i.Source, name)
 		skillFile := filepath.Join(srcPath, "SKILL.md")
-		if _, err := os.Stat(skillFile); os.IsNotExist(err) {
+		if _, err := i.Fs.Stat(skillFile); err != nil {
 			continue
 		}
 
@@ -105,7 +129,7 @@ func (i *Installer) Update() (*UpdateResult, error) {
 
 	// Update skills
 	localSkillsPath := filepath.Join(i.Target, "skills")
-	entries, err := os.ReadDir(localSkillsPath)
+	entries, err := afero.ReadDir(i.Fs, localSkillsPath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read local skills: %w", err)
 	}
@@ -145,10 +169,10 @@ func (i *Installer) Backport(skillName string) error {
 		fmt.Println(change)
 	}
 
-	if !confirm("Backport these changes to factory?") {
+	if !i.Prompter.Confirm("Backport these changes to factory?") {
 		color.Yellow("Cancelled")
 		return nil
 	}
 
-	return copyDir(localPath, factoryPath)
+	return i.copyDir(localPath, factoryPath)
 }

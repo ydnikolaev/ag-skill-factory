@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/fatih/color"
+	"github.com/spf13/afero"
 
 	"github.com/ydnikolaev/ag-skill-factory/internal/diff"
 )
@@ -19,7 +20,7 @@ func (i *Installer) createTargetDirs() error {
 		filepath.Join(i.Target, "workflows"),
 	}
 	for _, dir := range dirs {
-		if err := os.MkdirAll(dir, 0o755); err != nil {
+		if err := i.Fs.MkdirAll(dir, 0o755); err != nil {
 			return fmt.Errorf("failed to create %s: %w", dir, err)
 		}
 	}
@@ -28,7 +29,7 @@ func (i *Installer) createTargetDirs() error {
 
 // processSourceEntries processes all entries in the source directory.
 func (i *Installer) processSourceEntries(result *InstallResult) error {
-	entries, err := os.ReadDir(i.Source)
+	entries, err := afero.ReadDir(i.Fs, i.Source)
 	if err != nil {
 		return fmt.Errorf("failed to read source: %w", err)
 	}
@@ -42,7 +43,7 @@ func (i *Installer) processSourceEntries(result *InstallResult) error {
 }
 
 // processEntry processes a single source entry.
-func (i *Installer) processEntry(entry os.DirEntry, result *InstallResult) error {
+func (i *Installer) processEntry(entry os.FileInfo, result *InstallResult) error {
 	if !entry.IsDir() {
 		return nil
 	}
@@ -70,7 +71,7 @@ func (i *Installer) processEntry(entry os.DirEntry, result *InstallResult) error
 // copySkillIfValid copies a skill if it has SKILL.md.
 func (i *Installer) copySkillIfValid(name, srcPath string, result *InstallResult) error {
 	skillFile := filepath.Join(srcPath, "SKILL.md")
-	if _, err := os.Stat(skillFile); os.IsNotExist(err) {
+	if _, err := i.Fs.Stat(skillFile); err != nil {
 		return nil
 	}
 
@@ -85,9 +86,9 @@ func (i *Installer) copySkillIfValid(name, srcPath string, result *InstallResult
 // copyDirWithRewrite copies a directory, rewriting paths in .md files.
 // Transforms: _standards/X.md → .agent/rules/x.md
 func (i *Installer) copyDirWithRewrite(src, dst string) error {
-	_ = os.RemoveAll(dst)
+	_ = i.Fs.RemoveAll(dst)
 
-	return filepath.Walk(src, func(path string, info os.FileInfo, err error) error {
+	return afero.Walk(i.Fs, src, func(path string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
@@ -100,7 +101,7 @@ func (i *Installer) copyDirWithRewrite(src, dst string) error {
 		dstPath := filepath.Join(dst, relPath)
 
 		if info.IsDir() {
-			return os.MkdirAll(dstPath, info.Mode())
+			return i.Fs.MkdirAll(dstPath, info.Mode())
 		}
 
 		// Rewrite paths in markdown files
@@ -108,13 +109,13 @@ func (i *Installer) copyDirWithRewrite(src, dst string) error {
 			return i.copyFileWithRewrite(path, dstPath)
 		}
 
-		return copyFile(path, dstPath)
+		return i.copyFile(path, dstPath)
 	})
 }
 
 // copyFileWithRewrite copies a file, rewriting _standards paths.
 func (i *Installer) copyFileWithRewrite(src, dst string) error {
-	content, err := os.ReadFile(src)
+	content, err := afero.ReadFile(i.Fs, src)
 	if err != nil {
 		return err
 	}
@@ -122,7 +123,7 @@ func (i *Installer) copyFileWithRewrite(src, dst string) error {
 	// Rewrite _standards references to .agent/rules
 	newContent := rewriteStandardsPaths(string(content))
 
-	return os.WriteFile(dst, []byte(newContent), 0o644)
+	return afero.WriteFile(i.Fs, dst, []byte(newContent), 0o644)
 }
 
 // updateSingleSkill updates a single skill with diff confirmation.
@@ -130,7 +131,7 @@ func (i *Installer) updateSingleSkill(name, localSkillsPath string, result *Upda
 	localPath := filepath.Join(localSkillsPath, name)
 	sourcePath := filepath.Join(i.Source, name)
 
-	if _, err := os.Stat(sourcePath); os.IsNotExist(err) {
+	if _, err := i.Fs.Stat(sourcePath); err != nil {
 		return
 	}
 
@@ -154,7 +155,7 @@ func (i *Installer) showChangesAndApply(name string, changes []string, src, dst 
 		fmt.Println(change)
 	}
 
-	if confirm("Apply these changes?") {
+	if i.Prompter.Confirm("Apply these changes?") {
 		if err := i.copyDirWithRewrite(src, dst); err != nil {
 			color.Red("Failed to update %s: %v", name, err)
 		} else {
@@ -171,7 +172,7 @@ func (i *Installer) updateRules() error {
 
 	// Convert _standards to rules
 	standardsPath := filepath.Join(i.Source, "_standards")
-	if _, err := os.Stat(standardsPath); err == nil {
+	if _, err := i.Fs.Stat(standardsPath); err == nil {
 		n, err := i.convertStandardsToRules(standardsPath)
 		if err != nil {
 			return err
@@ -183,7 +184,7 @@ func (i *Installer) updateRules() error {
 	files := []string{"TEAM.md", "PIPELINE.md"}
 	for _, file := range files {
 		src := filepath.Join(i.Source, file)
-		if _, err := os.Stat(src); err != nil {
+		if _, err := i.Fs.Stat(src); err != nil {
 			continue
 		}
 		dst := filepath.Join(i.Target, "rules", strings.ToLower(file))
