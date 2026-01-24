@@ -11,6 +11,7 @@ Auto-generated from squads/ directory. Do not edit manually.
 | `cli-architect` | Expert in Go CLI Architecture (Cobra, Viper, POSIX). |
 | `debugger` | Systematic debugging skill. 7-step workflow: Reproduce, Mini |
 | `devops-sre` | Expert in Docker, CI/CD, and delivering Go/Nuxt apps. |
+| `doc-janitor` | Enforces document structure, archives completed work, migrat |
 | `feature-fit` | Analyzes new feature requests for EXISTING projects. Reads c |
 | `frontend-nuxt` | Nuxt 4 & TailwindCSS expert for modern web applications (SSR |
 | `idea-interview` | Interview-mode skill that extracts complete project informat |
