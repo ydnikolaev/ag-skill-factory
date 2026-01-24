@@ -1,3 +1,5 @@
+//go:build ignore
+
 // MCP server example using the official modelcontextprotocol/go-sdk
 // This is the official SDK maintained by Anthropic.
 //

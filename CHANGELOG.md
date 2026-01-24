@@ -15,6 +15,14 @@ All notable changes to this project will be documented in this file.
   - Module-based execution by domain executors
   - Enforcement application by `@devops-sre`
   - Validation by `@qa-lead`
+- **Installer tests**: Added 30+ test cases across 3 new files.
+  - `rewriter_test.go` — path transformation tests
+  - `operations_test.go` — file operation and entry processing tests
+  - `converter_test.go` — standards conversion and ForceRefresh tests
+  - Coverage increased from 41% to 69.2%
+
+### Fixed
+- **MCP examples build failure**: Added `//go:build ignore` to `go-server-mcp-go.go` and `go-server-official.go` to prevent duplicate `main` declarations and undefined `mcp.NewError` errors
 
 ### Changed
 - **Refactored `internal/installer/`**: Split 518 LOC god-file into 5 focused files.

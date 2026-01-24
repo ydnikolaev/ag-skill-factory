@@ -1,3 +1,5 @@
+//go:build ignore
+
 // Full-featured MCP server example using mark3labs/mcp-go
 // This is the most popular Go MCP library with excellent DX.
 //
