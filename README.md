@@ -24,7 +24,7 @@ Unlike simple scaffolding scripts, this tool enforces a **Design-First Philosoph
 -   **🛠️ Skills CLI**: Go-based CLI for install, update, backport, and list operations.
 -   **📚 Design Guide**: The `skill-creator` serves as a textbook for agents on *how* to design good tools.
 -   **📦 Physical Install**: Skills are copied (not symlinked) to the global brain for Antigravity compatibility.
--   **📝 Dual-Write Pattern**: Enforces artifact persistence to `docs/` before handoff.
+-   **📝 Dual-Write Pattern**: Enforces artifact persistence to `project/docs/` before handoff.
 -   **⚙️ CONFIG.yaml Awareness**: All skills read `project/CONFIG.yaml` to understand stack and versions.
 -   **🏗️ Architecture Tests**: Enforces Go Modern standards via AST analysis.
 
@@ -34,7 +34,14 @@ Unlike simple scaffolding scripts, this tool enforces a **Design-First Philosoph
 ag-skill-factory/
 ├── .agent/skills/           # 🏭 The Factory (internal tooling)
 │   ├── skill-creator/       # Meta-skill that creates other skills
-│   └── skill-factory-expert/# Project expert (gitignored, local)
+│   ├── skill-factory-expert/# Project expert
+│   ├── skill-interviewer/   # Creative partner for skill ideation
+│   └── workflow-creator/    # Designs automation workflows
+│
+├── .agent/workflows/        # 🔄 Automation workflows
+│   ├── commit.md            # Pre-commit checks + changelog
+│   ├── push.md              # Merge + push pipeline
+│   └── self-evolve.md       # Factory synchronization
 │
 ├── squads/                  # 👥 Your Skills (gitignored, user-specific)
 │   ├── backend-go-expert/
@@ -158,7 +165,7 @@ The project includes `architecture_test.go` that enforces Go Modern standards:
 
 Antigravity artifacts (`brain/...`) are ephemeral. Documents (`docs/...`) are permanent.
 
-**Rule**: Every skill MUST save its final output (e.g., `discovery-brief.md`) to the `docs/` directory and **change its status to "Approved"** BEFORE handing off to the next skill.
+**Rule**: Every skill MUST save its final output (e.g., `discovery-brief.md`) to the `project/docs/` directory and **change its status to "Approved"** BEFORE handing off to the next skill.
 
 ## 📖 How It Works
 

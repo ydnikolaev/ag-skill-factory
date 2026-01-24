@@ -27,6 +27,17 @@ ag-skill-factory/
 │   ├── TEAM.md                # Auto-generated skill roster
 │   └── PIPELINE.md            # Visual workflow diagram
 │
+├── .agent/skills/             # 🏭 FACTORY SKILLS
+│   ├── skill-creator/         # Meta-skill that creates other skills
+│   ├── skill-factory-expert/  # Project expert
+│   ├── skill-interviewer/     # Creative partner for skill ideation
+│   └── workflow-creator/      # Designs automation workflows
+│
+├── .agent/workflows/          # 🔄 AUTOMATION WORKFLOWS
+│   ├── commit.md              # Pre-commit checks + changelog
+│   ├── push.md                # Merge + push pipeline
+│   └── self-evolve.md         # Factory synchronization
+│
 ├── cmd/skills/                # 🔧 CLI COMMANDS
 │   ├── root.go                # Main command setup
 │   ├── install.go             # skills install
@@ -38,11 +49,6 @@ ag-skill-factory/
 │   ├── installer/             # Install/update/backport logic
 │   ├── diff/                  # Directory comparison
 │   └── coverage/              # Test coverage enforcement
-│
-├── .agent/skills/             # Local skills (dev)
-├── docs/                      # Project documentation
-│   ├── discovery/             # Discovery briefs
-│   └── specs/                 # Technical specifications
 │
 └── Makefile                   # Build commands
 ```
