@@ -2,7 +2,7 @@
 
 ## Before Answering
 
-- [ ] Read `docs/AGENTS.md` for artifact statuses
+- [ ] Read `docs/ARTIFACT_REGISTRY.md` for artifact statuses
 - [ ] Check `docs/roadmap.md` for planned features
 - [ ] Scan `docs/` directory structure
 

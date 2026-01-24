@@ -139,7 +139,7 @@ Feature Brief should follow this structure (see `resources/feature-brief-templat
 ## Artifact Ownership
 - **Creates**: `project/docs/features/<feature-name>.md`
 - **Reads**: `project/CONFIG.yaml`, `mcp.yaml`, `project/docs/architecture/*`
-- **Updates**: `project/docs/AGENTS.md` (set status to ✅ Done)
+- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (set status to ✅ Done)
 
 ## Handoff Protocol
 
@@ -147,7 +147,7 @@ Feature Brief should follow this structure (see `resources/feature-brief-templat
 > **BEFORE delegating to next skill:**
 > 1. ✅ Final document exists in `project/docs/features/` (not just brain artifact)
 > 2. ✅ File header changed from `Draft` to `Approved`
-> 3. ✅ `project/docs/AGENTS.md` updated to ✅ Done
+> 3. ✅ `project/docs/ARTIFACT_REGISTRY.md` updated to ✅ Done
 > 4. ✅ User approved via `notify_user`
 > 5. THEN delegate to `@product-analyst`
 

@@ -34,7 +34,7 @@ This skill designs the Command Line Interface using Cobra, Viper, and POSIX stan
 
 - **Creates**: `project/docs/architecture/cli-design.md`
 - **Reads**: `project/docs/architecture/api-contracts.yaml`
-- **Updates**: `project/docs/AGENTS.md` (status + timestamp)
+- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
 
 ## Handoff Protocol
 
@@ -43,7 +43,7 @@ This skill designs the Command Line Interface using Cobra, Viper, and POSIX stan
 > **BEFORE handoff:**
 > 1. Save final document to `project/docs/` path
 > 2. Change file status from `Draft` to `Approved` in header/frontmatter
-> 3. Update `project/docs/AGENTS.md` status to ✅ Done
+> 3. Update `project/docs/ARTIFACT_REGISTRY.md` status to ✅ Done
 > 4. Use `notify_user` for final approval
 > 5. THEN delegate to next skill
 

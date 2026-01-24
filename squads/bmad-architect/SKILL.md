@@ -53,8 +53,16 @@ This skill designs systems using DDD and BMAD V6 methodology. It does not write 
 3.  Create `specs/ui-mockups.md` for `@frontend-nuxt-tma`.
 
 ## When to Delegate
-- ✅ **Delegate to `@backend-go-expert`** when: Context Map and API contracts are finalized.
-- ✅ **Delegate to `@frontend-nuxt`** when: UI wireframes and data requirements are defined.
+
+> [!CAUTION]
+> **Forced Handoff Path (Hard Stop)**
+> You MUST delegate to `@tech-spec-writer` first.
+> Direct handoff to `@backend-go-expert` or `@frontend-nuxt` is FORBIDDEN.
+>
+> Your output (context-map, api-contracts) is NOT implementation-ready.
+> Tech Spec Writer translates architecture into developer blueprints.
+
+- ✅ **Delegate to `@tech-spec-writer`** when: Context Map and API contracts are finalized.
 - ⬅️ **Return to `@product-analyst`** if: Requirements need clarification or are missing.
 
 
@@ -78,7 +86,7 @@ This skill designs systems using DDD and BMAD V6 methodology. It does not write 
 > **BEFORE handoff:**
 > 1. Save final document to `project/docs/` path
 > 2. Change file status from `Draft` to `Approved` in header/frontmatter
-> 3. Update `project/docs/AGENTS.md` status to ✅ Done
+> 3. Update `ARTIFACT_REGISTRY.md` status to ✅ Done
 > 4. Use `notify_user` for final approval
 > 5. THEN delegate to next skill
 
@@ -96,7 +104,7 @@ This skill designs systems using DDD and BMAD V6 methodology. It does not write 
 ## Artifact Ownership
 - **Creates**: `project/docs/architecture/context-map.md`, `project/docs/architecture/api-contracts.yaml`
 - **Reads**: `project/docs/specs/requirements.md`, `project/docs/product/roadmap.md`
-- **Updates**: `project/docs/AGENTS.md` (update status for architecture artifacts)
+- **Updates**: `ARTIFACT_REGISTRY.md` (update status for architecture artifacts)
 
 
 > [!IMPORTANT]

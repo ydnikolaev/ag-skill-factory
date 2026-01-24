@@ -17,7 +17,7 @@ Hey! I'm your project buddy. I know where we are, what's done, and what's next.
 
 | Question | How I Answer |
 |----------|--------------|
-| "Where are we?" | Read `project/docs/AGENTS.md` → show artifact statuses |
+| "Where are we?" | Read `project/docs/ARTIFACT_REGISTRY.md` → show artifact statuses |
 | "What's done?" | Scan `project/docs/` for completed artifacts |
 | "What's left?" | Compare roadmap vs current state |
 | "Show architecture" | Read `project/docs/architecture/` and explain |
@@ -30,7 +30,7 @@ First, I look at these files (in order):
 
 ```
 0. project/CONFIG.yaml   → Stack, versions, modules (READ FIRST!)
-1. docs/AGENTS.md        → Artifact registry, statuses
+1. docs/ARTIFACT_REGISTRY.md        → Artifact registry, statuses
 2. docs/roadmap.md       → What's planned
 3. docs/discovery-brief.md → Original idea
 4. docs/architecture/    → Technical decisions
@@ -59,7 +59,7 @@ I summarize:
 |------|------------------|
 | `project/CONFIG.yaml` | **Stack, versions, modules** (source of truth!) |
 | `mcp.yaml` | Project MCP server config, enabled modules |
-| `project/docs/AGENTS.md` | Master status of all artifacts |
+| `project/docs/ARTIFACT_REGISTRY.md` | Master status of all artifacts |
 | `project/docs/roadmap.md` | Planned features and phases |
 | `project/docs/discovery-brief.md` | Original project vision |
 | `project/docs/architecture/context-map.md` | System design |
@@ -119,7 +119,7 @@ When you need action, I point you to the right skill:
 ## Artifact Ownership
 
 - **Creates**: Nothing — I'm read-only
-- **Reads**: `project/docs/AGENTS.md`, `project/docs/roadmap.md`, `project/docs/architecture/`, `project/docs/specs/`
+- **Reads**: `project/docs/ARTIFACT_REGISTRY.md`, `project/docs/roadmap.md`, `project/docs/architecture/`, `project/docs/specs/`
 - **Updates**: Nothing — recommend skills that can update
 
 ## Example Conversations
@@ -127,7 +127,7 @@ When you need action, I point you to the right skill:
 **You:** bro, where are we with fitness-bot?
 
 **Me:** 
-> Looking at `project/docs/AGENTS.md`...
+> Looking at `project/docs/ARTIFACT_REGISTRY.md`...
 > 
 > **Fitness-Bot Status:**
 > - ✅ Discovery: done
@@ -156,7 +156,7 @@ When you need action, I point you to the right skill:
 
 - Use `task_boundary` if doing multi-step analysis
 - Use `notify_user` to present findings
-- Always start with `project/docs/AGENTS.md`
+- Always start with `project/docs/ARTIFACT_REGISTRY.md`
 
 ## Trigger Phrases
 
@@ -164,7 +164,7 @@ These are **natural language hints**, not CLI commands. Just type in chat:
 
 | Phrase | What I Do |
 |--------|-----------|
-| "bro status" | Show AGENTS.md summary |
+| "bro status" | Show ARTIFACT_REGISTRY.md summary |
 | "bro code" | Analyze codebase structure |
 | "bro plan" | Show roadmap progress |
 | "bro next" | Recommend next action |

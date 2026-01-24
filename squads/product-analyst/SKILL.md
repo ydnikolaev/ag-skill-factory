@@ -81,7 +81,7 @@ This skill owns the **Product Definition** phase. It handles Vision, Roadmap, Us
 > **BEFORE handoff:**
 > 1. Save final document to `project/docs/` path
 > 2. Change file status from `Draft` to `Approved` in header/frontmatter
-> 3. Update `project/docs/AGENTS.md` status to ✅ Done
+> 3. Update `project/docs/ARTIFACT_REGISTRY.md` status to ✅ Done
 > 4. Use `notify_user` for final approval
 > 5. THEN delegate to next skill
 
@@ -95,7 +95,7 @@ This skill owns the **Product Definition** phase. It handles Vision, Roadmap, Us
 ## Artifact Ownership
 - **Creates**: `project/docs/product/roadmap.md`, `project/docs/product/user-stories.md`, `project/docs/specs/requirements.md`
 - **Reads**: `project/docs/discovery/discovery-brief.md`
-- **Updates**: `project/docs/AGENTS.md` (update status for each artifact)
+- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (update status for each artifact)
 
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP

@@ -12,7 +12,7 @@
 ### Persistence
 - [ ] **Feature Brief exists in `docs/features/`** at path defined in Artifact Ownership
 - [ ] **File status changed** from `Draft` to `Approved` in header/frontmatter
-- [ ] **AGENTS.md updated** with status ✅ Done and Last Updated date
+- [ ] **ARTIFACT_REGISTRY.md updated** with status ✅ Done and Last Updated date
 
 **Why?** Brain artifacts are wiped every session. Without `docs/` file, next skill cannot continue.
 

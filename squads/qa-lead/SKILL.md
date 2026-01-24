@@ -49,8 +49,15 @@ Use these levels when reporting bugs:
 > 1. No Unit Tests provided (Developer skipped TDD).
 > 2. "It works on my machine" without proof.
 > 3. No explicit "Test Boundaries" from Architect.
+> 4. **Git commit order wrong:** `feat:` before `test:` = TDD violation.
 >
-> **Action**: Send back to `@backend-go-expert` or `@frontend-nuxt` with "BLOCKER: Missing TDD Artifacts".
+> **Verification:**
+> ```bash
+> git log --oneline --grep="test:" --grep="feat:" | head -5
+> # Expects: test commits BEFORE feat commits
+> ```
+>
+> **Action**: Send back with "BLOCKER: Missing TDD Artifacts" or "BLOCKER: TDD violation - feat before test".
 
 1.  Review Specs.
 2.  Write Test Cases (`project/docs/qa/test-cases.md`).
@@ -89,7 +96,7 @@ Use these levels when reporting bugs:
 > **BEFORE handoff:**
 > 1. Save final document to `project/docs/` path
 > 2. Change file status from `Draft` to `Approved` in header/frontmatter
-> 3. Update `project/docs/AGENTS.md` status to ✅ Done
+> 3. Update `project/docs/ARTIFACT_REGISTRY.md` status to ✅ Done
 > 4. Use `notify_user` for final approval
 > 5. THEN delegate to next skill
 
@@ -103,7 +110,7 @@ Use these levels when reporting bugs:
 ## Artifact Ownership
 - **Creates**: `project/docs/qa/test-cases.md`, `project/docs/qa/test-report.md`
 - **Reads**: `project/docs/specs/requirements.md`, `project/docs/architecture/context-map.md`
-- **Updates**: `project/docs/AGENTS.md` (update test artifacts status)
+- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (update test artifacts status)
 
 
 > [!IMPORTANT]

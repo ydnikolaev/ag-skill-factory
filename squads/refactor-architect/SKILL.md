@@ -110,7 +110,7 @@ project/docs/refactoring/
 
 - Parse modules by domain
 - Delegate each module spec to appropriate executor
-- Track status in `project/docs/AGENTS.md`
+- Track status in `project/docs/ARTIFACT_REGISTRY.md`
 
 ## Enforcement Philosophy
 
@@ -146,7 +146,7 @@ project/docs/refactoring/
 - `golangci-lint` output
 
 ### Updates
-- `project/docs/AGENTS.md` (handoff status)
+- `project/docs/ARTIFACT_REGISTRY.md` (handoff status)
 
 ## Team Collaboration
 
@@ -185,7 +185,7 @@ project/docs/refactoring/
 >
 > **Phase 2: Persist on Approval**
 > - Write final to `project/docs/refactoring/`
-> - Update `project/docs/AGENTS.md` status
+> - Update `project/docs/ARTIFACT_REGISTRY.md` status
 
 ## Workflow Integration
 
@@ -205,7 +205,7 @@ This skill is the entry point for `/refactor` workflow:
 > **BEFORE delegating to executors:**
 > 1. ✅ Spec persisted to `project/docs/refactoring/`
 > 2. ✅ `overview.md` status changed to `Approved`
-> 3. ✅ `project/docs/AGENTS.md` updated with module status
+> 3. ✅ `project/docs/ARTIFACT_REGISTRY.md` updated with module status
 > 4. ✅ User approved via `notify_user`
 > 5. THEN delegate to executor skills
 

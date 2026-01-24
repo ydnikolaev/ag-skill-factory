@@ -152,7 +152,7 @@ server.Run(ctx, &mcp.StdioTransport{})
 
 - **Creates**: `project/docs/mcp/server-config.md`
 - **Reads**: `project/docs/architecture/api-contracts.yaml`
-- **Updates**: `project/docs/AGENTS.md` (status + timestamp)
+- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
 
 ## Handoff Protocol
 
@@ -161,7 +161,7 @@ server.Run(ctx, &mcp.StdioTransport{})
 > **BEFORE handoff:**
 > 1. Save final document to `project/docs/` path
 > 2. Change file status from `Draft` to `Approved` in header/frontmatter
-> 3. Update `project/docs/AGENTS.md` status to ✅ Done
+> 3. Update `project/docs/ARTIFACT_REGISTRY.md` status to ✅ Done
 > 4. Use `notify_user` for final approval
 > 5. THEN delegate to next skill
 

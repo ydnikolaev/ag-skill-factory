@@ -59,11 +59,39 @@ For EACH feature/endpoint, create:
 
 See `examples/feature-spec-template.md` for format.
 
-### Phase 3: TDD Hints
-For each feature, suggest:
-- What to mock
-- What tests to write first
-- What assertions to check
+### Phase 3: Test Skeleton (TDD Requirement)
+
+> [!CAUTION]
+> **MANDATORY: Every tech-spec MUST include Test Skeleton section.**
+> Developers WILL REJECT spec without this. QA Lead WILL REJECT work without TDD evidence.
+
+For each feature, YOU MUST include:
+
+```markdown
+## Test Skeleton (TDD Requirement)
+
+### Unit Tests (RED Phase)
+
+| Test Case | File | Input | Expected Output |
+|-----------|------|-------|-----------------|
+| Happy path | `*_test.go` | Valid input | Expected result |
+| Edge case | `*_test.go` | Edge input | Handled correctly |
+| Error case | `*_test.go` | Invalid input | Error returned |
+
+### Integration Tests
+
+| Test Case | Dependencies | Mock/Real |
+|-----------|--------------|-----------|
+| DB operation | PostgreSQL | Testcontainers |
+| External API | Service | Mock (httptest) |
+
+### TDD Verification (Git-Based)
+
+Commit order proves TDD compliance:
+1. `test:` commit ← RED
+2. `feat:` commit ← GREEN
+3. `refactor:` commit ← REFACTOR
+```
 
 ### Phase 4: Handoff
 1.  Create `project/docs/specs/<feature>-tech-spec.md`
@@ -95,7 +123,7 @@ For each feature, suggest:
 
 - **Creates**: `project/docs/specs/<feature>-tech-spec.md`
 - **Reads**: `project/docs/architecture/*`, `specs/*.yaml`
-- **Updates**: `project/docs/AGENTS.md` (status + timestamp)
+- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
 
 ## Traceability Protocol (Hard Stop)
 
@@ -116,7 +144,7 @@ For each feature, suggest:
 > **BEFORE delegating to next skill:**
 > 1. Final document exists in `project/docs/specs/` (not just brain artifact)
 > 2. File header changed from `Draft` to `Approved`
-> 3. `project/docs/AGENTS.md` updated to Done
+> 3. `project/docs/ARTIFACT_REGISTRY.md` updated to Done
 > 4. User approved via `notify_user`
 > 5. THEN delegate
 

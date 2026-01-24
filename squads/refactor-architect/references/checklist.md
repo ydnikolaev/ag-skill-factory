@@ -59,7 +59,7 @@ Quality checklist for refactoring spec creation.
 
 - [ ] Spec persisted to `project/docs/refactoring/`
 - [ ] `overview.md` status changed to `Approved`
-- [ ] `project/docs/AGENTS.md` updated with module status
+- [ ] `project/docs/ARTIFACT_REGISTRY.md` updated with module status
 - [ ] User approved via `notify_user`
 
 ## Handoff

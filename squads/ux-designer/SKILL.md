@@ -70,7 +70,7 @@ This skill creates **design systems** and **design strategies**. It thinks befor
 > **BEFORE handoff:**
 > 1. Save final document to `project/docs/` path
 > 2. Change file status from `Draft` to `Approved` in header/frontmatter
-> 3. Update `project/docs/AGENTS.md` status to ✅ Done
+> 3. Update `project/docs/ARTIFACT_REGISTRY.md` status to ✅ Done
 > 4. Use `notify_user` for final approval
 > 5. THEN delegate to next skill
 
@@ -84,7 +84,7 @@ This skill creates **design systems** and **design strategies**. It thinks befor
 ## Artifact Ownership
 - **Creates**: `project/docs/design/tokens.json`, `project/docs/design/design-system.md`
 - **Reads**: `project/docs/product/roadmap.md`
-- **Updates**: `project/docs/AGENTS.md` (update design artifacts status)
+- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (update design artifacts status)
 
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP

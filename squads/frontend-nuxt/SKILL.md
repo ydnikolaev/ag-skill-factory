@@ -60,6 +60,16 @@ This skill builds modern web frontends using **Nuxt 4**, **TailwindCSS**, and **
 >
 > **Agents MUST refuse to write implementation code if this loop is skipped.**
 
+## TDD Task Creation (Hard Stop)
+
+> [!CAUTION]
+> When creating `task.md` in brain:
+> 1. **Phase 1 MUST be RED (Tests First)**
+> 2. Use `npm run check` after every phase (tests + linters)
+> 3. Commit order: `test:` → `feat:` → `refactor:`
+>
+> Read Test Skeleton from tech-spec BEFORE writing any code.**
+
 ## Tech Debt Protocol (Hard Stop)
 
 > [!CAUTION]
@@ -112,7 +122,7 @@ See `references/` for detailed guides:
 
 - **Creates**: `project/docs/frontend/ui-implementation.md`
 - **Reads**: `project/docs/specs/<feature>-tech-spec.md`, `project/docs/design/*`, `project/docs/architecture/context-map.md`
-- **Updates**: `project/docs/AGENTS.md` (status + timestamp)
+- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
 
 ## Handoff Protocol
 
@@ -121,7 +131,7 @@ See `references/` for detailed guides:
 > **BEFORE handoff:**
 > 1. Save final document to `project/docs/` path
 > 2. Change file status from `Draft` to `Approved` in header/frontmatter
-> 3. Update `project/docs/AGENTS.md` status to ✅ Done
+> 3. Update `project/docs/ARTIFACT_REGISTRY.md` status to ✅ Done
 > 4. Use `notify_user` for final approval
 > 5. THEN delegate to next skill
 

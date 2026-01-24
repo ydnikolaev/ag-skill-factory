@@ -7,9 +7,9 @@ User asks: "bro, where are we with xlinefitness?"
 
 ## Analysis Process
 
-### Step 1: Read AGENTS.md
+### Step 1: Read ARTIFACT_REGISTRY.md
 ```markdown
-# From docs/AGENTS.md:
+# From docs/ARTIFACT_REGISTRY.md:
 | Artifact | Status | Owner |
 |----------|--------|-------|
 | discovery-brief.md | ✅ Done | idea-interview |

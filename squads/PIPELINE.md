@@ -81,7 +81,7 @@ When issues are found, work flows back:
 > **Dual-Write Pattern Required at Every Handoff:**
 > 1. Draft in `brain/` → Iterate with user via `notify_user`
 > 2. On approval → Persist to `project/docs/` path
-> 3. Update `project/docs/AGENTS.md` status to ✅ Done
+> 3. Update `project/docs/ARTIFACT_REGISTRY.md` status to ✅ Done
 
 | From | To | Artifact |
 |------|-----|----------|

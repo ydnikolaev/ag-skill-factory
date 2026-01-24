@@ -4,81 +4,109 @@ Reference document for managing project artifacts across all skills.
 
 ## Single Source of Truth
 
-Every project using Antigravity skills MUST have `docs/AGENTS.md` — the artifact registry.
+Every project using Antigravity skills MUST have `docs/ARTIFACT_REGISTRY.md` — the artifact registry.
 
 ## Standard Structure
 
 ```
 docs/
-├── AGENTS.md              # 📋 Artifact Registry (required)
-├── discovery/
-│   └── discovery-brief.md
-├── product/
-│   ├── roadmap.md
-│   └── user-stories.md
-├── specs/
-│   └── requirements.md
-├── architecture/
-│   └── context-map.md
-└── qa/
-    └── test-cases.md
+├── ARTIFACT_REGISTRY.md       # 📋 Artifact Registry (required)
+│
+├── active/                    # 🔵 Current work — in progress
+│   ├── discovery/
+│   ├── product/
+│   ├── specs/
+│   ├── architecture/
+│   └── design/
+│
+├── review/                    # 🟡 Awaiting approval
+│   └── (same subfolders)
+│
+└── closed/                    # ✅ Done — archived, read-only
+    ├── sprints/
+    ├── features/
+    └── refactoring/
 ```
+
+## Lifecycle States
+
+| State | Folder | Meaning |
+|-------|--------|---------|
+| 🔵 **Active** | `active/` | Currently being worked on |
+| 🟡 **Review** | `review/` | Finished, awaiting approval |
+| ✅ **Closed** | `closed/` | Approved, archived |
+
+## Movement Rules
+
+1. **Create** → always in `active/`
+2. **Ready for handoff** → move to `review/`
+3. **User approves** → move to `closed/<context>/`
+4. `closed/` is **read-only** — never modified
 
 ## Ownership Matrix
 
 | Artifact | Owner | Path |
 |----------|-------|------|
-| Discovery Brief | `@idea-interview` | `docs/discovery/discovery-brief.md` |
-| Roadmap | `@product-analyst` | `docs/product/roadmap.md` |
-| User Stories | `@product-analyst` | `docs/product/user-stories.md` |
-| Requirements | `@product-analyst` | `docs/specs/requirements.md` |
-| Context Map | `@bmad-architect` | `docs/architecture/context-map.md` |
-| API Contracts | `@bmad-architect` | `docs/architecture/api-contracts.yaml` |
-| Test Cases | `@qa-lead` | `docs/qa/test-cases.md` |
-| Design Tokens | `@ux-designer` | `docs/design/tokens.json` |
+| Discovery Brief | `@idea-interview` | `active/discovery/discovery-brief.md` |
+| Roadmap | `@product-analyst` | `active/product/roadmap.md` |
+| User Stories | `@product-analyst` | `active/product/user-stories.md` |
+| Requirements | `@product-analyst` | `active/specs/requirements.md` |
+| Context Map | `@bmad-architect` | `active/architecture/context-map.md` |
+| API Contracts | `@bmad-architect` | `active/architecture/api-contracts.yaml` |
+| Tech Spec | `@tech-spec-writer` | `active/specs/<feature>-tech-spec.md` |
+| Test Cases | `@qa-lead` | `active/qa/test-cases.md` |
+| Design Tokens | `@ux-designer` | `active/design/tokens.json` |
 
-## Lifecycle Rules
-
-### Create
-1. Owner skill creates artifact in designated path
-2. Owner updates `docs/AGENTS.md` with new entry
-
-### Update
-1. Only owner can update artifact
-2. Owner updates "Last Updated" in `docs/AGENTS.md`
-3. Git commit = version history
-
-### Handoff
-1. Downstream skill reads from designated path
-2. If artifact missing → return to owner skill
-
-## Versioning
-
-**Git-based** — no manual archive folders.
-- Each commit to artifact = version
-- Use `git log docs/<path>` to see history
-- Tag major versions with git tags if needed
-
-## AGENTS.md Template
+## ARTIFACT_REGISTRY.md Template
 
 ```markdown
 # Artifact Registry
 
-> Single source of truth. Updated by each skill on create/update.
+> **Project**: <project-name>
+> **Current Focus**: `🔵 <active-work-unit>`
 
-| Artifact | Owner | Status | Last Updated |
-|----------|-------|--------|--------------|
-| discovery-brief.md | @idea-interview | ✅ Done | YYYY-MM-DD |
-| roadmap.md | @product-analyst | 📝 Draft | YYYY-MM-DD |
-| requirements.md | @product-analyst | 🔄 Review | YYYY-MM-DD |
-| context-map.md | @bmad-architect | ⏳ Pending | - |
-| test-cases.md | @qa-lead | ⏳ Pending | - |
+---
 
-## Status Legend
-- ⏳ Pending — not started
-- 📝 Draft — in progress
-- 🔄 Review — awaiting approval
-- ✅ Done — approved, ready for downstream
+## 🔵 Active: <Work Unit Name>
+
+> **Type**: Feature | **Started**: YYYY-MM-DD | **Lead**: @skill-name
+
+### Artifacts
+
+| Phase | Document | Owner | Status |
+|-------|----------|-------|--------|
+| Discovery | [discovery-brief.md](active/discovery/) | @idea-interview | ✅ |
+| Definition | [user-stories.md](active/product/) | @product-analyst | ✅ |
+| Architecture | [context-map.md](active/architecture/) | @bmad-architect | 🔵 IN PROGRESS |
+
+---
+
+## ✅ Closed
+
+<details>
+<summary><b>Sprint 01: Name</b> (YYYY-MM-DD)</summary>
+
+| Document | Owner | Archive |
+|----------|-------|---------|
+| discovery-brief.md | @idea-interview | `closed/sprints/01/` |
+
+</details>
+
+---
+
+## Quick Links
+
+| Work Unit | Type | Status | Lead |
+|-----------|------|--------|------|
+| feature-name | Feature | 🔵 Active | @skill |
+
+## Legend
+
+| Icon | Meaning |
+|------|---------|
+| 🔵 | Active — in progress |
+| 🟡 | Review — awaiting approval |
+| ✅ | Done / Closed |
 ```
 
 ## Skill Integration
@@ -87,7 +115,7 @@ Each skill that creates artifacts MUST have:
 
 ```markdown
 ## Artifact Ownership
-- **Creates**: `docs/<path>/<file>.md`
-- **Reads**: `docs/<path>/<file>.md`
-- **Updates**: `docs/AGENTS.md`
+- **Creates**: `active/<path>/<file>.md`
+- **Reads**: `active/<path>/<file>.md`
+- **Updates**: `ARTIFACT_REGISTRY.md`
 ```

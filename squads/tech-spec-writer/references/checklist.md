@@ -21,4 +21,4 @@ Use this checklist before handing off a specification to developers.
 
 - [ ] Spec saved to `docs/specs/<feature>-tech-spec.md`
 - [ ] User approved via `notify_user`
-- [ ] `docs/AGENTS.md` updated
+- [ ] `docs/ARTIFACT_REGISTRY.md` updated

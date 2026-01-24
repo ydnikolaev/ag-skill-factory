@@ -40,7 +40,7 @@ This skill is the **Gateway**. It manages the Bot, Webhooks, and Security.
 
 - **Creates**: `project/docs/bot/webhook-config.md`
 - **Reads**: `project/docs/architecture/context-map.md`
-- **Updates**: `project/docs/AGENTS.md` (status + timestamp)
+- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
 
 ## Handoff Protocol
 
@@ -49,7 +49,7 @@ This skill is the **Gateway**. It manages the Bot, Webhooks, and Security.
 > **BEFORE handoff:**
 > 1. Save final document to `project/docs/` path
 > 2. Change file status from `Draft` to `Approved` in header/frontmatter
-> 3. Update `project/docs/AGENTS.md` status to ✅ Done
+> 3. Update `project/docs/ARTIFACT_REGISTRY.md` status to ✅ Done
 > 4. Use `notify_user` for final approval
 > 5. THEN delegate to next skill
 

@@ -71,7 +71,7 @@ This skill **implements designs** in code. It turns tokens and specs into real c
 
 - **Creates**: `components/ui/`, `project/docs/frontend/theming.md`
 - **Reads**: `project/docs/design/tokens.json`
-- **Updates**: `project/docs/AGENTS.md` (status + timestamp)
+- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
 
 ## Handoff Protocol
 
@@ -80,7 +80,7 @@ This skill **implements designs** in code. It turns tokens and specs into real c
 > **BEFORE handoff:**
 > 1. Save final document to `project/docs/` path
 > 2. Change file status from `Draft` to `Approved` in header/frontmatter
-> 3. Update `project/docs/AGENTS.md` status to ✅ Done
+> 3. Update `project/docs/ARTIFACT_REGISTRY.md` status to ✅ Done
 > 4. Use `notify_user` for final approval
 > 5. THEN delegate to next skill
 

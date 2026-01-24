@@ -35,7 +35,7 @@ This skill delivers the code. It handles Docker, CI/CD, and deployments.
 
 - **Creates**: `project/docs/infrastructure/deployment-guide.md`
 - **Reads**: `project/docs/backend/service-implementation.md`
-- **Updates**: `project/docs/AGENTS.md` (status + timestamp)
+- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
 
 ## Handoff Protocol
 
@@ -44,7 +44,7 @@ This skill delivers the code. It handles Docker, CI/CD, and deployments.
 > **BEFORE handoff:**
 > 1. Save final document to `project/docs/` path
 > 2. Change file status from `Draft` to `Approved` in header/frontmatter
-> 3. Update `project/docs/AGENTS.md` status to ✅ Done
+> 3. Update `project/docs/ARTIFACT_REGISTRY.md` status to ✅ Done
 > 4. Use `notify_user` for final approval
 > 5. THEN delegate to next skill
 

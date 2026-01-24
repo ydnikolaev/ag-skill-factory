@@ -25,5 +25,5 @@
 > **BEFORE handoff:**
 > 1. Save debug report to `docs/bugs/`
 > 2. Change file status from `Draft` to `Approved`
-> 3. Update `docs/AGENTS.md` status to ✅ Done
+> 3. Update `docs/ARTIFACT_REGISTRY.md` status to ✅ Done
 > 4. Use `notify_user` for approval

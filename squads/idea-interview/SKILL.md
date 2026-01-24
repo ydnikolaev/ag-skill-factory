@@ -117,7 +117,7 @@ Interview is complete when collected:
 ## Artifact Ownership
 - **Creates**: `project/docs/discovery/discovery-brief.md`
 - **Reads**: `CONFIG.yaml` (if exists)
-- **Updates**: `project/docs/AGENTS.md` (set status to ✅ Done)
+- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (set status to ✅ Done)
 
 ## Resources
 
