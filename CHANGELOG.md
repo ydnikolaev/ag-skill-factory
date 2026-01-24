@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added
+- **`skill-updater` meta-skill**: Maintains and updates existing skills.
+  - Mass rollout of new patterns and standards
+  - Preview → Approve → Apply workflow
+  - Complements skill-creator (create) and skill-interviewer (design)
+- **Tech Debt Protocol**: New standard for tracking TODOs and workarounds.
+  - `_standards/TECH_DEBT_PROTOCOL.md` — central protocol document
+  - `project/docs/TECH_DEBT.md` — registry template
+  - Added to 9 developer skills: backend, frontend, debugger, mcp, tma, tui, cli, ui, devops
 - **`skill-interviewer` meta-skill**: Creative partner for ideating new skills.
   - Interview-first approach with gap analysis
   - Anti-pattern detection (too big, too small, too vague)
