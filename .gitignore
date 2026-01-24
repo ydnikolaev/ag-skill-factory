@@ -10,5 +10,4 @@ docs/
 *.egg-info/
 
 # User-specific content (not part of core skill-factory)
-squads/
 reference/

@@ -1,0 +1,55 @@
+package tui
+
+import (
+	"github.com/charmbracelet/bubbles/key"
+	tea "github.com/charmbracelet/bubbletea"
+	"github.com/charmbracelet/lipgloss"
+)
+
+// Styles
+var (
+	titleStyle = lipgloss.NewStyle().
+		Bold(true).
+		Foreground(lipgloss.Color("205"))
+	
+	containerStyle = lipgloss.NewStyle().
+		Padding(1, 2)
+)
+
+// Model represents the TUI state
+type Model struct {
+	width  int
+	height int
+	// Add your state fields here
+}
+
+// New creates a new Model
+func New() Model {
+	return Model{}
+}
+
+// Init initializes the model
+func (m Model) Init() tea.Cmd {
+	return nil
+}
+
+// Update handles messages
+func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+	switch msg := msg.(type) {
+	case tea.KeyMsg:
+		switch {
+		case key.Matches(msg, key.NewBinding(key.WithKeys("q", "ctrl+c"))):
+			return m, tea.Quit
+		}
+	case tea.WindowSizeMsg:
+		m.width = msg.Width
+		m.height = msg.Height
+	}
+	return m, nil
+}
+
+// View renders the UI
+func (m Model) View() string {
+	content := titleStyle.Render("Hello, TUI!")
+	return containerStyle.Render(content)
+}

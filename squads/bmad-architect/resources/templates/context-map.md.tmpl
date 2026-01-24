@@ -1,0 +1,38 @@
+# Context Map: {{ProjectName}}
+
+```mermaid
+graph TB
+    subgraph "Core Domain"
+        BC1[Bounded Context 1]
+    end
+    
+    subgraph "Supporting Domain"
+        BC2[Bounded Context 2]
+    end
+    
+    subgraph "Generic Domain"
+        BC3[Bounded Context 3]
+    end
+    
+    BC1 -->|"Customer-Supplier"| BC2
+    BC2 -->|"Shared Kernel"| BC3
+```
+
+## Bounded Contexts
+
+### BC1: {{Context1Name}}
+- **Type**: Core
+- **Responsibility**: {{Description}}
+- **Aggregates**: {{List}}
+
+### BC2: {{Context2Name}}
+- **Type**: Supporting
+- **Responsibility**: {{Description}}
+- **Aggregates**: {{List}}
+
+## Relationships
+
+| Upstream | Downstream | Pattern |
+|----------|------------|---------|
+| BC1 | BC2 | Customer-Supplier |
+| BC2 | BC3 | Shared Kernel |
