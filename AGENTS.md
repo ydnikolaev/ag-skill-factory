@@ -94,10 +94,13 @@ skills list         # Show installed vs available skills
 
 ### Test Coverage
 The test `internal/coverage/coverage_test.go` will **FAIL** if:
+- Installer package coverage drops below **95%**
 - A Go package has no `_test.go` files
 - Expected test files are missing
 
----
+> [!TIP]
+> **Afero Integration**: The `internal/installer/` package uses `spf13/afero` for testable file I/O.
+> Tests use `afero.MemMapFs` (in-memory) and `afero.ReadOnlyFs` (error injection).
 
 ## Skill Format
 
@@ -165,3 +168,4 @@ global_path: ~/.gemini/antigravity/global_skills
 - Python 3.x (for skill validator)
 - Cobra (CLI framework)
 - Viper (config management)
+- Afero (filesystem abstraction for testing)
