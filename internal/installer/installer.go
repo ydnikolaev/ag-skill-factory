@@ -217,12 +217,18 @@ func (i *Installer) Update() (*UpdateResult, error) {
 
 // updateRules syncs _standards and meta files to rules folder.
 func (i *Installer) updateRules() error {
+	color.Cyan("📋 Syncing rules/standards...")
+
+	count := 0
+
 	// Convert _standards to rules
 	standardsPath := filepath.Join(i.Source, "_standards")
 	if _, err := os.Stat(standardsPath); err == nil {
-		if _, err := i.convertStandardsToRules(standardsPath); err != nil {
+		n, err := i.convertStandardsToRules(standardsPath)
+		if err != nil {
 			return err
 		}
+		count += n
 	}
 
 	// Copy meta files (TEAM.md, PIPELINE.md)
@@ -235,9 +241,12 @@ func (i *Installer) updateRules() error {
 		dst := filepath.Join(i.Target, "rules", strings.ToLower(file))
 		if err := i.convertToRule(src, dst); err != nil {
 			color.Yellow("Warning: failed to convert %s: %v", file, err)
+		} else {
+			count++
 		}
 	}
 
+	color.Green("✅ Synced %d rules", count)
 	return nil
 }
 
