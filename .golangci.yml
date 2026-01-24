@@ -33,6 +33,8 @@ linters:
     - prealloc       # Pre-allocate slices
     - cyclop         # Cyclomatic complexity
     - funlen         # Function length
+    - gocognit       # Cognitive complexity
+    - lll            # Line length
   disable:
     # Too strict/noisy
     - wsl
@@ -46,11 +48,17 @@ linters:
 
 linters-settings:
   funlen:
-    lines: 100
-    statements: 60
+    lines: 80           # Tightened from 100
+    statements: 50      # Tightened from 60
   
   cyclop:
-    max-complexity: 15
+    max-complexity: 12  # Tightened from 15
+  
+  gocognit:
+    min-complexity: 15  # Flag cognitive complexity > 15
+  
+  lll:
+    line-length: 120    # Max line length
   
   errcheck:
     check-type-assertions: true

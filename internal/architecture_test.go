@@ -446,7 +446,11 @@ func (w *ArchWalker) checkGlobalState(decl *ast.GenDecl, path string, pos token.
 				if strings.HasPrefix(name.Name, "Err") {
 					continue
 				}
-				w.report(path, pos, "NO_GLOBALS", fmt.Sprintf("Exported mutable global variable '%s' is forbidden. Use Dependency Injection.", name.Name))
+				msg := fmt.Sprintf(
+					"Exported mutable global variable '%s' is forbidden. Use DI.",
+					name.Name,
+				)
+				w.report(path, pos, "NO_GLOBALS", msg)
 			}
 		}
 	}

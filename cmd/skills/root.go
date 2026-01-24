@@ -41,7 +41,8 @@ var rootCmd = &cobra.Command{
 
 ` + dimmed(banner) + `
 A CLI tool for managing AI agent skills across workspaces.
-Enables ` + accent("install") + `, ` + accent("update") + `, ` + accent("backport") + `, and ` + accent("list") + ` operations.
+Enables ` + accent("install") + `, ` + accent("update") + `,
+` + accent("backport") + `, and ` + accent("list") + ` operations.
 
 ` + header("WORKFLOW") + `
   1. ` + cmd("skills install") + `    → Bootstrap .agent/ in new project

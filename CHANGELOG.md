@@ -15,6 +15,20 @@ All notable changes to this project will be documented in this file.
   - Module-based execution by domain executors
   - Enforcement application by `@devops-sre`
   - Validation by `@qa-lead`
+
+### Changed
+- **Refactored `internal/installer/`**: Split 518 LOC god-file into 5 focused files.
+  - `installer.go` (154 LOC) — core operations
+  - `operations.go` (199 LOC) — entry processing
+  - `converter.go` (83 LOC) — standards → rules
+  - `rewriter.go` (54 LOC) — path rewriting
+  - `utils.go` (62 LOC) — file utilities
+- **Tightened lint rules**: funlen (80/50), cyclop (12), added gocognit/lll
+- **Added `make check-loc`**: Enforce max 300 LOC per file
+
+### Added
+- **Command tests**: Added 13+ test cases for `cmd/skills/` commands
+  - `list_test.go`, `install_test.go`, `update_test.go`, `backport_test.go`
 - **`skill-updater` meta-skill**: Maintains and updates existing skills.
 - **`skill-updater` meta-skill**: Maintains and updates existing skills.
   - Mass rollout of new patterns and standards

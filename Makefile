@@ -196,6 +196,24 @@ test:
 	@go test ./internal/... ./cmd/... -v
 	@echo "✅ All tests passed"
 
+# Check file sizes (max 300 LOC per file)
+check-loc:
+	@echo "📏 Checking file sizes..."
+	@failed=0; \
+	for f in $$(find . -name "*.go" ! -name "*_test.go" ! -path "./vendor/*" ! -path "./squads/*"); do \
+		lines=$$(wc -l < "$$f"); \
+		if [ $$lines -gt 300 ]; then \
+			echo "⚠️  $$f: $$lines lines (max 300)"; \
+			failed=1; \
+		fi \
+	done; \
+	if [ $$failed -eq 1 ]; then \
+		echo "❌ Some files exceed 300 LOC limit"; \
+		exit 1; \
+	else \
+		echo "✅ All files under 300 LOC"; \
+	fi
+
 # Run linter (MAXIMUM STRICTNESS)
 lint:
 	@echo "🔍 Running linter (FASCIST MODE)..."
