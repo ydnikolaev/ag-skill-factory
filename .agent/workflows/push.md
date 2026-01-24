@@ -4,7 +4,7 @@ description: Run full commit workflow, install, and push to remote
 
 # /push Workflow
 
-Complete push pipeline: commit checks + install + push.
+Complete push pipeline: commit + merge to main + cleanup.
 
 // turbo-all
 
@@ -12,13 +12,13 @@ Complete push pipeline: commit checks + install + push.
 
 ### 1. Run /commit Workflow
 Execute the full `/commit` workflow first:
-- Branch protection check
-- Self-evolve sync
+- Branch protection (auto-creates feature branch if on main)
+- Self-evolve sync checks
 - Validate all skills
 - Update CHANGELOG
 - Create commit
 
-If no pending changes, skip to step 3.
+If no pending changes, skip to step 2.
 
 ### 2. Final Install
 After successful commit, run full installation to verify everything works:
@@ -26,19 +26,29 @@ After successful commit, run full installation to verify everything works:
 sudo make install
 ```
 
-This ensures:
-- All skills are properly installed
-- CLI is built and linked
-- Completions are in place
-
-### 3. Push to Remote
+### 3. Merge to Main
 ```bash
-git push origin HEAD
+git checkout main
+git merge <feature-branch> --no-edit
+```
+Fast-forward merge preferred.
+
+### 4. Cleanup Branches
+```bash
+# Delete local feature branch
+git branch -d <feature-branch>
+
+# Delete remote feature branch (if exists)
+git push origin --delete <feature-branch>
 ```
 
-### 4. Summary Report
+### 5. Push to Main
+```bash
+git push origin main
+```
+
+### 6. Summary Report
 Report what was pushed:
-- Branch name
-- Commits pushed (count)
-- Remote URL
-- Any CI/CD links if applicable
+- Branch merged
+- Commits count
+- Remote branch cleanup status
