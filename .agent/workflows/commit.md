@@ -24,26 +24,40 @@ echo "✅ On branch: $(git branch --show-current)"
 If on `main`, automatically create a feature branch with date-based name.
 Agent should use a descriptive name based on session context (e.g., `feat/meta-skills`, `fix/pipeline-paths`).
 
-### 2. Self-Evolve Sync
-Run the `/self-evolve` workflow to ensure documentation is synchronized:
-- Skill count matches reality
-- TEAM.md regenerated
-- PIPELINE.md validated
-- skill-factory-expert up to date
+### 2. Self-Evolve Sync (Embedded)
+Critical checks from `/self-evolve` workflow:
 
-### 3. Validate All Skills
+#### 2.1 Check Skill Count
+```bash
+# Count actual skills
+ls squads/ | grep -v -E "\\.md$|^_|^references$" | wc -l
+```
+Compare against `skill-factory-expert/SKILL.md` roster count. If mismatch → update expert.
+
+#### 2.2 Regenerate TEAM.md
+```bash
+make generate-team
+git diff squads/TEAM.md
+```
+If diff exists → TEAM.md was outdated, now fixed.
+
+#### 2.3 Verify project/docs/ Convention
+Spot-check skill-creator templates use `project/docs/` not `docs/`.
+
+#### 2.4 Validate All Skills
 ```bash
 make validate-all
 ```
+All must pass ✅
 
-### 4. Diff Analysis
+### 3. Diff Analysis
 ```bash
 git diff --stat
 git diff --name-only
 ```
 Study the diff to understand what changed.
 
-### 5. Update CHANGELOG.md
+### 4. Update CHANGELOG.md
 Based on the diff, add an entry to `CHANGELOG.md` under `## [Unreleased]`:
 
 **Format (Keep a Changelog):**
@@ -67,7 +81,7 @@ Based on the diff, add an entry to `CHANGELOG.md` under `## [Unreleased]`:
 - `Removed` — deleted features
 - `Deprecated` — soon-to-be removed features
 
-### 6. Generate Commit Message
+### 5. Generate Commit Message
 Create a Conventional Commits message based on the diff:
 
 **Format:** `<type>(<scope>): <description>`
@@ -86,13 +100,13 @@ Create a Conventional Commits message based on the diff:
 - `fix(pipeline): correct handoff paths in PIPELINE.md`
 - `docs(readme): update installation instructions`
 
-### 7. Stage and Commit
+### 6. Stage and Commit
 ```bash
 git add -A
 git commit -m "<generated-message>"
 ```
 
-### 8. Summary Report
+### 7. Summary Report
 Report what was committed:
 - Files changed
 - CHANGELOG entry added
