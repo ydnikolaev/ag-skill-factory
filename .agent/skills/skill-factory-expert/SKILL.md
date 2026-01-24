@@ -62,6 +62,7 @@ ag-skill-factory/
 │   ├── skill-creator/       # Meta-skill that creates other skills
 │   ├── skill-factory-expert/# THIS SKILL - project expert
 │   ├── skill-interviewer/   # Creative partner for skill ideation
+│   ├── skill-updater/       # Mass updates to existing skills
 │   └── workflow-creator/    # Designs automation workflows
 ├── .agent/workflows/        # 🔄 Automation workflows
 │   ├── commit.md            # Pre-commit checks + changelog
@@ -225,6 +226,8 @@ Physically copies `squads/<skill-name>/` → `~/.gemini/antigravity/global_skill
 ### Standards (Shared Protocols)
 - `Path: squads/_standards/TDD_PROTOCOL.md` — Test-Driven Development rules
 - `Path: squads/_standards/GIT_PROTOCOL.md` — Git workflow and Conventional Commits
+- `Path: squads/_standards/TECH_DEBT_PROTOCOL.md` — TODO/workaround tracking
+- `Path: squads/_standards/TRACEABILITY_PROTOCOL.md` — Pipeline requirements tracing
 
 ### Team Registry
 `Path: squads/TEAM.md`
