@@ -36,6 +36,7 @@ ag-skill-factory/
 │   ├── skill-creator/       # Meta-skill that creates other skills
 │   ├── skill-factory-expert/# Project expert
 │   ├── skill-interviewer/   # Creative partner for skill ideation
+│   ├── skill-updater/       # Mass updates to existing skills
 │   └── workflow-creator/    # Designs automation workflows
 │
 ├── .agent/workflows/        # 🔄 Automation workflows
@@ -58,6 +59,16 @@ ag-skill-factory/
 ├── Makefile                 # Build, test, install
 └── README.md
 ```
+
+## 🏭 Factory Skills
+
+| Skill | Purpose |
+|-------|---------|
+| `@skill-creator` | Creates new skills from specs. Scaffolds, refines, validates. |
+| `@skill-factory-expert` | Knows the factory codebase. Answers questions, provides context. Read-only. |
+| `@skill-interviewer` | Creative partner for ideation. Designs specs for skill-creator. Does NOT create. |
+| `@skill-updater` | Mass updates existing skills. Rolls out new patterns and standards. |
+| `@workflow-creator` | Designs `.agent/workflows/` automation. Interview-first approach. |
 
 ## 🔧 Skills CLI
 

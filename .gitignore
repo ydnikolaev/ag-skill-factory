@@ -12,6 +12,3 @@ docs/
 # User-specific content (not part of core skill-factory)
 squads/
 reference/
-
-# Local project expert skill (user-specific, not part of skill-creator)
-.agent/skills/skill-factory-expert/
