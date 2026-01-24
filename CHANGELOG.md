@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added
+- **`refactor-architect` skill**: Analyzes codebase and designs modular refactoring specs.
+  - Runs static analysis (LOC, complexity, coverage gaps)
+  - Queries Context7 for current best practices (mandatory)
+  - Creates enforcement mechanisms (lint rules, pre-commit, CI, ADRs)
+  - Delegates module specs to domain executors
+- **`/refactor` workflow**: Full refactoring pipeline.
+  - Activates `@refactor-architect` for analysis
+  - Module-based execution by domain executors
+  - Enforcement application by `@devops-sre`
+  - Validation by `@qa-lead`
+- **`skill-updater` meta-skill**: Maintains and updates existing skills.
 - **`skill-updater` meta-skill**: Maintains and updates existing skills.
   - Mass rollout of new patterns and standards
   - Preview → Approve → Apply workflow
