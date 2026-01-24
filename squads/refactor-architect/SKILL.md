@@ -199,6 +199,21 @@ This skill is the entry point for `/refactor` workflow:
 5. @qa-lead → validates improvements
 ```
 
+## Pre-Handoff Validation (Hard Stop)
+
+> [!CAUTION]
+> **MANDATORY self-check before `notify_user` or delegation.**
+
+| # | Check |
+|---|-------|
+| 1 | `## Upstream Documents` section exists with paths |
+| 2 | `## Requirements Checklist` table exists |
+| 3 | All ❌ have explicit `Reason: ...` |
+| 4 | Document in `review/` folder |
+| 5 | `ARTIFACT_REGISTRY.md` updated |
+
+**If ANY unchecked → DO NOT PROCEED.**
+
 ## Handoff Protocol
 
 > [!CAUTION]

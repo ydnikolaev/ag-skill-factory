@@ -99,6 +99,21 @@ When you need action, I point you to the right skill:
 - ✅ **Delegate to `@bmad-architect`** when: Need architectural decisions
 - ⬅️ **Stay with me** when: Just need to understand current state
 
+## Pre-Handoff Validation (Hard Stop)
+
+> [!CAUTION]
+> **MANDATORY self-check before `notify_user` or delegation.**
+
+| # | Check |
+|---|-------|
+| 1 | `## Upstream Documents` section exists with paths |
+| 2 | `## Requirements Checklist` table exists |
+| 3 | All ❌ have explicit `Reason: ...` |
+| 4 | Document in `review/` folder |
+| 5 | `ARTIFACT_REGISTRY.md` updated |
+
+**If ANY unchecked → DO NOT PROCEED.**
+
 ## Handoff Protocol
 
 > [!CAUTION]
