@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added
+- **Pre-Handoff Validation (Hard Stop)**: Injected into all 20 skills.
+  - 5-point checklist before `notify_user` or delegation
+  - Downstream skills reject invalid handoffs
+- **TDD Task Creation (Hard Stop)**: Added to `backend-go-expert` and `frontend-nuxt`.
+  - Phase 1 MUST be RED (Tests First)
+  - `make check` verification loop
+  - Git commit order verification (`test:` → `feat:` → `refactor:`)
+- **Test Skeleton section**: Mandatory in `tech-spec-writer` output.
+  - Unit/Integration test tables
+  - TDD verification via git commit order
+- **Forced Handoff Path**: `bmad-architect` → `tech-spec-writer` (direct skip forbidden).
+- **`scripts/inject_pre_handoff.py`**: Batch injection tool for skill updates.
+
+### Changed
+- **`AGENTS.md` → `ARTIFACT_REGISTRY.md`**: Renamed across all 75+ references.
+- **`artifact-registry.md` template**: Feature-centric Work Unit structure.
+  - Lifecycle folders: `active/` → `review/` → `closed/`
+  - Collapsible `<details>` for archived work
+  - Quick Links navigation table
+- **Factory skills updated**: `skill-creator`, `skill-factory-expert`, `skill-interviewer` templates now use `ARTIFACT_REGISTRY.md`.
+- **`qa-lead` Gatekeeper**: Now checks git commit order for TDD compliance.
+
+### Added
 - **Afero filesystem abstraction**: Integrated `spf13/afero` for testable file I/O.
   - `Installer.Fs` field abstracts all file operations
   - `NewWithFs()` constructor for test injection
