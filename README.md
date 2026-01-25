@@ -10,7 +10,7 @@
 ## What is this?
 
 **Antigravity Factory** is a blueprint management system for AI agents. It provides:
-- **21 Expert Skills** — from backend-go-expert to mcp-expert
+- **20 Expert Skills** — from backend-go-expert to mcp-expert
 - **Shared Standards** — TDD, Git, Tech Debt protocols
 - **Team Structure** — TEAM.md roster and PIPELINE.md workflow
 - **Factory Skills** — meta-skills for creating and maintaining the ecosystem
@@ -22,7 +22,7 @@ Unlike simple scaffolding scripts, this tool enforces a **Design-First Philosoph
 
 ## ✨ Features
 
--   **🧠 21 Expert Skills**: Backend, Frontend, DevOps, QA, MCP, CLI, TUI, and more
+-   **🧠 20 Expert Skills**: Backend, Frontend, DevOps, QA, MCP, CLI, TUI, and more
 -   **🛡️ Strict Validation**: `validate_skill.py` enforces <500 lines and quality standards
 -   **✅ Auto-Checklists**: Each skill has `checklist.md` for QA
 -   **🛠️ Factory CLI**: Go-based `factory install` and `factory list`
@@ -52,30 +52,41 @@ antigravity-factory/
 │   │   ├── skill-updater/       # Mass updates to existing skills
 │   │   └── workflow-creator/    # Designs automation workflows
 │   └── workflows/
-│       ├── commit.md            # Pre-commit checks + changelog
-│       ├── push.md              # Merge + push pipeline
+│       ├── commit.md            # Pre-commit checks
+│       ├── push.md              # Merge + changelog + push
 │       └── self-evolve.md       # Factory synchronization
 │
 ├── blueprint/                   # 📦 Copied to .agent/ on install
-│   ├── skills/                  # 21 expert skills
-│   │   ├── backend-go-expert/
-│   │   ├── frontend-nuxt/
-│   │   ├── mcp-expert/
-│   │   └── ...
-│   ├── workflows/               # Project workflows
-│   │   ├── doc-cleanup.md
-│   │   └── refactor.md
-│   ├── rules/                   # Team structure
-│   │   ├── TEAM.md
-│   │   └── PIPELINE.md
-│   └── standards/               # Protocols
-│       ├── TDD_PROTOCOL.md
-│       ├── GIT_PROTOCOL.md
-│       └── ...
+│   ├── skills/                  # 20 expert skills
+│   ├── workflows/               # doc-cleanup, refactor
+│   ├── rules/                   # TEAM.md, PIPELINE.md
+│   ├── standards/               # TDD, Git, Tech Debt protocols
+│   ├── _meta/                   # Presets config (presets.yaml)
+│   └── private/                 # Private skills (gitignored)
+│
+├── website/                     # 📚 VitePress skill catalog
+│   ├── .vitepress/config.mts
+│   ├── index.md
+│   └── skills/                  # Generated skill pages
 │
 ├── cmd/factory/                 # 🔧 CLI source code
-├── internal/installer/          # 📦 Installer logic
-├── Makefile                     # Build, test, install
+│   ├── root.go, install.go, list.go
+│   ├── doctor.go                # factory doctor
+│   └── version.go
+│
+├── internal/
+│   ├── installer/               # Blueprint copy logic
+│   ├── doctor/                  # Link checker, diagnostics
+│   ├── presets/                 # Preset loader
+│   └── config/                  # Config handler
+│
+├── scripts/
+│   └── generate_catalog.py      # Generate website skill pages
+│
+├── .github/workflows/
+│   └── deploy-docs.yml          # Auto-deploy VitePress to GitHub Pages
+│
+├── Makefile
 └── README.md
 ```
 
@@ -85,7 +96,7 @@ The `factory` CLI copies the blueprint to any project's `.agent/` folder.
 
 ### Installation
 
-**Quick install (requires Go 1.21+):**
+**Quick install (requires Go 1.22+):**
 ```bash
 go install github.com/ydnikolaev/antigravity-factory@latest
 ```
@@ -100,10 +111,25 @@ make install
 ### Commands
 
 ```bash
-factory install    # Copy blueprint to .agent/ (always replaces)
-factory list       # Show installed inventory by category
-factory version    # Show version
+factory install              # Interactive preset selection (TUI)
+factory install --preset=backend  # Install specific preset
+factory doctor               # Check for broken links and issues
+factory list                 # Show installed inventory
+factory version              # Show version
 ```
+
+### Presets
+
+| Preset | Skills | Description |
+|--------|--------|-------------|
+| `all` | 20 | Full blueprint |
+| `core` | 5 | Pipeline essentials |
+| `backend` | 9 | Go backend |
+| `frontend` | 8 | Nuxt/Vue |
+| `fullstack` | 12 | Backend + Frontend |
+| `tma` | 8 | Telegram Mini Apps |
+| `cli` | 8 | CLI/TUI apps |
+| `minimal` | 2 | Utilities only |
 
 ### Example Workflow
 
@@ -111,23 +137,14 @@ factory version    # Show version
 # 1. Go to your project
 cd my-project
 
-# 2. Install blueprint
+# 2. Install blueprint (interactive)
 factory install
-# 🔧 Installing Antigravity Blueprint...
-#    📦 skills: 21
-#    📦 workflows: 2
-#    📦 rules: 2
-#    📦 standards: 5
-# ✅ Installed 21 skills, 2 workflows, 2 rules, 5 standards
+# Select preset via TUI or use --preset
 
 # 3. Check inventory
 factory list
 # 📦 Installed Blueprint
-# 
-# Skills (21)
-# ────────────────────────────────────────
-#   backend-go-expert    bmad-architect       cli-architect
-#   ...
+# Skills (20)
 ```
 
 ### Configuration
@@ -179,6 +196,7 @@ The project includes `architecture_test.go` that enforces Go Modern standards:
 | `make lint` | Run golangci-lint (FASCIST MODE) |
 | `make test` | Run all tests |
 | `make clean` | Remove build artifacts |
+| `make changelog` | Generate CHANGELOG.md via git-cliff |
 | `make validate SKILL=<name>` | Validate a single skill |
 | `make validate-all` | Validate all skills in blueprint/ |
 | `make generate-team` | Regenerate TEAM.md from skills |
@@ -187,7 +205,7 @@ The project includes `architecture_test.go` that enforces Go Modern standards:
 
 | Folder | Contents |
 |--------|----------|
-| `skills/` | 21 expert agents (backend-go, frontend-nuxt, mcp, etc.) |
+| `skills/` | 20 expert agents (backend-go, frontend-nuxt, mcp, etc.) |
 | `workflows/` | doc-cleanup, refactor |
 | `rules/` | TEAM.md, PIPELINE.md |
 | `standards/` | TDD, GIT, TECH_DEBT, TRACEABILITY, DOCUMENT_STRUCTURE |

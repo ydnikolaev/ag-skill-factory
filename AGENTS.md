@@ -8,7 +8,7 @@
 **antigravity-factory** is a blueprint management system for Antigravity AI agents.
 
 ### What it does:
-1. **Defines skills** - 21 expert agent skills in `blueprint/skills/`
+1. **Defines skills** - 20 expert agent skills in `blueprint/skills/`
 2. **Provides workflows** - Automation scripts in `blueprint/workflows/`
 3. **Sets team rules** - TEAM.md roster and PIPELINE.md in `blueprint/rules/`
 4. **Shares standards** - TDD, Git, Tech Debt protocols in `blueprint/standards/`
@@ -21,42 +21,32 @@
 ```
 antigravity-factory/
 ├── blueprint/                   # 📦 COPIED TO PROJECTS on install
-│   ├── skills/                  # 21 expert skills
-│   │   ├── backend-go-expert/
-│   │   ├── frontend-nuxt/
-│   │   └── ...
-│   ├── workflows/               # Project workflows
-│   │   ├── doc-cleanup.md
-│   │   └── refactor.md
-│   ├── rules/                   # Team structure
-│   │   ├── TEAM.md
-│   │   └── PIPELINE.md
-│   └── standards/               # Protocols
-│       ├── TDD_PROTOCOL.md
-│       ├── GIT_PROTOCOL.md
-│       └── ...
+│   ├── skills/                  # 20 expert skills
+│   ├── workflows/               # doc-cleanup, refactor
+│   ├── rules/                   # TEAM.md, PIPELINE.md
+│   ├── standards/               # TDD, Git, Tech Debt protocols
+│   ├── _meta/                   # Presets config
+│   └── private/                 # Private skills (gitignored)
 │
 ├── .agent/                      # 🏭 FACTORY-INTERNAL (NOT copied)
-│   ├── skills/
-│   │   ├── skill-creator/       # Meta-skill that creates other skills
-│   │   ├── skill-factory-expert/# Project expert
-│   │   ├── skill-interviewer/   # Creative partner for skill ideation
-│   │   ├── skill-updater/       # Mass updates to existing skills
-│   │   └── workflow-creator/    # Designs automation workflows
-│   └── workflows/
-│       ├── commit.md            # Pre-commit checks + changelog
-│       ├── push.md              # Merge + push pipeline
-│       └── self-evolve.md       # Factory synchronization
+│   ├── skills/                  # skill-creator, skill-factory-expert, etc.
+│   └── workflows/               # commit, push, self-evolve
+│
+├── website/                     # 📚 VitePress skill catalog
 │
 ├── cmd/factory/                 # 🔧 CLI COMMANDS
-│   ├── root.go                  # Main command setup
-│   ├── install.go               # factory install
+│   ├── install.go               # factory install (--preset, TUI)
+│   ├── doctor.go                # factory doctor
 │   ├── list.go                  # factory list
 │   └── version.go               # factory version
 │
-├── internal/installer/          # 📦 CORE LOGIC
-│   └── installer.go             # Simple copy (no transformations)
+├── internal/
+│   ├── installer/               # Blueprint copy logic
+│   ├── doctor/                  # Link checker, diagnostics
+│   ├── presets/                 # Preset loader (YAML)
+│   └── config/                  # Config handler
 │
+├── scripts/                     # Python utilities
 └── Makefile                     # Build commands
 ```
 
@@ -75,9 +65,11 @@ make generate-team  # Regenerate TEAM.md from skills
 
 ### Factory CLI (in any workspace)
 ```bash
-factory install     # Copy blueprint to .agent/ (replaces existing)
-factory list        # Show installed inventory by category
-factory version     # Show version
+factory install              # Interactive preset selection (TUI)
+factory install --preset=backend  # Install specific preset
+factory doctor               # Check for broken links and issues
+factory list                 # Show installed inventory
+factory version              # Show version
 ```
 
 ---
