@@ -11,3 +11,6 @@ docs/
 
 # User-specific content (not part of core skill-factory)
 reference/
+
+# Private skills (contain sensitive information)
+blueprint/private/
