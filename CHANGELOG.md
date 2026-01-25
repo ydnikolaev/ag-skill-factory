@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- Add versioning, workflows, and validation improvements
+- Premium landing page redesign
 - Automate changelog with git-cliff
 - Add skill catalog website (VitePress)
 - Add preset selection with TUI
@@ -75,6 +77,7 @@ All notable changes to this project will be documented in this file.
 
 ### Miscellaneous
 
+- Update changelog
 - Update changelog
 - Add blueprint/private for sensitive skills
 - Self-evolve skill-factory-expert (20→21 skills)
