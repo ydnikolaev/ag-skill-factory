@@ -1,6 +1,7 @@
 ---
 name: frontend-nuxt
 description: Nuxt 4 & TailwindCSS expert for modern web applications (SSR, SPA, Hybrid).
+version: 1.0.0
 ---
 
 # Frontend Nuxt Expert

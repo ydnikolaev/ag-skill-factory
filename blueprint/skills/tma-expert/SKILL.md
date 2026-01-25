@@ -1,6 +1,7 @@
 ---
 name: tma-expert
 description: Expert in Telegram Mini Apps (TMA) using @tma.js/sdk for native Telegram integration.
+version: 1.0.0
 ---
 
 # TMA Expert (Telegram Mini Apps)

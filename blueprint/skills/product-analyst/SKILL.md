@@ -1,6 +1,7 @@
 ---
 name: product-analyst
 description: Defines Vision, Roadmap, User Stories, and translates them into Technical Specs. Combines "The Why" with "The What".
+version: 1.0.0
 ---
 
 # Product Analyst

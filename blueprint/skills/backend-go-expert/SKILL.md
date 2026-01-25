@@ -1,6 +1,7 @@
 ---
 name: backend-go-expert
 description: Expert Go developer (1.25+) specializing in Clean Architecture and DDD.
+version: 1.0.0
 ---
 
 # Backend Go Expert

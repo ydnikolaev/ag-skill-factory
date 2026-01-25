@@ -1,6 +1,7 @@
 ---
 name: ux-designer
 description: UX/UI Designer specializing in design systems, design tokens, and Figma workflows.
+version: 1.0.0
 ---
 
 # UX Designer

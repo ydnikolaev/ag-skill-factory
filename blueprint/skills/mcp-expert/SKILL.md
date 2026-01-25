@@ -1,6 +1,7 @@
 ---
 name: mcp-expert
 description: Expert on Model Context Protocol (MCP) servers. Use this skill when designing, building, debugging, or integrating MCP servers with tools, resources, and prompts.
+version: 1.0.0
 ---
 
 # MCP Expert

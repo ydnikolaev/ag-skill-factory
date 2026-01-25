@@ -1,6 +1,7 @@
 ---
 name: doc-janitor
 description: Enforces document structure, archives completed work, migrates legacy format to lifecycle-based folders. Dry-run first, then apply.
+version: 1.0.0
 ---
 
 # Doc Janitor 🧹

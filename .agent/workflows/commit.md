@@ -57,31 +57,7 @@ git diff --name-only
 ```
 Study the diff to understand what changed.
 
-### 4. Update CHANGELOG.md
-Based on the diff, add an entry to `CHANGELOG.md` under `## [Unreleased]`:
-
-**Format (Keep a Changelog):**
-```markdown
-## [Unreleased]
-
-### Added
-- New feature description
-
-### Changed  
-- Modified feature description
-
-### Fixed
-- Bug fix description
-```
-
-**Categories:**
-- `Added` — new features, skills, workflows
-- `Changed` — modifications to existing functionality
-- `Fixed` — bug fixes
-- `Removed` — deleted features
-- `Deprecated` — soon-to-be removed features
-
-### 5. Generate Commit Message
+### 4. Generate Commit Message
 Create a Conventional Commits message based on the diff:
 
 **Format:** `<type>(<scope>): <description>`
@@ -100,14 +76,13 @@ Create a Conventional Commits message based on the diff:
 - `fix(pipeline): correct handoff paths in PIPELINE.md`
 - `docs(readme): update installation instructions`
 
-### 6. Stage and Commit
+### 5. Stage and Commit
 ```bash
 git add -A
 git commit -m "<generated-message>"
 ```
 
-### 7. Summary Report
+### 6. Summary Report
 Report what was committed:
 - Files changed
-- CHANGELOG entry added
 - Commit hash

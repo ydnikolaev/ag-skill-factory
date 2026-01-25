@@ -1,6 +1,7 @@
 ---
 name: bmad-architect
 description: The Lead Architect for Antigravity TMA projects. Enforces DDD, BMAD V6, and coordinates the squad.
+version: 1.0.0
 ---
 
 # BMAD Architect (Team Lead)

@@ -1,6 +1,7 @@
 ---
 name: tui-charm-expert
 description: Expert in Terminal UI (TUI) using Charm stack (BubbleTea, Lipgloss).
+version: 1.0.0
 ---
 
 # TUI Charm Expert

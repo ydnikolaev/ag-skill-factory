@@ -1,6 +1,7 @@
 ---
 name: refactor-architect
 description: Analyzes codebase, designs modular refactoring specs, and delegates to domain executors. Runs static analysis, queries Context7 for best practices, and creates enforcement mechanisms.
+version: 1.0.0
 ---
 
 # Refactor Architect 🔬

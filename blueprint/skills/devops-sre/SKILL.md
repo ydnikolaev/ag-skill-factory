@@ -1,6 +1,7 @@
 ---
 name: devops-sre
 description: Expert in Docker, CI/CD, and delivering Go/Nuxt apps.
+version: 1.0.0
 ---
 
 # DevOps SRE

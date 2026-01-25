@@ -1,6 +1,7 @@
 ---
 name: qa-lead
 description: Quality Assurance Lead. Tests E2E, API, and UI.
+version: 1.0.0
 ---
 
 # QA Lead

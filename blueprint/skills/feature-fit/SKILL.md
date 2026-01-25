@@ -1,6 +1,7 @@
 ---
 name: feature-fit
 description: Analyzes new feature requests for EXISTING projects. Reads config/mcp context, performs Gap Analysis, and creates a Feature Brief.
+version: 1.0.0
 ---
 
 # Feature Fit Analyst 🧩

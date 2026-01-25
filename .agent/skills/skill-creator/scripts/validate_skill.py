@@ -11,6 +11,45 @@ import sys
 import re
 
 
+def check_links(skill_path: str, content: str) -> list:
+    """Check that all internal links in SKILL.md are valid.
+    
+    Returns list of (link_type, path) tuples for broken links.
+    """
+    broken = []
+    
+    # Pattern: See examples/foo.py, See references/bar.md
+    see_pattern = re.compile(r'See\s+([a-zA-Z_]+/[^\s\)]+)')
+    for match in see_pattern.finditer(content):
+        ref_path = match.group(1)
+        full_path = os.path.join(skill_path, ref_path)
+        if not os.path.exists(full_path):
+            broken.append(("file", ref_path))
+    
+    # Pattern: @skill-name (not @user or email)
+    skill_ref_pattern = re.compile(r'(?<![a-zA-Z0-9])@([a-z][a-z0-9-]+)(?![a-zA-Z0-9@.])')
+    known_skills = set()
+    
+    # Get blueprint skills path
+    factory_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(skill_path))))
+    blueprint_skills = os.path.join(factory_root, "blueprint", "skills")
+    
+    if os.path.isdir(blueprint_skills):
+        known_skills = set(os.listdir(blueprint_skills))
+    
+    # Add factory skills
+    factory_skills = {"skill-creator", "skill-factory-expert", "skill-interviewer", 
+                      "skill-updater", "workflow-creator"}
+    known_skills.update(factory_skills)
+    
+    for match in skill_ref_pattern.finditer(content):
+        ref_skill = match.group(1)
+        if ref_skill not in known_skills:
+            broken.append(("skill", ref_skill))
+    
+    return broken
+
+
 def validate_skill(path: str) -> bool:
     """Validate a skill directory against quality standards."""
     print(f"🔍 Validating skill at {path}...")
@@ -83,7 +122,20 @@ def validate_skill(path: str) -> bool:
         warnings.append("Missing '## Iteration Protocol' section explaining brain→docs flow")
     
     # ========================================
-    # 5. Examples Check (no large code blocks in SKILL.md)
+    # 5. Link Checker (NEW)
+    # ========================================
+    broken_links = check_links(path, content)
+    for link_type, link_path in broken_links:
+        if link_type == "file":
+            errors.append(f"Broken link: '{link_path}' not found")
+        elif link_type == "skill":
+            warnings.append(f"Unknown skill reference: @{link_path}")
+    
+    if not broken_links:
+        print("✅ Links: all valid")
+    
+    # ========================================
+    # 6. Examples Check (no large code blocks in SKILL.md)
     # ========================================
     # Count lines in code blocks
     in_code_block = False

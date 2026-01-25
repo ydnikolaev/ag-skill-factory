@@ -1,6 +1,7 @@
 ---
 name: tech-spec-writer
 description: Converts high-level architecture into detailed, human-readable Technical Specifications. The bridge between Architect and Developers.
+version: 1.0.0
 ---
 
 # Tech Spec Writer

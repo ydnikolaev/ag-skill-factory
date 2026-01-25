@@ -1,6 +1,7 @@
 ---
 name: ui-implementor
 description: UI Implementor that converts design tokens into Tailwind, shadcn components, and production CSS.
+version: 1.0.0
 ---
 
 # UI Implementor

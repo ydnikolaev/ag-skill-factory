@@ -1,6 +1,7 @@
 ---
 name: idea-interview
 description: Interview-mode skill that extracts complete project information from the user. Activates when starting a new project or discussing an idea. NO CODE — only structured discovery.
+version: 1.0.0
 ---
 
 # Idea Interview

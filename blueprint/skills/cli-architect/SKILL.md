@@ -1,6 +1,7 @@
 ---
 name: cli-architect
 description: Expert in Go CLI Architecture (Cobra, Viper, POSIX).
+version: 1.0.0
 ---
 
 # CLI Architect

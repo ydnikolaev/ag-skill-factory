@@ -1,0 +1,60 @@
+# Antigravity Factory Presets
+# Used by: factory install --preset=<name>
+
+all:
+  description: "Full blueprint (21 skills, all extras)"
+  skills: "*"
+
+core:
+  description: "Pipeline essentials (5 skills)"
+  skills:
+    - idea-interview
+    - product-analyst
+    - bmad-architect
+    - tech-spec-writer
+    - qa-lead
+
+backend:
+  description: "Go backend development (9 skills)"
+  extends: core
+  skills:
+    - backend-go-expert
+    - devops-sre
+    - debugger
+    - project-bro
+
+frontend:
+  description: "Nuxt/Vue frontend (8 skills)"
+  extends: core
+  skills:
+    - frontend-nuxt
+    - ux-designer
+    - ui-implementor
+
+fullstack:
+  description: "Full stack development (12 skills)"
+  extends:
+    - backend
+    - frontend
+
+tma:
+  description: "Telegram Mini Apps (8 skills)"
+  extends: core
+  skills:
+    - tma-expert
+    - telegram-mechanic
+    - frontend-nuxt
+
+cli:
+  description: "CLI/TUI applications (8 skills)"
+  extends: core
+  skills:
+    - cli-architect
+    - tui-charm-expert
+    - backend-go-expert
+
+minimal:
+  description: "Utilities only (2 skills)"
+  skills:
+    - project-bro
+    - debugger

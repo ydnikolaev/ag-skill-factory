@@ -85,14 +85,17 @@ The `factory` CLI copies the blueprint to any project's `.agent/` folder.
 
 ### Installation
 
+**Quick install (requires Go 1.21+):**
 ```bash
-# Clone and build
+go install github.com/ydnikolaev/antigravity-factory@latest
+```
+
+**Or build from source:**
+```bash
 git clone https://github.com/ydnikolaev/antigravity-factory.git
 cd antigravity-factory
 make install
 ```
-
-This builds the CLI to `bin/factory` and installs it to `/usr/local/bin/factory`.
 
 ### Commands
 

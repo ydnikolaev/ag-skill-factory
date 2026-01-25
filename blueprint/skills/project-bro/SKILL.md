@@ -1,6 +1,7 @@
 ---
 name: project-bro
 description: Your project awareness buddy. Knows current state, reads docs, analyzes code, answers "where are we?" questions. Activate with "bro" or "project-bro".
+version: 1.0.0
 ---
 
 # Project Bro 🤙

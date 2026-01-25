@@ -1,6 +1,7 @@
 ---
 name: telegram-mechanic
 description: Expert in Telegram Bot API, Webhooks, and Mini App Authentication.
+version: 1.0.0
 ---
 
 # Telegram Mechanic

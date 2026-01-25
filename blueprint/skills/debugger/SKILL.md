@@ -1,6 +1,7 @@
 ---
 name: debugger
 description: Systematic debugging skill. 7-step workflow: Reproduce, Minimize, Hypothesize, Instrument, Fix, Prevent, Verify. Activate when troubleshooting errors.
+version: 1.0.0
 ---
 
 # Debugger 🔍
