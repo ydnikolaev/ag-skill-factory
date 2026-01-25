@@ -16,7 +16,7 @@ body = """
 {% for group, commits in commits | group_by(attribute="group") %}
     ### {{ group | upper_first }}
     {% for commit in commits %}
-        - {{ commit.message | upper_first }}\
+        - {% if commit.scope %}**({{ commit.scope }})** {% endif %}{{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/ydnikolaev/antigravity-factory/commit/{{ commit.id }}))
     {% endfor %}
 {% endfor %}\n
 """
@@ -37,6 +37,8 @@ commit_parsers = [
     { message = "^style", group = "Styling" },
     { message = "^test", group = "Testing" },
     { message = "^chore\\(release\\)", skip = true },
+    { message = "^chore: update changelog", skip = true },
+    { message = "^chore\\(changelog\\)", skip = true },
     { message = "^chore", group = "Miscellaneous" },
 ]
 
