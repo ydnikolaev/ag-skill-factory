@@ -6,7 +6,9 @@ __pycache__/
 dist/
 build/
 bin/
-docs/
+website/.vitepress/dist/
+website/.vitepress/cache/
+website/node_modules/
 *.egg-info/
 
 # User-specific content (not part of core skill-factory)
