@@ -4,6 +4,7 @@ export default defineConfig({
   title: 'Antigravity Factory',
   description: 'AI Agent Skills Catalog',
   base: '/antigravity-factory/',
+  ignoreDeadLinks: true,
   
   themeConfig: {
     nav: [
