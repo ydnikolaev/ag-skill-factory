@@ -1,178 +1,157 @@
-// Package installer handles skill installation and synchronization.
+// Package installer handles blueprint installation to project .agent/ folder.
 package installer
 
 import (
 	"fmt"
+	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/fatih/color"
 	"github.com/spf13/afero"
-
-	"github.com/ydnikolaev/ag-skill-factory/internal/diff"
 )
 
-// Installer handles skill installation and synchronization.
+// Installer handles blueprint installation.
 type Installer struct {
-	Source   string
-	Target   string
-	Prompter Prompter
-	Fs       afero.Fs
+	Source string
+	Target string
+	Fs     afero.Fs
 }
 
 // InstallResult holds the result of an install operation.
 type InstallResult struct {
-	SkillCount int
-	RuleCount  int
+	SkillCount    int
+	WorkflowCount int
+	RuleCount     int
+	StandardCount int
 }
 
-// UpdateResult holds the result of an update operation.
-type UpdateResult struct {
-	UpdatedCount int
-}
-
-// New creates a new Installer with default StdinPrompter and OsFs.
+// New creates a new Installer with OsFs.
 func New(source, target string) *Installer {
 	return &Installer{
-		Source:   source,
-		Target:   target,
-		Prompter: &StdinPrompter{},
-		Fs:       afero.NewOsFs(),
+		Source: source,
+		Target: target,
+		Fs:     afero.NewOsFs(),
 	}
 }
 
-// NewWithPrompter creates an Installer with a custom Prompter (for testing).
-func NewWithPrompter(source, target string, prompter Prompter) *Installer {
+// NewWithFs creates an Installer with custom Fs (for testing).
+func NewWithFs(source, target string, fs afero.Fs) *Installer {
 	return &Installer{
-		Source:   source,
-		Target:   target,
-		Prompter: prompter,
-		Fs:       afero.NewOsFs(),
+		Source: source,
+		Target: target,
+		Fs:     fs,
 	}
 }
 
-// NewWithFs creates an Installer with custom Prompter and Fs (for testing).
-func NewWithFs(source, target string, prompter Prompter, fs afero.Fs) *Installer {
-	return &Installer{
-		Source:   source,
-		Target:   target,
-		Prompter: prompter,
-		Fs:       fs,
-	}
-}
-
-// Install copies all skills to target and converts standards to rules.
+// Install copies the entire blueprint to target .agent/ folder.
 func (i *Installer) Install() (*InstallResult, error) {
 	result := &InstallResult{}
 
-	if err := i.createTargetDirs(); err != nil {
-		return nil, err
+	color.Cyan("🔧 Installing Antigravity Blueprint...")
+
+	// Create target directory
+	if err := i.Fs.MkdirAll(i.Target, 0o755); err != nil {
+		return nil, fmt.Errorf("failed to create target: %w", err)
 	}
 
-	if err := i.processSourceEntries(result); err != nil {
-		return nil, err
+	// Copy each category
+	categories := []struct {
+		name    string
+		counter *int
+		isDir   bool
+	}{
+		{"skills", &result.SkillCount, true},
+		{"workflows", &result.WorkflowCount, false},
+		{"rules", &result.RuleCount, false},
+		{"standards", &result.StandardCount, false},
 	}
 
-	if err := i.copyMetaFilesToRules(result); err != nil {
-		return nil, err
+	for _, cat := range categories {
+		srcPath := filepath.Join(i.Source, cat.name)
+		dstPath := filepath.Join(i.Target, cat.name)
+
+		if _, err := i.Fs.Stat(srcPath); os.IsNotExist(err) {
+			continue
+		}
+
+		if err := i.copyDir(srcPath, dstPath); err != nil {
+			return nil, fmt.Errorf("failed to copy %s: %w", cat.name, err)
+		}
+
+		// Count items
+		if cat.isDir {
+			*cat.counter = i.countDirs(dstPath)
+		} else {
+			*cat.counter = i.countFiles(dstPath)
+		}
+
+		color.White("   📦 %s: %d", cat.name, *cat.counter)
 	}
 
 	return result, nil
 }
 
-// ForceRefresh copies all skills with path rewriting, skipping diff check.
-func (i *Installer) ForceRefresh() (*InstallResult, error) {
-	result := &InstallResult{}
+// copyDir recursively copies a directory.
+func (i *Installer) copyDir(src, dst string) error {
+	// Remove existing destination
+	_ = i.Fs.RemoveAll(dst)
 
-	color.Cyan("🔄 Force refreshing all skills...")
-
-	// Read all skills from source
-	entries, err := afero.ReadDir(i.Fs, i.Source)
-	if err != nil {
-		return nil, fmt.Errorf("failed to read source: %w", err)
-	}
-
-	for _, entry := range entries {
-		if !entry.IsDir() {
-			continue
+	return afero.Walk(i.Fs, src, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
 		}
 
-		name := entry.Name()
-		if name == "_standards" || name == "references" {
-			continue
+		relPath, err := filepath.Rel(src, path)
+		if err != nil {
+			return err
 		}
 
-		srcPath := filepath.Join(i.Source, name)
-		skillFile := filepath.Join(srcPath, "SKILL.md")
-		if _, err := i.Fs.Stat(skillFile); err != nil {
-			continue
+		dstPath := filepath.Join(dst, relPath)
+
+		if info.IsDir() {
+			return i.Fs.MkdirAll(dstPath, info.Mode())
 		}
 
-		targetPath := filepath.Join(i.Target, "skills", name)
-		if err := i.copyDirWithRewrite(srcPath, targetPath); err != nil {
-			color.Yellow("Warning: failed to copy %s: %v", name, err)
-			continue
-		}
-		result.SkillCount++
-	}
-
-	// Also refresh rules
-	if err := i.updateRules(); err != nil {
-		color.Yellow("Warning: failed to update rules: %v", err)
-	}
-
-	return result, nil
+		return i.copyFile(path, dstPath)
+	})
 }
 
-// Update updates skills from source, showing diffs.
-func (i *Installer) Update() (*UpdateResult, error) {
-	result := &UpdateResult{}
-
-	// Update skills
-	localSkillsPath := filepath.Join(i.Target, "skills")
-	entries, err := afero.ReadDir(i.Fs, localSkillsPath)
+// copyFile copies a single file.
+func (i *Installer) copyFile(src, dst string) error {
+	content, err := afero.ReadFile(i.Fs, src)
 	if err != nil {
-		return nil, fmt.Errorf("failed to read local skills: %w", err)
+		return err
 	}
-
-	for _, entry := range entries {
-		if !entry.IsDir() {
-			continue
-		}
-		i.updateSingleSkill(entry.Name(), localSkillsPath, result)
-	}
-
-	// Update rules/standards
-	if err := i.updateRules(); err != nil {
-		color.Yellow("Warning: failed to update rules: %v", err)
-	}
-
-	return result, nil
+	return afero.WriteFile(i.Fs, dst, content, 0o644)
 }
 
-// Backport copies a skill from local back to factory.
-func (i *Installer) Backport(skillName string) error {
-	localPath := filepath.Join(i.Target, "skills", skillName)
-	factoryPath := filepath.Join(i.Source, skillName)
-
-	changes, err := diff.CompareDirectories(factoryPath, localPath)
+// countDirs counts subdirectories in a path.
+func (i *Installer) countDirs(path string) int {
+	count := 0
+	entries, err := afero.ReadDir(i.Fs, path)
 	if err != nil {
-		return fmt.Errorf("failed to compare: %w", err)
+		return 0
 	}
-
-	if len(changes) == 0 {
-		color.Green("No changes to backport")
-		return nil
+	for _, e := range entries {
+		if e.IsDir() && !strings.HasPrefix(e.Name(), ".") {
+			count++
+		}
 	}
+	return count
+}
 
-	color.Cyan("\n=== Changes to backport ===")
-	for _, change := range changes {
-		fmt.Println(change)
+// countFiles counts .md files in a path.
+func (i *Installer) countFiles(path string) int {
+	count := 0
+	entries, err := afero.ReadDir(i.Fs, path)
+	if err != nil {
+		return 0
 	}
-
-	if !i.Prompter.Confirm("Backport these changes to factory?") {
-		color.Yellow("Cancelled")
-		return nil
+	for _, e := range entries {
+		if !e.IsDir() && strings.HasSuffix(e.Name(), ".md") {
+			count++
+		}
 	}
-
-	return i.copyDir(localPath, factoryPath)
+	return count
 }

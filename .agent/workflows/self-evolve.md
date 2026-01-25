@@ -13,7 +13,7 @@ Activate `@skill-factory-expert` and verify project consistency.
 ### 1. Check Current State
 ```bash
 # Count skills
-ls squads/ | grep -v -E "\.md$|^_|^references$" | wc -l
+ls blueprint/skills/ | grep -v -E "\.md$|^_|^references$" | wc -l
 
 # List Makefile targets
 grep -E "^[a-z].*:" Makefile | head -20
@@ -38,7 +38,7 @@ Check `.agent/skills/skill-creator/SKILL.md`:
 **If mismatch → Update skill-creator**
 
 ### 4. Verify PIPELINE.md
-Check `squads/PIPELINE.md`:
+Check `blueprint/skills/PIPELINE.md`:
 - All skills in Core Pipeline diagram
 - Handoff Matrix has correct `project/docs/...` paths
 - Return Paths table is complete
@@ -46,7 +46,7 @@ Check `squads/PIPELINE.md`:
 ### 5. Verify TEAM.md
 ```bash
 make generate-team
-git diff squads/TEAM.md
+git diff blueprint/skills/TEAM.md
 ```
 If diff → TEAM.md was outdated, now fixed.
 

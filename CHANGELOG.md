@@ -4,6 +4,41 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+- **MAJOR REFACTOR: ag-skill-factory → antigravity-factory**
+  - Renamed Go module to `github.com/ydnikolaev/antigravity-factory`
+  - CLI renamed from `skills` to `factory`
+  - Folder structure: `squads/` → `blueprint/` with subcategories:
+    - `blueprint/skills/` — 21 expert skills
+    - `blueprint/workflows/` — doc-cleanup, refactor
+    - `blueprint/rules/` — TEAM.md, PIPELINE.md
+    - `blueprint/standards/` — TDD, GIT, TECH_DEBT, TRACEABILITY, DOCUMENT_STRUCTURE
+  - Skills path references: `_standards/` → `../standards/`
+  - Config path: `~/.config/ag-skills/` → `~/.config/factory/`
+  - Default source: `squads/` → `blueprint/`
+
+### Added
+- **Simplified Installer**: Copy blueprint as-is, no transformations
+  - `InstallResult` now tracks 4 categories: skills, workflows, rules, standards
+  - Single `Install()` method replaces `Install()`, `Update()`, `Backport()`
+- **New CLI commands**:
+  - `factory install` — copy blueprint to .agent/ (replaces existing)
+  - `factory list` — show installed inventory by category
+  - `factory version` — show version
+
+### Removed
+- **Deleted CLI commands**: `update`, `backport` (no longer needed)
+- **Deleted Go files**:
+  - `cmd/skills/` — entire package (replaced by `cmd/factory/`)
+  - `internal/installer/operations.go`, `converter.go`, `rewriter.go`, `prompter.go`, `utils.go`
+  - `internal/diff/` — entire package (not needed without backport)
+  - `internal/coverage/` — entire package
+- **Deleted folder**: `squads/` (replaced by `blueprint/`)
+
+---
+
+## [Previous]
+
 ### Added
 - **Pre-Handoff Validation (Hard Stop)**: Injected into all 20 skills.
   - 5-point checklist before `notify_user` or delegation

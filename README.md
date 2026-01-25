@@ -1,16 +1,19 @@
-# Antigravity Skill Factory 🚀
+# Antigravity Factory 🚀
 
-> **Design High-Quality Autonomous Agent Skills.**
-> A powerful framework for creating standardized, effective, and "native" skills for Antigravity and MCP-based agents.
+> **Build Complete Agent Infrastructure.**
+> A framework for managing AI agent blueprints: skills, workflows, team rules, and development standards.
 
 [![Antigravity](https://img.shields.io/badge/Antigravity-Native-purple)](https://antigravity.google)
 [![Go](https://img.shields.io/badge/Go-1.25-00ADD8)](https://go.dev)
-[![Coverage](https://img.shields.io/badge/coverage-95.9%25-brightgreen)](./internal/installer/)
 [![Agent Skills](https://img.shields.io/badge/Agent-Skills-blue)](https://github.com/anthropics/skills)
 
 ## What is this?
 
-**Skill Factory** is the home of the `skill-creator` — a meta-skill that empowers AI agents to create *other* high-quality skills.
+**Antigravity Factory** is a blueprint management system for AI agents. It provides:
+- **21 Expert Skills** — from backend-go-expert to mcp-expert
+- **Shared Standards** — TDD, Git, Tech Debt protocols
+- **Team Structure** — TEAM.md roster and PIPELINE.md workflow
+- **Factory Skills** — meta-skills for creating and maintaining the ecosystem
 
 Unlike simple scaffolding scripts, this tool enforces a **Design-First Philosophy**:
 1.  **Context-Optimized**: Enforces concise `SKILL.md` (<500 lines) to respect context windows.
@@ -19,80 +22,84 @@ Unlike simple scaffolding scripts, this tool enforces a **Design-First Philosoph
 
 ## ✨ Features
 
--   **🧠 Smart Templates**: Starts every skill with a "Decision Tree" and "Phased Workflow" structure.
--   **🛡️ Strict Validation**: `validate_skill.py` enforces the 500-line limit and checks for IDE-aware tool usage.
--   **✅ Auto-Checklists**: Generates `checklist.md` for quality assurance.
--   **🛠️ Skills CLI**: Go-based CLI for install, update, backport, and list operations.
--   **📚 Design Guide**: The `skill-creator` serves as a textbook for agents on *how* to design good tools.
--   **📦 Physical Install**: Skills are copied (not symlinked) to the global brain for Antigravity compatibility.
--   **📝 Dual-Write Pattern**: Enforces artifact persistence to `project/docs/` before handoff.
--   **⚙️ CONFIG.yaml Awareness**: All skills read `project/CONFIG.yaml` to understand stack and versions.
--   **🏗️ Architecture Tests**: Enforces Go Modern standards via AST analysis.
+-   **🧠 21 Expert Skills**: Backend, Frontend, DevOps, QA, MCP, CLI, TUI, and more
+-   **🛡️ Strict Validation**: `validate_skill.py` enforces <500 lines and quality standards
+-   **✅ Auto-Checklists**: Each skill has `checklist.md` for QA
+-   **🛠️ Factory CLI**: Go-based `factory install` and `factory list`
+-   **📝 Standards Library**: TDD, Git, Tech Debt, Traceability protocols
+-   **📦 Blueprint Pattern**: Copy entire `.agent/` structure to any project
+-   **🏗️ Architecture Tests**: Enforces Go Modern standards via AST analysis
+
+### Factory Skills (Meta-Tooling)
+
+| Skill | Purpose |
+|-------|---------|
+| `@skill-creator` | Creates new skills from specs |
+| `@skill-factory-expert` | Knows the factory codebase, answers questions |
+| `@skill-interviewer` | Creative partner for skill ideation |
+| `@skill-updater` | Mass updates existing skills |
+| `@workflow-creator` | Designs automation workflows |
 
 ## 📂 Repository Structure
 
 ```
-ag-skill-factory/
-├── .agent/skills/           # 🏭 The Factory (internal tooling)
-│   ├── skill-creator/       # Meta-skill that creates other skills
-│   ├── skill-factory-expert/# Project expert
-│   ├── skill-interviewer/   # Creative partner for skill ideation
-│   ├── skill-updater/       # Mass updates to existing skills
-│   └── workflow-creator/    # Designs automation workflows
+antigravity-factory/
+├── .agent/                      # 🏭 Factory-internal (NOT copied to projects)
+│   ├── skills/
+│   │   ├── skill-creator/       # Meta-skill that creates other skills
+│   │   ├── skill-factory-expert/# Project expert
+│   │   ├── skill-interviewer/   # Creative partner for skill ideation
+│   │   ├── skill-updater/       # Mass updates to existing skills
+│   │   └── workflow-creator/    # Designs automation workflows
+│   └── workflows/
+│       ├── commit.md            # Pre-commit checks + changelog
+│       ├── push.md              # Merge + push pipeline
+│       └── self-evolve.md       # Factory synchronization
 │
-├── .agent/workflows/        # 🔄 Automation workflows
-│   ├── commit.md            # Pre-commit checks + changelog
-│   ├── push.md              # Merge + push pipeline
-│   └── self-evolve.md       # Factory synchronization
+├── blueprint/                   # 📦 Copied to .agent/ on install
+│   ├── skills/                  # 21 expert skills
+│   │   ├── backend-go-expert/
+│   │   ├── frontend-nuxt/
+│   │   ├── mcp-expert/
+│   │   └── ...
+│   ├── workflows/               # Project workflows
+│   │   ├── doc-cleanup.md
+│   │   └── refactor.md
+│   ├── rules/                   # Team structure
+│   │   ├── TEAM.md
+│   │   └── PIPELINE.md
+│   └── standards/               # Protocols
+│       ├── TDD_PROTOCOL.md
+│       ├── GIT_PROTOCOL.md
+│       └── ...
 │
-├── squads/                  # 👥 Your Skills (gitignored, user-specific)
-│   ├── backend-go-expert/
-│   ├── frontend-nuxt/
-│   ├── mcp-expert/
-│   └── ...
-│
-├── cmd/skills/              # 🔧 CLI source code
-├── internal/                # 📦 Core packages
-│   ├── installer/           # Install/update/backport logic
-│   ├── diff/                # Directory comparison
-│   └── coverage/            # Meta-test coverage
-│
-├── Makefile                 # Build, test, install
+├── cmd/factory/                 # 🔧 CLI source code
+├── internal/installer/          # 📦 Installer logic
+├── Makefile                     # Build, test, install
 └── README.md
 ```
 
-## 🏭 Factory Skills
+## 🔧 Factory CLI
 
-| Skill | Purpose |
-|-------|---------|
-| `@skill-creator` | Creates new skills from specs. Scaffolds, refines, validates. |
-| `@skill-factory-expert` | Knows the factory codebase. Answers questions, provides context. Read-only. |
-| `@skill-interviewer` | Creative partner for ideation. Designs specs for skill-creator. Does NOT create. |
-| `@skill-updater` | Mass updates existing skills. Rolls out new patterns and standards. |
-| `@workflow-creator` | Designs `.agent/workflows/` automation. Interview-first approach. |
-
-## 🔧 Skills CLI
-
-The `skills` CLI manages skill installation and synchronization across workspaces.
+The `factory` CLI copies the blueprint to any project's `.agent/` folder.
 
 ### Installation
 
 ```bash
 # Clone and build
-git clone https://github.com/ydnikolaev/ag-skill-factory.git
-cd ag-skill-factory
+git clone https://github.com/ydnikolaev/antigravity-factory.git
+cd antigravity-factory
 make install
 ```
 
-This builds the CLI to `bin/skills` and installs it to `/usr/local/bin/skills`.
+This builds the CLI to `bin/factory` and installs it to `/usr/local/bin/factory`.
 
 ### Commands
 
 ```bash
-skills install    # Bootstrap .agent/ in current project
-skills list       # Show skill inventory with sync status
-skills update     # Pull latest from factory (with diff preview)
-skills backport   # Push local changes back to factory
+factory install    # Copy blueprint to .agent/ (always replaces)
+factory list       # Show installed inventory by category
+factory version    # Show version
 ```
 
 ### Example Workflow
@@ -101,31 +108,31 @@ skills backport   # Push local changes back to factory
 # 1. Go to your project
 cd my-project
 
-# 2. Install skills
-skills install
-# ✅ Installed 12 skills, 5 rules
+# 2. Install blueprint
+factory install
+# 🔧 Installing Antigravity Blueprint...
+#    📦 skills: 21
+#    📦 workflows: 2
+#    📦 rules: 2
+#    📦 standards: 5
+# ✅ Installed 21 skills, 2 workflows, 2 rules, 5 standards
 
-# 3. Check status
-skills list
-# product-manager  ✓  ✓  synced
-# my-custom-skill  ✓  -  local only
-
-# 4. Update from factory
-skills update
-# Shows diff, asks for confirmation
-
-# 5. Push improvements back
-skills backport product-manager
-# ✅ Backported 'product-manager' to factory
+# 3. Check inventory
+factory list
+# 📦 Installed Blueprint
+# 
+# Skills (21)
+# ────────────────────────────────────────
+#   backend-go-expert    bmad-architect       cli-architect
+#   ...
 ```
 
 ### Configuration
 
-Config file: `~/.config/ag-skills/config.yaml`
+Config file: `~/.config/factory/config.yaml`
 
 ```yaml
-source: ~/Developer/antigravity/ag-skill-factory/squads
-global_path: ~/.gemini/antigravity/global_skills
+source: ~/Developer/antigravity/antigravity-factory/blueprint
 ```
 
 ## 🧪 Development
@@ -138,7 +145,7 @@ make lint
 make test
 
 # Build CLI
-make build-skills
+make build-factory
 
 # Full install (build + install + completions)
 make install
@@ -163,15 +170,24 @@ The project includes `architecture_test.go` that enforces Go Modern standards:
 | Command | Description |
 |---------|-------------|
 | `make install` | Build CLI, install to PATH, add completions |
-| `make build-skills` | Build CLI binary to `bin/skills` |
-| `make install-skills` | Symlink binary to `/usr/local/bin` |
+| `make build-factory` | Build CLI binary to `bin/factory` |
+| `make install-factory` | Symlink binary to `/usr/local/bin` |
 | `make install-completions` | Add shell completions for zsh/bash |
 | `make lint` | Run golangci-lint (FASCIST MODE) |
 | `make test` | Run all tests |
 | `make clean` | Remove build artifacts |
 | `make validate SKILL=<name>` | Validate a single skill |
-| `make validate-all` | Validate all skills in squads/ |
-| `make install-squads` | Copy squad skills to global brain |
+| `make validate-all` | Validate all skills in blueprint/ |
+| `make generate-team` | Regenerate TEAM.md from skills |
+
+## Blueprint Contents
+
+| Folder | Contents |
+|--------|----------|
+| `skills/` | 21 expert agents (backend-go, frontend-nuxt, mcp, etc.) |
+| `workflows/` | doc-cleanup, refactor |
+| `rules/` | TEAM.md, PIPELINE.md |
+| `standards/` | TDD, GIT, TECH_DEBT, TRACEABILITY, DOCUMENT_STRUCTURE |
 
 ## Artifact Persistence Rule (Dual-Write)
 
@@ -182,10 +198,10 @@ Antigravity artifacts (`brain/...`) are ephemeral. Documents (`docs/...`) are pe
 ## 📖 How It Works
 
 1.  **Design First**: Before creating a skill, answer: What triggers it? What's the decision tree?
-2.  **Scaffold**: Run `init_skill.py` to create the standard structure in `squads/`.
+2.  **Scaffold**: Use `@skill-creator` to create the standard structure.
 3.  **Refine**: Edit `SKILL.md` with your logic and workflows.
 4.  **Validate**: Run `make validate SKILL=<name>` to check quality.
-5.  **Install**: Run `skills install` in your project.
+5.  **Install**: Run `factory install` in your project.
 
 ## 🤝 Contributing
 

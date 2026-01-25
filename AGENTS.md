@@ -5,52 +5,59 @@
 
 ## Project Overview
 
-**ag-skill-factory** is a skill management system for Antigravity AI agents.
+**antigravity-factory** is a blueprint management system for Antigravity AI agents.
 
 ### What it does:
-1. **Defines skills** - Markdown-based agent skill definitions in `squads/`
-2. **Validates skills** - Python validator ensures skills meet standards
-3. **Installs skills** - Go CLI (`skills`) deploys to workspaces
-4. **Syncs skills** - Bidirectional sync between factory and projects
+1. **Defines skills** - 21 expert agent skills in `blueprint/skills/`
+2. **Provides workflows** - Automation scripts in `blueprint/workflows/`
+3. **Sets team rules** - TEAM.md roster and PIPELINE.md in `blueprint/rules/`
+4. **Shares standards** - TDD, Git, Tech Debt protocols in `blueprint/standards/`
+5. **Installs blueprints** - Go CLI (`factory`) deploys to project `.agent/`
 
 ---
 
 ## Project Structure
 
 ```
-ag-skill-factory/
-├── squads/                    # 🧠 SKILL DEFINITIONS
-│   ├── backend-go-expert/     # Each skill has SKILL.md + resources
-│   ├── frontend-nuxt/
-│   ├── tech-spec-writer/
-│   ├── _standards/            # Shared protocols (TDD, Git)
-│   ├── TEAM.md                # Auto-generated skill roster
-│   └── PIPELINE.md            # Visual workflow diagram
+antigravity-factory/
+├── blueprint/                   # 📦 COPIED TO PROJECTS on install
+│   ├── skills/                  # 21 expert skills
+│   │   ├── backend-go-expert/
+│   │   ├── frontend-nuxt/
+│   │   └── ...
+│   ├── workflows/               # Project workflows
+│   │   ├── doc-cleanup.md
+│   │   └── refactor.md
+│   ├── rules/                   # Team structure
+│   │   ├── TEAM.md
+│   │   └── PIPELINE.md
+│   └── standards/               # Protocols
+│       ├── TDD_PROTOCOL.md
+│       ├── GIT_PROTOCOL.md
+│       └── ...
 │
-├── .agent/skills/             # 🏭 FACTORY SKILLS
-│   ├── skill-creator/         # Meta-skill that creates other skills
-│   ├── skill-factory-expert/  # Project expert
-│   ├── skill-interviewer/     # Creative partner for skill ideation
-│   └── workflow-creator/      # Designs automation workflows
+├── .agent/                      # 🏭 FACTORY-INTERNAL (NOT copied)
+│   ├── skills/
+│   │   ├── skill-creator/       # Meta-skill that creates other skills
+│   │   ├── skill-factory-expert/# Project expert
+│   │   ├── skill-interviewer/   # Creative partner for skill ideation
+│   │   ├── skill-updater/       # Mass updates to existing skills
+│   │   └── workflow-creator/    # Designs automation workflows
+│   └── workflows/
+│       ├── commit.md            # Pre-commit checks + changelog
+│       ├── push.md              # Merge + push pipeline
+│       └── self-evolve.md       # Factory synchronization
 │
-├── .agent/workflows/          # 🔄 AUTOMATION WORKFLOWS
-│   ├── commit.md              # Pre-commit checks + changelog
-│   ├── push.md                # Merge + push pipeline
-│   └── self-evolve.md         # Factory synchronization
+├── cmd/factory/                 # 🔧 CLI COMMANDS
+│   ├── root.go                  # Main command setup
+│   ├── install.go               # factory install
+│   ├── list.go                  # factory list
+│   └── version.go               # factory version
 │
-├── cmd/skills/                # 🔧 CLI COMMANDS
-│   ├── root.go                # Main command setup
-│   ├── install.go             # skills install
-│   ├── update.go              # skills update
-│   ├── backport.go            # skills backport <name>
-│   └── list.go                # skills list
+├── internal/installer/          # 📦 CORE LOGIC
+│   └── installer.go             # Simple copy (no transformations)
 │
-├── internal/                  # 📦 CORE LOGIC
-│   ├── installer/             # Install/update/backport logic
-│   ├── diff/                  # Directory comparison
-│   └── coverage/              # Test coverage enforcement
-│
-└── Makefile                   # Build commands
+└── Makefile                     # Build commands
 ```
 
 ---
@@ -59,18 +66,18 @@ ag-skill-factory/
 
 ### Makefile (in this repo)
 ```bash
-make install        # Validate all + install skills + build CLI
-make validate-all   # Validate all skill definitions
+make install        # Validate all + build CLI + install symlink
+make validate-all   # Validate all skill definitions in blueprint/
 make test           # Run all Go tests
-make build-skills   # Build the skills CLI binary
+make build-factory  # Build the factory CLI binary
+make generate-team  # Regenerate TEAM.md from skills
 ```
 
-### Skills CLI (in any workspace)
+### Factory CLI (in any workspace)
 ```bash
-skills install      # Install all skills to .agent/skills/
-skills update       # Update from factory (shows diff)
-skills backport X   # Push local changes back to factory
-skills list         # Show installed vs available skills
+factory install     # Copy blueprint to .agent/ (replaces existing)
+factory list        # Show installed inventory by category
+factory version     # Show version
 ```
 
 ---
@@ -92,19 +99,11 @@ skills list         # Show installed vs available skills
 > - `feat(cli): add backport command`
 > - Never push directly to main
 
-### Test Coverage
-The test `internal/coverage/coverage_test.go` will **FAIL** if:
-- Installer package coverage drops below **95%**
-- A Go package has no `_test.go` files
-- Expected test files are missing
-
-> [!TIP]
-> **Afero Integration**: The `internal/installer/` package uses `spf13/afero` for testable file I/O.
-> Tests use `afero.MemMapFs` (in-memory) and `afero.ReadOnlyFs` (error injection).
+---
 
 ## Skill Format
 
-Skills are defined in `squads/<skill-name>/SKILL.md`:
+Skills are defined in `blueprint/skills/<skill-name>/SKILL.md`:
 
 ```yaml
 ---
@@ -132,11 +131,10 @@ description: What the skill does
 
 ## Config
 
-The CLI reads from `~/.config/ag-skills/config.yaml`:
+The CLI reads from `~/.config/factory/config.yaml`:
 
 ```yaml
-source: /path/to/ag-skill-factory/squads
-global_path: ~/.gemini/antigravity/global_skills
+source: ~/Developer/antigravity/antigravity-factory/blueprint
 ```
 
 ---
@@ -145,9 +143,9 @@ global_path: ~/.gemini/antigravity/global_skills
 
 | File | Purpose |
 |------|---------|
-| `squads/TEAM.md` | Auto-generated skill roster |
-| `squads/PIPELINE.md` | Visual workflow diagram |
-| `squads/_standards/` | Shared protocols (TDD, Git) |
+| `blueprint/rules/TEAM.md` | Auto-generated skill roster |
+| `blueprint/rules/PIPELINE.md` | Visual workflow diagram |
+| `blueprint/standards/` | Shared protocols (TDD, Git, etc.) |
 | `go.mod` | Go module definition |
 | `Makefile` | Build/test/install automation |
 
@@ -155,16 +153,23 @@ global_path: ~/.gemini/antigravity/global_skills
 
 ## When Working on This Project
 
-1. **Adding a new skill**: Use `python3 .agent/skills/skill-creator/scripts/init_skill.py <name>`
-2. **Adding a new CLI command**: Create `cmd/skills/<name>.go` + add tests
-3. **Modifying installer**: Edit `internal/installer/installer.go` + update tests
-4. **Checking coverage**: Run `make test` - will fail if tests missing
+### Blueprint Content
+1. **Adding a skill**: Use `@skill-creator` or create in `blueprint/skills/<name>/`
+2. **Adding a workflow**: Create `blueprint/workflows/<name>.md`
+3. **Updating rules**: Edit `blueprint/rules/TEAM.md` or `PIPELINE.md`
+4. **Adding a standard**: Create `blueprint/standards/<NAME>_PROTOCOL.md`
+
+### Factory Tooling
+5. **Adding a CLI command**: Create `cmd/factory/<name>.go` + add tests
+6. **Modifying installer**: Edit `internal/installer/installer.go` + update tests
+7. **Regenerating TEAM.md**: Run `make generate-team`
+8. **Validating skills**: Run `make validate SKILL=<name>` or `make validate-all`
 
 ---
 
 ## Dependencies
 
-- Go 1.23+
+- Go 1.25+
 - Python 3.x (for skill validator)
 - Cobra (CLI framework)
 - Viper (config management)

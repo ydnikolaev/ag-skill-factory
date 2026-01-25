@@ -30,14 +30,14 @@ Critical checks from `/self-evolve` workflow:
 #### 2.1 Check Skill Count
 ```bash
 # Count actual skills
-ls squads/ | grep -v -E "\\.md$|^_|^references$" | wc -l
+ls blueprint/skills/ | grep -v -E "\\.md$|^_|^references$" | wc -l
 ```
 Compare against `skill-factory-expert/SKILL.md` roster count. If mismatch → update expert.
 
 #### 2.2 Regenerate TEAM.md
 ```bash
 make generate-team
-git diff squads/TEAM.md
+git diff blueprint/skills/TEAM.md
 ```
 If diff exists → TEAM.md was outdated, now fixed.
 

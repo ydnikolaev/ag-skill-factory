@@ -4,7 +4,7 @@ Validate a skill against quality standards.
 
 Usage:
     python3 validate_skill.py <path-to-skill>
-    python3 validate_skill.py squads/mcp-expert
+    python3 validate_skill.py blueprint/skills/mcp-expert
 """
 import os
 import sys
@@ -180,7 +180,7 @@ def validate_skill(path: str) -> bool:
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: validate_skill.py <path-to-skill>")
-        print("Example: validate_skill.py squads/mcp-expert")
+        print("Example: validate_skill.py blueprint/skills/mcp-expert")
         sys.exit(1)
     
     success = validate_skill(sys.argv[1])

@@ -80,7 +80,7 @@ description: Creative partner for ideating and designing Antigravity skills. Con
 ### Phase 1: Context Loading
 Before any discussion, understand the landscape:
 
-1. **Current Team**: Read `squads/TEAM.md` — who exists?
+1. **Current Team**: Read `blueprint/rules/TEAM.md` — who exists?
 2. **Pipeline**: Read `squads/PIPELINE.md` — how does work flow?
 3. **Factory Skills**: Check `.agent/skills/` — meta-skills
 
@@ -197,7 +197,7 @@ After user approves spec:
 
 ## Artifact Ownership
 - **Creates**: `project/docs/specs/skill-<name>-spec.md`
-- **Reads**: `squads/TEAM.md`, `squads/PIPELINE.md`, `.agent/skills/`
+- **Reads**: `blueprint/rules/TEAM.md`, `squads/PIPELINE.md`, `.agent/skills/`
 - **Updates**: Nothing (specs are new files)
 
 ## Handoff Protocol

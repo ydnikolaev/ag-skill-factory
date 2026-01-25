@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/ydnikolaev/ag-skill-factory/cmd/skills"
+	"github.com/ydnikolaev/antigravity-factory/cmd/factory"
 )
 
 func main() {
-	skills.Execute()
+	factory.Execute()
 }

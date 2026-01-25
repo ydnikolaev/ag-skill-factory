@@ -1,10 +1,9 @@
-module github.com/ydnikolaev/ag-skill-factory
+module github.com/ydnikolaev/antigravity-factory
 
 go 1.25
 
 require (
 	github.com/fatih/color v1.16.0
-	github.com/sergi/go-diff v1.3.1
 	github.com/spf13/afero v1.15.0
 	github.com/spf13/cobra v1.8.0
 	github.com/spf13/viper v1.18.2
