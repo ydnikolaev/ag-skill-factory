@@ -79,6 +79,7 @@ All notable changes to this project will be documented in this file.
 
 - Update changelog
 - Update changelog
+- Update changelog
 - Add blueprint/private for sensitive skills
 - Self-evolve skill-factory-expert (20→21 skills)
 - Add doc-janitor to roster (21 skills)
