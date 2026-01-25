@@ -1,7 +1,7 @@
 ---
 name: tma-expert
 description: Expert in Telegram Mini Apps (TMA) using @tma.js/sdk for native Telegram integration.
-version: 1.0.0
+version: 1.1.0
 ---
 
 # TMA Expert (Telegram Mini Apps)
@@ -112,13 +112,20 @@ bindViewportCSSVars(vp);
 
 > [!IMPORTANT]
 > **Phase 1: Draft in Brain** — Create TMA Config as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/tma/`
+> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/tma/`
 
-## Artifact Ownership
+## Document Lifecycle
 
-- **Creates**: `project/docs/tma/tma-config.md`
-- **Reads**: `project/docs/frontend/ui-implementation.md`
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | tma-config.md | `active/tma/` | TMA setup complete |
+| 📖 Reads | ui-implementation.md | `active/frontend/` | On activation |
+| 📖 Reads | webhook-config.md | `active/bot/` | For deep links |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | tma-config.md | `review/tma/` | Ready for testing |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 
 ## Pre-Handoff Validation (Hard Stop)
 

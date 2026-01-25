@@ -1,7 +1,7 @@
 ---
 name: tui-charm-expert
 description: Expert in Terminal UI (TUI) using Charm stack (BubbleTea, Lipgloss).
-version: 1.0.0
+version: 1.1.0
 ---
 
 # TUI Charm Expert
@@ -32,13 +32,19 @@ This skill makes the terminal beautiful using BubbleTea and Lipgloss.
 
 > [!IMPORTANT]
 > **Phase 1: Draft in Brain** — Create TUI Design as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/cli/`
+> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/cli/`
 
-## Artifact Ownership
+## Document Lifecycle
 
-- **Creates**: `project/docs/cli/tui-design.md`
-- **Reads**: `project/docs/architecture/cli-design.md`
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | tui-design.md | `active/cli/` | TUI design complete |
+| 📖 Reads | cli-design.md | `active/architecture/` | On activation |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | tui-design.md | `review/cli/` | Ready for implementation |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 
 ## Pre-Handoff Validation (Hard Stop)
 

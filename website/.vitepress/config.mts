@@ -3,12 +3,9 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'Antigravity Factory',
   description: 'AI Agent Skills Catalog',
-  title: 'Antigravity Factory',
-  description: 'AI Agent Skills Catalog',
+  base: '/antigravity-factory/',
   
   themeConfig: {
-    logo: '/logo.png',
-    siteTitle: false, // Usage of visual logo instead of text title
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Skills', link: '/skills/' },

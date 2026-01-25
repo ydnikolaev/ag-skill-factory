@@ -1,7 +1,7 @@
 ---
 name: debugger
 description: Systematic debugging skill. 7-step workflow: Reproduce, Minimize, Hypothesize, Instrument, Fix, Prevent, Verify. Activate when troubleshooting errors.
-version: 1.0.0
+version: 1.1.0
 ---
 
 # Debugger 🔍
@@ -133,11 +133,18 @@ When reporting a fix, use this structure:
 > **Phase 1: Draft in Brain** — Create debug report as artifact. Iterate via `notify_user`.
 > **Phase 2: Persist on Approval** — ONLY after fix verified → write to `project/docs/bugs/`
 
-## Artifact Ownership
+## Document Lifecycle
 
-- **Creates**: `project/docs/bugs/<issue-name>.md`
-- **Reads**: Issue description, error logs, code
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | `<issue-name>.md` | `active/bugs/` | Debug report complete |
+| 📖 Reads | Issue description, logs | — | On activation |
+| 📖 Reads | Implementation docs | `active/backend/`, `active/frontend/` | Understanding context |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | `<issue-name>.md` | `review/bugs/` | Fix verified |
+| ✅ Archive | — | `closed/bugs/<id>/` | @doc-janitor on final approval |
 
 ## Pre-Handoff Validation (Hard Stop)
 

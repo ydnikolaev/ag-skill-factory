@@ -73,9 +73,17 @@ antigravity-factory/
 │   │   ├── backend-go-expert/
 │   │   ├── frontend-nuxt/
 │   │   └── ...
-│   ├── workflows/               # Project workflows
-│   │   ├── doc-cleanup.md
-│   │   └── refactor.md
+│   ├── workflows/               # Project workflows (10)
+│   │   ├── doc-cleanup.md       # Document cleanup
+│   │   ├── refactor.md          # Refactoring workflow
+│   │   ├── new-project.md       # Start new project
+│   │   ├── new-feature.md       # Add feature
+│   │   ├── implement.md         # Implementation phase
+│   │   ├── deploy.md            # Deployment
+│   │   ├── debug.md             # Bug investigation
+│   │   ├── archive.md           # Close work unit
+│   │   ├── status.md            # Project status
+│   │   └── qa.md                # QA cycle
 │   ├── rules/                   # Team structure
 │   │   ├── TEAM.md
 │   │   └── PIPELINE.md
@@ -198,6 +206,10 @@ Physically copies `blueprint/` → `.agent/` in the project.
 `Path: .agent/skills/skill-creator/scripts/`
 - `init_skill.py` — Creates skill skeleton
 - `validate_skill.py` — Validates SKILL.md against standards
+- `validate_blueprint.py` — Validates blueprint consistency (presets, TEAM.md sync)
+- `bump_versions.py` — Auto-bumps skill versions based on git diff
+- `add_config_awareness.py` — Adds config awareness to skills
+- `add_mcp_awareness.py` — Adds MCP tool awareness to skills
 
 ### Standards (Shared Protocols)
 - `Path: blueprint/standards/TDD_PROTOCOL.md` — Test-Driven Development rules

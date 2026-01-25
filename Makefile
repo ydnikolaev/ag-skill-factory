@@ -1,9 +1,10 @@
-.PHONY: install uninstall build-factory install-factory install-completions generate-team validate validate-all test lint clean check-loc changelog
+.PHONY: install uninstall build-factory install-factory install-completions generate-team validate validate-all validate-blueprint test lint clean check-loc changelog
 
 # Paths
 BLUEPRINT_DIR := $(shell pwd)/blueprint
 FACTORY_SKILLS_DIR := $(shell pwd)/.agent/skills
 VALIDATOR := $(FACTORY_SKILLS_DIR)/skill-creator/scripts/validate_skill.py
+BLUEPRINT_VALIDATOR := $(FACTORY_SKILLS_DIR)/skill-creator/scripts/validate_blueprint.py
 BIN_DIR := $(shell pwd)/bin
 FACTORY_BIN := $(BIN_DIR)/factory
 SYMLINK_PATH := /usr/local/bin/factory
@@ -44,6 +45,14 @@ validate-all:
 	else \
 		echo "✅ All skills validated!"; \
 	fi
+
+# Validate blueprint consistency (presets, TEAM.md sync)
+validate-blueprint:
+	@python3 $(BLUEPRINT_VALIDATOR) $(BLUEPRINT_DIR)
+
+# Auto-bump skill versions based on staged changes
+bump-versions:
+	@python3 $(FACTORY_SKILLS_DIR)/skill-creator/scripts/bump_versions.py
 
 # Generate TEAM.md from blueprint/skills/ directory
 generate-team:

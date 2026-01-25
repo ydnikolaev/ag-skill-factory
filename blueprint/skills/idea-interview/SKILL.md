@@ -1,7 +1,7 @@
 ---
 name: idea-interview
 description: Interview-mode skill that extracts complete project information from the user. Activates when starting a new project or discussing an idea. NO CODE — only structured discovery.
-version: 1.0.0
+version: 1.1.0
 ---
 
 # Idea Interview
@@ -88,7 +88,7 @@ Interview is complete when collected:
 
 > [!IMPORTANT]
 > **Phase 1: Draft in Brain** — Create Discovery Brief as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/discovery/`
+> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/discovery/`
 
 ## Pre-Handoff Validation (Hard Stop)
 
@@ -107,7 +107,7 @@ Interview is complete when collected:
 
 ## Handoff Protocol
 
-1. Create `project/docs/discovery-brief.md` using template from `resources/`
+1. Create `project/docs/active/discovery/discovery-brief.md` using template from `resources/`
 2. Change file status from `Draft` to `Approved` in header/frontmatter
 3. Use `notify_user` for final review
 4. After approval — hand off to `@product-analyst`:
@@ -130,10 +130,17 @@ Interview is complete when collected:
 - Use `notify_user` to confirm Discovery Brief before handoff
 - Read `CONFIG.yaml` if exists to pre-fill platform/stack info
 
-## Artifact Ownership
-- **Creates**: `project/docs/discovery/discovery-brief.md`
-- **Reads**: `CONFIG.yaml` (if exists)
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (set status to ✅ Done)
+## Document Lifecycle
+
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | discovery-brief.md | `active/discovery/` | Interview complete |
+| 📖 Reads | CONFIG.yaml | `project/` | On activation (if exists) |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | discovery-brief.md | `review/discovery/` | User approves draft |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 
 ## Resources
 

@@ -1,7 +1,8 @@
 ---
 name: backend-go-expert
 description: Expert Go developer (1.25+) specializing in Clean Architecture and DDD.
-version: 1.0.0
+version: 1.1.0
+requires: [tech-spec-writer]
 ---
 
 # Backend Go Expert
@@ -131,13 +132,20 @@ See `references/` for detailed guides:
 
 > [!IMPORTANT]
 > **Phase 1: Draft in Brain** — Create As-Built Report as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/backend/`
+> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/backend/`
 
-## Artifact Ownership
+## Document Lifecycle
 
-- **Creates**: `project/docs/backend/service-implementation.md`
-- **Reads**: `project/docs/specs/<feature>-tech-spec.md`, `project/docs/architecture/api-contracts.yaml`
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | service-implementation.md | `active/backend/` | Implementation complete |
+| 📖 Reads | `<feature>-tech-spec.md` | `active/specs/` | On activation |
+| 📖 Reads | api-contracts.yaml | `active/architecture/` | On activation |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | service-implementation.md | `review/backend/` | Ready for QA |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 
 ## Pre-Handoff Validation (Hard Stop)
 

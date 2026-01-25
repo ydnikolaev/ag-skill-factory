@@ -1,7 +1,8 @@
 ---
 name: devops-sre
 description: Expert in Docker, CI/CD, and delivering Go/Nuxt apps.
-version: 1.0.0
+version: 1.1.0
+requires: [qa-lead]
 ---
 
 # DevOps SRE
@@ -30,13 +31,20 @@ This skill delivers the code. It handles Docker, CI/CD, and deployments.
 
 > [!IMPORTANT]
 > **Phase 1: Draft in Brain** — Create Deployment Guide as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/infrastructure/`
+> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/infrastructure/`
 
-## Artifact Ownership
+## Document Lifecycle
 
-- **Creates**: `project/docs/infrastructure/deployment-guide.md`
-- **Reads**: `project/docs/backend/service-implementation.md`
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | deployment-guide.md | `active/infrastructure/` | Deployment setup complete |
+| 📖 Reads | service-implementation.md | `active/backend/` | On activation |
+| 📖 Reads | test-report.md | `active/qa/` | Before deployment |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | deployment-guide.md | `review/infrastructure/` | Ready for production |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 
 ## Pre-Handoff Validation (Hard Stop)
 

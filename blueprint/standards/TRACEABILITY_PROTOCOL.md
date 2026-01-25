@@ -19,7 +19,7 @@ Every artifact MUST start with:
 ```markdown
 ## Upstream Documents
 - **Input**: `project/docs/...` (the artifact this skill received)
-- **Original**: `project/docs/features/...` (source of truth)
+- **Original**: `project/docs/active/features/...` (source of truth)
 ```
 
 ### 2. Requirements Checklist

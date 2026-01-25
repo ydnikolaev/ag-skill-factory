@@ -73,7 +73,7 @@ I summarize:
 
 ## How I Think
 
-See decision_flow.md for the decision diagram.
+See [decision_flow.md](examples/decision_flow.md) for the decision diagram.
 
 ## What I DON'T Do
 

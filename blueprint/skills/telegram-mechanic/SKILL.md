@@ -1,7 +1,7 @@
 ---
 name: telegram-mechanic
 description: Expert in Telegram Bot API, Webhooks, and Mini App Authentication.
-version: 1.0.0
+version: 1.1.0
 ---
 
 # Telegram Mechanic
@@ -35,13 +35,19 @@ This skill is the **Gateway**. It manages the Bot, Webhooks, and Security.
 
 > [!IMPORTANT]
 > **Phase 1: Draft in Brain** — Create Webhook Config as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/bot/`
+> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/bot/`
 
-## Artifact Ownership
+## Document Lifecycle
 
-- **Creates**: `project/docs/bot/webhook-config.md`
-- **Reads**: `project/docs/architecture/context-map.md`
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | webhook-config.md | `active/bot/` | Bot setup complete |
+| 📖 Reads | context-map.md | `active/architecture/` | On activation |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | webhook-config.md | `review/bot/` | Ready for implementation |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 
 ## Pre-Handoff Validation (Hard Stop)
 

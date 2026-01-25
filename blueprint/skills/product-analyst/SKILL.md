@@ -1,7 +1,8 @@
 ---
 name: product-analyst
 description: Defines Vision, Roadmap, User Stories, and translates them into Technical Specs. Combines "The Why" with "The What".
-version: 1.0.0
+version: 1.1.0
+requires: [idea-interview]
 ---
 
 # Product Analyst
@@ -40,12 +41,12 @@ This skill owns the **Product Definition** phase. It handles Vision, Roadmap, Us
 
 ### Phase 1: Product Definition
 1.  Receive `discovery-brief.md` from `@idea-interview`
-2.  Draft `project/docs/roadmap.md` with prioritized features
+2.  Draft `project/docs/active/product/roadmap.md` with prioritized features
 3.  Write User Stories for MVP scope
 
 ### Phase 2: Technical Analysis
 4.  Read approved User Stories
-5.  Create `project/docs/specs/requirements.md`
+5.  Create `project/docs/active/specs/requirements.md`
 6.  Draft API contracts and data models
 7.  **Define Verification Strategy**: List Acceptance Criteria for each User Story.
 8.  Create Sequence Diagrams (Mermaid)
@@ -106,12 +107,21 @@ This skill owns the **Product Definition** phase. It handles Vision, Roadmap, Us
 
 > [!IMPORTANT]
 > **Phase 1: Draft in Brain** — Create Roadmap/Specs as artifacts. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/product/` and `project/docs/specs/`
+> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/product/` and `project/docs/active/specs/`
 
-## Artifact Ownership
-- **Creates**: `project/docs/product/roadmap.md`, `project/docs/product/user-stories.md`, `project/docs/specs/requirements.md`
-- **Reads**: `project/docs/discovery/discovery-brief.md`
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (update status for each artifact)
+## Document Lifecycle
+
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | roadmap.md | `active/product/` | Product definition complete |
+| 🔵 Creates | user-stories.md | `active/product/` | User stories written |
+| 🔵 Creates | requirements.md | `active/specs/` | Requirements finalized |
+| 📖 Reads | discovery-brief.md | `active/discovery/` | On activation |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | roadmap.md, user-stories.md, requirements.md | `review/product/`, `review/specs/` | User approves drafts |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP

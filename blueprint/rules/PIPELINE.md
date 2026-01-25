@@ -85,17 +85,17 @@ When issues are found, work flows back:
 
 | From | To | Artifact |
 |------|-----|----------|
-| `idea-interview` | `product-analyst` | `project/docs/discovery/discovery-brief.md` |
-| `feature-fit` | `product-analyst` | `project/docs/features/<name>.md` |
-| `product-analyst` | `bmad-architect` | `project/docs/product/roadmap.md`, `project/docs/specs/requirements.md` |
-| `bmad-architect` | `tech-spec-writer` | `project/docs/architecture/context-map.md`, `project/docs/architecture/api-contracts.yaml` |
-| `tech-spec-writer` | `backend-go-expert` | `project/docs/specs/<feature>-tech-spec.md` |
-| `tech-spec-writer` | `frontend-nuxt` | `project/docs/specs/<feature>-tech-spec.md` |
-| `ux-designer` | `ui-implementor` | `project/docs/design/tokens.json`, `project/docs/design/design-system.md` |
-| `ui-implementor` | `frontend-nuxt` | `project/docs/frontend/theming.md` |
-| `backend-go-expert` | `qa-lead` | `project/docs/backend/service-implementation.md` |
-| `frontend-nuxt` | `qa-lead` | `project/docs/frontend/ui-implementation.md` |
-| `qa-lead` | `devops-sre` | `project/docs/qa/test-report.md` |
+| `idea-interview` | `product-analyst` | `project/docs/active/discovery/discovery-brief.md` |
+| `feature-fit` | `product-analyst` | `project/docs/active/features/<name>.md` |
+| `product-analyst` | `bmad-architect` | `project/docs/active/product/roadmap.md`, `project/docs/active/specs/requirements.md` |
+| `bmad-architect` | `tech-spec-writer` | `project/docs/active/architecture/context-map.md`, `project/docs/active/architecture/api-contracts.yaml` |
+| `tech-spec-writer` | `backend-go-expert` | `project/docs/active/specs/<feature>-tech-spec.md` |
+| `tech-spec-writer` | `frontend-nuxt` | `project/docs/active/specs/<feature>-tech-spec.md` |
+| `ux-designer` | `ui-implementor` | `project/docs/active/design/tokens.json`, `project/docs/active/design/design-system.md` |
+| `ui-implementor` | `frontend-nuxt` | `project/docs/active/frontend/theming.md` |
+| `backend-go-expert` | `qa-lead` | `project/docs/active/backend/service-implementation.md` |
+| `frontend-nuxt` | `qa-lead` | `project/docs/active/frontend/ui-implementation.md` |
+| `qa-lead` | `devops-sre` | `project/docs/active/qa/test-report.md` |
 
 ## Phase Summary
 
@@ -113,7 +113,7 @@ When issues are found, work flows back:
 
 > [!CAUTION]
 > **Implementation Phase requires Test-First compliance.**
-> See: `./TDD_PROTOCOL.md`
+> See: `../standards/TDD_PROTOCOL.md`
 >
 > 1. **Red**: Write failing test
 > 2. **Green**: Write minimal code

@@ -1,7 +1,8 @@
 ---
 name: bmad-architect
 description: The Lead Architect for Antigravity TMA projects. Enforces DDD, BMAD V6, and coordinates the squad.
-version: 1.0.0
+version: 1.1.0
+requires: [product-analyst]
 ---
 
 # BMAD Architect (Team Lead)
@@ -115,12 +116,21 @@ This skill designs systems using DDD and BMAD V6 methodology. It does not write 
 
 > [!IMPORTANT]
 > **Phase 1: Draft in Brain** — Create Context Map as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/architecture/`
+> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/architecture/`
 
-## Artifact Ownership
-- **Creates**: `project/docs/architecture/context-map.md`, `project/docs/architecture/api-contracts.yaml`
-- **Reads**: `project/docs/specs/requirements.md`, `project/docs/product/roadmap.md`
-- **Updates**: `ARTIFACT_REGISTRY.md` (update status for architecture artifacts)
+## Document Lifecycle
+
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | context-map.md | `active/architecture/` | Event Storming complete |
+| 🔵 Creates | api-contracts.yaml | `active/architecture/` | API design complete |
+| 📖 Reads | requirements.md | `active/specs/` | On activation |
+| 📖 Reads | roadmap.md | `active/product/` | On activation |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | context-map.md, api-contracts.yaml | `review/architecture/` | User approves drafts |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 
 
 > [!IMPORTANT]

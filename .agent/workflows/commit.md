@@ -76,13 +76,19 @@ Create a Conventional Commits message based on the diff:
 - `fix(pipeline): correct handoff paths in PIPELINE.md`
 - `docs(readme): update installation instructions`
 
-### 5. Stage and Commit
+### 5. Bump Skill Versions (Auto)
+```bash
+make bump-versions
+```
+Automatically bumps versions for any changed SKILL.md files (patch by default, minor for new sections).
+
+### 6. Stage and Commit
 ```bash
 git add -A
 git commit -m "<generated-message>"
 ```
 
-### 6. Summary Report
+### 7. Summary Report
 Report what was committed:
 - Files changed
 - Commit hash

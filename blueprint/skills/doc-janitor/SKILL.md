@@ -1,7 +1,7 @@
 ---
 name: doc-janitor
 description: Enforces document structure, archives completed work, migrates legacy format to lifecycle-based folders. Dry-run first, then apply.
-version: 1.0.0
+version: 1.1.0
 ---
 
 # Doc Janitor 🧹
@@ -228,12 +228,17 @@ Must follow Work Units structure:
 > 3. Changes committed with `chore(docs):` prefix
 > 4. Report summary via `notify_user`
 
-## Artifact Ownership
+## Document Lifecycle
 
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md`
-- **Creates**: `project/docs/active/`, `review/`, `closed/` folders
-- **Modifies**: Document frontmatter (in-place)
-- **Reads**: `../standards/DOCUMENT_STRUCTURE_PROTOCOL.md`
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On archive, on cleanup |
+| 📁 Creates | `active/`, `review/`, `closed/` folders | `project/docs/` | Structure setup |
+| 📁 Moves | Any document | `active/` → `review/` → `closed/` | Lifecycle transitions |
+| 📖 Reads | All project docs | `project/docs/` | Audit phase |
+| ✅ Archives | Completed documents | `closed/<work-unit>/` | User approves closure |
 
 ## Antigravity Best Practices
 

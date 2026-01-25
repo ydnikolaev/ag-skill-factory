@@ -112,8 +112,8 @@ def validate_skill(path: str) -> bool:
     if "## When to Delegate" not in content:
         warnings.append("Missing '## When to Delegate' section")
     
-    if "## Artifact Ownership" not in content:
-        warnings.append("Missing '## Artifact Ownership' section (New Requirement)")
+    if "## Document Lifecycle" not in content:
+        warnings.append("Missing '## Document Lifecycle' section")
         
     if "## Handoff Protocol" not in content:
         warnings.append("Missing '## Handoff Protocol' section (New Requirement)")

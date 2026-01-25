@@ -6,13 +6,15 @@ all:
   skills: "*"
 
 core:
-  description: "Pipeline essentials (5 skills)"
+  description: "Pipeline essentials (7 skills)"
   skills:
     - idea-interview
     - product-analyst
     - bmad-architect
     - tech-spec-writer
     - qa-lead
+    - doc-janitor
+    - refactor-architect
 
 backend:
   description: "Go backend development (9 skills)"

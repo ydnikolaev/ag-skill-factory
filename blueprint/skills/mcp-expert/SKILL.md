@@ -1,7 +1,7 @@
 ---
 name: mcp-expert
 description: Expert on Model Context Protocol (MCP) servers. Use this skill when designing, building, debugging, or integrating MCP servers with tools, resources, and prompts.
-version: 1.0.0
+version: 1.1.0
 ---
 
 # MCP Expert
@@ -147,13 +147,19 @@ server.Run(ctx, &mcp.StdioTransport{})
 
 > [!IMPORTANT]
 > **Phase 1: Draft in Brain** — Create MCP Server Config as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/mcp/`
+> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/mcp/`
 
-## Artifact Ownership
+## Document Lifecycle
 
-- **Creates**: `project/docs/mcp/server-config.md`
-- **Reads**: `project/docs/architecture/api-contracts.yaml`
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | server-config.md | `active/mcp/` | MCP server design complete |
+| 📖 Reads | api-contracts.yaml | `active/architecture/` | On activation |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | server-config.md | `review/mcp/` | Ready for implementation |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 
 ## Pre-Handoff Validation (Hard Stop)
 
