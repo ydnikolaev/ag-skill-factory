@@ -13,9 +13,10 @@ import (
 
 // Installer handles blueprint installation.
 type Installer struct {
-	Source string
-	Target string
-	Fs     afero.Fs
+	Source      string
+	Target      string
+	Fs          afero.Fs
+	SkillFilter map[string]bool // nil = all skills
 }
 
 // InstallResult holds the result of an install operation.
@@ -44,6 +45,18 @@ func NewWithFs(source, target string, fs afero.Fs) *Installer {
 	}
 }
 
+// SetSkillFilter sets which skills to install (nil = all).
+func (i *Installer) SetSkillFilter(skills []string) {
+	if len(skills) == 0 {
+		i.SkillFilter = nil
+		return
+	}
+	i.SkillFilter = make(map[string]bool)
+	for _, s := range skills {
+		i.SkillFilter[s] = true
+	}
+}
+
 // Install copies the entire blueprint to target .agent/ folder.
 func (i *Installer) Install() (*InstallResult, error) {
 	result := &InstallResult{}
@@ -55,19 +68,28 @@ func (i *Installer) Install() (*InstallResult, error) {
 		return nil, fmt.Errorf("failed to create target: %w", err)
 	}
 
-	// Copy each category
-	categories := []struct {
-		name    string
-		counter *int
-		isDir   bool
-	}{
-		{"skills", &result.SkillCount, true},
-		{"workflows", &result.WorkflowCount, false},
-		{"rules", &result.RuleCount, false},
-		{"standards", &result.StandardCount, false},
+	// Copy skills (with filtering)
+	skillsSrc := filepath.Join(i.Source, "skills")
+	skillsDst := filepath.Join(i.Target, "skills")
+	if _, err := i.Fs.Stat(skillsSrc); err == nil {
+		if err := i.copySkills(skillsSrc, skillsDst); err != nil {
+			return nil, fmt.Errorf("failed to copy skills: %w", err)
+		}
+		result.SkillCount = i.countDirs(skillsDst)
+		color.White("   📦 skills: %d", result.SkillCount)
 	}
 
-	for _, cat := range categories {
+	// Copy other categories (no filtering)
+	others := []struct {
+		name    string
+		counter *int
+	}{
+		{"workflows", &result.WorkflowCount},
+		{"rules", &result.RuleCount},
+		{"standards", &result.StandardCount},
+	}
+
+	for _, cat := range others {
 		srcPath := filepath.Join(i.Source, cat.name)
 		dstPath := filepath.Join(i.Target, cat.name)
 
@@ -79,17 +101,47 @@ func (i *Installer) Install() (*InstallResult, error) {
 			return nil, fmt.Errorf("failed to copy %s: %w", cat.name, err)
 		}
 
-		// Count items
-		if cat.isDir {
-			*cat.counter = i.countDirs(dstPath)
-		} else {
-			*cat.counter = i.countFiles(dstPath)
-		}
-
+		*cat.counter = i.countFiles(dstPath)
 		color.White("   📦 %s: %d", cat.name, *cat.counter)
 	}
 
 	return result, nil
+}
+
+// copySkills copies skills respecting the filter.
+func (i *Installer) copySkills(src, dst string) error {
+	entries, err := afero.ReadDir(i.Fs, src)
+	if err != nil {
+		return err
+	}
+
+	// Remove existing skills directory (replace mode)
+	_ = i.Fs.RemoveAll(dst)
+
+	if err := i.Fs.MkdirAll(dst, 0o755); err != nil {
+		return err
+	}
+
+	for _, entry := range entries {
+		if !entry.IsDir() {
+			continue
+		}
+
+		skillName := entry.Name()
+
+		// Apply filter
+		if i.SkillFilter != nil && !i.SkillFilter[skillName] {
+			continue
+		}
+
+		srcSkill := filepath.Join(src, skillName)
+		dstSkill := filepath.Join(dst, skillName)
+		if err := i.copyDir(srcSkill, dstSkill); err != nil {
+			return err
+		}
+	}
+
+	return nil
 }
 
 // copyDir recursively copies a directory.
