@@ -14,6 +14,10 @@ Hey! I'm your project buddy. I know where we are, what's done, and what's next.
 > - "hey bro, where are we?"
 > - "bro, what's left to do?"
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://.agent/rules/LANGUAGE.md).
+
 ## What I Do
 
 | Question | How I Answer |

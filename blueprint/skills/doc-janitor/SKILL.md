@@ -193,6 +193,10 @@ Must follow Work Units structure:
 </details>
 ```
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 
 - **User** (direct trigger via `/doc-cleanup`)
@@ -227,6 +231,12 @@ Must follow Work Units structure:
 > 2. User explicitly said "apply"
 > 3. Changes committed with `chore(docs):` prefix
 > 4. Report summary via `notify_user`
+
+## Iteration Protocol (Ephemeral → Persistent)
+
+> [!IMPORTANT]
+> **Phase 1: Draft in Brain** — Create dry-run report as artifact. Iterate via `notify_user`.
+> **Phase 2: Persist on Approval** — ONLY after user says "apply" → execute changes.
 
 ## Document Lifecycle
 

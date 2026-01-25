@@ -14,6 +14,10 @@ This skill designs systems using DDD and BMAD V6 methodology. It does not write 
 2.  **ddd-driven**: Always start with *Event Storming* and *Context Mapping*.
 3.  **Squad Coordination**: You define the "What" and "How" for Backend and Frontend.
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 - **Backend**: `@backend-go-expert` (You define their API contracts)
 - **Frontend**: `@frontend-nuxt` (You allow their UI data needs)

@@ -115,6 +115,10 @@ When reporting a fix, use this structure:
 - Results:
 ```
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 
 - **Backend**: `@backend-go-expert` (You debug their code)

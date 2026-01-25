@@ -75,6 +75,10 @@ description: Creative partner for ideating and designing Antigravity skills. Con
 - How would you describe it in one sentence?
 - What emoji represents it? 🎯
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://.agent/rules/LANGUAGE.md).
+
 ## Workflow
 
 ### Phase 1: Context Loading
@@ -124,6 +128,10 @@ Create a **Skill Specification** artifact:
 ## Trigger Phrases
 - "..."
 - "..."
+
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://.agent/rules/LANGUAGE.md).
 
 ## Workflow
 1. Phase 1: [Description]

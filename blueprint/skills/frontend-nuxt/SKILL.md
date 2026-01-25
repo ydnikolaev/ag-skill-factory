@@ -30,6 +30,10 @@ This skill builds modern web frontends using **Nuxt 4**, **TailwindCSS**, and **
 > - ✅ Just execute the plan phase by phase
 > - ✅ Use `notify_user` ONLY for actual blockers or final review
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 - **Architect**: `@bmad-architect` (Follow their Wireframes)
 - **Backend**: `@backend-go-expert` (Consume their API)

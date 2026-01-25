@@ -38,6 +38,10 @@ Use these levels when reporting bugs:
 **Assign to**: @backend-go-expert / @frontend-nuxt
 ```
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 - **Analyst**: `@product-analyst` (Did we build what was asked?)
 - **Backend/Frontend**: `@backend-go-expert` / `@frontend-nuxt` (Fix these bugs!)

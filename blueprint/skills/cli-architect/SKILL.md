@@ -13,6 +13,10 @@ This skill designs the Command Line Interface using Cobra, Viper, and POSIX stan
 - **Config**: `spf13/viper`.
 - **Standards**: POSIX compliance, 12-factor CLI.
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 - **Architect**: `@bmad-architect` (Activates for CLI projects)
 - **TUI**: `@tui-charm-expert` (Handle the fancy UI)

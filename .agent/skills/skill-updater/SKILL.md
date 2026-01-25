@@ -31,6 +31,21 @@ description: Maintains and updates existing skills with new patterns, standards,
 > **To create skills → `@skill-creator`**
 > **To design patterns → `@skill-interviewer`**
 
+## Language Requirements
+
+> **CRITICAL**: All skill files MUST be written in **English**.
+
+**Why English?**
+- Skills are consumed by AI agents globally
+- English ensures consistent parsing and understanding
+- Easier to maintain and contribute
+
+**Localization rule:**
+- `SKILL.md`, `references/`, `resources/`, `examples/` → **English only**
+- Agent runtime communication → **User's language** (agent adapts automatically)
+
+> Validation will check for Cyrillic characters and fail if found in skill files.
+
 ## Workflow
 
 ### Phase 1: Context Loading

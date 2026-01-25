@@ -26,6 +26,10 @@ Systematic problem-solving for runtime errors, failing tests, and unexpected beh
 > - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
 > - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://.agent/rules/LANGUAGE.md).
+
 ## When to Activate
 
 - Runtime errors, crashes

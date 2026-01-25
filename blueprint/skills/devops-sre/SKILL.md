@@ -14,6 +14,10 @@ This skill delivers the code. It handles Docker, CI/CD, and deployments.
 - **CI/CD**: GitHub Actions.
 - **Infrastructure**: Linux, Nginx (Reverse Proxy), Certbot (SSL).
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 - **All Squad**: You package their code.
 - **Architect**: You enforce the deployment topology.

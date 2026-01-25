@@ -50,6 +50,10 @@ This skill has deep knowledge of the **antigravity-factory** project — the Fac
 > 
 > ⚠️ **If you skip this step, the skill becomes outdated and USELESS.**
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://.agent/rules/LANGUAGE.md).
+
 ## Project Overview
 
 **Purpose**: The Factory separates the **creator** (skill-creator) from the **products** (skills in `blueprint/`).

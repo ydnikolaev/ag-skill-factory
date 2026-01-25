@@ -41,6 +41,10 @@ description: Meta-skill for designing and creating Antigravity workflows. Interv
 - "I see we have `/self-evolve` — does this overlap with that?"
 - "This sounds like it needs `@backend-go-expert` — should I include TDD checks?"
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://.agent/rules/LANGUAGE.md).
+
 ## Workflow
 
 ### Phase 1: Context Loading

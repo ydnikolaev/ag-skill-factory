@@ -81,6 +81,10 @@ See [decision_flow.md](examples/decision_flow.md) for the decision diagram.
 
 I'm here to **understand and explain**, not to execute.
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 
 When you need action, I point you to the right skill:

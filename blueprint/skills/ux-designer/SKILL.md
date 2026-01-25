@@ -28,6 +28,10 @@ This skill creates **design systems** and **design strategies**. It thinks befor
 3.  **Component Library**: Define component hierarchy (atoms → molecules → organisms).
 4.  **Figma Workflow**: Extract styles from Figma, or create design specs.
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 - **Frontend**: `@ui-implementor` (Receives tokens and implements them)
 - **Architect**: `@bmad-architect` (Aligns design with system architecture)

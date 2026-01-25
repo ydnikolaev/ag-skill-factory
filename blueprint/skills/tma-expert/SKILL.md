@@ -77,6 +77,10 @@ bindViewportCSSVars(vp);
 >
 > **Reject**: "wip", "update", "fix" as commit messages.
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 - **Frontend**: `@frontend-nuxt` (Base Nuxt setup, you add TMA layer)
 - **Telegram**: `@telegram-mechanic` (Bot setup, deep links)

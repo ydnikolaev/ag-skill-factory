@@ -28,6 +28,10 @@ This skill **implements designs** in code. It turns tokens and specs into real c
 3.  **Theme Support**: Implement light/dark mode via CSS variables.
 4.  **Responsive Design**: Ensure all components work across breakpoints.
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 - **UX**: `@ux-designer` (Source of tokens and specs)
 - **Frontend**: `@frontend-nuxt` (Integrates components into pages)

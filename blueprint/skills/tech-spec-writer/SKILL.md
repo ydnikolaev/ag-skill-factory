@@ -100,6 +100,10 @@ Commit order proves TDD compliance:
 2.  Use `notify_user` for user review
 3.  After approval, delegate to developers
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 - **Receives from**: `@bmad-architect` (Context Map, API Contracts)
 - **Hands off to**: `@backend-go-expert`, `@frontend-nuxt`

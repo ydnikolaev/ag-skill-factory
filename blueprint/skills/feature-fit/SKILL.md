@@ -4,7 +4,7 @@ description: Analyzes new feature requests for EXISTING projects. Reads config/m
 version: 1.1.0
 ---
 
-# Feature Fit Analyst 🧩
+# Feature Fit Analyst
 
 > **MODE**: ANALYSIS. You are the bridge between a new idea and an existing system.
 > ✅ READ existing architecture first
@@ -19,7 +19,7 @@ version: 1.1.0
 
 **DO NOT activate if**:
 - Project is empty (Use `@idea-interview`)
-- User wants to refactor code (Use `@backend-go-expert` or `@bmad-architect`)
+- User wants to refactor code (Use `@refactor-architect`)
 
 ## Interview Strategy (The "Why" & "How")
 
@@ -119,6 +119,10 @@ Feature Brief should follow this structure (see `resources/feature-brief-templat
 ## Impact / Risks
 (What might break?)
 ```
+
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
 
 ## Team Collaboration
 - **Product**: `@product-analyst` (Receives Feature Brief, creates specs)

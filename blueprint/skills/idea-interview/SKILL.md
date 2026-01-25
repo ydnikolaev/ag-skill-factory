@@ -113,6 +113,10 @@ Interview is complete when collected:
 4. After approval — hand off to `@product-analyst`:
    > "Discovery complete. Handing off to `@product-analyst` to create Roadmap and Specs."
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 
 - **Product**: `@product-analyst` — receives interview results

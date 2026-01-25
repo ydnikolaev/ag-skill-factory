@@ -145,6 +145,10 @@ project/docs/refactoring/
 | 🟡 To Review | overview.md | `review/refactoring/` | User approval needed |
 | ✅ Archive | — | `closed/refactoring/<name>/` | @doc-janitor on completion |
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 
 ### Receives From

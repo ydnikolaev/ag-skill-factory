@@ -23,6 +23,10 @@ This skill owns the **Product Definition** phase. It handles Vision, Roadmap, Us
 5.  **API Contracts**: Draft OpenAPI/Swagger structure
 6.  **Data Modeling**: Logical schema drafts
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 - **Discovery**: `@idea-interview` (Receives discovery-brief.md)
 - **Architect**: `@bmad-architect` (Pass specs for DDD design)

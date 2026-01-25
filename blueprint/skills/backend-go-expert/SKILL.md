@@ -30,6 +30,10 @@ This skill builds the **Core** of the system using Go 1.25+ and Clean Architectu
 > - ✅ Just execute the plan phase by phase
 > - ✅ Use `notify_user` ONLY for actual blockers or final review
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 - **Architect**: `@bmad-architect` (Follow their Context Map)
 - **Frontend**: `@frontend-nuxt` (Serve their JSON needs)
