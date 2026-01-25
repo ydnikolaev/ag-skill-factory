@@ -29,6 +29,14 @@ def extract_frontmatter(content: str) -> dict:
     return result
 
 
+def strip_internal_links(body: str) -> str:
+    """Remove links to examples/, references/, scripts/ that don't exist in website."""
+    # Pattern: [text](examples/...) or [text](references/...) or [text](scripts/...)
+    pattern = r'\[([^\]]+)\]\((examples|references|scripts|resources)/[^\)]+\)'
+    # Replace with just the link text
+    return re.sub(pattern, r'\1', body)
+
+
 def generate_skill_page(skill_path: Path, docs_path: Path) -> dict:
     """Generate a skill documentation page."""
     skill_md = skill_path / "SKILL.md"
@@ -48,6 +56,9 @@ def generate_skill_page(skill_path: Path, docs_path: Path) -> dict:
         body = content[body_start + 5:]
     else:
         body = content
+    
+    # Strip internal links that won't work in website
+    body = strip_internal_links(body)
     
     # Create skill page
     skill_doc = f"""# {name}
