@@ -30,6 +30,7 @@ All notable changes to this project will be documented in this file.
 - Add doctor, link checker, versioning, presets
 - Add preset selection with TUI
 - Add skill catalog website (VitePress)
+- Automate changelog with git-cliff
 
 ### Changed
 
@@ -54,6 +55,7 @@ All notable changes to this project will be documented in this file.
 - Add afero integration and 95% coverage enforcement info
 - Add coverage badge (95.9%)
 - Add pipeline hardening release notes
+- Update README and AGENTS
 
 ### Fixed
 
