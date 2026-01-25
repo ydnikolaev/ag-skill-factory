@@ -15,7 +15,6 @@ Execute the full `/commit` workflow first:
 - Branch protection (auto-creates feature branch if on main)
 - Self-evolve sync checks
 - Validate all skills
-- Update CHANGELOG
 - Create commit
 
 If no pending changes, skip to step 2.
@@ -42,12 +41,19 @@ git branch -d <feature-branch>
 git push origin --delete <feature-branch>
 ```
 
-### 5. Push to Main
+### 5. Update Changelog
+```bash
+make changelog
+git add CHANGELOG.md && git commit -m "chore: update changelog" || true
+```
+Generates CHANGELOG.md from git history using git-cliff.
+
+### 6. Push to Main
 ```bash
 git push origin main
 ```
 
-### 6. Summary Report
+### 7. Summary Report
 Report what was pushed:
 - Branch merged
 - Commits count

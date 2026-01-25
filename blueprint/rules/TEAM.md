@@ -20,7 +20,6 @@ Auto-generated from blueprint/skills/. Do not edit manually.
 | `refactor-architect` | Analyzes codebase, designs modular refactoring specs, and de |
 | `tech-spec-writer` | Converts high-level architecture into detailed, human-readab |
 | `telegram-mechanic` | Expert in Telegram Bot API, Webhooks, and Mini App Authentic |
-| `timeweb-sysadmin` | Timeweb Cloud infrastructure expert. Manages VPS servers, S3 |
 | `tma-expert` | Expert in Telegram Mini Apps (TMA) using @tma.js/sdk for nat |
 | `tui-charm-expert` | Expert in Terminal UI (TUI) using Charm stack (BubbleTea, Li |
 | `ui-implementor` | UI Implementor that converts design tokens into Tailwind, sh |

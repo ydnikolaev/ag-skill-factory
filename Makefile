@@ -1,4 +1,4 @@
-.PHONY: install uninstall build-factory install-factory install-completions generate-team validate validate-all test lint clean check-loc
+.PHONY: install uninstall build-factory install-factory install-completions generate-team validate validate-all test lint clean check-loc changelog
 
 # Paths
 BLUEPRINT_DIR := $(shell pwd)/blueprint
@@ -154,3 +154,15 @@ clean:
 	@rm -rf $(BIN_DIR)
 	@rm -f factory
 	@echo "✅ Clean complete"
+
+# Generate CHANGELOG.md from git history using git-cliff
+changelog:
+	@echo "📝 Generating CHANGELOG.md..."
+	@if command -v git-cliff >/dev/null 2>&1; then \
+		git-cliff -o CHANGELOG.md; \
+		echo "✅ CHANGELOG.md updated"; \
+	else \
+		echo "⚠️  git-cliff not installed. Install with:"; \
+		echo "   brew install git-cliff"; \
+	fi
+

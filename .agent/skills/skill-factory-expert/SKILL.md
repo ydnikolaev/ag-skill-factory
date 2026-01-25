@@ -69,7 +69,7 @@ antigravity-factory/
 │       └── self-evolve.md       # Factory synchronization
 │
 ├── blueprint/                   # � COPIED TO PROJECTS on install
-│   ├── skills/                  # 21 expert skills
+│   ├── skills/                  # 20 expert skills
 │   │   ├── backend-go-expert/
 │   │   ├── frontend-nuxt/
 │   │   └── ...
@@ -97,7 +97,7 @@ antigravity-factory/
 
 ### 1. Skill Categories
 - **Factory Skills** (`.agent/skills/`): `skill-creator`, `skill-factory-expert`, `skill-interviewer`, `workflow-creator` — internal tooling, NOT copied to projects
-- **Blueprint Skills** (`blueprint/skills/`): 21 expert skills copied to projects on install
+- **Blueprint Skills** (`blueprint/skills/`): 20 expert skills copied to projects on install
 - **Blueprint Standards** (`blueprint/standards/`): Protocols (TDD, Git, Tech Debt)
 - **Blueprint Rules** (`blueprint/rules/`): TEAM.md, PIPELINE.md
 - **Blueprint Workflows** (`blueprint/workflows/`): doc-cleanup, refactor
@@ -268,7 +268,7 @@ idea-interview → product-analyst → bmad-architect → tech-spec-writer → i
 - Design: `@ux-designer`, `@ui-implementor`
 - Hosting: `@timeweb-sysadmin`
 
-## Current Blueprint Skills (21)
+## Current Blueprint Skills (20)
 
 | Skill | Focus |
 |-------|-------|
