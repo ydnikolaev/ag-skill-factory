@@ -8,6 +8,7 @@ phase: utility
 category: utility
 presets:
   - backend
+  - fullstack
   - minimal
 
 # === HANDOFFS ===

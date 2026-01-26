@@ -13,7 +13,7 @@ presets:
 receives_from:
   - skill: idea-interview
     docs:
-      - doc_type: problem-statement
+      - doc_type: discovery-brief
         trigger: spec_approved
   - skill: feature-fit
     docs:
@@ -34,7 +34,7 @@ delegates_to:
 
 # === DOCUMENTS ===
 requires:
-  - doc_type: problem-statement
+  - doc_type: discovery-brief
     status: approved
   - doc_type: feature-brief
     status: any
@@ -72,7 +72,7 @@ updates:
     trigger: on_create_on_complete
 
 reads:
-  - doc_type: problem-statement
+  - doc_type: discovery-brief
     path: project/docs/active/discovery/
     trigger: on_activation
   - doc_type: feature-brief
