@@ -1,6 +1,17 @@
+---
+status: Living
+owner: @doc-janitor
+lifecycle: living
+
+upstream: []
+downstream: []
+
+created: {DATE}
+updated: {DATE}
+---
+
 # Artifact Registry
 
-> **Project**: {PROJECT_NAME}
 > **Current Focus**: 🔵 {ACTIVE_WORK_UNIT}
 
 ---
