@@ -32,18 +32,7 @@ Your sole task is to **extract ALL information** about the project from the user
 
 <!-- INCLUDE: _meta/_skills/sections/language-requirements.md -->
 
-## Activation Triggers
 
-Activate when:
-- "Help me design a new project"
-- "I have an idea..."
-- "I want to build an app/bot/service"
-- Any new project start without existing documentation
-
-**DO NOT activate** if:
-- `project/docs/roadmap.md` or `requirements.md` already exists
-- User asks for a feature in an existing project
-- Clear specifications exist → go directly to `@product-manager`
 
 ## Question Strategy
 
@@ -124,8 +113,7 @@ Interview is complete when collected:
 > | `project/CONFIG.yaml` | Stack versions, modules, architecture |
 > | `mcp.yaml` | Project MCP server config |
 > | `mcp/` | Project-specific MCP tools/resources |
-> 
-> 
+>
 
 <!-- INCLUDE: _meta/_skills/sections/mcp-context7.md -->
 
