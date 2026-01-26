@@ -19,6 +19,7 @@ outputs:
   - doc_type: refactoring-overview
     path: project/docs/active/refactoring/
     doc_category: refactoring
+    lifecycle: per-feature
 ---
 
 # Refactor Architect 🔬

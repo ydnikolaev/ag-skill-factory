@@ -18,6 +18,7 @@ skills:
     - doc_type: service-implementation
       path: project/docs/active/backend/
       doc_category: backend
+      lifecycle: per-feature
   bmad-architect:
     name: bmad-architect
     description: The Lead Architect for Antigravity TMA projects. Enforces DDD, BMAD
@@ -33,12 +34,15 @@ skills:
     - doc_type: context-map
       path: project/docs/active/architecture/
       doc_category: architecture
+      lifecycle: per-feature
     - doc_type: api-contracts
       path: project/docs/active/architecture/
       doc_category: architecture
+      lifecycle: per-feature
     - doc_type: decision-log
       path: project/docs/
       doc_category: project
+      lifecycle: living
   cli-architect:
     name: cli-architect
     description: Expert in Go CLI Architecture (Cobra, Viper, POSIX).
@@ -54,6 +58,7 @@ skills:
     - doc_type: cli-design
       path: project/docs/active/architecture/
       doc_category: architecture
+      lifecycle: per-feature
   debugger:
     name: debugger
     description: 'Systematic debugging skill. 7-step workflow: Reproduce, Minimize,
@@ -72,9 +77,11 @@ skills:
     - doc_type: debug-report
       path: project/docs/active/bugs/
       doc_category: bugs
+      lifecycle: per-feature
     - doc_type: known-issues
       path: project/docs/
       doc_category: project
+      lifecycle: living
   devops-sre:
     name: devops-sre
     description: Expert in Docker, CI/CD, and delivering Go/Nuxt apps.
@@ -88,6 +95,7 @@ skills:
     - doc_type: deployment-guide
       path: project/docs/active/infrastructure/
       doc_category: infrastructure
+      lifecycle: per-feature
   doc-janitor:
     name: doc-janitor
     description: Enforces document structure, archives completed work, migrates legacy
@@ -112,6 +120,7 @@ skills:
     - doc_type: feature-brief
       path: project/docs/active/discovery/
       doc_category: discovery
+      lifecycle: per-feature
   frontend-nuxt:
     name: frontend-nuxt
     description: Nuxt 4 & TailwindCSS expert for modern web applications (SSR, SPA,
@@ -127,6 +136,7 @@ skills:
     - doc_type: ui-implementation
       path: project/docs/active/frontend/
       doc_category: frontend
+      lifecycle: per-feature
   idea-interview:
     name: idea-interview
     description: Interview-mode skill that extracts complete project information from
@@ -142,6 +152,7 @@ skills:
     - doc_type: discovery-brief
       path: project/docs/active/discovery/
       doc_category: discovery
+      lifecycle: per-feature
   mcp-expert:
     name: mcp-expert
     description: Expert on Model Context Protocol (MCP) servers. Use this skill when
@@ -158,6 +169,7 @@ skills:
     - doc_type: server-config
       path: project/docs/active/architecture/
       doc_category: architecture
+      lifecycle: per-feature
   product-analyst:
     name: product-analyst
     description: Defines Vision, Roadmap, User Stories, and translates them into Technical
@@ -173,17 +185,21 @@ skills:
     - tech-spec-writer
     outputs:
     - doc_type: roadmap
-      path: project/docs/active/product/
+      path: project/docs/
       doc_category: product
+      lifecycle: living
     - doc_type: user-stories
       path: project/docs/active/product/
       doc_category: product
+      lifecycle: per-feature
     - doc_type: requirements
       path: project/docs/active/specs/
       doc_category: specs
+      lifecycle: per-feature
     - doc_type: backlog
       path: project/docs/
       doc_category: project
+      lifecycle: living
   project-bro:
     name: project-bro
     description: Your project awareness buddy. Knows current state, reads docs, analyzes
@@ -209,9 +225,11 @@ skills:
     - doc_type: test-cases
       path: project/docs/active/qa/
       doc_category: qa
+      lifecycle: per-feature
     - doc_type: test-report
       path: project/docs/active/qa/
       doc_category: qa
+      lifecycle: per-feature
   refactor-architect:
     name: refactor-architect
     description: Analyzes codebase, designs modular refactoring specs, and delegates
@@ -229,6 +247,7 @@ skills:
     - doc_type: refactoring-overview
       path: project/docs/active/refactoring/
       doc_category: refactoring
+      lifecycle: per-feature
   tech-spec-writer:
     name: tech-spec-writer
     description: Converts high-level architecture into detailed, human-readable Technical
@@ -246,6 +265,7 @@ skills:
     - doc_type: tech-spec
       path: project/docs/active/specs/
       doc_category: specs
+      lifecycle: per-feature
   telegram-mechanic:
     name: telegram-mechanic
     description: Expert in Telegram Bot API, Webhooks, and Mini App Authentication.
@@ -261,6 +281,7 @@ skills:
     - doc_type: webhook-config
       path: project/docs/active/architecture/
       doc_category: architecture
+      lifecycle: per-feature
   tma-expert:
     name: tma-expert
     description: Expert in Telegram Mini Apps (TMA) using @tma.js/sdk for native Telegram
@@ -277,6 +298,7 @@ skills:
     - doc_type: tma-config
       path: project/docs/active/frontend/
       doc_category: frontend
+      lifecycle: per-feature
   tui-charm-expert:
     name: tui-charm-expert
     description: Expert in Terminal UI (TUI) using Charm stack (BubbleTea, Lipgloss).
@@ -291,6 +313,7 @@ skills:
     - doc_type: tui-design
       path: project/docs/active/backend/
       doc_category: backend
+      lifecycle: per-feature
   ui-implementor:
     name: ui-implementor
     description: UI Implementor that converts design tokens into Tailwind, shadcn
@@ -306,6 +329,7 @@ skills:
     - doc_type: theming
       path: project/docs/active/frontend/
       doc_category: frontend
+      lifecycle: per-feature
   ux-designer:
     name: ux-designer
     description: UX/UI Designer specializing in design systems, design tokens, and
@@ -321,9 +345,11 @@ skills:
     - doc_type: tokens
       path: project/docs/active/design/
       doc_category: design
+      lifecycle: per-feature
     - doc_type: design-system
       path: project/docs/active/design/
       doc_category: design
+      lifecycle: per-feature
 phases:
   implementation:
   - backend-go-expert
@@ -408,7 +434,7 @@ handoffs:
 - from: product-analyst
   to: bmad-architect
   doc_type: roadmap
-  path: project/docs/active/product/
+  path: project/docs/
 - from: product-analyst
   to: bmad-architect
   doc_type: user-stories
@@ -424,7 +450,7 @@ handoffs:
 - from: product-analyst
   to: tech-spec-writer
   doc_type: roadmap
-  path: project/docs/active/product/
+  path: project/docs/
 - from: product-analyst
   to: tech-spec-writer
   doc_type: user-stories

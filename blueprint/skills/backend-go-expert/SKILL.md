@@ -21,6 +21,7 @@ outputs:
   - doc_type: service-implementation
     path: project/docs/active/backend/
     doc_category: backend
+    lifecycle: per-feature
 ---
 
 # Backend Go Expert

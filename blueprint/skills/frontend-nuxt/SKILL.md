@@ -20,6 +20,7 @@ outputs:
   - doc_type: ui-implementation
     path: project/docs/active/frontend/
     doc_category: frontend
+    lifecycle: per-feature
 ---
 
 # Frontend Nuxt Expert

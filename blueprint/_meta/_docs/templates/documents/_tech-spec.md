@@ -1,6 +1,7 @@
 ---
 status: Draft
 owner: @tech-spec-writer
+lifecycle: per-feature
 work_unit: {WORK_UNIT}
 
 upstream:

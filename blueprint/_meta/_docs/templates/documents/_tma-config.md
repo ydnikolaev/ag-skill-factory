@@ -1,6 +1,7 @@
 ---
 status: Draft
 owner: @tma-expert
+lifecycle: per-feature
 work_unit: {WORK_UNIT}
 
 upstream:

@@ -1,7 +1,7 @@
 ---
 status: Draft
 owner: @bmad-architect
-work_unit: {WORK_UNIT}
+lifecycle: living
 
 upstream:
   - doc_type: roadmap
@@ -19,7 +19,7 @@ created: {DATE}
 updated: {DATE}
 ---
 
-# Decision Log: {WORK_UNIT}
+# Decision Log
 
 ## Overview
 

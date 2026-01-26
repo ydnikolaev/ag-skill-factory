@@ -21,6 +21,7 @@ outputs:
   - doc_type: tech-spec
     path: project/docs/active/specs/
     doc_category: specs
+    lifecycle: per-feature
 ---
 
 # Tech Spec Writer

@@ -16,6 +16,7 @@ outputs:
   - doc_type: discovery-brief
     path: project/docs/active/discovery/
     doc_category: discovery
+    lifecycle: per-feature
 ---
 
 # Idea Interview

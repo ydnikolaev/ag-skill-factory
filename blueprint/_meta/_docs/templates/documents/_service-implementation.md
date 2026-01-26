@@ -1,6 +1,7 @@
 ---
 status: Draft
 owner: @backend-go-expert
+lifecycle: per-feature
 work_unit: {WORK_UNIT}
 
 upstream:

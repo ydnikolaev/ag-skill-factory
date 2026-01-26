@@ -20,9 +20,11 @@ outputs:
   - doc_type: test-cases
     path: project/docs/active/qa/
     doc_category: qa
+    lifecycle: per-feature
   - doc_type: test-report
     path: project/docs/active/qa/
     doc_category: qa
+    lifecycle: per-feature
 ---
 
 # QA Lead

@@ -10,6 +10,7 @@ types:
     category: backend
     doc_type: service-implementation
     template: _service-implementation.md
+    lifecycle: per-feature
   context-map:
     phase: architecture
     creator: bmad-architect
@@ -18,6 +19,7 @@ types:
     category: architecture
     doc_type: context-map
     template: _context-map.md
+    lifecycle: per-feature
   api-contracts:
     phase: architecture
     creator: bmad-architect
@@ -25,6 +27,7 @@ types:
     category: architecture
     doc_type: api-contracts
     template: _api-contracts.md
+    lifecycle: per-feature
   decision-log:
     phase: architecture
     creator: bmad-architect
@@ -32,6 +35,7 @@ types:
     category: project
     doc_type: decision-log
     template: _decision-log.md
+    lifecycle: living
   cli-design:
     phase: architecture
     creator: cli-architect
@@ -41,6 +45,7 @@ types:
     category: architecture
     doc_type: cli-design
     template: _cli-design.md
+    lifecycle: per-feature
   debug-report:
     phase: utility
     creator: debugger
@@ -49,6 +54,7 @@ types:
     category: bugs
     doc_type: debug-report
     template: _debug-report.md
+    lifecycle: per-feature
   known-issues:
     phase: utility
     creator: debugger
@@ -56,6 +62,7 @@ types:
     category: project
     doc_type: known-issues
     template: _known-issues.md
+    lifecycle: living
   deployment-guide:
     phase: delivery
     creator: devops-sre
@@ -63,6 +70,7 @@ types:
     category: infrastructure
     doc_type: deployment-guide
     template: _deployment-guide.md
+    lifecycle: per-feature
   feature-brief:
     phase: discovery
     creator: feature-fit
@@ -71,6 +79,7 @@ types:
     category: discovery
     doc_type: feature-brief
     template: _feature-brief.md
+    lifecycle: per-feature
   ui-implementation:
     phase: implementation
     creator: frontend-nuxt
@@ -79,6 +88,7 @@ types:
     category: frontend
     doc_type: ui-implementation
     template: _ui-implementation.md
+    lifecycle: per-feature
   discovery-brief:
     phase: discovery
     creator: idea-interview
@@ -87,6 +97,7 @@ types:
     category: discovery
     doc_type: discovery-brief
     template: _discovery-brief.md
+    lifecycle: per-feature
   server-config:
     phase: utility
     creator: mcp-expert
@@ -96,6 +107,7 @@ types:
     category: architecture
     doc_type: server-config
     template: _server-config.md
+    lifecycle: per-feature
   roadmap:
     phase: definition
     creator: product-analyst
@@ -105,6 +117,7 @@ types:
     category: product
     doc_type: roadmap
     template: _roadmap.md
+    lifecycle: living
   user-stories:
     phase: definition
     creator: product-analyst
@@ -112,6 +125,7 @@ types:
     category: product
     doc_type: user-stories
     template: _user-stories.md
+    lifecycle: per-feature
   requirements:
     phase: definition
     creator: product-analyst
@@ -119,6 +133,7 @@ types:
     category: specs
     doc_type: requirements
     template: _requirements.md
+    lifecycle: per-feature
   backlog:
     phase: definition
     creator: product-analyst
@@ -126,6 +141,7 @@ types:
     category: project
     doc_type: backlog
     template: _backlog.md
+    lifecycle: living
   test-cases:
     phase: delivery
     creator: qa-lead
@@ -134,6 +150,7 @@ types:
     category: qa
     doc_type: test-cases
     template: _test-cases.md
+    lifecycle: per-feature
   test-report:
     phase: delivery
     creator: qa-lead
@@ -141,6 +158,7 @@ types:
     category: qa
     doc_type: test-report
     template: _test-report.md
+    lifecycle: per-feature
   refactoring-overview:
     phase: utility
     creator: refactor-architect
@@ -151,6 +169,7 @@ types:
     category: refactoring
     doc_type: refactoring-overview
     template: _refactoring-overview.md
+    lifecycle: per-feature
   tech-spec:
     phase: architecture
     creator: tech-spec-writer
@@ -160,6 +179,7 @@ types:
     category: specs
     doc_type: tech-spec
     template: _tech-spec.md
+    lifecycle: per-feature
   webhook-config:
     phase: architecture
     creator: telegram-mechanic
@@ -169,6 +189,7 @@ types:
     category: architecture
     doc_type: webhook-config
     template: _webhook-config.md
+    lifecycle: per-feature
   tma-config:
     phase: implementation
     creator: tma-expert
@@ -177,6 +198,7 @@ types:
     category: frontend
     doc_type: tma-config
     template: _tma-config.md
+    lifecycle: per-feature
   tui-design:
     phase: implementation
     creator: tui-charm-expert
@@ -185,6 +207,7 @@ types:
     category: backend
     doc_type: tui-design
     template: _tui-design.md
+    lifecycle: per-feature
   theming:
     phase: design
     creator: ui-implementor
@@ -193,6 +216,7 @@ types:
     category: frontend
     doc_type: theming
     template: _theming.md
+    lifecycle: per-feature
   tokens:
     phase: design
     creator: ux-designer
@@ -201,6 +225,7 @@ types:
     category: design
     doc_type: tokens
     template: _tokens.md
+    lifecycle: per-feature
   design-system:
     phase: design
     creator: ux-designer
@@ -208,3 +233,4 @@ types:
     category: design
     doc_type: design-system
     template: _design-system.md
+    lifecycle: per-feature

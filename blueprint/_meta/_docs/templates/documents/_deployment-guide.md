@@ -1,6 +1,7 @@
 ---
 status: Draft
 owner: @devops-sre
+lifecycle: per-feature
 work_unit: {WORK_UNIT}
 
 upstream:

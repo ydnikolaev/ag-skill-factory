@@ -18,6 +18,7 @@ outputs:
   - doc_type: server-config
     path: project/docs/active/architecture/
     doc_category: architecture
+    lifecycle: per-feature
 ---
 
 # MCP Expert

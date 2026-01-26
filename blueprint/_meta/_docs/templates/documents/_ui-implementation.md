@@ -1,6 +1,7 @@
 ---
 status: Draft
 owner: @frontend-nuxt
+lifecycle: per-feature
 work_unit: {WORK_UNIT}
 
 upstream:

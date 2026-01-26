@@ -547,40 +547,37 @@ def build_upstream_downstream(handoffs: list, doc_type: str) -> tuple[list, list
     return upstream, downstream
 
 
-def generate_frontmatter(doc_type: str, creator: str, handoffs: list) -> str:
+def generate_frontmatter(doc_type: str, creator: str, lifecycle: str, handoffs: list) -> str:
     """Generate YAML frontmatter for a document template."""
-    # Find upstream (docs that feed into creator of this doc_type)
-    # Find downstream (docs that this doc_type feeds into)
-    
     upstream_docs = []
     downstream_docs = []
     
     # Handoffs where this doc_type is passed FROM creator TO someone
     for h in handoffs:
         if h.get("doc_type") == doc_type:
-            downstream_docs.append({
-                "skill": h["to"],
-            })
+            downstream_docs.append({"skill": h["to"]})
     
     # Handoffs where creator receives something (those are upstream)
     for h in handoffs:
         if h.get("to") == creator and h.get("doc_type") != doc_type:
-            upstream_docs.append({
-                "doc_type": h["doc_type"],
-                "owner": h["from"],
-            })
+            upstream_docs.append({"doc_type": h["doc_type"], "owner": h["from"]})
     
     lines = [
         "---",
         "status: Draft",
         f"owner: @{creator}",
-        "work_unit: {WORK_UNIT}",
-        "",
+        f"lifecycle: {lifecycle}",
     ]
+    
+    # For per-feature docs, work_unit is a placeholder
+    # For living docs, work_unit is omitted (they use fixed names)
+    if lifecycle == "per-feature":
+        lines.append("work_unit: {WORK_UNIT}")
+    
+    lines.append("")
     
     if upstream_docs:
         lines.append("upstream:")
-        # Deduplicate
         seen = set()
         for u in upstream_docs:
             key = (u["doc_type"], u["owner"])
@@ -591,28 +588,21 @@ def generate_frontmatter(doc_type: str, creator: str, handoffs: list) -> str:
     
     if downstream_docs:
         lines.append("downstream:")
-        # Deduplicate
         seen = set()
         for d in downstream_docs:
             if d["skill"] not in seen:
                 seen.add(d["skill"])
                 lines.append(f"  - skill: @{d['skill']}")
     
-    lines.extend([
-        "",
-        "created: {DATE}",
-        "updated: {DATE}",
-        "---",
-    ])
+    lines.extend(["", "created: {DATE}", "updated: {DATE}", "---"])
     
     return "\n".join(lines)
 
 
-def generate_template(doc_type: str, creator: str, handoffs: list) -> str:
+def generate_template(doc_type: str, creator: str, lifecycle: str, handoffs: list) -> str:
     """Generate complete template content."""
-    frontmatter = generate_frontmatter(doc_type, creator, handoffs)
+    frontmatter = generate_frontmatter(doc_type, creator, lifecycle, handoffs)
     
-    # Get body or use default
     body = TEMPLATE_BODIES.get(doc_type, """
 ## Overview
 
@@ -634,7 +624,15 @@ def generate_template(doc_type: str, creator: str, handoffs: list) -> str:
     
     title = doc_type.replace("-", " ").title()
     
-    return f"""{frontmatter}
+    # Living docs have fixed title, per-feature docs have work_unit placeholder
+    if lifecycle == "living":
+        return f"""{frontmatter}
+
+# {title}
+{body}
+"""
+    else:
+        return f"""{frontmatter}
 
 # {title}: {{WORK_UNIT}}
 {body}
@@ -659,8 +657,9 @@ def main():
     
     for doc_type, info in types.items():
         creator = info.get("creator", "unknown")
+        lifecycle = info.get("lifecycle", "per-feature")
         
-        content = generate_template(doc_type, creator, handoffs)
+        content = generate_template(doc_type, creator, lifecycle, handoffs)
         
         # Determine extension
         ext = ".json" if doc_type == "tokens" else ".md"

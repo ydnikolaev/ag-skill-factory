@@ -18,6 +18,7 @@ outputs:
   - doc_type: deployment-guide
     path: project/docs/active/infrastructure/
     doc_category: infrastructure
+    lifecycle: per-feature
 ---
 
 # DevOps SRE

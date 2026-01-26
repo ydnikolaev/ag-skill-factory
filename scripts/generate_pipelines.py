@@ -118,6 +118,7 @@ def generate_doc_types(matrix: dict, output_path: Path):
                 "category": category,
                 "doc_type": doc_type,
                 "template": f"_{doc_type}.md",
+                "lifecycle": output.get("lifecycle", "per-feature"),
             }
     
     output_path.parent.mkdir(parents=True, exist_ok=True)

@@ -20,6 +20,7 @@ outputs:
   - doc_type: webhook-config
     path: project/docs/active/architecture/
     doc_category: architecture
+    lifecycle: per-feature
 ---
 
 # Telegram Mechanic

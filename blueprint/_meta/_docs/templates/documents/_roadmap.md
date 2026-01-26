@@ -1,7 +1,7 @@
 ---
 status: Draft
 owner: @product-analyst
-work_unit: {WORK_UNIT}
+lifecycle: living
 
 upstream:
   - doc_type: feature-brief
@@ -16,7 +16,7 @@ created: {DATE}
 updated: {DATE}
 ---
 
-# Roadmap: {WORK_UNIT}
+# Roadmap
 
 ## Vision
 

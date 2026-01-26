@@ -1,6 +1,7 @@
 ---
 status: Draft
 owner: @mcp-expert
+lifecycle: per-feature
 work_unit: {WORK_UNIT}
 
 downstream:

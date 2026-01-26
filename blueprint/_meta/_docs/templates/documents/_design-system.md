@@ -1,6 +1,7 @@
 ---
 status: Draft
 owner: @ux-designer
+lifecycle: per-feature
 work_unit: {WORK_UNIT}
 
 downstream:

@@ -20,6 +20,7 @@ outputs:
   - doc_type: theming
     path: project/docs/active/frontend/
     doc_category: frontend
+    lifecycle: per-feature
 ---
 
 # UI Implementor

@@ -22,9 +22,11 @@ outputs:
   - doc_type: debug-report
     path: project/docs/active/bugs/
     doc_category: bugs
+    lifecycle: per-feature
   - doc_type: known-issues
     path: project/docs/
     doc_category: project
+    lifecycle: living
 ---
 
 # Debugger 🔍

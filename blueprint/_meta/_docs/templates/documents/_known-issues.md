@@ -1,7 +1,7 @@
 ---
 status: Draft
 owner: @debugger
-work_unit: {WORK_UNIT}
+lifecycle: living
 
 downstream:
   - skill: @qa-lead
@@ -10,7 +10,7 @@ created: {DATE}
 updated: {DATE}
 ---
 
-# Known Issues: {WORK_UNIT}
+# Known Issues
 
 ## Overview
 

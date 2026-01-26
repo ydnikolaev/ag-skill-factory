@@ -1,11 +1,11 @@
 ---
 trigger: model_decision
-description: Creating new markdown documents not covered by existing templates. Use when no template exists in _meta/_docs/templates/documents/.
+description: Creating new markdown documents not covered by existing templates. Use when no template exists in project/docs/templates/.
 ---
 
 # Document Creation (No Template)
 
-> Use this ONLY when creating a document that has no template in `_meta/_docs/templates/documents/`.
+> Use this ONLY when creating a document that has no template in `project/docs/templates/`.
 
 ---
 
@@ -13,7 +13,7 @@ description: Creating new markdown documents not covered by existing templates. 
 
 Check if template exists:
 ```bash
-ls blueprint/_meta/_docs/templates/documents/_*.md
+ls project/docs/templates/_*.md
 ```
 
 - **Template exists?** → Copy template, fill placeholders. Done.

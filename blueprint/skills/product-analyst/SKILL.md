@@ -19,17 +19,21 @@ delegates_to:
 
 outputs:
   - doc_type: roadmap
-    path: project/docs/active/product/
+    path: project/docs/
     doc_category: product
+    lifecycle: living
   - doc_type: user-stories
     path: project/docs/active/product/
     doc_category: product
+    lifecycle: per-feature
   - doc_type: requirements
     path: project/docs/active/specs/
     doc_category: specs
+    lifecycle: per-feature
   - doc_type: backlog
     path: project/docs/
     doc_category: project
+    lifecycle: living
 ---
 
 # Product Analyst

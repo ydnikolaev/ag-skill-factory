@@ -17,6 +17,7 @@ outputs:
   - doc_type: feature-brief
     path: project/docs/active/discovery/
     doc_category: discovery
+    lifecycle: per-feature
 ---
 
 # Feature Fit Analyst

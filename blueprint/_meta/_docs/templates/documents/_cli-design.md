@@ -1,6 +1,7 @@
 ---
 status: Draft
 owner: @cli-architect
+lifecycle: per-feature
 work_unit: {WORK_UNIT}
 
 downstream:

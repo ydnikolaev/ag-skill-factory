@@ -20,9 +20,11 @@ outputs:
   - doc_type: tokens
     path: project/docs/active/design/
     doc_category: design
+    lifecycle: per-feature
   - doc_type: design-system
     path: project/docs/active/design/
     doc_category: design
+    lifecycle: per-feature
 ---
 
 # UX Designer

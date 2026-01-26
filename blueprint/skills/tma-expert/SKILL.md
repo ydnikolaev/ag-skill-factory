@@ -20,6 +20,7 @@ outputs:
   - doc_type: tma-config
     path: project/docs/active/frontend/
     doc_category: frontend
+    lifecycle: per-feature
 ---
 
 # TMA Expert (Telegram Mini Apps)

@@ -20,6 +20,7 @@ outputs:
   - doc_type: cli-design
     path: project/docs/active/architecture/
     doc_category: architecture
+    lifecycle: per-feature
 ---
 
 # CLI Architect

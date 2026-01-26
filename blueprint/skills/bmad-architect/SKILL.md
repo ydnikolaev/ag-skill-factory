@@ -19,12 +19,15 @@ outputs:
   - doc_type: context-map
     path: project/docs/active/architecture/
     doc_category: architecture
+    lifecycle: per-feature
   - doc_type: api-contracts
     path: project/docs/active/architecture/
     doc_category: architecture
+    lifecycle: per-feature
   - doc_type: decision-log
     path: project/docs/
     doc_category: project
+    lifecycle: living
 ---
 
 # BMAD Architect (Team Lead)
