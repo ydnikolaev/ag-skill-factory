@@ -93,6 +93,30 @@ project/docs/
 
 ---
 
+## P3: Auto-Generate presets.yaml from Skills
+
+**Goal:** 100% SSOT — presets.yaml generated from skill frontmatter.
+
+**Approach:**
+1. Add `presets: [backend, fullstack, all]` to each skill frontmatter
+2. Generator collects presets tags and builds presets.yaml
+
+**Example:**
+```yaml
+# In skill frontmatter
+presets:
+  - backend
+  - fullstack
+  - all
+```
+
+**Trade-offs:**
+- More text in each skill
+- No `extends` inheritance (must list explicitly)
+- But: full SSOT, skill knows its presets
+
+---
+
 ## Notes
 
 - Team files: `blueprint/_meta/_teams/TEAM_*.md`
