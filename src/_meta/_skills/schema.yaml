@@ -1,0 +1,126 @@
+# Skill Frontmatter Schema V2
+# Full document lifecycle in frontmatter
+
+# === ENUMS ===
+
+triggers:
+  - on_activation        # Skill starts work
+  - spec_approved        # Upstream spec approved by user
+  - implementation_complete  # Code/design done
+  - design_complete      # Design work done
+  - notify_user          # Request user review
+  - user_approval        # User says "looks good"
+  - bugs_found           # QA returns bugs
+  - qa_signoff           # QA approves
+  - on_create            # When document created
+  - on_complete          # When work complete
+  - on_create_on_complete  # Both create and complete
+
+statuses:
+  - draft       # Work in progress
+  - in_review   # Awaiting approval
+  - approved    # Ready for next phase
+  - archived    # Closed, in closed/
+
+protocols:
+  - traceability  # TRACEABILITY_PROTOCOL.md
+  - handoff       # HANDOFF_PROTOCOL.md
+  - tdd           # TDD_PROTOCOL.md
+  - git           # GIT_PROTOCOL.md
+  - tech_debt     # TECH_DEBT_PROTOCOL.md
+
+checks:
+  - artifact_registry_updated
+  - work_unit_registry_updated
+
+lifecycles:
+  - per-feature   # Archived after work-unit complete
+  - living        # Never archived, continuously updated
+
+phases:
+  - discovery
+  - definition
+  - design
+  - architecture
+  - implementation
+  - delivery
+  - utility
+
+categories:
+  - analyst
+  - technical
+  - utility
+
+# === SCHEMA ===
+
+skill:
+  # Required
+  name: string
+  description: string
+  version: string  # semver
+  phase: enum(phases)
+  category: enum(categories)
+  
+  # Optional
+  presets: list[string]
+  
+  # Handoffs
+  receives_from:
+    - skill: string
+      docs:
+        - doc_type: string
+          trigger: enum(triggers)
+  
+  delegates_to:
+    - skill: string
+      docs:
+        - doc_type: string
+          trigger: enum(triggers)
+  
+  return_paths:
+    - skill: string
+      docs:
+        - doc_type: string
+          trigger: enum(triggers)
+  
+  # Documents
+  requires:
+    - doc_type: string
+      status: enum(statuses) | 'any'
+  
+  creates:
+    - doc_type: string
+      path: string
+      doc_category: string
+      lifecycle: enum(lifecycles)
+      initial_status: enum(statuses)
+      trigger: enum(triggers)
+  
+  reads:
+    - doc_type: string
+      path: string
+      trigger: enum(triggers)
+  
+  updates:
+    - doc_type: string
+      path: string
+      lifecycle: enum(lifecycles)
+      trigger: enum(triggers)
+  
+  archives:
+    - doc_type: string
+      destination: string
+      trigger: enum(triggers)
+  
+  # Validation
+  pre_handoff:
+    protocols: list[enum(protocols)]
+    checks: list[enum(checks)]
+  
+  # Status flow
+  transitions:
+    - doc_type: string
+      flow:
+        - from: enum(statuses)
+          to: enum(statuses)
+          trigger: enum(triggers)

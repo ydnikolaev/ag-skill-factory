@@ -1,28 +1,96 @@
 ---
+# === IDENTITY ===
 name: frontend-nuxt
 description: Nuxt 4 & TailwindCSS expert for modern web applications (SSR, SPA, Hybrid).
-version: 1.2.0
+version: 1.3.0
 
 phase: implementation
 category: technical
-
 presets:
   - frontend
   - tma
 
+# === HANDOFFS ===
 receives_from:
-  - tech-spec-writer
-  - refactor-architect
-  - qa-lead  # return path: bugs found in testing
+  - skill: tech-spec-writer
+    docs:
+      - doc_type: tech-spec
+        trigger: spec_approved
 
 delegates_to:
-  - qa-lead
+  - skill: qa-lead
+    docs:
+      - doc_type: ui-implementation
+        trigger: implementation_complete
 
-outputs:
+return_paths:
+  - skill: qa-lead
+    docs:
+      - doc_type: bug-report
+        trigger: bugs_found
+  - skill: refactor-architect
+    docs:
+      - doc_type: refactoring-overview
+        trigger: spec_approved
+
+# === DOCUMENTS ===
+requires:
+  - doc_type: tech-spec
+    status: approved
+  - doc_type: design-system
+    status: any
+
+creates:
   - doc_type: ui-implementation
     path: project/docs/active/frontend/
     doc_category: frontend
     lifecycle: per-feature
+    initial_status: draft
+    trigger: implementation_complete
+
+reads:
+  - doc_type: tech-spec
+    path: project/docs/active/specs/
+    trigger: on_activation
+  - doc_type: design-system
+    path: project/docs/active/design/
+    trigger: on_activation
+  - doc_type: context-map
+    path: project/docs/active/architecture/
+    trigger: on_activation
+
+updates:
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+
+archives:
+  - doc_type: ui-implementation
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - traceability
+    - handoff
+  checks:
+    - artifact_registry_updated
+
+# === STATUS TRANSITIONS ===
+transitions:
+  - doc_type: ui-implementation
+    flow:
+      - from: draft
+        to: in_review
+        trigger: notify_user
+      - from: in_review
+        to: approved
+        trigger: user_approval
+      - from: approved
+        to: archived
+        trigger: qa_signoff
 ---
 
 # Frontend Nuxt Expert
