@@ -33,8 +33,6 @@ outputs:
 
 This skill owns the **Product Definition** phase. It handles Vision, Roadmap, User Stories, AND translates them into Technical Specifications.
 
-> **Replaces**: `product-manager` + `systems-analyst`
-
 ## Responsibilities
 
 ### Product (The Why)
@@ -47,9 +45,7 @@ This skill owns the **Product Definition** phase. It handles Vision, Roadmap, Us
 5.  **API Contracts**: Draft OpenAPI/Swagger structure
 6.  **Data Modeling**: Logical schema drafts
 
-## Language Requirements
-
-> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+<!-- INCLUDE: _meta/_skills/sections/language-requirements.md -->
 
 ## Team Collaboration
 - **Discovery**: `@idea-interview` (Receives discovery-brief.md)

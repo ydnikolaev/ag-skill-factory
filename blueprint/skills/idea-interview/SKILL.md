@@ -6,7 +6,6 @@ version: 1.2.0
 phase: discovery
 category: analyst
 
-
 delegates_to:
   - product-analyst
 
@@ -31,7 +30,6 @@ Your sole task is to **extract ALL information** about the project from the user
 **Tone**: Professional architect-mentor. Sometimes casual/bro.
 
 <!-- INCLUDE: _meta/_skills/sections/language-requirements.md -->
-
 
 
 ## Question Strategy
