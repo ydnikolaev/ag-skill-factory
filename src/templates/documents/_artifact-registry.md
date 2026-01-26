@@ -1,10 +1,7 @@
 ---
-status: Living
+status: Draft
 owner: @doc-janitor
 lifecycle: living
-
-upstream: []
-downstream: []
 
 created: {DATE}
 updated: {DATE}
