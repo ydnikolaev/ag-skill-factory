@@ -247,7 +247,7 @@ skills:
     description: UI Implementor that converts design tokens into Tailwind, shadcn
       components, and production CSS.
     version: 1.2.0
-    phase: implementation
+    phase: design
     category: technical
     receives_from:
     - ux-designer
@@ -261,7 +261,7 @@ skills:
     description: UX/UI Designer specializing in design systems, design tokens, and
       Figma workflows.
     version: 1.2.0
-    phase: definition
+    phase: design
     category: analyst
     receives_from:
     - product-analyst
@@ -278,7 +278,6 @@ phases:
   - frontend-nuxt
   - tma-expert
   - tui-charm-expert
-  - ui-implementor
   architecture:
   - bmad-architect
   - cli-architect
@@ -297,6 +296,8 @@ phases:
   - idea-interview
   definition:
   - product-analyst
+  design:
+  - ui-implementor
   - ux-designer
 handoffs:
 - from: backend-go-expert

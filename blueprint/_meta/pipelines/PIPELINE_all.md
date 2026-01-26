@@ -12,9 +12,10 @@ description: Pipeline for all preset. Skill handoffs and phases.
 | Phase | Skills | Outputs |
 |-------|--------|---------|
 | Discovery | `@feature-fit`, `@idea-interview` | feature-brief.md, discovery-brief.md |
-| Definition | `@product-analyst`, `@ux-designer` | roadmap.md, user-stories.md, requirements.md, tokens.json, design-system.md |
+| Definition | `@product-analyst` | roadmap.md, user-stories.md, requirements.md |
+| Design | `@ui-implementor`, `@ux-designer` | theming.md, tokens.json, design-system.md |
 | Architecture | `@bmad-architect`, `@cli-architect`, `@tech-spec-writer`, `@telegram-mechanic` | context-map.md, api-contracts.yaml, cli-design.md, tech-spec.md, webhook-config.md |
-| Implementation | `@backend-go-expert`, `@frontend-nuxt`, `@tma-expert`, `@tui-charm-expert`, `@ui-implementor` | service-implementation.md, ui-implementation.md, tma-config.md, tui-design.md, theming.md |
+| Implementation | `@backend-go-expert`, `@frontend-nuxt`, `@tma-expert`, `@tui-charm-expert` | service-implementation.md, ui-implementation.md, tma-config.md, tui-design.md |
 | Delivery | `@devops-sre`, `@qa-lead` | deployment-guide.md, test-cases.md, test-report.md |
 | Utility | `@doc-janitor`, `@mcp-expert`, `@project-bro`, `@refactor-architect` | server-config.md, refactoring-overview.md |
 

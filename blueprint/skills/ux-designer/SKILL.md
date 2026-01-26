@@ -3,7 +3,7 @@ name: ux-designer
 description: UX/UI Designer specializing in design systems, design tokens, and Figma workflows.
 version: 1.2.0
 
-phase: definition
+phase: design
 category: analyst
 
 receives_from:

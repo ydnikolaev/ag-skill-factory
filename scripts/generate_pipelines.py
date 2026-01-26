@@ -115,7 +115,7 @@ def generate_pipeline_file(preset_name: str, skill_names: list, matrix: dict,
     preset_skills = {k: v for k, v in matrix["skills"].items() if k in skill_names}
     
     # Build phase summary
-    phase_order = ["discovery", "definition", "architecture", "implementation", "delivery", "utility"]
+    phase_order = ["discovery", "definition", "design", "architecture", "implementation", "delivery", "utility"]
     phases_in_preset = {}
     for skill_name, skill_data in preset_skills.items():
         phase = skill_data.get("phase", "utility")

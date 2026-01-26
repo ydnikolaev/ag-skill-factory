@@ -12,9 +12,10 @@ description: Pipeline for frontend preset. Skill handoffs and phases.
 | Phase | Skills | Outputs |
 |-------|--------|---------|
 | Discovery | `@idea-interview` | discovery-brief.md |
-| Definition | `@product-analyst`, `@ux-designer` | roadmap.md, user-stories.md, requirements.md, tokens.json, design-system.md |
+| Definition | `@product-analyst` | roadmap.md, user-stories.md, requirements.md |
+| Design | `@ui-implementor`, `@ux-designer` | theming.md, tokens.json, design-system.md |
 | Architecture | `@bmad-architect`, `@tech-spec-writer` | context-map.md, api-contracts.yaml, tech-spec.md |
-| Implementation | `@frontend-nuxt`, `@ui-implementor` | ui-implementation.md, theming.md |
+| Implementation | `@frontend-nuxt` | ui-implementation.md |
 | Delivery | `@qa-lead` | test-cases.md, test-report.md |
 | Utility | `@doc-janitor`, `@refactor-architect` | refactoring-overview.md |
 
