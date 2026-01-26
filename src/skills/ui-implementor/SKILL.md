@@ -1,26 +1,84 @@
 ---
+# === IDENTITY ===
 name: ui-implementor
 description: UI Implementor that converts design tokens into Tailwind, shadcn components, and production CSS.
-version: 1.2.0
+version: 1.3.0
 
 phase: design
 category: technical
-
 presets:
   - frontend
   - tma
 
+# === HANDOFFS ===
 receives_from:
-  - ux-designer
+  - skill: ux-designer
+    docs:
+      - doc_type: design-system
+        trigger: design_complete
+      - doc_type: tokens
+        trigger: design_complete
 
 delegates_to:
-  - frontend-nuxt
+  - skill: frontend-nuxt
+    docs:
+      - doc_type: theming
+        trigger: implementation_complete
 
-outputs:
+# === DOCUMENTS ===
+requires:
+  - doc_type: design-system
+    status: approved
+  - doc_type: tokens
+    status: approved
+
+creates:
   - doc_type: theming
     path: project/docs/active/frontend/
     doc_category: frontend
     lifecycle: per-feature
+    initial_status: draft
+    trigger: implementation_complete
+
+reads:
+  - doc_type: design-system
+    path: project/docs/active/design/
+    trigger: on_activation
+  - doc_type: tokens
+    path: project/docs/active/design/
+    trigger: on_activation
+
+updates:
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+
+archives:
+  - doc_type: theming
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - traceability
+    - handoff
+  checks:
+    - artifact_registry_updated
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - tech_stack
+  - language_requirements
+  - workflow
+  - protocols
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 # UI Implementor

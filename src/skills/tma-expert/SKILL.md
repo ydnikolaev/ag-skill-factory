@@ -1,27 +1,87 @@
 ---
+# === IDENTITY ===
 name: tma-expert
 description: Expert in Telegram Mini Apps (TMA) using @tma.js/sdk for native Telegram integration.
-version: 1.2.0
+version: 1.3.0
 
 phase: implementation
 category: technical
-
 presets:
   - tma
 
+# === HANDOFFS ===
 receives_from:
-  - telegram-mechanic
-  - frontend-nuxt
-  - qa-lead  # return path: bugs found in testing
+  - skill: telegram-mechanic
+    docs:
+      - doc_type: webhook-config
+        trigger: design_complete
+  - skill: frontend-nuxt
+    docs:
+      - doc_type: ui-implementation
+        trigger: implementation_complete
 
 delegates_to:
-  - qa-lead
+  - skill: qa-lead
+    docs:
+      - doc_type: tma-config
+        trigger: implementation_complete
 
-outputs:
+return_paths:
+  - skill: qa-lead
+    docs:
+      - doc_type: bug-report
+        trigger: bugs_found
+
+# === DOCUMENTS ===
+requires:
+  - doc_type: webhook-config
+    status: approved
+
+creates:
   - doc_type: tma-config
     path: project/docs/active/frontend/
     doc_category: frontend
     lifecycle: per-feature
+    initial_status: draft
+    trigger: implementation_complete
+
+reads:
+  - doc_type: webhook-config
+    path: project/docs/active/architecture/
+    trigger: on_activation
+
+updates:
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+
+archives:
+  - doc_type: tma-config
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - traceability
+    - handoff
+    - tdd
+  checks:
+    - artifact_registry_updated
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - tech_stack
+  - language_requirements
+  - workflow
+  - protocols
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 # TMA Expert (Telegram Mini Apps)

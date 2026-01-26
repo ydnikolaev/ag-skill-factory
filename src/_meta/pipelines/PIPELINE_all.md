@@ -11,13 +11,13 @@ description: Pipeline for all preset. Skill handoffs and phases.
 
 | Phase | Skills | Outputs |
 |-------|--------|---------|
-| Discovery | `@feature-fit`, `@idea-interview` | feature-brief, work-unit-registry, discovery-brief, work-unit-registry |
+| Discovery | `@feature-fit`, `@idea-interview` | feature-brief, discovery-brief |
 | Definition | `@product-analyst` | user-stories, requirements |
 | Design | `@ui-implementor`, `@ux-designer` | theming, tokens, design-system |
 | Architecture | `@bmad-architect`, `@cli-architect`, `@tech-spec-writer`, `@telegram-mechanic` | context-map, api-contracts, cli-design, tech-spec, webhook-config |
 | Implementation | `@backend-go-expert`, `@frontend-nuxt`, `@tma-expert`, `@tui-charm-expert` | service-implementation, ui-implementation, tma-config, tui-design |
 | Delivery | `@devops-sre`, `@qa-lead` | deployment-guide, test-cases, test-report |
-| Utility | `@debugger`, `@doc-janitor`, `@mcp-expert`, `@project-bro`, `@refactor-architect` | debug-report, known-issues, server-config, refactoring-overview |
+| Utility | `@debugger`, `@doc-janitor`, `@mcp-expert`, `@project-bro`, `@refactor-architect` | debug-report, server-config, refactoring-overview |
 
 ## Handoff Matrix
 
@@ -29,12 +29,9 @@ description: Pipeline for all preset. Skill handoffs and phases.
 | `@cli-architect` | `@tui-charm-expert` | cli-design |
 | `@cli-architect` | `@backend-go-expert` | cli-design |
 | `@debugger` | `@qa-lead` | debug-report |
-| `@debugger` | `@qa-lead` | known-issues |
 | `@feature-fit` | `@product-analyst` | feature-brief |
-| `@feature-fit` | `@product-analyst` | work-unit-registry |
 | `@frontend-nuxt` | `@qa-lead` | ui-implementation |
 | `@idea-interview` | `@product-analyst` | discovery-brief |
-| `@idea-interview` | `@product-analyst` | work-unit-registry |
 | `@mcp-expert` | `@backend-go-expert` | server-config |
 | `@mcp-expert` | `@devops-sre` | server-config |
 | `@product-analyst` | `@bmad-architect` | user-stories |

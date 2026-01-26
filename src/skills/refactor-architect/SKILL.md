@@ -1,24 +1,73 @@
 ---
+# === IDENTITY ===
 name: refactor-architect
 description: Analyzes codebase, designs modular refactoring specs, and delegates to domain executors. Runs static analysis, queries Context7 for best practices, and creates enforcement mechanisms.
-version: 1.2.0
+version: 1.3.0
 
 phase: utility
 category: analyst
-
 presets:
   - core
 
+# === HANDOFFS ===
 delegates_to:
-  - backend-go-expert
-  - frontend-nuxt
-  - devops-sre
+  - skill: backend-go-expert
+    docs:
+      - doc_type: refactoring-overview
+        trigger: spec_approved
+  - skill: frontend-nuxt
+    docs:
+      - doc_type: refactoring-overview
+        trigger: spec_approved
+  - skill: devops-sre
+    docs:
+      - doc_type: refactoring-overview
+        trigger: spec_approved
 
-outputs:
+# === DOCUMENTS ===
+creates:
   - doc_type: refactoring-overview
     path: project/docs/active/refactoring/
     doc_category: refactoring
     lifecycle: per-feature
+    initial_status: draft
+    trigger: spec_approved
+
+reads:
+  - doc_type: context-map
+    path: project/docs/active/architecture/
+    trigger: on_activation
+
+updates:
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+
+archives:
+  - doc_type: refactoring-overview
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - traceability
+    - handoff
+  checks:
+    - artifact_registry_updated
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - when_to_activate
+  - language_requirements
+  - workflow
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 <!-- TODO: FRONTMATTER DELEDGATES: ALL EXECUTORS -->

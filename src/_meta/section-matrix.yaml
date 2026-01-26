@@ -45,6 +45,7 @@ categories:
     - handoff_protocol
     - language_requirements
     - team_collaboration
+    - when_to_activate
     - when_to_delegate
     - workflow
   technical:
@@ -75,7 +76,16 @@ categories:
     - doc-janitor
     - project-bro
     - timeweb-sysadmin
-    required: []
+    required:
+    - brain_to_docs
+    - document_lifecycle
+    - frontmatter
+    - handoff_protocol
+    - language_requirements
+    - team_collaboration
+    - when_to_activate
+    - when_to_delegate
+    - workflow
 section_headers:
   frontmatter: ^---
   language_requirements: '## Language Requirements|INCLUDE.*language-requirements'

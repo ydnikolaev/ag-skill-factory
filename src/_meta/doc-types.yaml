@@ -41,20 +41,12 @@ types:
   debug-report:
     phase: utility
     creator: debugger
-    consumers: &id002
+    consumers:
     - qa-lead
     category: bugs
     doc_type: debug-report
     template: _debug-report.md
     lifecycle: per-feature
-  known-issues:
-    phase: utility
-    creator: debugger
-    consumers: *id002
-    category: project
-    doc_type: known-issues
-    template: _known-issues.md
-    lifecycle: living
   deployment-guide:
     phase: delivery
     creator: devops-sre
@@ -72,15 +64,6 @@ types:
     doc_type: feature-brief
     template: _feature-brief.md
     lifecycle: per-feature
-  work-unit-registry:
-    phase: discovery
-    creator: idea-interview
-    consumers: &id003
-    - product-analyst
-    category: project
-    doc_type: work-unit-registry
-    template: _work-unit-registry.md
-    lifecycle: per-feature
   ui-implementation:
     phase: implementation
     creator: frontend-nuxt
@@ -93,7 +76,8 @@ types:
   discovery-brief:
     phase: discovery
     creator: idea-interview
-    consumers: *id003
+    consumers:
+    - product-analyst
     category: discovery
     doc_type: discovery-brief
     template: _discovery-brief.md
@@ -111,7 +95,7 @@ types:
   user-stories:
     phase: definition
     creator: product-analyst
-    consumers: &id004
+    consumers: &id002
     - bmad-architect
     - tech-spec-writer
     category: product
@@ -121,7 +105,7 @@ types:
   requirements:
     phase: definition
     creator: product-analyst
-    consumers: *id004
+    consumers: *id002
     category: specs
     doc_type: requirements
     template: _requirements.md
@@ -129,7 +113,7 @@ types:
   test-cases:
     phase: delivery
     creator: qa-lead
-    consumers: &id005
+    consumers: &id003
     - devops-sre
     category: qa
     doc_type: test-cases
@@ -138,7 +122,7 @@ types:
   test-report:
     phase: delivery
     creator: qa-lead
-    consumers: *id005
+    consumers: *id003
     category: qa
     doc_type: test-report
     template: _test-report.md
@@ -204,7 +188,7 @@ types:
   tokens:
     phase: design
     creator: ux-designer
-    consumers: &id006
+    consumers: &id004
     - ui-implementor
     category: design
     doc_type: tokens
@@ -213,7 +197,7 @@ types:
   design-system:
     phase: design
     creator: ux-designer
-    consumers: *id006
+    consumers: *id004
     category: design
     doc_type: design-system
     template: _design-system.md

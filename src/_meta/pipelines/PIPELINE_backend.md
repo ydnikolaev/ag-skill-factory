@@ -11,12 +11,12 @@ description: Pipeline for backend preset. Skill handoffs and phases.
 
 | Phase | Skills | Outputs |
 |-------|--------|---------|
-| Discovery | `@feature-fit`, `@idea-interview` | feature-brief, work-unit-registry, discovery-brief, work-unit-registry |
+| Discovery | `@feature-fit`, `@idea-interview` | feature-brief, discovery-brief |
 | Definition | `@product-analyst` | user-stories, requirements |
 | Architecture | `@bmad-architect`, `@tech-spec-writer` | context-map, api-contracts, tech-spec |
 | Implementation | `@backend-go-expert` | service-implementation |
 | Delivery | `@devops-sre`, `@qa-lead` | deployment-guide, test-cases, test-report |
-| Utility | `@debugger`, `@doc-janitor`, `@mcp-expert`, `@project-bro`, `@refactor-architect` | debug-report, known-issues, server-config, refactoring-overview |
+| Utility | `@debugger`, `@doc-janitor`, `@mcp-expert`, `@project-bro`, `@refactor-architect` | debug-report, server-config, refactoring-overview |
 
 ## Handoff Matrix
 
@@ -26,11 +26,8 @@ description: Pipeline for backend preset. Skill handoffs and phases.
 | `@bmad-architect` | `@tech-spec-writer` | context-map |
 | `@bmad-architect` | `@tech-spec-writer` | api-contracts |
 | `@debugger` | `@qa-lead` | debug-report |
-| `@debugger` | `@qa-lead` | known-issues |
 | `@feature-fit` | `@product-analyst` | feature-brief |
-| `@feature-fit` | `@product-analyst` | work-unit-registry |
 | `@idea-interview` | `@product-analyst` | discovery-brief |
-| `@idea-interview` | `@product-analyst` | work-unit-registry |
 | `@mcp-expert` | `@backend-go-expert` | server-config |
 | `@mcp-expert` | `@devops-sre` | server-config |
 | `@product-analyst` | `@bmad-architect` | user-stories |

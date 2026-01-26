@@ -1,27 +1,68 @@
 ---
+# === IDENTITY ===
 name: feature-fit
 description: Analyzes new feature requests for EXISTING projects. Reads config/mcp context, performs Gap Analysis, and creates a Feature Brief.
-version: 1.2.0
+version: 1.3.0
 
 phase: discovery
 category: analyst
-
 presets:
   - core
 
-
+# === HANDOFFS ===
 delegates_to:
-  - product-analyst
+  - skill: product-analyst
+    docs:
+      - doc_type: feature-brief
+        trigger: spec_approved
 
-outputs:
+# === DOCUMENTS ===
+creates:
   - doc_type: feature-brief
     path: project/docs/active/discovery/
     doc_category: discovery
     lifecycle: per-feature
+    initial_status: draft
+    trigger: spec_approved
+
+reads:
+  - doc_type: config
+    path: project/
+    trigger: on_activation
+  - doc_type: context-map
+    path: project/docs/active/architecture/
+    trigger: on_activation
+
+updates:
   - doc_type: work-unit-registry
     path: project/docs/registry/
-    doc_category: project
-    lifecycle: per-feature
+    lifecycle: living
+    trigger: on_create_on_complete
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - traceability
+    - handoff
+  checks:
+    - artifact_registry_updated
+    - work_unit_registry_updated
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - when_to_activate
+  - language_requirements
+  - workflow
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 # Feature Fit Analyst

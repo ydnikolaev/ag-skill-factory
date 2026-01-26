@@ -1,14 +1,38 @@
 ---
+# === IDENTITY ===
 name: project-bro
 description: Your project awareness buddy. Knows current state, reads docs, analyzes code, answers "where are we?" questions. Activate with "bro" or "project-bro".
-version: 1.2.0
+version: 1.3.0
 
 phase: utility
 category: utility
-
 presets:
   - backend
   - minimal
+
+# === DOCUMENTS ===
+reads:
+  - doc_type: config
+    path: project/
+    trigger: on_activation
+  - doc_type: artifact-registry
+    path: project/docs/
+    trigger: on_activation
+  - doc_type: work-unit-registry
+    path: project/docs/registry/
+    trigger: on_activation
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - when_to_activate
+  - language_requirements
+  - workflow
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 # Project Bro 🤙

@@ -1,30 +1,86 @@
 ---
+# === IDENTITY ===
 name: ux-designer
 description: UX/UI Designer specializing in design systems, design tokens, and Figma workflows.
-version: 1.2.0
+version: 1.3.0
 
 phase: design
 category: analyst
-
 presets:
   - frontend
   - tma
 
+# === HANDOFFS ===
 receives_from:
-  - product-analyst
+  - skill: product-analyst
+    docs:
+      - doc_type: user-stories
+        trigger: spec_approved
 
 delegates_to:
-  - ui-implementor
+  - skill: ui-implementor
+    docs:
+      - doc_type: design-system
+        trigger: design_complete
+      - doc_type: tokens
+        trigger: design_complete
 
-outputs:
+# === DOCUMENTS ===
+requires:
+  - doc_type: user-stories
+    status: approved
+
+creates:
   - doc_type: tokens
     path: project/docs/active/design/
     doc_category: design
     lifecycle: per-feature
+    initial_status: draft
+    trigger: design_complete
   - doc_type: design-system
     path: project/docs/active/design/
     doc_category: design
     lifecycle: per-feature
+    initial_status: draft
+    trigger: design_complete
+
+reads:
+  - doc_type: user-stories
+    path: project/docs/active/product/
+    trigger: on_activation
+
+updates:
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+
+archives:
+  - doc_type: tokens
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+  - doc_type: design-system
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - traceability
+    - handoff
+  checks:
+    - artifact_registry_updated
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - language_requirements
+  - workflow
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 # UX Designer

@@ -1,14 +1,44 @@
 ---
+# === IDENTITY ===
 name: doc-janitor
 description: Enforces document structure, archives completed work, migrates legacy format to lifecycle-based folders. Dry-run first, then apply.
-version: 1.2.0
+version: 1.3.0
 
 phase: utility
 category: utility
-
 presets:
   - core
 
+# === DOCUMENTS ===
+updates:
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_complete
+
+archives:
+  - doc_type: all-per-feature
+    destination: project/docs/closed/<work-unit>/
+    trigger: user_approval
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - handoff
+  checks:
+    - artifact_registry_updated
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - when_to_activate
+  - language_requirements
+  - workflow
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 # Doc Janitor

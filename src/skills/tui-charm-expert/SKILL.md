@@ -1,26 +1,83 @@
 ---
+# === IDENTITY ===
 name: tui-charm-expert
 description: Expert in Terminal UI (TUI) using Charm stack (BubbleTea, Lipgloss).
-version: 1.2.0
+version: 1.3.0
 
 phase: implementation
 category: technical
-
 presets:
   - cli
 
+# === HANDOFFS ===
 receives_from:
-  - cli-architect
-  - qa-lead  # return path: bugs found in testing
+  - skill: cli-architect
+    docs:
+      - doc_type: cli-design
+        trigger: design_complete
 
 delegates_to:
-  - qa-lead
+  - skill: qa-lead
+    docs:
+      - doc_type: tui-design
+        trigger: implementation_complete
 
-outputs:
+return_paths:
+  - skill: qa-lead
+    docs:
+      - doc_type: bug-report
+        trigger: bugs_found
+
+# === DOCUMENTS ===
+requires:
+  - doc_type: cli-design
+    status: approved
+
+creates:
   - doc_type: tui-design
     path: project/docs/active/backend/
     doc_category: backend
     lifecycle: per-feature
+    initial_status: draft
+    trigger: implementation_complete
+
+reads:
+  - doc_type: cli-design
+    path: project/docs/active/architecture/
+    trigger: on_activation
+
+updates:
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+
+archives:
+  - doc_type: tui-design
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - traceability
+    - handoff
+    - tdd
+  checks:
+    - artifact_registry_updated
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - tech_stack
+  - language_requirements
+  - workflow
+  - protocols
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 # TUI Charm Expert

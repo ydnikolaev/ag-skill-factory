@@ -1,24 +1,65 @@
 ---
+# === IDENTITY ===
 name: mcp-expert
 description: Expert on Model Context Protocol (MCP) servers. Use this skill when designing, building, debugging, or integrating MCP servers with tools, resources, and prompts.
-version: 1.2.0
+version: 1.3.0
 
 phase: utility
 category: technical
-
 presets:
   - core
 
-
+# === HANDOFFS ===
 delegates_to:
-  - backend-go-expert
-  - devops-sre
+  - skill: backend-go-expert
+    docs:
+      - doc_type: server-config
+        trigger: spec_approved
+  - skill: devops-sre
+    docs:
+      - doc_type: server-config
+        trigger: spec_approved
 
-outputs:
+# === DOCUMENTS ===
+creates:
   - doc_type: server-config
     path: project/docs/active/architecture/
     doc_category: architecture
     lifecycle: per-feature
+    initial_status: draft
+    trigger: spec_approved
+
+updates:
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+
+archives:
+  - doc_type: server-config
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - traceability
+    - handoff
+  checks:
+    - artifact_registry_updated
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - tech_stack
+  - language_requirements
+  - workflow
+  - protocols
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 # MCP Expert

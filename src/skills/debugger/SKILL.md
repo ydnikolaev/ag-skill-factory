@@ -1,32 +1,79 @@
 ---
+# === IDENTITY ===
 name: debugger
 description: "Systematic debugging skill. 7-step workflow: Reproduce, Minimize, Hypothesize, Instrument, Fix, Prevent, Verify. Activate when troubleshooting errors."
-version: 1.2.0
+version: 1.3.0
 
 phase: utility
 category: utility
-
 presets:
   - backend
   - minimal
 
+# === HANDOFFS ===
 receives_from:
-  - qa-lead
-  - backend-go-expert
-  - frontend-nuxt
+  - skill: qa-lead
+    docs:
+      - doc_type: bug-report
+        trigger: bugs_found
+  - skill: backend-go-expert
+    docs:
+      - doc_type: error-report
+        trigger: bugs_found
+  - skill: frontend-nuxt
+    docs:
+      - doc_type: error-report
+        trigger: bugs_found
 
 delegates_to:
-  - qa-lead
+  - skill: qa-lead
+    docs:
+      - doc_type: debug-report
+        trigger: implementation_complete
 
-outputs:
+# === DOCUMENTS ===
+creates:
   - doc_type: debug-report
     path: project/docs/active/bugs/
     doc_category: bugs
     lifecycle: per-feature
+    initial_status: draft
+    trigger: implementation_complete
+
+updates:
   - doc_type: known-issues
     path: project/docs/
-    doc_category: project
     lifecycle: living
+    trigger: on_complete
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+
+archives:
+  - doc_type: debug-report
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - traceability
+    - handoff
+  checks:
+    - artifact_registry_updated
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - when_to_activate
+  - language_requirements
+  - workflow
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 # Debugger

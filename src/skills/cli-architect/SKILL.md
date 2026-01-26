@@ -1,26 +1,80 @@
 ---
+# === IDENTITY ===
 name: cli-architect
 description: Expert in Go CLI Architecture (Cobra, Viper, POSIX).
-version: 1.2.0
+version: 1.3.0
 
 phase: architecture
 category: technical
-
 presets:
   - cli
 
+# === HANDOFFS ===
 receives_from:
-  - bmad-architect
+  - skill: bmad-architect
+    docs:
+      - doc_type: context-map
+        trigger: design_complete
 
 delegates_to:
-  - tui-charm-expert
-  - backend-go-expert
+  - skill: tui-charm-expert
+    docs:
+      - doc_type: cli-design
+        trigger: design_complete
+  - skill: backend-go-expert
+    docs:
+      - doc_type: cli-design
+        trigger: design_complete
 
-outputs:
+# === DOCUMENTS ===
+requires:
+  - doc_type: context-map
+    status: approved
+
+creates:
   - doc_type: cli-design
     path: project/docs/active/architecture/
     doc_category: architecture
     lifecycle: per-feature
+    initial_status: draft
+    trigger: design_complete
+
+reads:
+  - doc_type: context-map
+    path: project/docs/active/architecture/
+    trigger: on_activation
+
+updates:
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+
+archives:
+  - doc_type: cli-design
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - traceability
+    - handoff
+  checks:
+    - artifact_registry_updated
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - tech_stack
+  - language_requirements
+  - workflow
+  - protocols
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 # CLI Architect

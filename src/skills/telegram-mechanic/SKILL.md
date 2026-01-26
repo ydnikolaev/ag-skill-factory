@@ -1,26 +1,80 @@
 ---
+# === IDENTITY ===
 name: telegram-mechanic
 description: Expert in Telegram Bot API, Webhooks, and Mini App Authentication.
-version: 1.2.0
+version: 1.3.0
 
 phase: architecture
 category: technical
-
 presets:
   - tma
 
+# === HANDOFFS ===
 receives_from:
-  - bmad-architect
+  - skill: bmad-architect
+    docs:
+      - doc_type: context-map
+        trigger: design_complete
 
 delegates_to:
-  - backend-go-expert
-  - tma-expert
+  - skill: backend-go-expert
+    docs:
+      - doc_type: webhook-config
+        trigger: design_complete
+  - skill: tma-expert
+    docs:
+      - doc_type: webhook-config
+        trigger: design_complete
 
-outputs:
+# === DOCUMENTS ===
+requires:
+  - doc_type: context-map
+    status: approved
+
+creates:
   - doc_type: webhook-config
     path: project/docs/active/architecture/
     doc_category: architecture
     lifecycle: per-feature
+    initial_status: draft
+    trigger: design_complete
+
+reads:
+  - doc_type: context-map
+    path: project/docs/active/architecture/
+    trigger: on_activation
+
+updates:
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+
+archives:
+  - doc_type: webhook-config
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - traceability
+    - handoff
+  checks:
+    - artifact_registry_updated
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - tech_stack
+  - language_requirements
+  - workflow
+  - protocols
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 # Telegram Mechanic

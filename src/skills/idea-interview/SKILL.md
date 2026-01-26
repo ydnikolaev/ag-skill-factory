@@ -1,26 +1,60 @@
 ---
+# === IDENTITY ===
 name: idea-interview
 description: Interview-mode skill that extracts complete project information from the user. Activates when starting a new project or discussing an idea. NO CODE — only structured discovery.
-version: 1.2.0
+version: 1.3.0
 
 phase: discovery
 category: analyst
-
 presets:
   - core
 
+# === HANDOFFS ===
 delegates_to:
-  - product-analyst
+  - skill: product-analyst
+    docs:
+      - doc_type: discovery-brief
+        trigger: spec_approved
 
-outputs:
+# === DOCUMENTS ===
+creates:
   - doc_type: discovery-brief
     path: project/docs/active/discovery/
     doc_category: discovery
     lifecycle: per-feature
+    initial_status: draft
+    trigger: spec_approved
+
+updates:
   - doc_type: work-unit-registry
     path: project/docs/registry/
-    doc_category: project
-    lifecycle: per-feature
+    lifecycle: living
+    trigger: on_create_on_complete
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - traceability
+    - handoff
+  checks:
+    - artifact_registry_updated
+    - work_unit_registry_updated
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - when_to_activate
+  - language_requirements
+  - workflow
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 # Idea Interview 
