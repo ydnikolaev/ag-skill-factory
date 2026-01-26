@@ -1,6 +1,6 @@
 ---
 trigger: always_on
-description: Use user's language for chat and drafts; English only for persistent docs.
+description: Match the user language for chat and drafts; English only for persistent docs.
 ---
 
 # LANGUAGE_REQUIREMENTS
