@@ -8,11 +8,6 @@ phase: delivery
 category: analyst
 presets:
   - core
-  - backend
-  - frontend
-  - fullstack
-  - tma
-  - cli
 
 # === HANDOFFS ===
 receives_from:

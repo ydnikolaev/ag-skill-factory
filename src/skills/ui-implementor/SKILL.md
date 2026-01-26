@@ -7,7 +7,6 @@ version: 1.3.0
 phase: design
 category: technical
 presets:
-  - core
   - frontend
   - tma
 

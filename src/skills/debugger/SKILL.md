@@ -7,12 +7,8 @@ version: 1.3.0
 phase: utility
 category: utility
 presets:
-  - core
   - backend
-  - frontend
   - fullstack
-  - tma
-  - cli
   - minimal
 
 # === HANDOFFS ===
