@@ -113,17 +113,8 @@ Interview is complete when collected:
 
 **If ANY unchecked → DO NOT PROCEED.**
 
-## Handoff Protocol
+<!-- INCLUDE: _meta/_skills/sections/handoff-protocol.md -->
 
-1. Create `project/docs/active/discovery/discovery-brief.md` using template from `resources/`
-2. Change file status from `Draft` to `Approved` in header/frontmatter
-3. Use `notify_user` for final review
-4. After approval — hand off to `@product-analyst`:
-   > "Discovery complete. Handing off to `@product-analyst` to create Roadmap and Specs."
-
-## Language Requirements
-
-> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
 
 ## Team Collaboration
 
@@ -164,5 +155,6 @@ Interview is complete when collected:
 > - `list_resources` → see available project data
 > - `*_tools` → project-specific actions (db, cache, jobs, etc.)
 > 
+
 <!-- INCLUDE: _meta/_skills/sections/mcp-context7.md -->
 
