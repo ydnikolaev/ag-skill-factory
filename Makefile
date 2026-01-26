@@ -54,27 +54,9 @@ validate-blueprint:
 bump-versions:
 	@python3 $(FACTORY_SKILLS_DIR)/skill-creator/scripts/bump_versions.py
 
-# Generate TEAM.md from blueprint/skills/ directory
-generate-team:
-	@echo "📝 Generating blueprint/rules/TEAM.md..."
-	@echo "# Team Roster" > $(BLUEPRINT_DIR)/rules/TEAM.md
-	@echo "" >> $(BLUEPRINT_DIR)/rules/TEAM.md
-	@echo "Auto-generated from blueprint/skills/. Do not edit manually." >> $(BLUEPRINT_DIR)/rules/TEAM.md
-	@echo "" >> $(BLUEPRINT_DIR)/rules/TEAM.md
-	@echo "| Skill | Description |" >> $(BLUEPRINT_DIR)/rules/TEAM.md
-	@echo "|-------|-------------|" >> $(BLUEPRINT_DIR)/rules/TEAM.md
-	@for skill in $(BLUEPRINT_DIR)/skills/*/; do \
-		if [ -f "$$skill/SKILL.md" ]; then \
-			skill_name=$$(basename "$$skill"); \
-			desc=$$(grep -m1 "^description:" "$$skill/SKILL.md" | sed 's/description: *//' | cut -c1-60); \
-			echo "| \`$$skill_name\` | $$desc |" >> $(BLUEPRINT_DIR)/rules/TEAM.md; \
-		fi \
-	done
-	@echo "" >> $(BLUEPRINT_DIR)/rules/TEAM.md
-	@echo "## Usage" >> $(BLUEPRINT_DIR)/rules/TEAM.md
-	@echo "" >> $(BLUEPRINT_DIR)/rules/TEAM.md
-	@echo "Reference skills with \`@skill-name\` in skill collaboration sections." >> $(BLUEPRINT_DIR)/rules/TEAM.md
-	@echo "✅ Generated TEAM.md with $$(ls -d $(BLUEPRINT_DIR)/skills/*/ 2>/dev/null | wc -l | tr -d ' ') skills."
+# Generate TEAM files for each preset (Python script)
+generate-teams:
+	@python3 scripts/generate_teams.py
 
 # Build factory CLI binary
 build-factory:
