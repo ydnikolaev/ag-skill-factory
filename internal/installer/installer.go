@@ -25,6 +25,7 @@ type InstallResult struct {
 	WorkflowCount int
 	RuleCount     int
 	StandardCount int
+	TemplateCount int
 }
 
 // New creates a new Installer with OsFs.
@@ -103,6 +104,23 @@ func (i *Installer) Install() (*InstallResult, error) {
 
 		*cat.counter = i.countFiles(dstPath)
 		color.White("   📦 %s: %d", cat.name, *cat.counter)
+	}
+
+	// Copy project/docs/templates from dist/project/ (sibling of _agent/)
+	// Source is dist/_agent/, so dist/project/ is at ../project/
+	distDir := filepath.Dir(i.Source) // dist/_agent/ -> dist/
+	templatesSrc := filepath.Join(distDir, "project", "docs", "templates")
+	
+	// Target project is sibling of .agent/
+	projectDir := filepath.Dir(i.Target) // .agent/ -> cwd
+	templatesDst := filepath.Join(projectDir, "project", "docs", "templates")
+	
+	if _, err := i.Fs.Stat(templatesSrc); err == nil {
+		if err := i.copyDir(templatesSrc, templatesDst); err != nil {
+			return nil, fmt.Errorf("failed to copy templates: %w", err)
+		}
+		result.TemplateCount = i.countFiles(templatesDst)
+		color.White("   📄 templates: %d", result.TemplateCount)
 	}
 
 	return result, nil

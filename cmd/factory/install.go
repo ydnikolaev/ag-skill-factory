@@ -103,8 +103,8 @@ func runInstall(_ *cobra.Command, _ []string) error {
 		return fmt.Errorf("installation failed: %w", err)
 	}
 
-	color.Green("✅ Installed %d skills, %d workflows, %d rules, %d standards",
-		result.SkillCount, result.WorkflowCount, result.RuleCount, result.StandardCount)
+	color.Green("✅ Installed %d skills, %d workflows, %d rules, %d templates",
+		result.SkillCount, result.WorkflowCount, result.RuleCount, result.TemplateCount)
 	return nil
 }
 
