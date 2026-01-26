@@ -226,6 +226,8 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- **(scripts)** Update paths from blueprint/ to src/ ([2543c7e](https://github.com/ydnikolaev/antigravity-factory/commit/2543c7eac8d5a7a5537317f59471507069cf67ae))
+
 - **(.gitignore)** Untrack bin/, clean up structure, remove duplicate dist/ ([b4b835a](https://github.com/ydnikolaev/antigravity-factory/commit/b4b835aa1575622038fba5a695fa052838447cc0))
 
 - **(Makefile)** Use go build -C flag to avoid Users/ directory bug ([8841e49](https://github.com/ydnikolaev/antigravity-factory/commit/8841e499ae7270ab25642b8edb1b22a2d583de02))
