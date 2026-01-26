@@ -115,7 +115,6 @@ Interview is complete when collected:
 
 <!-- INCLUDE: _meta/_skills/sections/handoff-protocol.md -->
 
-
 <!-- INCLUDE: _meta/_skills/sections/team-collaboration.md -->
 
 ## When to Delegate
@@ -124,11 +123,7 @@ Interview is complete when collected:
 - ⬅️ **Return to interview** if: Product Analyst reports missing information
 - ❌ **Do NOT delegate** if: User hasn't answered key questions yet
 
-## Antigravity Best Practices
 
-- Use `task_boundary` with mode PLANNING when starting discovery interview
-- Use `notify_user` to confirm Discovery Brief before handoff
-- Read `CONFIG.yaml` if exists to pre-fill platform/stack info
 
 <!-- INCLUDE: _meta/_skills/sections/document-structure-protocol.md -->
 
