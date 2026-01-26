@@ -641,9 +641,9 @@ def generate_template(doc_type: str, creator: str, lifecycle: str, handoffs: lis
 
 def main():
     root = Path(__file__).parent.parent
-    matrix_file = root / "blueprint" / "_meta" / "_skills" / "skill-matrix.yaml"
-    doc_types_file = root / "blueprint" / "_meta" / "_docs" / "doc-types.yaml"
-    output_dir = root / "blueprint" / "_meta" / "_docs" / "templates" / "documents"
+    matrix_file = root / "src" / "_meta" / "skill-matrix.yaml"
+    doc_types_file = root / "src" / "_meta" / "doc-types.yaml"
+    output_dir = root / "src" / "templates" / "documents"
     
     matrix = load_yaml(matrix_file)
     doc_types = load_yaml(doc_types_file)

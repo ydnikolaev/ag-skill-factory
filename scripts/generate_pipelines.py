@@ -250,19 +250,19 @@ def generate_pipeline_file(preset_name: str, skill_names: list, matrix: dict,
 
 def main():
     root = Path(__file__).parent.parent
-    blueprint_skills = root / "blueprint" / "skills"
-    presets_file = root / "blueprint" / "_meta" / "presets.yaml"
-    matrix_output = root / "blueprint" / "_meta" / "_skills" / "skill-matrix.yaml"
-    doc_types_output = root / "blueprint" / "_meta" / "_docs" / "doc-types.yaml"
-    pipelines_output = root / "blueprint" / "_meta" / "_pipelines"
+    src_skills = root / "src" / "skills"
+    presets_file = root / "src" / "_meta" / "presets.yaml"
+    matrix_output = root / "src" / "_meta" / "skill-matrix.yaml"
+    doc_types_output = root / "src" / "_meta" / "doc-types.yaml"
+    pipelines_output = root / "src" / "_meta" / "pipelines"
     
-    if not blueprint_skills.exists():
-        print("❌ blueprint/skills not found")
+    if not src_skills.exists():
+        print("❌ src/skills not found")
         return
     
     # Build skill matrix
     print("📊 Building skill matrix...")
-    matrix = build_skill_matrix(blueprint_skills)
+    matrix = build_skill_matrix(src_skills)
     
     # Save matrix
     matrix_output.parent.mkdir(parents=True, exist_ok=True)
@@ -280,7 +280,7 @@ def main():
     
     # Load presets
     if not presets_file.exists():
-        print("❌ blueprint/_meta/presets.yaml not found")
+        print("❌ src/_meta/presets.yaml not found")
         return
     
     with open(presets_file) as f:
@@ -300,7 +300,7 @@ def main():
         count = generate_pipeline_file(preset_name, skill_names, matrix, pipelines_output, preset_desc)
         print(f"  ✅ PIPELINE_{preset_name}.md ({len(skill_names)} skills, {count} handoffs)")
     
-    print(f"\n📁 Generated {len(presets)} pipeline files in blueprint/_meta/_pipelines/")
+    print(f"\n📁 Generated {len(presets)} pipeline files in src/_meta/pipelines/")
 
 
 if __name__ == "__main__":

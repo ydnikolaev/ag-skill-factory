@@ -1,0 +1,521 @@
+# Auto-generated from skill frontmatter
+# Run: python3 scripts/generate_pipelines.py
+
+skills:
+  backend-go-expert:
+    name: backend-go-expert
+    description: Expert Go developer (1.25+) specializing in Clean Architecture and
+      DDD.
+    version: 1.2.0
+    phase: implementation
+    category: technical
+    receives_from:
+    - tech-spec-writer
+    - bmad-architect
+    delegates_to:
+    - qa-lead
+    outputs:
+    - doc_type: service-implementation
+      path: project/docs/active/backend/
+      doc_category: backend
+      lifecycle: per-feature
+  bmad-architect:
+    name: bmad-architect
+    description: The Lead Architect for Antigravity TMA projects. Enforces DDD, BMAD
+      V6, and coordinates the squad.
+    version: 1.2.0
+    phase: architecture
+    category: analyst
+    receives_from:
+    - product-analyst
+    delegates_to:
+    - tech-spec-writer
+    outputs:
+    - doc_type: context-map
+      path: project/docs/active/architecture/
+      doc_category: architecture
+      lifecycle: per-feature
+    - doc_type: api-contracts
+      path: project/docs/active/architecture/
+      doc_category: architecture
+      lifecycle: per-feature
+    - doc_type: decision-log
+      path: project/docs/
+      doc_category: project
+      lifecycle: living
+  cli-architect:
+    name: cli-architect
+    description: Expert in Go CLI Architecture (Cobra, Viper, POSIX).
+    version: 1.2.0
+    phase: architecture
+    category: technical
+    receives_from:
+    - bmad-architect
+    delegates_to:
+    - tui-charm-expert
+    - backend-go-expert
+    outputs:
+    - doc_type: cli-design
+      path: project/docs/active/architecture/
+      doc_category: architecture
+      lifecycle: per-feature
+  debugger:
+    name: debugger
+    description: 'Systematic debugging skill. 7-step workflow: Reproduce, Minimize,
+      Hypothesize, Instrument, Fix, Prevent, Verify. Activate when troubleshooting
+      errors.'
+    version: 1.2.0
+    phase: utility
+    category: utility
+    receives_from:
+    - qa-lead
+    - backend-go-expert
+    - frontend-nuxt
+    delegates_to:
+    - qa-lead
+    outputs:
+    - doc_type: debug-report
+      path: project/docs/active/bugs/
+      doc_category: bugs
+      lifecycle: per-feature
+    - doc_type: known-issues
+      path: project/docs/
+      doc_category: project
+      lifecycle: living
+  devops-sre:
+    name: devops-sre
+    description: Expert in Docker, CI/CD, and delivering Go/Nuxt apps.
+    version: 1.2.0
+    phase: delivery
+    category: technical
+    receives_from:
+    - qa-lead
+    delegates_to: []
+    outputs:
+    - doc_type: deployment-guide
+      path: project/docs/active/infrastructure/
+      doc_category: infrastructure
+      lifecycle: per-feature
+  doc-janitor:
+    name: doc-janitor
+    description: Enforces document structure, archives completed work, migrates legacy
+      format to lifecycle-based folders. Dry-run first, then apply.
+    version: 1.2.0
+    phase: utility
+    category: utility
+    receives_from: []
+    delegates_to: []
+    outputs: []
+  feature-fit:
+    name: feature-fit
+    description: Analyzes new feature requests for EXISTING projects. Reads config/mcp
+      context, performs Gap Analysis, and creates a Feature Brief.
+    version: 1.2.0
+    phase: discovery
+    category: analyst
+    receives_from: []
+    delegates_to:
+    - product-analyst
+    outputs:
+    - doc_type: feature-brief
+      path: project/docs/active/discovery/
+      doc_category: discovery
+      lifecycle: per-feature
+  frontend-nuxt:
+    name: frontend-nuxt
+    description: Nuxt 4 & TailwindCSS expert for modern web applications (SSR, SPA,
+      Hybrid).
+    version: 1.2.0
+    phase: implementation
+    category: technical
+    receives_from:
+    - tech-spec-writer
+    delegates_to:
+    - qa-lead
+    outputs:
+    - doc_type: ui-implementation
+      path: project/docs/active/frontend/
+      doc_category: frontend
+      lifecycle: per-feature
+  idea-interview:
+    name: idea-interview
+    description: Interview-mode skill that extracts complete project information from
+      the user. Activates when starting a new project or discussing an idea. NO CODE
+      — only structured discovery.
+    version: 1.2.0
+    phase: discovery
+    category: analyst
+    receives_from: []
+    delegates_to:
+    - product-analyst
+    outputs:
+    - doc_type: discovery-brief
+      path: project/docs/active/discovery/
+      doc_category: discovery
+      lifecycle: per-feature
+  mcp-expert:
+    name: mcp-expert
+    description: Expert on Model Context Protocol (MCP) servers. Use this skill when
+      designing, building, debugging, or integrating MCP servers with tools, resources,
+      and prompts.
+    version: 1.2.0
+    phase: utility
+    category: technical
+    receives_from: []
+    delegates_to:
+    - backend-go-expert
+    - devops-sre
+    outputs:
+    - doc_type: server-config
+      path: project/docs/active/architecture/
+      doc_category: architecture
+      lifecycle: per-feature
+  product-analyst:
+    name: product-analyst
+    description: Defines Vision, Roadmap, User Stories, and translates them into Technical
+      Specs. Combines "The Why" with "The What".
+    version: 1.2.0
+    phase: definition
+    category: analyst
+    receives_from:
+    - idea-interview
+    - feature-fit
+    delegates_to:
+    - bmad-architect
+    - tech-spec-writer
+    outputs:
+    - doc_type: roadmap
+      path: project/docs/
+      doc_category: product
+      lifecycle: living
+    - doc_type: user-stories
+      path: project/docs/active/product/
+      doc_category: product
+      lifecycle: per-feature
+    - doc_type: requirements
+      path: project/docs/active/specs/
+      doc_category: specs
+      lifecycle: per-feature
+    - doc_type: backlog
+      path: project/docs/
+      doc_category: project
+      lifecycle: living
+  project-bro:
+    name: project-bro
+    description: Your project awareness buddy. Knows current state, reads docs, analyzes
+      code, answers "where are we?" questions. Activate with "bro" or "project-bro".
+    version: 1.2.0
+    phase: utility
+    category: utility
+    receives_from: []
+    delegates_to: []
+    outputs: []
+  qa-lead:
+    name: qa-lead
+    description: Quality Assurance Lead. Tests E2E, API, and UI.
+    version: 1.2.0
+    phase: delivery
+    category: analyst
+    receives_from:
+    - backend-go-expert
+    - frontend-nuxt
+    delegates_to:
+    - devops-sre
+    outputs:
+    - doc_type: test-cases
+      path: project/docs/active/qa/
+      doc_category: qa
+      lifecycle: per-feature
+    - doc_type: test-report
+      path: project/docs/active/qa/
+      doc_category: qa
+      lifecycle: per-feature
+  refactor-architect:
+    name: refactor-architect
+    description: Analyzes codebase, designs modular refactoring specs, and delegates
+      to domain executors. Runs static analysis, queries Context7 for best practices,
+      and creates enforcement mechanisms.
+    version: 1.2.0
+    phase: utility
+    category: analyst
+    receives_from: []
+    delegates_to:
+    - backend-go-expert
+    - frontend-nuxt
+    - devops-sre
+    outputs:
+    - doc_type: refactoring-overview
+      path: project/docs/active/refactoring/
+      doc_category: refactoring
+      lifecycle: per-feature
+  tech-spec-writer:
+    name: tech-spec-writer
+    description: Converts high-level architecture into detailed, human-readable Technical
+      Specifications. The bridge between Architect and Developers.
+    version: 1.2.0
+    phase: architecture
+    category: analyst
+    receives_from:
+    - bmad-architect
+    - product-analyst
+    delegates_to:
+    - backend-go-expert
+    - frontend-nuxt
+    outputs:
+    - doc_type: tech-spec
+      path: project/docs/active/specs/
+      doc_category: specs
+      lifecycle: per-feature
+  telegram-mechanic:
+    name: telegram-mechanic
+    description: Expert in Telegram Bot API, Webhooks, and Mini App Authentication.
+    version: 1.2.0
+    phase: architecture
+    category: technical
+    receives_from:
+    - bmad-architect
+    delegates_to:
+    - backend-go-expert
+    - tma-expert
+    outputs:
+    - doc_type: webhook-config
+      path: project/docs/active/architecture/
+      doc_category: architecture
+      lifecycle: per-feature
+  tma-expert:
+    name: tma-expert
+    description: Expert in Telegram Mini Apps (TMA) using @tma.js/sdk for native Telegram
+      integration.
+    version: 1.2.0
+    phase: implementation
+    category: technical
+    receives_from:
+    - telegram-mechanic
+    - frontend-nuxt
+    delegates_to:
+    - qa-lead
+    outputs:
+    - doc_type: tma-config
+      path: project/docs/active/frontend/
+      doc_category: frontend
+      lifecycle: per-feature
+  tui-charm-expert:
+    name: tui-charm-expert
+    description: Expert in Terminal UI (TUI) using Charm stack (BubbleTea, Lipgloss).
+    version: 1.2.0
+    phase: implementation
+    category: technical
+    receives_from:
+    - cli-architect
+    delegates_to:
+    - qa-lead
+    outputs:
+    - doc_type: tui-design
+      path: project/docs/active/backend/
+      doc_category: backend
+      lifecycle: per-feature
+  ui-implementor:
+    name: ui-implementor
+    description: UI Implementor that converts design tokens into Tailwind, shadcn
+      components, and production CSS.
+    version: 1.2.0
+    phase: design
+    category: technical
+    receives_from:
+    - ux-designer
+    delegates_to:
+    - frontend-nuxt
+    outputs:
+    - doc_type: theming
+      path: project/docs/active/frontend/
+      doc_category: frontend
+      lifecycle: per-feature
+  ux-designer:
+    name: ux-designer
+    description: UX/UI Designer specializing in design systems, design tokens, and
+      Figma workflows.
+    version: 1.2.0
+    phase: design
+    category: analyst
+    receives_from:
+    - product-analyst
+    delegates_to:
+    - ui-implementor
+    outputs:
+    - doc_type: tokens
+      path: project/docs/active/design/
+      doc_category: design
+      lifecycle: per-feature
+    - doc_type: design-system
+      path: project/docs/active/design/
+      doc_category: design
+      lifecycle: per-feature
+phases:
+  implementation:
+  - backend-go-expert
+  - frontend-nuxt
+  - tma-expert
+  - tui-charm-expert
+  architecture:
+  - bmad-architect
+  - cli-architect
+  - tech-spec-writer
+  - telegram-mechanic
+  utility:
+  - debugger
+  - doc-janitor
+  - mcp-expert
+  - project-bro
+  - refactor-architect
+  delivery:
+  - devops-sre
+  - qa-lead
+  discovery:
+  - feature-fit
+  - idea-interview
+  definition:
+  - product-analyst
+  design:
+  - ui-implementor
+  - ux-designer
+handoffs:
+- from: backend-go-expert
+  to: qa-lead
+  doc_type: service-implementation
+  path: project/docs/active/backend/
+- from: bmad-architect
+  to: tech-spec-writer
+  doc_type: context-map
+  path: project/docs/active/architecture/
+- from: bmad-architect
+  to: tech-spec-writer
+  doc_type: api-contracts
+  path: project/docs/active/architecture/
+- from: bmad-architect
+  to: tech-spec-writer
+  doc_type: decision-log
+  path: project/docs/
+- from: cli-architect
+  to: tui-charm-expert
+  doc_type: cli-design
+  path: project/docs/active/architecture/
+- from: cli-architect
+  to: backend-go-expert
+  doc_type: cli-design
+  path: project/docs/active/architecture/
+- from: debugger
+  to: qa-lead
+  doc_type: debug-report
+  path: project/docs/active/bugs/
+- from: debugger
+  to: qa-lead
+  doc_type: known-issues
+  path: project/docs/
+- from: feature-fit
+  to: product-analyst
+  doc_type: feature-brief
+  path: project/docs/active/discovery/
+- from: frontend-nuxt
+  to: qa-lead
+  doc_type: ui-implementation
+  path: project/docs/active/frontend/
+- from: idea-interview
+  to: product-analyst
+  doc_type: discovery-brief
+  path: project/docs/active/discovery/
+- from: mcp-expert
+  to: backend-go-expert
+  doc_type: server-config
+  path: project/docs/active/architecture/
+- from: mcp-expert
+  to: devops-sre
+  doc_type: server-config
+  path: project/docs/active/architecture/
+- from: product-analyst
+  to: bmad-architect
+  doc_type: roadmap
+  path: project/docs/
+- from: product-analyst
+  to: bmad-architect
+  doc_type: user-stories
+  path: project/docs/active/product/
+- from: product-analyst
+  to: bmad-architect
+  doc_type: requirements
+  path: project/docs/active/specs/
+- from: product-analyst
+  to: bmad-architect
+  doc_type: backlog
+  path: project/docs/
+- from: product-analyst
+  to: tech-spec-writer
+  doc_type: roadmap
+  path: project/docs/
+- from: product-analyst
+  to: tech-spec-writer
+  doc_type: user-stories
+  path: project/docs/active/product/
+- from: product-analyst
+  to: tech-spec-writer
+  doc_type: requirements
+  path: project/docs/active/specs/
+- from: product-analyst
+  to: tech-spec-writer
+  doc_type: backlog
+  path: project/docs/
+- from: qa-lead
+  to: devops-sre
+  doc_type: test-cases
+  path: project/docs/active/qa/
+- from: qa-lead
+  to: devops-sre
+  doc_type: test-report
+  path: project/docs/active/qa/
+- from: refactor-architect
+  to: backend-go-expert
+  doc_type: refactoring-overview
+  path: project/docs/active/refactoring/
+- from: refactor-architect
+  to: frontend-nuxt
+  doc_type: refactoring-overview
+  path: project/docs/active/refactoring/
+- from: refactor-architect
+  to: devops-sre
+  doc_type: refactoring-overview
+  path: project/docs/active/refactoring/
+- from: tech-spec-writer
+  to: backend-go-expert
+  doc_type: tech-spec
+  path: project/docs/active/specs/
+- from: tech-spec-writer
+  to: frontend-nuxt
+  doc_type: tech-spec
+  path: project/docs/active/specs/
+- from: telegram-mechanic
+  to: backend-go-expert
+  doc_type: webhook-config
+  path: project/docs/active/architecture/
+- from: telegram-mechanic
+  to: tma-expert
+  doc_type: webhook-config
+  path: project/docs/active/architecture/
+- from: tma-expert
+  to: qa-lead
+  doc_type: tma-config
+  path: project/docs/active/frontend/
+- from: tui-charm-expert
+  to: qa-lead
+  doc_type: tui-design
+  path: project/docs/active/backend/
+- from: ui-implementor
+  to: frontend-nuxt
+  doc_type: theming
+  path: project/docs/active/frontend/
+- from: ux-designer
+  to: ui-implementor
+  doc_type: tokens
+  path: project/docs/active/design/
+- from: ux-designer
+  to: ui-implementor
+  doc_type: design-system
+  path: project/docs/active/design/

@@ -102,16 +102,16 @@ def generate_team_file(preset_name: str, skill_names: list, blueprint_skills: Pa
 
 def main():
     root = Path(__file__).parent.parent
-    blueprint_skills = root / "blueprint" / "skills"
-    presets_file = root / "blueprint" / "_meta" / "presets.yaml"
-    output_dir = root / "blueprint" / "_meta" / "_teams"
+    src_skills = root / "src" / "skills"
+    presets_file = root / "src" / "_meta" / "presets.yaml"
+    output_dir = root / "src" / "_meta" / "teams"
     
-    if not blueprint_skills.exists():
-        print("❌ blueprint/skills not found")
+    if not src_skills.exists():
+        print("❌ src/skills not found")
         return
     
     if not presets_file.exists():
-        print("❌ blueprint/_meta/presets.yaml not found")
+        print("❌ src/_meta/presets.yaml not found")
         return
     
     # Create output directory
@@ -127,12 +127,12 @@ def main():
         if preset_name.startswith("_"):
             continue
             
-        skill_names = resolve_skills(preset_name, presets, blueprint_skills)
+        skill_names = resolve_skills(preset_name, presets, src_skills)
         preset_desc = preset_config.get("description", f"{preset_name} preset")
-        count = generate_team_file(preset_name, skill_names, blueprint_skills, output_dir, preset_desc)
+        count = generate_team_file(preset_name, skill_names, src_skills, output_dir, preset_desc)
         print(f"  ✅ TEAM_{preset_name}.md ({count} skills)")
     
-    print(f"\n📁 Generated {len(presets)} team files in blueprint/_meta/_teams/")
+    print(f"\n📁 Generated {len(presets)} team files in src/_meta/teams/")
 
 
 if __name__ == "__main__":
