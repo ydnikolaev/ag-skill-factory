@@ -25,3 +25,14 @@
 | 🟡 To Review | roadmap.md, user-stories.md, requirements.md | `review/product/`, `review/specs/` | User approves drafts |
 | ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 ===== /product-analyst ===== -->
+
+<!-- ===== backend-go-expert =====
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | service-implementation.md | `active/backend/` | Implementation complete |
+| 📖 Reads | `<feature>-tech-spec.md` | `active/specs/` | On activation |
+| 📖 Reads | api-contracts.yaml | `active/architecture/` | On activation |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | service-implementation.md | `review/backend/` | Ready for QA |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
+===== /backend-go-expert ===== -->

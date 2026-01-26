@@ -16,3 +16,9 @@ See PIPELINE.md for full team structure.
 - **Architect**: `@bmad-architect` (Pass specs for DDD design)
 - **QA**: `@qa-lead` (They test against your specs)
 ===== /product-analyst ===== -->
+
+<!-- ===== backend-go-expert =====
+- **Architect**: `@bmad-architect` (Follow their Context Map)
+- **Frontend**: `@frontend-nuxt` (Serve their JSON needs)
+- **Telegram**: `@telegram-mechanic` (Trust their `initData` validation)
+===== /backend-go-expert ===== -->

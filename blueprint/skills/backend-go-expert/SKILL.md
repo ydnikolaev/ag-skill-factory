@@ -47,10 +47,7 @@ This skill builds the **Core** of the system using Go 1.25+ and Clean Architectu
 
 <!-- INCLUDE: _meta/_skills/sections/language-requirements.md -->
 
-## Team Collaboration
-- **Architect**: `@bmad-architect` (Follow their Context Map)
-- **Frontend**: `@frontend-nuxt` (Serve their JSON needs)
-- **Telegram**: `@telegram-mechanic` (Trust their `initData` validation)
+<!-- INCLUDE: _meta/_skills/sections/team-collaboration.md -->
 
 ## Workflow
 
@@ -119,15 +116,7 @@ Key points:
 >
 > **Forbidden:** Untracked TODOs, undocumented hardcoded values.
 
-## Git Protocol (Hard Stop)
-
-> [!CAUTION]
-> **Follow `../standards/GIT_PROTOCOL.md`.**
-> 1. **Branch**: Work in `feat/<name>` or `fix/<name>`. Never commit directly to `main`.
-> 2. **Commit**: Use Conventional Commits (`feat:`, `fix:`, `chore:`).
-> 3. **Atomic**: One commit = One logical change.
->
-> **Reject**: "wip", "update", "fix" as commit messages.
+<!-- INCLUDE: _meta/_skills/sections/git-protocol.md -->
 
 
 **When changing code, always report:**
@@ -135,34 +124,12 @@ Key points:
 - How to run: `go test ./internal/...`
 - What they prove (behavior covered)
 
-## References
-
-See `references/` for detailed guides:
-- `security-checklist.md` — Auth, secrets, input validation
-- `observability-guide.md` — Logging, correlation ID, metrics
-- `performance-guide.md` — N+1, caching, optimization
-- `migrations-guide.md` — Safe DB migrations
-- `rest-integration-checklist.md` — External API patterns
+<!-- INCLUDE: _meta/_skills/sections/resources.md -->
 
 
-## Iteration Protocol (Ephemeral → Persistent)
+<!-- INCLUDE: _meta/_skills/sections/brain-to-docs.md -->
 
-> [!IMPORTANT]
-> **Phase 1: Draft in Brain** — Create As-Built Report as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/backend/`
-
-## Document Lifecycle
-
-> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
-
-| Operation | Document | Location | Trigger |
-|-----------|----------|----------|---------|
-| 🔵 Creates | service-implementation.md | `active/backend/` | Implementation complete |
-| 📖 Reads | `<feature>-tech-spec.md` | `active/specs/` | On activation |
-| 📖 Reads | api-contracts.yaml | `active/architecture/` | On activation |
-| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
-| 🟡 To Review | service-implementation.md | `review/backend/` | Ready for QA |
-| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
+<!-- INCLUDE: _meta/_skills/sections/document-structure-protocol.md -->
 
 ## Pre-Handoff Validation (Hard Stop)
 
