@@ -92,8 +92,8 @@ func initConfig() {
 		viper.SetConfigType("yaml")
 		viper.SetConfigName("config")
 
-		// Set defaults — now points to blueprint/
-		viper.SetDefault("source", home+"/Developer/antigravity/antigravity-factory/blueprint")
+		// Set defaults — now points to dist/_agent/ (built from src/)
+		viper.SetDefault("source", home+"/Developer/antigravity/antigravity-factory/dist/_agent")
 	}
 
 	viper.AutomaticEnv()

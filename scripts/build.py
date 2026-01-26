@@ -70,9 +70,9 @@ def process_includes(content: str, src_dir: Path, file_path: Path) -> str:
 
 
 def build_skills(src_dir: Path, dist_dir: Path):
-    """Build skills from src/ to dist/.agent/skills/."""
+    """Build skills from src/ to dist/_agent/skills/."""
     src_skills = src_dir / "skills"
-    dist_skills = dist_dir / ".agent" / "skills"
+    dist_skills = dist_dir / "_agent" / "skills"
     
     if not src_skills.exists():
         print("  ⚠️  No src/skills/ directory")
@@ -112,9 +112,9 @@ def build_skills(src_dir: Path, dist_dir: Path):
 
 
 def build_rules(src_dir: Path, dist_dir: Path):
-    """Build rules from src/ to dist/.agent/rules/."""
+    """Build rules from src/ to dist/_agent/rules/."""
     src_rules = src_dir / "rules"
-    dist_rules = dist_dir / ".agent" / "rules"
+    dist_rules = dist_dir / "_agent" / "rules"
     
     if not src_rules.exists():
         print("  ⚠️  No src/rules/ directory")
@@ -134,9 +134,9 @@ def build_rules(src_dir: Path, dist_dir: Path):
 
 
 def build_workflows(src_dir: Path, dist_dir: Path):
-    """Build workflows from src/ to dist/.agent/workflows/."""
+    """Build workflows from src/ to dist/_agent/workflows/."""
     src_workflows = src_dir / "workflows"
-    dist_workflows = dist_dir / ".agent" / "workflows"
+    dist_workflows = dist_dir / "_agent" / "workflows"
     
     if not src_workflows.exists():
         print("  ⚠️  No src/workflows/ directory")

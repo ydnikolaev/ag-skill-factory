@@ -30,17 +30,17 @@ validate:
 		echo "Usage: make validate SKILL=<skill-name>"; \
 		exit 1; \
 	fi
-	@python3 $(VALIDATOR) $(DIST_DIR)/.agent/skills/$(SKILL)
+	@python3 $(VALIDATOR) $(DIST_DIR)/_agent/skills/$(SKILL)
 
 # Validate all dist/ skills (must run build first)
 validate-all:
 	@echo "🔍 Validating all skills in dist/..."
-	@if [ ! -d "$(DIST_DIR)/.agent/skills" ]; then \
+	@if [ ! -d "$(DIST_DIR)/_agent/skills" ]; then \
 		echo "⚠️  dist/ not found. Run 'make build' first."; \
 		exit 1; \
 	fi
 	@failed=0; \
-	for skill in $(DIST_DIR)/.agent/skills/*/; do \
+	for skill in $(DIST_DIR)/_agent/skills/*/; do \
 		if [ -f "$$skill/SKILL.md" ]; then \
 			skill_name=$$(basename "$$skill"); \
 			if ! python3 $(VALIDATOR) "$$skill" > /dev/null 2>&1; then \
