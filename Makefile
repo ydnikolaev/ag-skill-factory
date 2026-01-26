@@ -89,7 +89,10 @@ generate-pipelines:
 	@python3 scripts/generate_pipelines.py
 
 # Generate all (teams + pipelines)
-generate-all: generate-teams generate-pipelines
+generate-sections:
+	@python3 scripts/generate_section_matrix.py
+
+generate-all: generate-teams generate-pipelines generate-sections
 
 # Build factory CLI binary
 build-factory:
