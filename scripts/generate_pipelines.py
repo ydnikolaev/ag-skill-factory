@@ -6,8 +6,8 @@ Usage:
     python3 scripts/generate_pipelines.py
     
 Output:
-    blueprint/_meta/skills/skill-matrix.yaml - Full skill matrix
-    blueprint/_meta/pipelines/PIPELINE_<preset>.md - Pipeline per preset
+    blueprint/_meta/_skills/skill-matrix.yaml - Full skill matrix
+    blueprint/_meta/_pipelines/PIPELINE_<preset>.md - Pipeline per preset
 """
 
 import os
@@ -201,8 +201,8 @@ def main():
     root = Path(__file__).parent.parent
     blueprint_skills = root / "blueprint" / "skills"
     presets_file = root / "blueprint" / "_meta" / "presets.yaml"
-    matrix_output = root / "blueprint" / "_meta" / "skills" / "skill-matrix.yaml"
-    pipelines_output = root / "blueprint" / "_meta" / "pipelines"
+    matrix_output = root / "blueprint" / "_meta" / "_skills" / "skill-matrix.yaml"
+    pipelines_output = root / "blueprint" / "_meta" / "_pipelines"
     
     if not blueprint_skills.exists():
         print("❌ blueprint/skills not found")
@@ -237,7 +237,7 @@ def main():
         count = generate_pipeline_file(preset_name, skill_names, matrix, pipelines_output, preset_desc)
         print(f"  ✅ PIPELINE_{preset_name}.md ({len(skill_names)} skills, {count} handoffs)")
     
-    print(f"\n📁 Generated {len(presets)} pipeline files in blueprint/_meta/pipelines/")
+    print(f"\n📁 Generated {len(presets)} pipeline files in blueprint/_meta/_pipelines/")
 
 
 if __name__ == "__main__":

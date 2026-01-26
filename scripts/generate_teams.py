@@ -6,7 +6,7 @@ Usage:
     python3 scripts/generate_teams.py
     
 Output:
-    blueprint/_meta/teams/TEAM_<preset>.md for each preset
+    blueprint/_meta/_teams/TEAM_<preset>.md for each preset
 """
 
 import os
@@ -104,7 +104,7 @@ def main():
     root = Path(__file__).parent.parent
     blueprint_skills = root / "blueprint" / "skills"
     presets_file = root / "blueprint" / "_meta" / "presets.yaml"
-    output_dir = root / "blueprint" / "_meta" / "teams"
+    output_dir = root / "blueprint" / "_meta" / "_teams"
     
     if not blueprint_skills.exists():
         print("❌ blueprint/skills not found")
@@ -129,7 +129,7 @@ def main():
         count = generate_team_file(preset_name, skill_names, blueprint_skills, output_dir, preset_desc)
         print(f"  ✅ TEAM_{preset_name}.md ({count} skills)")
     
-    print(f"\n📁 Generated {len(presets)} team files in blueprint/_meta/teams/")
+    print(f"\n📁 Generated {len(presets)} team files in blueprint/_meta/_teams/")
 
 
 if __name__ == "__main__":
