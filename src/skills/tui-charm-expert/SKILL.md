@@ -11,6 +11,7 @@ presets:
 
 receives_from:
   - cli-architect
+  - qa-lead  # return path: bugs found in testing
 
 delegates_to:
   - qa-lead

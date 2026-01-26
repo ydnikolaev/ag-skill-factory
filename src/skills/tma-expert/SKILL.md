@@ -12,6 +12,7 @@ presets:
 receives_from:
   - telegram-mechanic
   - frontend-nuxt
+  - qa-lead  # return path: bugs found in testing
 
 delegates_to:
   - qa-lead

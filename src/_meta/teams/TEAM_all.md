@@ -25,6 +25,7 @@ description: Team roster for all preset. Apply when collaborating or delegating.
 | `refactor-architect` | Analyzes codebase, designs modular refactoring specs, and delegates to domain executors. Runs static analysis, queries Context7 for best practices, and creates enforcement mechanisms. |
 | `tech-spec-writer` | Converts high-level architecture into detailed, human-readable Technical Specifications. The bridge between Architect and Developers. |
 | `telegram-mechanic` | Expert in Telegram Bot API, Webhooks, and Mini App Authentication. |
+| `timeweb-sysadmin` | No description |
 | `tma-expert` | Expert in Telegram Mini Apps (TMA) using @tma.js/sdk for native Telegram integration. |
 | `tui-charm-expert` | Expert in Terminal UI (TUI) using Charm stack (BubbleTea, Lipgloss). |
 | `ui-implementor` | UI Implementor that converts design tokens into Tailwind, shadcn components, and production CSS. |

@@ -45,7 +45,14 @@ def resolve_skills(preset_name: str, presets: dict, blueprint_skills: Path) -> l
     if preset.get("skills") == "*":
         for skill_path in blueprint_skills.iterdir():
             if skill_path.is_dir() and not skill_path.name.startswith("."):
-                skills.add(skill_path.name)
+                # Exclude 'private' folder - it's a container, not a skill
+                if skill_path.name == "private":
+                    # Add private skills directly
+                    for private_skill in skill_path.iterdir():
+                        if private_skill.is_dir():
+                            skills.add(private_skill.name)
+                else:
+                    skills.add(skill_path.name)
         return sorted(skills)
     
     # Handle extends

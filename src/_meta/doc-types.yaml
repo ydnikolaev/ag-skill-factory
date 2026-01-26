@@ -80,6 +80,15 @@ types:
     doc_type: feature-brief
     template: _feature-brief.md
     lifecycle: per-feature
+  work-unit-registry:
+    phase: discovery
+    creator: idea-interview
+    consumers: &id003
+    - product-analyst
+    category: project
+    doc_type: work-unit-registry
+    template: _work-unit-registry.md
+    lifecycle: per-feature
   ui-implementation:
     phase: implementation
     creator: frontend-nuxt
@@ -92,8 +101,7 @@ types:
   discovery-brief:
     phase: discovery
     creator: idea-interview
-    consumers:
-    - product-analyst
+    consumers: *id003
     category: discovery
     doc_type: discovery-brief
     template: _discovery-brief.md
@@ -111,7 +119,7 @@ types:
   roadmap:
     phase: definition
     creator: product-analyst
-    consumers: &id003
+    consumers: &id004
     - bmad-architect
     - tech-spec-writer
     category: product
@@ -121,7 +129,7 @@ types:
   user-stories:
     phase: definition
     creator: product-analyst
-    consumers: *id003
+    consumers: *id004
     category: product
     doc_type: user-stories
     template: _user-stories.md
@@ -129,7 +137,7 @@ types:
   requirements:
     phase: definition
     creator: product-analyst
-    consumers: *id003
+    consumers: *id004
     category: specs
     doc_type: requirements
     template: _requirements.md
@@ -137,7 +145,7 @@ types:
   backlog:
     phase: definition
     creator: product-analyst
-    consumers: *id003
+    consumers: *id004
     category: project
     doc_type: backlog
     template: _backlog.md
@@ -145,7 +153,7 @@ types:
   test-cases:
     phase: delivery
     creator: qa-lead
-    consumers: &id004
+    consumers: &id005
     - devops-sre
     category: qa
     doc_type: test-cases
@@ -154,7 +162,7 @@ types:
   test-report:
     phase: delivery
     creator: qa-lead
-    consumers: *id004
+    consumers: *id005
     category: qa
     doc_type: test-report
     template: _test-report.md
@@ -220,7 +228,7 @@ types:
   tokens:
     phase: design
     creator: ux-designer
-    consumers: &id005
+    consumers: &id006
     - ui-implementor
     category: design
     doc_type: tokens
@@ -229,7 +237,7 @@ types:
   design-system:
     phase: design
     creator: ux-designer
-    consumers: *id005
+    consumers: *id006
     category: design
     doc_type: design-system
     template: _design-system.md

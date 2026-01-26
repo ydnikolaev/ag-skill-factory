@@ -17,6 +17,10 @@ outputs:
     path: project/docs/active/discovery/
     doc_category: discovery
     lifecycle: per-feature
+  - doc_type: work-unit-registry
+    path: project/docs/registry/
+    doc_category: project
+    lifecycle: per-feature
 ---
 
 # Idea Interview

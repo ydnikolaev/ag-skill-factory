@@ -179,9 +179,11 @@ def generate_pipeline_file(preset_name: str, skill_names: list, matrix: dict,
     
     # Build return paths (reverse of handoffs for bug scenarios)
     return_paths = []
+    # Skills that can receive bugs back from qa-lead
+    implementation_skills = ["backend-go-expert", "frontend-nuxt", "tma-expert", "tui-charm-expert"]
     for h in preset_handoffs:
-        # qa-lead → backend/frontend is a common return path
-        if h["from"] in ["backend-go-expert", "frontend-nuxt"] and h["to"] == "qa-lead":
+        # qa-lead → implementation skills is a common return path
+        if h["from"] in implementation_skills and h["to"] == "qa-lead":
             return_paths.append({
                 "from": "qa-lead",
                 "to": h["from"],

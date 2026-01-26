@@ -5,22 +5,113 @@ Build script: src/ → dist/
 Processes {{include: path}} directives and assembles final files.
 
 Usage:
-    python3 scripts/build.py
+    python3 scripts/build.py                     # Full build (all skills)
+    python3 scripts/build.py --team backend      # Only backend team skills
+    python3 scripts/build.py --team tma,core     # Multiple teams
+    python3 scripts/build.py --list-teams        # Show available teams
     
     # Or via make
-    make build
+    make build                    # Full build
+    make build-team TEAM=backend  # Team-specific build
 """
 
 import re
+import sys
 import shutil
+import argparse
 from pathlib import Path
 from datetime import datetime
+
+import yaml
 
 # Include patterns:
 # New: {{include: partials/pre-handoff-validation.md}}
 # Legacy: <!-- INCLUDE: _meta/_skills/sections/pre-handoff-validation.md -->
 INCLUDE_PATTERN = re.compile(r'\{\{include:\s*([^\}]+)\}\}')
 LEGACY_INCLUDE_PATTERN = re.compile(r'<!--\s*INCLUDE:\s*([^>]+)\s*-->')
+
+# YAML frontmatter pattern
+FRONTMATTER_PATTERN = re.compile(r'^---\s*\n(.*?)\n---', re.DOTALL)
+
+
+def parse_frontmatter(content: str) -> dict:
+    """Extract YAML frontmatter from markdown content."""
+    match = FRONTMATTER_PATTERN.match(content)
+    if not match:
+        return {}
+    try:
+        return yaml.safe_load(match.group(1)) or {}
+    except yaml.YAMLError:
+        return {}
+
+
+def load_preset_hierarchy(src_dir: Path) -> dict:
+    """Load preset hierarchy to resolve inheritance."""
+    hierarchy_file = src_dir / "_meta" / "preset-hierarchy.yaml"
+    if not hierarchy_file.exists():
+        return {}
+    
+    with open(hierarchy_file) as f:
+        return yaml.safe_load(f) or {}
+
+
+def resolve_team_presets(team: str, hierarchy: dict) -> set:
+    """
+    Resolve all presets that should be included for a team.
+    E.g., 'backend' → {'backend', 'core'} (because backend inherits core)
+    """
+    if team == "all":
+        return {"all"}
+    
+    resolved = {team}
+    
+    # Get direct inheritance
+    team_config = hierarchy.get(team, {})
+    inherits = team_config.get("inherits", [])
+    
+    for parent in inherits:
+        resolved.update(resolve_team_presets(parent, hierarchy))
+    
+    return resolved
+
+
+def get_teams_for_preset(preset: str, hierarchy: dict) -> set:
+    """
+    Get all teams that include this preset.
+    E.g., 'core' → {'core', 'backend', 'frontend', 'fullstack', 'tma', 'cli'}
+    """
+    teams = {preset}
+    
+    for team_name, team_config in hierarchy.items():
+        inherits = team_config.get("inherits", [])
+        if preset in inherits:
+            teams.update(get_teams_for_preset(team_name, hierarchy))
+    
+    return teams
+
+
+def skill_matches_teams(skill_presets: list, target_teams: set, hierarchy: dict) -> bool:
+    """Check if a skill belongs to any of the target teams."""
+    if "all" in target_teams:
+        return True
+    
+    for preset in skill_presets:
+        # Direct match
+        if preset in target_teams:
+            return True
+        
+        # Check if any target team inherits from this preset
+        teams_for_preset = get_teams_for_preset(preset, hierarchy)
+        if teams_for_preset & target_teams:
+            return True
+        
+        # Check if this skill's preset is a parent of target teams
+        for target in target_teams:
+            resolved = resolve_team_presets(target, hierarchy)
+            if preset in resolved:
+                return True
+    
+    return False
 
 
 def remap_legacy_path(legacy_path: str) -> str:
@@ -69,17 +160,18 @@ def process_includes(content: str, src_dir: Path, file_path: Path) -> str:
     return content
 
 
-def build_skills(src_dir: Path, dist_dir: Path):
+def build_skills(src_dir: Path, dist_dir: Path, target_teams: set = None, hierarchy: dict = None):
     """Build skills from src/ to dist/skills/."""
     src_skills = src_dir / "skills"
     dist_skills = dist_dir / "skills"
     
     if not src_skills.exists():
         print("  ⚠️  No src/skills/ directory")
-        return 0
+        return 0, 0
     
     dist_skills.mkdir(parents=True, exist_ok=True)
     count = 0
+    skipped = 0
     
     # Process all skill directories (including private/*)
     skill_dirs = []
@@ -102,8 +194,18 @@ def build_skills(src_dir: Path, dist_dir: Path):
         if not skill_md.exists():
             continue
         
-        # Process includes
+        # Read and parse frontmatter
         content = skill_md.read_text()
+        frontmatter = parse_frontmatter(content)
+        skill_presets = frontmatter.get("presets", [])
+        
+        # Filter by team if specified
+        if target_teams and hierarchy:
+            if not skill_matches_teams(skill_presets, target_teams, hierarchy):
+                skipped += 1
+                continue
+        
+        # Process includes
         processed = process_includes(content, src_dir, skill_md)
         
         # Write to dist (private skills go to top-level, not private/)
@@ -128,11 +230,12 @@ def build_skills(src_dir: Path, dist_dir: Path):
         
         count += 1
         marker = "🔒" if is_private else "✅"
-        print(f"  {marker} {skill_name}")
+        presets_str = f" [{', '.join(skill_presets)}]" if skill_presets else ""
+        print(f"  {marker} {skill_name}{presets_str}")
     
-    return count
+    return count, skipped
 
-def build_rules(src_dir: Path, dist_dir: Path):
+def build_rules(src_dir: Path, dist_dir: Path, target_team: str = None):
     """Build rules from src/ to dist/rules/."""
     src_rules = src_dir / "rules"
     dist_rules = dist_dir / "rules"
@@ -150,6 +253,37 @@ def build_rules(src_dir: Path, dist_dir: Path):
         (dist_rules / rule_file.name).write_text(processed)
         count += 1
         print(f"  ✅ {rule_file.name}")
+    
+    # Copy team-specific TEAM and PIPELINE files
+    team_name = target_team if target_team else "all"
+    team_count = build_team_rules(src_dir, dist_rules, team_name)
+    
+    return count + team_count
+
+
+def build_team_rules(src_dir: Path, dist_rules: Path, team_name: str):
+    """Copy TEAM_*.md and PIPELINE_*.md for the target team to rules/."""
+    count = 0
+    
+    # TEAM file
+    team_file = src_dir / "_meta" / "teams" / f"TEAM_{team_name}.md"
+    if team_file.exists():
+        content = team_file.read_text()
+        (dist_rules / "TEAM.md").write_text(content)
+        count += 1
+        print(f"  📋 TEAM.md (from {team_name})")
+    else:
+        print(f"  ⚠️  TEAM_{team_name}.md not found")
+    
+    # PIPELINE file
+    pipeline_file = src_dir / "_meta" / "pipelines" / f"PIPELINE_{team_name}.md"
+    if pipeline_file.exists():
+        content = pipeline_file.read_text()
+        (dist_rules / "PIPELINE.md").write_text(content)
+        count += 1
+        print(f"  🔀 PIPELINE.md (from {team_name})")
+    else:
+        print(f"  ⚠️  PIPELINE_{team_name}.md not found")
     
     return count
 
@@ -232,12 +366,64 @@ def clean_dist(dist_dir: Path):
         print("🗑️  Cleaned dist/")
 
 
+def list_available_teams(src_dir: Path):
+    """List all available teams from preset-hierarchy.yaml."""
+    hierarchy = load_preset_hierarchy(src_dir)
+    
+    print("\n📋 Available Teams:\n")
+    for team_name, config in sorted(hierarchy.items()):
+        desc = config.get("description", "")
+        inherits = config.get("inherits", [])
+        inherits_str = f" (extends: {', '.join(inherits)})" if inherits else ""
+        print(f"  • {team_name}: {desc}{inherits_str}")
+    
+    print("\n💡 Usage: python3 scripts/build.py --team <team-name>")
+    print("   Example: python3 scripts/build.py --team backend")
+
+
 def main():
+    parser = argparse.ArgumentParser(description="Build src/ to dist/")
+    parser.add_argument(
+        "--team", "-t",
+        help="Build only skills for specific team(s). Comma-separated for multiple.",
+        default=None
+    )
+    parser.add_argument(
+        "--list-teams",
+        action="store_true",
+        help="List available teams and exit"
+    )
+    args = parser.parse_args()
+    
     root = Path(__file__).parent.parent
     src_dir = root / "src"
     dist_dir = root / "dist"
     
-    print("🔨 Building from src/ to dist/...")
+    # List teams mode
+    if args.list_teams:
+        list_available_teams(src_dir)
+        return
+    
+    # Load hierarchy for team filtering
+    hierarchy = load_preset_hierarchy(src_dir)
+    
+    # Parse target teams
+    target_teams = None
+    if args.team:
+        target_teams = set(t.strip() for t in args.team.split(","))
+        # Validate teams
+        for team in target_teams:
+            if team not in hierarchy and team != "all":
+                print(f"❌ Unknown team: {team}")
+                print(f"   Available: {', '.join(sorted(hierarchy.keys()))}")
+                sys.exit(1)
+    
+    # Header
+    if target_teams:
+        teams_str = ", ".join(sorted(target_teams))
+        print(f"🔨 Building for team(s): {teams_str}")
+    else:
+        print("🔨 Building from src/ to dist/...")
     print(f"   Source: {src_dir}")
     print(f"   Output: {dist_dir}")
     print("")
@@ -246,12 +432,15 @@ def main():
     clean_dist(dist_dir)
     dist_dir.mkdir(parents=True, exist_ok=True)
     
-    # Build each component
+    # Build skills (with team filtering)
     print("📦 Building skills...")
-    skills_count = build_skills(src_dir, dist_dir)
+    skills_count, skills_skipped = build_skills(src_dir, dist_dir, target_teams, hierarchy)
     
+    # Always build other components (rules, workflows, etc.)
+    # For rules, pass the target team (use first if multiple, or None for "all")
+    target_team = list(target_teams)[0] if target_teams and len(target_teams) == 1 else None
     print("\n📜 Building rules...")
-    rules_count = build_rules(src_dir, dist_dir)
+    rules_count = build_rules(src_dir, dist_dir, target_team)
     
     print("\n⚡ Building workflows...")
     workflows_count = build_workflows(src_dir, dist_dir)
@@ -265,7 +454,7 @@ def main():
     # Summary
     print("\n" + "=" * 40)
     print(f"✅ Build complete!")
-    print(f"   Skills:    {skills_count}")
+    print(f"   Skills:    {skills_count}" + (f" (skipped {skills_skipped})" if skills_skipped else ""))
     print(f"   Rules:     {rules_count}")
     print(f"   Workflows: {workflows_count}")
     print(f"   Templates: {templates_count}")

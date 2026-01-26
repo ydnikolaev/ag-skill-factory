@@ -11,7 +11,7 @@ description: Pipeline for tma preset. Skill handoffs and phases.
 
 | Phase | Skills | Outputs |
 |-------|--------|---------|
-| Discovery | `@feature-fit`, `@idea-interview` | feature-brief, discovery-brief |
+| Discovery | `@feature-fit`, `@idea-interview` | feature-brief, work-unit-registry, discovery-brief, work-unit-registry |
 | Definition | `@product-analyst` | roadmap, user-stories, requirements, backlog |
 | Design | `@ui-implementor`, `@ux-designer` | theming, tokens, design-system |
 | Architecture | `@bmad-architect`, `@tech-spec-writer`, `@telegram-mechanic` | context-map, api-contracts, decision-log, tech-spec, webhook-config |
@@ -27,8 +27,10 @@ description: Pipeline for tma preset. Skill handoffs and phases.
 | `@bmad-architect` | `@tech-spec-writer` | api-contracts |
 | `@bmad-architect` | `@tech-spec-writer` | decision-log |
 | `@feature-fit` | `@product-analyst` | feature-brief |
+| `@feature-fit` | `@product-analyst` | work-unit-registry |
 | `@frontend-nuxt` | `@qa-lead` | ui-implementation |
 | `@idea-interview` | `@product-analyst` | discovery-brief |
+| `@idea-interview` | `@product-analyst` | work-unit-registry |
 | `@product-analyst` | `@bmad-architect` | roadmap |
 | `@product-analyst` | `@bmad-architect` | user-stories |
 | `@product-analyst` | `@bmad-architect` | requirements |
@@ -50,3 +52,4 @@ description: Pipeline for tma preset. Skill handoffs and phases.
 | From | To | Trigger |
 |------|-----|---------|
 | `@qa-lead` | `@frontend-nuxt` | Bugs found in frontend nuxt |
+| `@qa-lead` | `@tma-expert` | Bugs found in tma expert |

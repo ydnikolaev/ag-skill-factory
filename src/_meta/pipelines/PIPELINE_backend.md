@@ -11,7 +11,7 @@ description: Pipeline for backend preset. Skill handoffs and phases.
 
 | Phase | Skills | Outputs |
 |-------|--------|---------|
-| Discovery | `@feature-fit`, `@idea-interview` | feature-brief, discovery-brief |
+| Discovery | `@feature-fit`, `@idea-interview` | feature-brief, work-unit-registry, discovery-brief, work-unit-registry |
 | Definition | `@product-analyst` | roadmap, user-stories, requirements, backlog |
 | Architecture | `@bmad-architect`, `@tech-spec-writer` | context-map, api-contracts, decision-log, tech-spec |
 | Implementation | `@backend-go-expert` | service-implementation |
@@ -29,7 +29,9 @@ description: Pipeline for backend preset. Skill handoffs and phases.
 | `@debugger` | `@qa-lead` | debug-report |
 | `@debugger` | `@qa-lead` | known-issues |
 | `@feature-fit` | `@product-analyst` | feature-brief |
+| `@feature-fit` | `@product-analyst` | work-unit-registry |
 | `@idea-interview` | `@product-analyst` | discovery-brief |
+| `@idea-interview` | `@product-analyst` | work-unit-registry |
 | `@mcp-expert` | `@backend-go-expert` | server-config |
 | `@mcp-expert` | `@devops-sre` | server-config |
 | `@product-analyst` | `@bmad-architect` | roadmap |

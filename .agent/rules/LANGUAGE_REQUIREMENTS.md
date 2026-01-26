@@ -1,3 +1,7 @@
+---
+trigger: always_on
+---
+
 # LANGUAGE_REQUIREMENTS
 
 > Ephemeral artifacts in user's language; persistent docs in English only.

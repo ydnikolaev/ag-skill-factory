@@ -11,7 +11,7 @@ description: Pipeline for all preset. Skill handoffs and phases.
 
 | Phase | Skills | Outputs |
 |-------|--------|---------|
-| Discovery | `@feature-fit`, `@idea-interview` | feature-brief, discovery-brief |
+| Discovery | `@feature-fit`, `@idea-interview` | feature-brief, work-unit-registry, discovery-brief, work-unit-registry |
 | Definition | `@product-analyst` | roadmap, user-stories, requirements, backlog |
 | Design | `@ui-implementor`, `@ux-designer` | theming, tokens, design-system |
 | Architecture | `@bmad-architect`, `@cli-architect`, `@tech-spec-writer`, `@telegram-mechanic` | context-map, api-contracts, decision-log, cli-design, tech-spec, webhook-config |
@@ -32,8 +32,10 @@ description: Pipeline for all preset. Skill handoffs and phases.
 | `@debugger` | `@qa-lead` | debug-report |
 | `@debugger` | `@qa-lead` | known-issues |
 | `@feature-fit` | `@product-analyst` | feature-brief |
+| `@feature-fit` | `@product-analyst` | work-unit-registry |
 | `@frontend-nuxt` | `@qa-lead` | ui-implementation |
 | `@idea-interview` | `@product-analyst` | discovery-brief |
+| `@idea-interview` | `@product-analyst` | work-unit-registry |
 | `@mcp-expert` | `@backend-go-expert` | server-config |
 | `@mcp-expert` | `@devops-sre` | server-config |
 | `@product-analyst` | `@bmad-architect` | roadmap |
@@ -65,3 +67,5 @@ description: Pipeline for all preset. Skill handoffs and phases.
 |------|-----|---------|
 | `@qa-lead` | `@backend-go-expert` | Bugs found in backend go expert |
 | `@qa-lead` | `@frontend-nuxt` | Bugs found in frontend nuxt |
+| `@qa-lead` | `@tma-expert` | Bugs found in tma expert |
+| `@qa-lead` | `@tui-charm-expert` | Bugs found in tui charm expert |

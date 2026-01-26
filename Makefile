@@ -1,4 +1,4 @@
-.PHONY: install uninstall build build-factory install-factory install-completions generate-team validate validate-all validate-blueprint test lint clean check-loc changelog
+.PHONY: install uninstall build build-team list-teams build-factory install-factory install-completions generate-team validate validate-all validate-blueprint test lint clean check-loc changelog
 
 # Paths
 SRC_DIR := $(shell pwd)/src
@@ -17,6 +17,20 @@ build:
 	@echo "🔨 Building src/ → dist/..."
 	@python3 scripts/build.py
 	@echo ""
+
+# Build for a specific team: make build-team TEAM=backend
+build-team:
+	@if [ -z "$(TEAM)" ]; then \
+		echo "Usage: make build-team TEAM=<team-name>"; \
+		echo ""; \
+		python3 scripts/build.py --list-teams; \
+		exit 1; \
+	fi
+	@python3 scripts/build.py --team $(TEAM)
+
+# List available teams
+list-teams:
+	@python3 scripts/build.py --list-teams
 
 # Install the factory CLI (builds first)
 install: build validate-all build-factory install-factory install-completions
