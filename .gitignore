@@ -2,7 +2,6 @@
 dist/
 build/
 bin/
-cli/bin/
 
 # Python
 __pycache__/
@@ -20,8 +19,10 @@ website/.vitepress/dist/
 website/.vitepress/cache/
 website/node_modules/
 
-# Project runtime
-project/userdir/
+# User-specific content (not part of core skill-factory)
+**/userdir/
+todo/
 
 # Private skills (not tracked)
 src/skills/private/
+userdir/
