@@ -14,6 +14,7 @@ delegates_to:
 outputs:
   - artifact: discovery-brief.md
     path: project/docs/active/discovery/
+    doc_category: discovery
 ---
 
 # Idea Interview

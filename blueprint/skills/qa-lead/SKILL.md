@@ -16,8 +16,10 @@ delegates_to:
 outputs:
   - artifact: test-cases.md
     path: project/docs/active/qa/
+    doc_category: qa
   - artifact: test-report.md
     path: project/docs/active/qa/
+    doc_category: qa
 ---
 
 # QA Lead

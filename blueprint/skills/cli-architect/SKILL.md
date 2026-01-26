@@ -16,6 +16,7 @@ delegates_to:
 outputs:
   - artifact: cli-design.md
     path: project/docs/active/architecture/
+    doc_category: architecture
 ---
 
 # CLI Architect

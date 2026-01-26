@@ -16,6 +16,7 @@ delegates_to:
 outputs:
   - artifact: refactoring-overview.md
     path: project/docs/active/refactoring/
+    doc_category: refactoring
 ---
 
 # Refactor Architect 🔬

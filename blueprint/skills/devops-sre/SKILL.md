@@ -14,6 +14,7 @@ delegates_to: []
 outputs:
   - artifact: deployment-guide.md
     path: project/docs/active/infrastructure/
+    doc_category: infrastructure
 ---
 
 # DevOps SRE

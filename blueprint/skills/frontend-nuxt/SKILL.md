@@ -15,6 +15,7 @@ delegates_to:
 outputs:
   - artifact: ui-implementation.md
     path: project/docs/active/frontend/
+    doc_category: frontend
 ---
 
 # Frontend Nuxt Expert

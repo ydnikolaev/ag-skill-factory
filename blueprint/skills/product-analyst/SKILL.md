@@ -17,10 +17,13 @@ delegates_to:
 outputs:
   - artifact: roadmap.md
     path: project/docs/active/product/
+    doc_category: product
   - artifact: user-stories.md
     path: project/docs/active/product/
+    doc_category: product
   - artifact: requirements.md
     path: project/docs/active/specs/
+    doc_category: specs
 ---
 
 # Product Analyst

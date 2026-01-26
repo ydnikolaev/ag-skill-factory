@@ -17,6 +17,7 @@ delegates_to:
 outputs:
   - artifact: debug-report.md
     path: project/docs/active/bugs/
+    doc_category: bugs
 ---
 
 # Debugger 🔍

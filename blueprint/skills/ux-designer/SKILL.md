@@ -15,8 +15,10 @@ delegates_to:
 outputs:
   - artifact: tokens.json
     path: project/docs/active/design/
+    doc_category: design
   - artifact: design-system.md
     path: project/docs/active/design/
+    doc_category: design
 ---
 
 # UX Designer

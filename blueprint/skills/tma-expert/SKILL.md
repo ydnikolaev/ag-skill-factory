@@ -16,6 +16,7 @@ delegates_to:
 outputs:
   - artifact: tma-config.md
     path: project/docs/active/frontend/
+    doc_category: frontend
 ---
 
 # TMA Expert (Telegram Mini Apps)

@@ -15,6 +15,7 @@ delegates_to:
 outputs:
   - artifact: theming.md
     path: project/docs/active/frontend/
+    doc_category: frontend
 ---
 
 # UI Implementor

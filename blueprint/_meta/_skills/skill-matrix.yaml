@@ -14,6 +14,7 @@ skills:
     outputs:
     - artifact: service-implementation.md
       path: project/docs/active/backend/
+      doc_category: backend
   bmad-architect:
     name: bmad-architect
     description: The Lead Architect for Antigravity TMA projects. Enforces DDD, BMAD
@@ -28,8 +29,10 @@ skills:
     outputs:
     - artifact: context-map.md
       path: project/docs/active/architecture/
+      doc_category: architecture
     - artifact: api-contracts.yaml
       path: project/docs/active/architecture/
+      doc_category: architecture
   cli-architect:
     name: cli-architect
     description: Expert in Go CLI Architecture (Cobra, Viper, POSIX).
@@ -44,6 +47,7 @@ skills:
     outputs:
     - artifact: cli-design.md
       path: project/docs/active/architecture/
+      doc_category: architecture
   debugger:
     name: debugger
     description: 'Systematic debugging skill. 7-step workflow: Reproduce, Minimize,
@@ -61,6 +65,7 @@ skills:
     outputs:
     - artifact: debug-report.md
       path: project/docs/active/bugs/
+      doc_category: bugs
   devops-sre:
     name: devops-sre
     description: Expert in Docker, CI/CD, and delivering Go/Nuxt apps.
@@ -73,6 +78,7 @@ skills:
     outputs:
     - artifact: deployment-guide.md
       path: project/docs/active/infrastructure/
+      doc_category: infrastructure
   doc-janitor:
     name: doc-janitor
     description: Enforces document structure, archives completed work, migrates legacy
@@ -96,6 +102,7 @@ skills:
     outputs:
     - artifact: feature-brief.md
       path: project/docs/active/discovery/
+      doc_category: discovery
   frontend-nuxt:
     name: frontend-nuxt
     description: Nuxt 4 & TailwindCSS expert for modern web applications (SSR, SPA,
@@ -110,6 +117,7 @@ skills:
     outputs:
     - artifact: ui-implementation.md
       path: project/docs/active/frontend/
+      doc_category: frontend
   idea-interview:
     name: idea-interview
     description: Interview-mode skill that extracts complete project information from
@@ -124,6 +132,7 @@ skills:
     outputs:
     - artifact: discovery-brief.md
       path: project/docs/active/discovery/
+      doc_category: discovery
   mcp-expert:
     name: mcp-expert
     description: Expert on Model Context Protocol (MCP) servers. Use this skill when
@@ -139,6 +148,7 @@ skills:
     outputs:
     - artifact: server-config.md
       path: project/docs/active/architecture/
+      doc_category: architecture
   product-analyst:
     name: product-analyst
     description: Defines Vision, Roadmap, User Stories, and translates them into Technical
@@ -155,10 +165,13 @@ skills:
     outputs:
     - artifact: roadmap.md
       path: project/docs/active/product/
+      doc_category: product
     - artifact: user-stories.md
       path: project/docs/active/product/
+      doc_category: product
     - artifact: requirements.md
       path: project/docs/active/specs/
+      doc_category: specs
   project-bro:
     name: project-bro
     description: Your project awareness buddy. Knows current state, reads docs, analyzes
@@ -183,8 +196,10 @@ skills:
     outputs:
     - artifact: test-cases.md
       path: project/docs/active/qa/
+      doc_category: qa
     - artifact: test-report.md
       path: project/docs/active/qa/
+      doc_category: qa
   refactor-architect:
     name: refactor-architect
     description: Analyzes codebase, designs modular refactoring specs, and delegates
@@ -201,6 +216,7 @@ skills:
     outputs:
     - artifact: refactoring-overview.md
       path: project/docs/active/refactoring/
+      doc_category: refactoring
   tech-spec-writer:
     name: tech-spec-writer
     description: Converts high-level architecture into detailed, human-readable Technical
@@ -217,6 +233,7 @@ skills:
     outputs:
     - artifact: tech-spec.md
       path: project/docs/active/specs/
+      doc_category: specs
   telegram-mechanic:
     name: telegram-mechanic
     description: Expert in Telegram Bot API, Webhooks, and Mini App Authentication.
@@ -231,6 +248,7 @@ skills:
     outputs:
     - artifact: webhook-config.md
       path: project/docs/active/architecture/
+      doc_category: architecture
   tma-expert:
     name: tma-expert
     description: Expert in Telegram Mini Apps (TMA) using @tma.js/sdk for native Telegram
@@ -246,6 +264,7 @@ skills:
     outputs:
     - artifact: tma-config.md
       path: project/docs/active/frontend/
+      doc_category: frontend
   tui-charm-expert:
     name: tui-charm-expert
     description: Expert in Terminal UI (TUI) using Charm stack (BubbleTea, Lipgloss).
@@ -259,6 +278,7 @@ skills:
     outputs:
     - artifact: tui-design.md
       path: project/docs/active/backend/
+      doc_category: backend
   ui-implementor:
     name: ui-implementor
     description: UI Implementor that converts design tokens into Tailwind, shadcn
@@ -273,6 +293,7 @@ skills:
     outputs:
     - artifact: theming.md
       path: project/docs/active/frontend/
+      doc_category: frontend
   ux-designer:
     name: ux-designer
     description: UX/UI Designer specializing in design systems, design tokens, and
@@ -287,8 +308,10 @@ skills:
     outputs:
     - artifact: tokens.json
       path: project/docs/active/design/
+      doc_category: design
     - artifact: design-system.md
       path: project/docs/active/design/
+      doc_category: design
 phases:
   implementation:
   - backend-go-expert

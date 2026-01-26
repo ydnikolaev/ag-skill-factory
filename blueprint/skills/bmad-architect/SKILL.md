@@ -15,8 +15,10 @@ delegates_to:
 outputs:
   - artifact: context-map.md
     path: project/docs/active/architecture/
+    doc_category: architecture
   - artifact: api-contracts.yaml
     path: project/docs/active/architecture/
+    doc_category: architecture
 ---
 
 # BMAD Architect (Team Lead)

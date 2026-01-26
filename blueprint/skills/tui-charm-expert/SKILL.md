@@ -15,6 +15,7 @@ delegates_to:
 outputs:
   - artifact: tui-design.md
     path: project/docs/active/backend/
+    doc_category: backend
 ---
 
 # TUI Charm Expert

@@ -16,6 +16,7 @@ delegates_to:
 outputs:
   - artifact: service-implementation.md
     path: project/docs/active/backend/
+    doc_category: backend
 ---
 
 # Backend Go Expert

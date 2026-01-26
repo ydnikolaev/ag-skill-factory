@@ -17,6 +17,7 @@ delegates_to:
 outputs:
   - artifact: tech-spec.md
     path: project/docs/active/specs/
+    doc_category: specs
 ---
 
 # Tech Spec Writer
