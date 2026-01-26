@@ -21,6 +21,24 @@ outputs:
     lifecycle: per-feature
 ---
 
+> [!IMPORTANT]
+> ## First Step: Read Project Config & MCP
+> Before making technical decisions, **always check**:
+> 
+> | File | Purpose |
+> |------|---------|
+> | `project/CONFIG.yaml` | Stack versions, modules, architecture |
+> | `mcp.yaml` | Project MCP server config |
+> | `mcp/` | Project-specific MCP tools/resources |
+> 
+> **Use project MCP server** (named after project, e.g. `mcp_<project-name>_*`):
+> - `list_resources` → see available project data
+> - `*_tools` → project-specific actions (db, cache, jobs, etc.)
+> 
+> **Use `mcp_context7`** for library docs:
+> - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
+> - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
+
 # MCP Expert
 
 Expert-level guidance for building MCP servers. **Primary language: Go** (official SDK). Also covers Python and TypeScript.
@@ -224,22 +242,3 @@ server.Run(ctx, &mcp.StdioTransport{})
 - **Go (mcp-go)**: [github.com/mark3labs/mcp-go](https://github.com/mark3labs/mcp-go)
 - **Go (official)**: [github.com/modelcontextprotocol/go-sdk](https://github.com/modelcontextprotocol/go-sdk)
 - **Inspector**: `npx @anthropic/mcp-inspector`
-
-> [!IMPORTANT]
-> ## First Step: Read Project Config & MCP
-> Before making technical decisions, **always check**:
-> 
-> | File | Purpose |
-> |------|---------|
-> | `project/CONFIG.yaml` | Stack versions, modules, architecture |
-> | `mcp.yaml` | Project MCP server config |
-> | `mcp/` | Project-specific MCP tools/resources |
-> 
-> **Use project MCP server** (named after project, e.g. `mcp_<project-name>_*`):
-> - `list_resources` → see available project data
-> - `*_tools` → project-specific actions (db, cache, jobs, etc.)
-> 
-> **Use `mcp_context7`** for library docs:
-> - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
-> - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
-

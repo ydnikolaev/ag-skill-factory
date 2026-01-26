@@ -23,6 +23,24 @@ outputs:
     lifecycle: per-feature
 ---
 
+> [!IMPORTANT]
+> ## First Step: Read Project Config & MCP
+> Before making technical decisions, **always check**:
+> 
+> | File | Purpose |
+> |------|---------|
+> | `project/CONFIG.yaml` | Stack versions, modules, architecture |
+> | `mcp.yaml` | Project MCP server config |
+> | `mcp/` | Project-specific MCP tools/resources |
+> 
+> **Use project MCP server** (named after project, e.g. `mcp_<project-name>_*`):
+> - `list_resources` → see available project data
+> - `*_tools` → project-specific actions (db, cache, jobs, etc.)
+> 
+> **Use `mcp_context7`** for library docs:
+> - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
+> - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
+
 # TUI Charm Expert
 
 This skill makes the terminal beautiful using BubbleTea and Lipgloss.
@@ -118,23 +136,4 @@ This skill makes the terminal beautiful using BubbleTea and Lipgloss.
 ## Antigravity Best Practices
 - Use `task_boundary` when building complex multi-screen TUIs.
 - Use `notify_user` to show user the TUI mockup before full implementation.
-
-
-> [!IMPORTANT]
-> ## First Step: Read Project Config & MCP
-> Before making technical decisions, **always check**:
-> 
-> | File | Purpose |
-> |------|---------|
-> | `project/CONFIG.yaml` | Stack versions, modules, architecture |
-> | `mcp.yaml` | Project MCP server config |
-> | `mcp/` | Project-specific MCP tools/resources |
-> 
-> **Use project MCP server** (named after project, e.g. `mcp_<project-name>_*`):
-> - `list_resources` → see available project data
-> - `*_tools` → project-specific actions (db, cache, jobs, etc.)
-> 
-> **Use `mcp_context7`** for library docs:
-> - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
-> - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
 

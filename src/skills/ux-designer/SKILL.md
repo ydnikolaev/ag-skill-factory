@@ -27,6 +27,24 @@ outputs:
     lifecycle: per-feature
 ---
 
+> [!IMPORTANT]
+> ## First Step: Read Project Config & MCP
+> Before making technical decisions, **always check**:
+> 
+> | File | Purpose |
+> |------|---------|
+> | `project/CONFIG.yaml` | Stack versions, modules, architecture |
+> | `mcp.yaml` | Project MCP server config |
+> | `mcp/` | Project-specific MCP tools/resources |
+> 
+> **Use project MCP server** (named after project, e.g. `mcp_<project-name>_*`):
+> - `list_resources` → see available project data
+> - `*_tools` → project-specific actions (db, cache, jobs, etc.)
+> 
+> **Use `mcp_context7`** for library docs:
+> - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
+> - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
+
 # UX Designer
 
 This skill creates **design systems** and **design strategies**. It thinks before coding begins.
@@ -136,22 +154,3 @@ This skill creates **design systems** and **design strategies**. It thinks befor
 | 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
 | 🟡 To Review | tokens.json, design-system.md | `review/design/` | User approves drafts |
 | ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
-
-> [!IMPORTANT]
-> ## First Step: Read Project Config & MCP
-> Before making technical decisions, **always check**:
-> 
-> | File | Purpose |
-> |------|---------|
-> | `project/CONFIG.yaml` | Stack versions, modules, architecture |
-> | `mcp.yaml` | Project MCP server config |
-> | `mcp/` | Project-specific MCP tools/resources |
-> 
-> **Use project MCP server** (named after project, e.g. `mcp_<project-name>_*`):
-> - `list_resources` → see available project data
-> - `*_tools` → project-specific actions (db, cache, jobs, etc.)
-> 
-> **Use `mcp_context7`** for library docs:
-> - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
-> - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
-

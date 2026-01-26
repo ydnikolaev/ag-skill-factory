@@ -23,6 +23,24 @@ outputs:
     lifecycle: per-feature
 ---
 
+> [!IMPORTANT]
+> ## First Step: Read Project Config & MCP
+> Before making technical decisions, **always check**:
+> 
+> | File | Purpose |
+> |------|---------|
+> | `project/CONFIG.yaml` | Stack versions, modules, architecture |
+> | `mcp.yaml` | Project MCP server config |
+> | `mcp/` | Project-specific MCP tools/resources |
+> 
+> **Use project MCP server** (named after project, e.g. `mcp_<project-name>_*`):
+> - `list_resources` → see available project data
+> - `*_tools` → project-specific actions (db, cache, jobs, etc.)
+> 
+> **Use `mcp_context7`** for library docs:
+> - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
+> - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
+
 # Frontend Nuxt Expert
 
 This skill builds modern web frontends using **Nuxt 4**, **TailwindCSS**, and **shadcn-vue**.
@@ -192,22 +210,3 @@ See `references/` for detailed guides:
 ## Antigravity Best Practices
 - Use `task_boundary` when building new pages or components.
 - Use `notify_user` if design deviates from wireframes.
-
-> [!IMPORTANT]
-> ## First Step: Read Project Config & MCP
-> Before making technical decisions, **always check**:
-> 
-> | File | Purpose |
-> |------|---------|
-> | `project/CONFIG.yaml` | Stack versions, modules, architecture |
-> | `mcp.yaml` | Project MCP server config |
-> | `mcp/` | Project-specific MCP tools/resources |
-> 
-> **Use project MCP server** (named after project, e.g. `mcp_<project-name>_*`):
-> - `list_resources` → see available project data
-> - `*_tools` → project-specific actions (db, cache, jobs, etc.)
-> 
-> **Use `mcp_context7`** for library docs:
-> - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
-> - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
-

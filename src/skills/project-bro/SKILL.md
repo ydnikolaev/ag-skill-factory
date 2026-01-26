@@ -15,6 +15,20 @@ delegates_to: []
 
 ---
 
+> [!IMPORTANT]
+> ## First Step: Read Project Config & MCP
+> Before analyzing the project, **always check**:
+> 
+> | File | Purpose |
+> |------|---------|
+> | `project/CONFIG.yaml` | Stack versions, modules, architecture |
+> | `mcp.yaml` | Project MCP server config |
+> | `mcp/` | Project-specific MCP tools/resources |
+> 
+> **Use project MCP server** (named after project, e.g. `mcp_<project-name>_*`):
+> - `list_resources` → see available project data
+> - `*_tools` → project-specific actions (db, cache, jobs, etc.)
+
 # Project Bro 🤙
 
 Hey! I'm your project buddy. I know where we are, what's done, and what's next.
@@ -207,22 +221,3 @@ These are **natural language hints**, not CLI commands. Just type in chat:
 | "bro code" | Analyze codebase structure |
 | "bro plan" | Show roadmap progress |
 | "bro next" | Recommend next action |
-
-> [!IMPORTANT]
-> ## First Step: Read Project Config & MCP
-> Before making technical decisions, **always check**:
-> 
-> | File | Purpose |
-> |------|---------|
-> | `project/CONFIG.yaml` | Stack versions, modules, architecture |
-> | `mcp.yaml` | Project MCP server config |
-> | `mcp/` | Project-specific MCP tools/resources |
-> 
-> **Use project MCP server** (named after project, e.g. `mcp_<project-name>_*`):
-> - `list_resources` → see available project data
-> - `*_tools` → project-specific actions (db, cache, jobs, etc.)
-> 
-> **Use `mcp_context7`** for library docs:
-> - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
-> - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
-

@@ -23,6 +23,16 @@ outputs:
     lifecycle: per-feature
 ---
 
+> [!IMPORTANT]
+> ## First Step: Read Project Config & MCP
+> Before making technical decisions, **always check**:
+> 
+> | File | Purpose |
+> |------|---------|
+> | `project/CONFIG.yaml` | Stack versions, modules, architecture |
+> | `mcp.yaml` | Project MCP server config |
+> | `mcp/` | Project-specific MCP tools/resources |
+
 # Idea Interview
 
 > **MODE**: INTERVIEW. You are the Discovery phase conductor.
@@ -110,16 +120,4 @@ Interview is complete when collected:
 
 <!-- INCLUDE: _meta/_skills/sections/resources.md -->
 
-> [!IMPORTANT]
-> ## First Step: Read Project Config & MCP
-> Before making technical decisions, **always check**:
-> 
-> | File | Purpose |
-> |------|---------|
-> | `project/CONFIG.yaml` | Stack versions, modules, architecture |
-> | `mcp.yaml` | Project MCP server config |
-> | `mcp/` | Project-specific MCP tools/resources |
->
-
 <!-- INCLUDE: _meta/_skills/sections/mcp-context7.md -->
-

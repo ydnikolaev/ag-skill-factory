@@ -27,6 +27,24 @@ outputs:
     lifecycle: per-feature
 ---
 
+> [!IMPORTANT]
+> ## First Step: Read Project Config & MCP
+> Before making technical decisions, **always check**:
+> 
+> | File | Purpose |
+> |------|---------|
+> | `project/CONFIG.yaml` | Stack versions, modules, architecture |
+> | `mcp.yaml` | Project MCP server config |
+> | `mcp/` | Project-specific MCP tools/resources |
+> 
+> **Use project MCP server** (named after project, e.g. `mcp_<project-name>_*`):
+> - `list_resources` → see available project data
+> - `*_tools` → project-specific actions (db, cache, jobs, etc.)
+> 
+> **Use `mcp_context7`** for library docs:
+> - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
+> - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
+
 # QA Lead
 
 This skill is the **Gatekeeper**. Nothing ships without its `[x]` approval.
@@ -164,23 +182,4 @@ Use these levels when reporting bugs:
 | 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
 | 🟡 To Review | test-report.md | `review/qa/` | Ready for sign-off |
 | ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
-
-
-> [!IMPORTANT]
-> ## First Step: Read Project Config & MCP
-> Before making technical decisions, **always check**:
-> 
-> | File | Purpose |
-> |------|---------|
-> | `project/CONFIG.yaml` | Stack versions, modules, architecture |
-> | `mcp.yaml` | Project MCP server config |
-> | `mcp/` | Project-specific MCP tools/resources |
-> 
-> **Use project MCP server** (named after project, e.g. `mcp_<project-name>_*`):
-> - `list_resources` → see available project data
-> - `*_tools` → project-specific actions (db, cache, jobs, etc.)
-> 
-> **Use `mcp_context7`** for library docs:
-> - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
-> - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
 
