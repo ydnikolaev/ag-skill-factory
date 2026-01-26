@@ -7,6 +7,7 @@ version: 1.3.0
 phase: architecture
 category: technical
 presets:
+  - core
   - tma
 
 # === HANDOFFS ===

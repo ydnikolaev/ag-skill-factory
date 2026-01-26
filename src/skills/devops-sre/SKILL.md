@@ -7,6 +7,7 @@ version: 1.3.0
 phase: delivery
 category: technical
 presets:
+  - core
   - backend
 
 # === HANDOFFS ===
