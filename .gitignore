@@ -12,7 +12,6 @@ website/node_modules/
 *.egg-info/
 project/userdir/
 
-
 # Private skills (contain sensitive information)
 dist/
 
