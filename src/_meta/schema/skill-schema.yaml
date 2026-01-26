@@ -15,6 +15,9 @@ triggers:
   - on_create            # When document created
   - on_complete          # When work complete
   - on_create_on_complete  # Both create and complete
+  - on_handoff           # During handoff to next skill
+  - work_unit_opened     # New Work Unit started
+  - work_unit_closed     # Work Unit completed and archived
 
 statuses:
   - draft       # Work in progress

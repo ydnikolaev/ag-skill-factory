@@ -134,6 +134,12 @@ skills:
       lifecycle: per-feature
       initial_status: draft
       trigger: spec_approved
+    - doc_type: work-unit-registry
+      path: project/docs/registry/
+      doc_category: project
+      lifecycle: per-feature
+      initial_status: draft
+      trigger: work_unit_opened
   frontend-nuxt:
     name: frontend-nuxt
     description: Nuxt 4 & TailwindCSS expert for modern web applications (SSR, SPA,
@@ -172,6 +178,12 @@ skills:
       lifecycle: per-feature
       initial_status: draft
       trigger: spec_approved
+    - doc_type: work-unit-registry
+      path: project/docs/registry/
+      doc_category: project
+      lifecycle: per-feature
+      initial_status: draft
+      trigger: work_unit_opened
   mcp-expert:
     name: mcp-expert
     description: Expert on Model Context Protocol (MCP) servers. Use this skill when
@@ -448,6 +460,10 @@ handoffs:
   to: product-analyst
   doc_type: feature-brief
   path: project/docs/active/discovery/
+- from: feature-fit
+  to: product-analyst
+  doc_type: work-unit-registry
+  path: project/docs/registry/
 - from: frontend-nuxt
   to: qa-lead
   doc_type: ui-implementation
@@ -456,6 +472,10 @@ handoffs:
   to: product-analyst
   doc_type: discovery-brief
   path: project/docs/active/discovery/
+- from: idea-interview
+  to: product-analyst
+  doc_type: work-unit-registry
+  path: project/docs/registry/
 - from: mcp-expert
   to: backend-go-expert
   doc_type: server-config

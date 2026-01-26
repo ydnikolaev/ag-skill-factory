@@ -24,6 +24,12 @@ creates:
     lifecycle: per-feature
     initial_status: draft
     trigger: spec_approved
+  - doc_type: work-unit-registry
+    path: project/docs/registry/
+    doc_category: project
+    lifecycle: per-feature
+    initial_status: draft
+    trigger: work_unit_opened
 
 reads:
   - doc_type: config
