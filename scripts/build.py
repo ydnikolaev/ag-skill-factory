@@ -174,7 +174,16 @@ def build_templates(src_dir: Path, dist_dir: Path):
             (dist_templates / template_file.name).write_text(processed)
             count += 1
     
-    print(f"  ✅ {count} templates")
+    print(f"  ✅ {count} document templates")
+    
+    # Copy folder-structure template (directory structure for project/docs/)
+    src_folder_struct = src_dir / "templates" / "folder-structure"
+    dist_folder_struct = dist_dir / "project" / "docs" / "folder-structure"
+    
+    if src_folder_struct.exists():
+        shutil.copytree(src_folder_struct, dist_folder_struct, dirs_exist_ok=True)
+        print(f"  ✅ folder-structure template")
+    
     return count
 
 
