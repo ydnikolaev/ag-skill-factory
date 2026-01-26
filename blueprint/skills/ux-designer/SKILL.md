@@ -6,6 +6,10 @@ version: 1.2.0
 phase: design
 category: analyst
 
+presets:
+  - frontend
+  - tma
+
 receives_from:
   - product-analyst
 

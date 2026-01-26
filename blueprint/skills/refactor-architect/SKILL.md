@@ -6,6 +6,9 @@ version: 1.2.0
 phase: utility
 category: analyst
 
+presets:
+  - core
+
 
 delegates_to:
   - backend-go-expert

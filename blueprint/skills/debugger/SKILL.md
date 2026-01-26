@@ -6,6 +6,10 @@ version: 1.2.0
 phase: utility
 category: utility
 
+presets:
+  - backend
+  - minimal
+
 receives_from:
   - qa-lead
   - backend-go-expert

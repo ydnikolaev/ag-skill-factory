@@ -6,6 +6,9 @@ version: 1.2.0
 phase: implementation
 category: technical
 
+presets:
+  - tma
+
 receives_from:
   - telegram-mechanic
   - frontend-nuxt

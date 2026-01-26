@@ -6,6 +6,9 @@ version: 1.2.0
 phase: discovery
 category: analyst
 
+presets:
+  - core
+
 delegates_to:
   - product-analyst
 

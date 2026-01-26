@@ -1,64 +1,106 @@
-# Antigravity Factory Presets
-# Used by: factory install --preset=<name>
+# Auto-generated from skill frontmatter
+# Run: python3 scripts/generate-presets.py
 
+_generated: DO NOT EDIT - generated from skill frontmatter
+_source: scripts/generate-presets.py
 all:
-  description: "Full blueprint (21 skills, all extras)"
-  skills: "*"
-
+  description: Full blueprint
+  skills: '*'
 core:
-  description: "Pipeline essentials (7 skills)"
+  description: Pipeline essentials
   skills:
-    - idea-interview
-    - product-analyst
-    - bmad-architect
-    - tech-spec-writer
-    - qa-lead
-    - doc-janitor
-    - refactor-architect
-
+  - bmad-architect
+  - doc-janitor
+  - feature-fit
+  - idea-interview
+  - mcp-expert
+  - product-analyst
+  - qa-lead
+  - refactor-architect
+  - tech-spec-writer
 backend:
-  description: "Go backend development (9 skills)"
-  extends: core
+  description: Go backend development
   skills:
-    - backend-go-expert
-    - devops-sre
-    - debugger
-    - project-bro
-
+  - backend-go-expert
+  - bmad-architect
+  - debugger
+  - devops-sre
+  - doc-janitor
+  - feature-fit
+  - idea-interview
+  - mcp-expert
+  - product-analyst
+  - project-bro
+  - qa-lead
+  - refactor-architect
+  - tech-spec-writer
 frontend:
-  description: "Nuxt/Vue frontend (8 skills)"
-  extends: core
+  description: Nuxt/Vue frontend
   skills:
-    - frontend-nuxt
-    - ux-designer
-    - ui-implementor
-
+  - bmad-architect
+  - doc-janitor
+  - feature-fit
+  - frontend-nuxt
+  - idea-interview
+  - mcp-expert
+  - product-analyst
+  - qa-lead
+  - refactor-architect
+  - tech-spec-writer
+  - ui-implementor
+  - ux-designer
 fullstack:
-  description: "Full stack development (12 skills)"
-  extends:
-    - backend
-    - frontend
-
+  description: Full stack development
+  skills:
+  - backend-go-expert
+  - bmad-architect
+  - debugger
+  - devops-sre
+  - doc-janitor
+  - feature-fit
+  - frontend-nuxt
+  - idea-interview
+  - mcp-expert
+  - product-analyst
+  - project-bro
+  - qa-lead
+  - refactor-architect
+  - tech-spec-writer
+  - ui-implementor
+  - ux-designer
 tma:
-  description: "Telegram Mini Apps (10 skills)"
-  extends: core
+  description: Telegram Mini Apps
   skills:
-    - tma-expert
-    - telegram-mechanic
-    - frontend-nuxt
-    - ux-designer
-    - ui-implementor
-
+  - bmad-architect
+  - doc-janitor
+  - feature-fit
+  - frontend-nuxt
+  - idea-interview
+  - mcp-expert
+  - product-analyst
+  - qa-lead
+  - refactor-architect
+  - tech-spec-writer
+  - telegram-mechanic
+  - tma-expert
+  - ui-implementor
+  - ux-designer
 cli:
-  description: "CLI/TUI applications (8 skills)"
-  extends: core
+  description: CLI/TUI applications
   skills:
-    - cli-architect
-    - tui-charm-expert
-    - backend-go-expert
-
+  - bmad-architect
+  - cli-architect
+  - doc-janitor
+  - feature-fit
+  - idea-interview
+  - mcp-expert
+  - product-analyst
+  - qa-lead
+  - refactor-architect
+  - tech-spec-writer
+  - tui-charm-expert
 minimal:
-  description: "Utilities only (2 skills)"
+  description: Utilities only
   skills:
-    - project-bro
-    - debugger
+  - debugger
+  - project-bro

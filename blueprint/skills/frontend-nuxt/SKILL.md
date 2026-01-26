@@ -6,6 +6,10 @@ version: 1.2.0
 phase: implementation
 category: technical
 
+presets:
+  - frontend
+  - tma
+
 receives_from:
   - tech-spec-writer
 

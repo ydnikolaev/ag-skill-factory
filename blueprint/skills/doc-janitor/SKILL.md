@@ -6,6 +6,9 @@ version: 1.2.0
 phase: utility
 category: utility
 
+presets:
+  - core
+
 
 delegates_to: []
 

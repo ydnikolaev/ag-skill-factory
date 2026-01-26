@@ -6,6 +6,10 @@ version: 1.2.0
 phase: design
 category: technical
 
+presets:
+  - frontend
+  - tma
+
 receives_from:
   - ux-designer
 

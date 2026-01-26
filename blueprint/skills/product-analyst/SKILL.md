@@ -6,6 +6,9 @@ version: 1.2.0
 phase: definition
 category: analyst
 
+presets:
+  - core
+
 receives_from:
   - idea-interview
   - feature-fit

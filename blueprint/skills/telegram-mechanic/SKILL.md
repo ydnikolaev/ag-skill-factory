@@ -6,6 +6,9 @@ version: 1.2.0
 phase: architecture
 category: technical
 
+presets:
+  - tma
+
 receives_from:
   - bmad-architect
 

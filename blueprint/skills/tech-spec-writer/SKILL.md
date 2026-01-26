@@ -6,6 +6,9 @@ version: 1.2.0
 phase: architecture
 category: analyst
 
+presets:
+  - core
+
 receives_from:
   - bmad-architect
   - product-analyst

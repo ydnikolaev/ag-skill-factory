@@ -1,0 +1,38 @@
+# Preset Hierarchy
+# Defines inheritance between presets
+# Generator resolves: skill → leaf preset → parent presets → all
+
+# Base presets (no inheritance)
+core:
+  description: "Pipeline essentials"
+  # No inherits - this is a root preset
+
+minimal:
+  description: "Utilities only"
+  # No inherits - standalone
+
+# Extended presets
+backend:
+  description: "Go backend development"
+  inherits: [core]
+
+frontend:
+  description: "Nuxt/Vue frontend"
+  inherits: [core]
+
+fullstack:
+  description: "Full stack development"
+  inherits: [backend, frontend]
+
+tma:
+  description: "Telegram Mini Apps"
+  inherits: [core]
+
+cli:
+  description: "CLI/TUI applications"
+  inherits: [core]
+
+# Meta preset
+all:
+  description: "Full blueprint"
+  includes_all: true

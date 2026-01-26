@@ -6,6 +6,9 @@ version: 1.2.0
 phase: delivery
 category: technical
 
+presets:
+  - backend
+
 receives_from:
   - qa-lead
 

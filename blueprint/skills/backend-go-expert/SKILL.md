@@ -7,6 +7,9 @@ status: draft
 phase: implementation
 category: technical
 
+presets:
+  - backend
+
 receives_from:
   - tech-spec-writer
   - bmad-architect

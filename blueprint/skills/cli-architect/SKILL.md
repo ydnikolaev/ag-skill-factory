@@ -6,6 +6,9 @@ version: 1.2.0
 phase: architecture
 category: technical
 
+presets:
+  - cli
+
 receives_from:
   - bmad-architect
 

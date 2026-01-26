@@ -6,6 +6,9 @@ version: 1.2.0
 phase: delivery
 category: analyst
 
+presets:
+  - core
+
 receives_from:
   - backend-go-expert
   - frontend-nuxt
