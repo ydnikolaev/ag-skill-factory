@@ -91,6 +91,19 @@ transitions:
       - from: approved
         to: archived
         trigger: qa_signoff
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - tech_stack
+  - language_requirements
+  - workflow
+  - protocols
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 # Frontend Nuxt Expert

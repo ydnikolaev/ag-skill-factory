@@ -37,6 +37,28 @@ lifecycles:
   - per-feature   # Archived after work-unit complete
   - living        # Never archived, continuously updated
 
+# Required markdown sections (for section-matrix auto-generation)
+sections:
+  - frontmatter
+  - header
+  - mode_block
+  - when_to_activate
+  - role_boundary
+  - brain_to_docs
+  - tech_stack
+  - critical_rules
+  - workflow
+  - protocols
+  - team_collaboration
+  - when_to_delegate
+  - document_lifecycle
+  - pre_handoff
+  - handoff_protocol
+  - artifact_ownership
+  - resources
+  - language_requirements
+  - best_practices
+
 phases:
   - discovery
   - definition
@@ -124,3 +146,6 @@ skill:
         - from: enum(statuses)
           to: enum(statuses)
           trigger: enum(triggers)
+  
+  # Required markdown sections (for section-matrix auto-generation)
+  required_sections: list[enum(sections)]
