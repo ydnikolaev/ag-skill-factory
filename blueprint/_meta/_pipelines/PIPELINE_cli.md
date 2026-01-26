@@ -12,8 +12,8 @@ description: Pipeline for cli preset. Skill handoffs and phases.
 | Phase | Skills | Outputs |
 |-------|--------|---------|
 | Discovery | `@idea-interview` | discovery-brief.md |
-| Definition | `@product-analyst` | roadmap.md, user-stories.md, requirements.md |
-| Architecture | `@bmad-architect`, `@cli-architect`, `@tech-spec-writer` | context-map.md, api-contracts.yaml, cli-design.md, tech-spec.md |
+| Definition | `@product-analyst` | roadmap.md, user-stories.md, requirements.md, backlog.md |
+| Architecture | `@bmad-architect`, `@cli-architect`, `@tech-spec-writer` | context-map.md, api-contracts.yaml, decision-log.md, cli-design.md, tech-spec.md |
 | Implementation | `@backend-go-expert`, `@tui-charm-expert` | service-implementation.md, tui-design.md |
 | Delivery | `@qa-lead` | test-cases.md, test-report.md |
 | Utility | `@doc-janitor`, `@refactor-architect` | refactoring-overview.md |
@@ -25,15 +25,18 @@ description: Pipeline for cli preset. Skill handoffs and phases.
 | `@backend-go-expert` | `@qa-lead` | service-implementation.md |
 | `@bmad-architect` | `@tech-spec-writer` | context-map.md |
 | `@bmad-architect` | `@tech-spec-writer` | api-contracts.yaml |
+| `@bmad-architect` | `@tech-spec-writer` | decision-log.md |
 | `@cli-architect` | `@tui-charm-expert` | cli-design.md |
 | `@cli-architect` | `@backend-go-expert` | cli-design.md |
 | `@idea-interview` | `@product-analyst` | discovery-brief.md |
 | `@product-analyst` | `@bmad-architect` | roadmap.md |
 | `@product-analyst` | `@bmad-architect` | user-stories.md |
 | `@product-analyst` | `@bmad-architect` | requirements.md |
+| `@product-analyst` | `@bmad-architect` | backlog.md |
 | `@product-analyst` | `@tech-spec-writer` | roadmap.md |
 | `@product-analyst` | `@tech-spec-writer` | user-stories.md |
 | `@product-analyst` | `@tech-spec-writer` | requirements.md |
+| `@product-analyst` | `@tech-spec-writer` | backlog.md |
 | `@refactor-architect` | `@backend-go-expert` | refactoring-overview.md |
 | `@tech-spec-writer` | `@backend-go-expert` | tech-spec.md |
 | `@tui-charm-expert` | `@qa-lead` | tui-design.md |

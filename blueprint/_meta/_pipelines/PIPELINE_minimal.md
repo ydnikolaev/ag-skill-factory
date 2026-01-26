@@ -11,4 +11,4 @@ description: Pipeline for minimal preset. Skill handoffs and phases.
 
 | Phase | Skills | Outputs |
 |-------|--------|---------|
-| Utility | `@debugger`, `@project-bro` | debug-report.md |
+| Utility | `@debugger`, `@project-bro` | debug-report.md, known-issues.md |

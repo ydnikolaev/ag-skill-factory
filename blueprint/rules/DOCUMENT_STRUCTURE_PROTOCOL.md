@@ -133,6 +133,7 @@ project/docs/
 | `infrastructure/` | deployment-guide |
 | `bugs/` | debug-report |
 | `refactoring/` | refactoring-overview |
+| `project/` | decision-log, known-issues, backlog, tech-debt |
 
 ---
 

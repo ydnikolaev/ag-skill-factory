@@ -19,6 +19,9 @@ outputs:
   - artifact: api-contracts.yaml
     path: project/docs/active/architecture/
     doc_category: architecture
+  - artifact: decision-log.md
+    path: project/docs/
+    doc_category: project
 ---
 
 # BMAD Architect (Team Lead)

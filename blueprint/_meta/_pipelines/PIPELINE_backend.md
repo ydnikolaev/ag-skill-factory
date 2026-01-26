@@ -12,11 +12,11 @@ description: Pipeline for backend preset. Skill handoffs and phases.
 | Phase | Skills | Outputs |
 |-------|--------|---------|
 | Discovery | `@idea-interview` | discovery-brief.md |
-| Definition | `@product-analyst` | roadmap.md, user-stories.md, requirements.md |
-| Architecture | `@bmad-architect`, `@tech-spec-writer` | context-map.md, api-contracts.yaml, tech-spec.md |
+| Definition | `@product-analyst` | roadmap.md, user-stories.md, requirements.md, backlog.md |
+| Architecture | `@bmad-architect`, `@tech-spec-writer` | context-map.md, api-contracts.yaml, decision-log.md, tech-spec.md |
 | Implementation | `@backend-go-expert` | service-implementation.md |
 | Delivery | `@devops-sre`, `@qa-lead` | deployment-guide.md, test-cases.md, test-report.md |
-| Utility | `@debugger`, `@doc-janitor`, `@project-bro`, `@refactor-architect` | debug-report.md, refactoring-overview.md |
+| Utility | `@debugger`, `@doc-janitor`, `@project-bro`, `@refactor-architect` | debug-report.md, known-issues.md, refactoring-overview.md |
 
 ## Handoff Matrix
 
@@ -25,14 +25,18 @@ description: Pipeline for backend preset. Skill handoffs and phases.
 | `@backend-go-expert` | `@qa-lead` | service-implementation.md |
 | `@bmad-architect` | `@tech-spec-writer` | context-map.md |
 | `@bmad-architect` | `@tech-spec-writer` | api-contracts.yaml |
+| `@bmad-architect` | `@tech-spec-writer` | decision-log.md |
 | `@debugger` | `@qa-lead` | debug-report.md |
+| `@debugger` | `@qa-lead` | known-issues.md |
 | `@idea-interview` | `@product-analyst` | discovery-brief.md |
 | `@product-analyst` | `@bmad-architect` | roadmap.md |
 | `@product-analyst` | `@bmad-architect` | user-stories.md |
 | `@product-analyst` | `@bmad-architect` | requirements.md |
+| `@product-analyst` | `@bmad-architect` | backlog.md |
 | `@product-analyst` | `@tech-spec-writer` | roadmap.md |
 | `@product-analyst` | `@tech-spec-writer` | user-stories.md |
 | `@product-analyst` | `@tech-spec-writer` | requirements.md |
+| `@product-analyst` | `@tech-spec-writer` | backlog.md |
 | `@qa-lead` | `@devops-sre` | test-cases.md |
 | `@qa-lead` | `@devops-sre` | test-report.md |
 | `@refactor-architect` | `@backend-go-expert` | refactoring-overview.md |

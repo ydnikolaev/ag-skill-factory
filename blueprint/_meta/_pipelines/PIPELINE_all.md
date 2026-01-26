@@ -12,12 +12,12 @@ description: Pipeline for all preset. Skill handoffs and phases.
 | Phase | Skills | Outputs |
 |-------|--------|---------|
 | Discovery | `@feature-fit`, `@idea-interview` | feature-brief.md, discovery-brief.md |
-| Definition | `@product-analyst` | roadmap.md, user-stories.md, requirements.md |
+| Definition | `@product-analyst` | roadmap.md, user-stories.md, requirements.md, backlog.md |
 | Design | `@ui-implementor`, `@ux-designer` | theming.md, tokens.json, design-system.md |
-| Architecture | `@bmad-architect`, `@cli-architect`, `@tech-spec-writer`, `@telegram-mechanic` | context-map.md, api-contracts.yaml, cli-design.md, tech-spec.md, webhook-config.md |
+| Architecture | `@bmad-architect`, `@cli-architect`, `@tech-spec-writer`, `@telegram-mechanic` | context-map.md, api-contracts.yaml, decision-log.md, cli-design.md, tech-spec.md, webhook-config.md |
 | Implementation | `@backend-go-expert`, `@frontend-nuxt`, `@tma-expert`, `@tui-charm-expert` | service-implementation.md, ui-implementation.md, tma-config.md, tui-design.md |
 | Delivery | `@devops-sre`, `@qa-lead` | deployment-guide.md, test-cases.md, test-report.md |
-| Utility | `@debugger`, `@doc-janitor`, `@mcp-expert`, `@project-bro`, `@refactor-architect` | debug-report.md, server-config.md, refactoring-overview.md |
+| Utility | `@debugger`, `@doc-janitor`, `@mcp-expert`, `@project-bro`, `@refactor-architect` | debug-report.md, known-issues.md, server-config.md, refactoring-overview.md |
 
 ## Handoff Matrix
 
@@ -26,9 +26,11 @@ description: Pipeline for all preset. Skill handoffs and phases.
 | `@backend-go-expert` | `@qa-lead` | service-implementation.md |
 | `@bmad-architect` | `@tech-spec-writer` | context-map.md |
 | `@bmad-architect` | `@tech-spec-writer` | api-contracts.yaml |
+| `@bmad-architect` | `@tech-spec-writer` | decision-log.md |
 | `@cli-architect` | `@tui-charm-expert` | cli-design.md |
 | `@cli-architect` | `@backend-go-expert` | cli-design.md |
 | `@debugger` | `@qa-lead` | debug-report.md |
+| `@debugger` | `@qa-lead` | known-issues.md |
 | `@feature-fit` | `@product-analyst` | feature-brief.md |
 | `@frontend-nuxt` | `@qa-lead` | ui-implementation.md |
 | `@idea-interview` | `@product-analyst` | discovery-brief.md |
@@ -37,9 +39,11 @@ description: Pipeline for all preset. Skill handoffs and phases.
 | `@product-analyst` | `@bmad-architect` | roadmap.md |
 | `@product-analyst` | `@bmad-architect` | user-stories.md |
 | `@product-analyst` | `@bmad-architect` | requirements.md |
+| `@product-analyst` | `@bmad-architect` | backlog.md |
 | `@product-analyst` | `@tech-spec-writer` | roadmap.md |
 | `@product-analyst` | `@tech-spec-writer` | user-stories.md |
 | `@product-analyst` | `@tech-spec-writer` | requirements.md |
+| `@product-analyst` | `@tech-spec-writer` | backlog.md |
 | `@qa-lead` | `@devops-sre` | test-cases.md |
 | `@qa-lead` | `@devops-sre` | test-report.md |
 | `@refactor-architect` | `@backend-go-expert` | refactoring-overview.md |

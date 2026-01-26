@@ -24,6 +24,9 @@ outputs:
   - artifact: requirements.md
     path: project/docs/active/specs/
     doc_category: specs
+  - artifact: backlog.md
+    path: project/docs/
+    doc_category: project
 ---
 
 # Product Analyst

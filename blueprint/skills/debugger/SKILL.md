@@ -18,6 +18,9 @@ outputs:
   - artifact: debug-report.md
     path: project/docs/active/bugs/
     doc_category: bugs
+  - artifact: known-issues.md
+    path: project/docs/
+    doc_category: project
 ---
 
 # Debugger 🔍

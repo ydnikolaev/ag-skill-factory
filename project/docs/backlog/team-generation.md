@@ -36,6 +36,16 @@ if exists("project/docs/") {
 
 ---
 
+## P1: Factory Install Copies cliff.toml
+
+**Goal:** Auto-generate CHANGELOG.md via git-cliff.
+
+**Action:** Copy `_meta/_docs/templates/_cliff.toml` → `project/cliff.toml`
+
+**Always copy** (overwrite if exists — it's a config file).
+
+---
+
 ## P2: Factory New Work Unit Command
 
 **Goal:** `factory new-work-unit feat-forum-topics` creates full structure.

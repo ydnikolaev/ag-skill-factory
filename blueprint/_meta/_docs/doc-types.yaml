@@ -19,6 +19,12 @@ types:
     consumers: *id001
     category: architecture
     artifact: api-contracts.yaml
+  decision-log:
+    phase: architecture
+    creator: bmad-architect
+    consumers: *id001
+    category: project
+    artifact: decision-log.md
   cli-design:
     phase: architecture
     creator: cli-architect
@@ -30,10 +36,16 @@ types:
   debug-report:
     phase: utility
     creator: debugger
-    consumers:
+    consumers: &id002
     - qa-lead
     category: bugs
     artifact: debug-report.md
+  known-issues:
+    phase: utility
+    creator: debugger
+    consumers: *id002
+    category: project
+    artifact: known-issues.md
   deployment-guide:
     phase: delivery
     creator: devops-sre
@@ -72,7 +84,7 @@ types:
   roadmap:
     phase: definition
     creator: product-analyst
-    consumers: &id002
+    consumers: &id003
     - bmad-architect
     - tech-spec-writer
     category: product
@@ -80,26 +92,32 @@ types:
   user-stories:
     phase: definition
     creator: product-analyst
-    consumers: *id002
+    consumers: *id003
     category: product
     artifact: user-stories.md
   requirements:
     phase: definition
     creator: product-analyst
-    consumers: *id002
+    consumers: *id003
     category: specs
     artifact: requirements.md
+  backlog:
+    phase: definition
+    creator: product-analyst
+    consumers: *id003
+    category: project
+    artifact: backlog.md
   test-cases:
     phase: delivery
     creator: qa-lead
-    consumers: &id003
+    consumers: &id004
     - devops-sre
     category: qa
     artifact: test-cases.md
   test-report:
     phase: delivery
     creator: qa-lead
-    consumers: *id003
+    consumers: *id004
     category: qa
     artifact: test-report.md
   refactoring-overview:
@@ -151,13 +169,13 @@ types:
   tokens:
     phase: design
     creator: ux-designer
-    consumers: &id004
+    consumers: &id005
     - ui-implementor
     category: design
     artifact: tokens.json
   design-system:
     phase: design
     creator: ux-designer
-    consumers: *id004
+    consumers: *id005
     category: design
     artifact: design-system.md

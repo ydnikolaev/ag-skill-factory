@@ -33,6 +33,9 @@ skills:
     - artifact: api-contracts.yaml
       path: project/docs/active/architecture/
       doc_category: architecture
+    - artifact: decision-log.md
+      path: project/docs/
+      doc_category: project
   cli-architect:
     name: cli-architect
     description: Expert in Go CLI Architecture (Cobra, Viper, POSIX).
@@ -66,6 +69,9 @@ skills:
     - artifact: debug-report.md
       path: project/docs/active/bugs/
       doc_category: bugs
+    - artifact: known-issues.md
+      path: project/docs/
+      doc_category: project
   devops-sre:
     name: devops-sre
     description: Expert in Docker, CI/CD, and delivering Go/Nuxt apps.
@@ -172,6 +178,9 @@ skills:
     - artifact: requirements.md
       path: project/docs/active/specs/
       doc_category: specs
+    - artifact: backlog.md
+      path: project/docs/
+      doc_category: project
   project-bro:
     name: project-bro
     description: Your project awareness buddy. Knows current state, reads docs, analyzes
@@ -353,6 +362,10 @@ handoffs:
   to: tech-spec-writer
   artifact: api-contracts.yaml
   path: project/docs/active/architecture/
+- from: bmad-architect
+  to: tech-spec-writer
+  artifact: decision-log.md
+  path: project/docs/
 - from: cli-architect
   to: tui-charm-expert
   artifact: cli-design.md
@@ -365,6 +378,10 @@ handoffs:
   to: qa-lead
   artifact: debug-report.md
   path: project/docs/active/bugs/
+- from: debugger
+  to: qa-lead
+  artifact: known-issues.md
+  path: project/docs/
 - from: feature-fit
   to: product-analyst
   artifact: feature-brief.md
@@ -398,6 +415,10 @@ handoffs:
   artifact: requirements.md
   path: project/docs/active/specs/
 - from: product-analyst
+  to: bmad-architect
+  artifact: backlog.md
+  path: project/docs/
+- from: product-analyst
   to: tech-spec-writer
   artifact: roadmap.md
   path: project/docs/active/product/
@@ -409,6 +430,10 @@ handoffs:
   to: tech-spec-writer
   artifact: requirements.md
   path: project/docs/active/specs/
+- from: product-analyst
+  to: tech-spec-writer
+  artifact: backlog.md
+  path: project/docs/
 - from: qa-lead
   to: devops-sre
   artifact: test-cases.md
