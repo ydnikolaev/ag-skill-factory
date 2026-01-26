@@ -30,7 +30,7 @@ Your sole task is to **extract ALL information** about the project from the user
 
 **Tone**: Professional architect-mentor. Sometimes casual/bro.
 
-**Language**: Communicate with the user in **their language**. If they write in Russian, respond in Russian. If in English, respond in English.
+<!-- INCLUDE: _meta/_skills/sections/language-requirements.md -->
 
 ## Activation Triggers
 

@@ -2,6 +2,25 @@
 
 > Items for @backend-go-expert to implement in factory CLI.
 
+---
+
+## P2: Factory INCLUDE Processing
+
+**Goal:** Process `<!-- INCLUDE: path -->` markers in skills during install.
+
+**Syntax:** 
+```markdown
+<!-- INCLUDE: _meta/_skills/sections/language-requirements.md -->
+```
+
+**Action:** Replace marker with file contents during `factory install`/`factory update`.
+
+**Use cases:**
+- Shared sections (language-requirements, etc.)
+- Avoid duplicating text across skills
+
+---
+
 ## P1: Factory Install Uses Correct Team/Pipeline Files
 
 **Goal:** `factory install --preset=tma` should copy the correct files.
