@@ -200,9 +200,7 @@ Must follow Work Units structure:
 </details>
 ```
 
-## Language Requirements
-
-> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+<!-- INCLUDE: _meta/_skills/sections/language-requirements.md -->
 
 ## Team Collaboration
 

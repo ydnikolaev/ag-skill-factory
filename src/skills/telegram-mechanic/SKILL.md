@@ -51,9 +51,7 @@ This skill is the **Gateway**. It manages the Bot, Webhooks, and Security.
 2.  **Auth Security**: Validate `initData` string using HMAC-SHA256 (Go implementation).
 3.  **Entry Point**: Ensure the Mini App opens correctly (`setChatMenuButton`).
 
-## Language Requirements
-
-> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+<!-- INCLUDE: _meta/_skills/sections/language-requirements.md -->
 
 ## Team Collaboration
 - **Architect**: `@bmad-architect` (Activates for TMA/Bot projects)

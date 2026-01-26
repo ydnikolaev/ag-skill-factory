@@ -138,9 +138,7 @@ When reporting a fix, use this structure:
 - Results:
 ```
 
-## Language Requirements
-
-> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+<!-- INCLUDE: _meta/_skills/sections/language-requirements.md -->
 
 ## Team Collaboration
 

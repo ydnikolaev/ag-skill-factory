@@ -140,9 +140,7 @@ Feature Brief should follow this structure (see `resources/feature-brief-templat
 (What might break?)
 ```
 
-## Language Requirements
-
-> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+<!-- INCLUDE: _meta/_skills/sections/language-requirements.md -->
 
 ## Team Collaboration
 - **Product**: `@product-analyst` (Receives Feature Brief, creates specs)

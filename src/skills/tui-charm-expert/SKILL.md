@@ -51,9 +51,7 @@ This skill makes the terminal beautiful using BubbleTea and Lipgloss.
 - **Styling**: `lipgloss`.
 - **Forms**: `huh`.
 
-## Language Requirements
-
-> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+<!-- INCLUDE: _meta/_skills/sections/language-requirements.md -->
 
 ## Team Collaboration
 - **CLI Architect**: `@cli-architect` (Integrate my models into Cobra commands)
