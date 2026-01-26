@@ -18,7 +18,7 @@ delegates_to:
   - frontend-nuxt
 
 outputs:
-  - artifact: tech-spec.md
+  - doc_type: tech-spec
     path: project/docs/active/specs/
     doc_category: specs
 ---

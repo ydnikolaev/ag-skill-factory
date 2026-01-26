@@ -17,10 +17,10 @@ delegates_to:
   - ui-implementor
 
 outputs:
-  - artifact: tokens.json
+  - doc_type: tokens
     path: project/docs/active/design/
     doc_category: design
-  - artifact: design-system.md
+  - doc_type: design-system
     path: project/docs/active/design/
     doc_category: design
 ---

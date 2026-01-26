@@ -2,7 +2,7 @@
 
 > Defines Vision, Roadmap, User Stories, and translates them into Technical Specs. Combines "The Why" with "The What".
 
-**Version:** 1.0.0
+**Version:** 1.2.0
 
 ---
 
@@ -10,8 +10,6 @@
 # Product Analyst
 
 This skill owns the **Product Definition** phase. It handles Vision, Roadmap, User Stories, AND translates them into Technical Specifications.
-
-> **Replaces**: `product-manager` + `systems-analyst`
 
 ## Responsibilities
 
@@ -25,10 +23,9 @@ This skill owns the **Product Definition** phase. It handles Vision, Roadmap, Us
 5.  **API Contracts**: Draft OpenAPI/Swagger structure
 6.  **Data Modeling**: Logical schema drafts
 
-## Team Collaboration
-- **Discovery**: `@idea-interview` (Receives discovery-brief.md)
-- **Architect**: `@bmad-architect` (Pass specs for DDD design)
-- **QA**: `@qa-lead` (They test against your specs)
+<!-- INCLUDE: _meta/_skills/sections/language-requirements.md -->
+
+<!-- INCLUDE: _meta/_skills/sections/team-collaboration.md -->
 
 ## TDD Planning (Mandatory)
 
@@ -43,12 +40,12 @@ This skill owns the **Product Definition** phase. It handles Vision, Roadmap, Us
 
 ### Phase 1: Product Definition
 1.  Receive `discovery-brief.md` from `@idea-interview`
-2.  Draft `project/docs/roadmap.md` with prioritized features
+2.  Draft `project/docs/active/product/roadmap.md` with prioritized features
 3.  Write User Stories for MVP scope
 
 ### Phase 2: Technical Analysis
 4.  Read approved User Stories
-5.  Create `project/docs/specs/requirements.md`
+5.  Create `project/docs/active/specs/requirements.md`
 6.  Draft API contracts and data models
 7.  **Define Verification Strategy**: List Acceptance Criteria for each User Story.
 8.  Create Sequence Diagrams (Mermaid)
@@ -62,10 +59,6 @@ This skill owns the **Product Definition** phase. It handles Vision, Roadmap, Us
 - ⬅️ **Return to `@idea-interview`** if: Discovery Brief is missing critical information
 - ❌ **Do NOT delegate** if: Business requirements are still unclear or specs unconfirmed
 
-## Antigravity Best Practices
-- Use `task_boundary` with mode PLANNING when drafting roadmap
-- Use `notify_user` to confirm priorities and specs before handoff
-- Keep User Stories business-focused, specs technical-focused
 
 
 ## Traceability Protocol (Hard Stop)
@@ -105,16 +98,9 @@ This skill owns the **Product Definition** phase. It handles Vision, Roadmap, Us
 > 5. THEN delegate to next skill
 
 
-## Iteration Protocol (Ephemeral → Persistent)
+<!-- INCLUDE: _meta/_skills/sections/brain-to-docs.md -->
 
-> [!IMPORTANT]
-> **Phase 1: Draft in Brain** — Create Roadmap/Specs as artifacts. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/product/` and `project/docs/specs/`
-
-## Artifact Ownership
-- **Creates**: `project/docs/product/roadmap.md`, `project/docs/product/user-stories.md`, `project/docs/specs/requirements.md`
-- **Reads**: `project/docs/discovery/discovery-brief.md`
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (update status for each artifact)
+<!-- INCLUDE: _meta/_skills/sections/document-structure-protocol.md -->
 
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP

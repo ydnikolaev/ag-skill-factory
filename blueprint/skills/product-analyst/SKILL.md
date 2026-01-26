@@ -18,16 +18,16 @@ delegates_to:
   - tech-spec-writer
 
 outputs:
-  - artifact: roadmap.md
+  - doc_type: roadmap
     path: project/docs/active/product/
     doc_category: product
-  - artifact: user-stories.md
+  - doc_type: user-stories
     path: project/docs/active/product/
     doc_category: product
-  - artifact: requirements.md
+  - doc_type: requirements
     path: project/docs/active/specs/
     doc_category: specs
-  - artifact: backlog.md
+  - doc_type: backlog
     path: project/docs/
     doc_category: project
 ---

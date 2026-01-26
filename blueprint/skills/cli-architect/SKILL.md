@@ -17,7 +17,7 @@ delegates_to:
   - backend-go-expert
 
 outputs:
-  - artifact: cli-design.md
+  - doc_type: cli-design
     path: project/docs/active/architecture/
     doc_category: architecture
 ---

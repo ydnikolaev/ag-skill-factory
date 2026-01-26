@@ -1,3 +1,6 @@
+# Auto-generated from skill frontmatter
+# Run: python3 scripts/generate_pipelines.py
+
 skills:
   backend-go-expert:
     name: backend-go-expert
@@ -12,7 +15,7 @@ skills:
     delegates_to:
     - qa-lead
     outputs:
-    - artifact: service-implementation.md
+    - doc_type: service-implementation
       path: project/docs/active/backend/
       doc_category: backend
   bmad-architect:
@@ -27,13 +30,13 @@ skills:
     delegates_to:
     - tech-spec-writer
     outputs:
-    - artifact: context-map.md
+    - doc_type: context-map
       path: project/docs/active/architecture/
       doc_category: architecture
-    - artifact: api-contracts.yaml
+    - doc_type: api-contracts
       path: project/docs/active/architecture/
       doc_category: architecture
-    - artifact: decision-log.md
+    - doc_type: decision-log
       path: project/docs/
       doc_category: project
   cli-architect:
@@ -48,7 +51,7 @@ skills:
     - tui-charm-expert
     - backend-go-expert
     outputs:
-    - artifact: cli-design.md
+    - doc_type: cli-design
       path: project/docs/active/architecture/
       doc_category: architecture
   debugger:
@@ -66,10 +69,10 @@ skills:
     delegates_to:
     - qa-lead
     outputs:
-    - artifact: debug-report.md
+    - doc_type: debug-report
       path: project/docs/active/bugs/
       doc_category: bugs
-    - artifact: known-issues.md
+    - doc_type: known-issues
       path: project/docs/
       doc_category: project
   devops-sre:
@@ -82,7 +85,7 @@ skills:
     - qa-lead
     delegates_to: []
     outputs:
-    - artifact: deployment-guide.md
+    - doc_type: deployment-guide
       path: project/docs/active/infrastructure/
       doc_category: infrastructure
   doc-janitor:
@@ -106,7 +109,7 @@ skills:
     delegates_to:
     - product-analyst
     outputs:
-    - artifact: feature-brief.md
+    - doc_type: feature-brief
       path: project/docs/active/discovery/
       doc_category: discovery
   frontend-nuxt:
@@ -121,7 +124,7 @@ skills:
     delegates_to:
     - qa-lead
     outputs:
-    - artifact: ui-implementation.md
+    - doc_type: ui-implementation
       path: project/docs/active/frontend/
       doc_category: frontend
   idea-interview:
@@ -136,7 +139,7 @@ skills:
     delegates_to:
     - product-analyst
     outputs:
-    - artifact: discovery-brief.md
+    - doc_type: discovery-brief
       path: project/docs/active/discovery/
       doc_category: discovery
   mcp-expert:
@@ -152,7 +155,7 @@ skills:
     - backend-go-expert
     - devops-sre
     outputs:
-    - artifact: server-config.md
+    - doc_type: server-config
       path: project/docs/active/architecture/
       doc_category: architecture
   product-analyst:
@@ -169,16 +172,16 @@ skills:
     - bmad-architect
     - tech-spec-writer
     outputs:
-    - artifact: roadmap.md
+    - doc_type: roadmap
       path: project/docs/active/product/
       doc_category: product
-    - artifact: user-stories.md
+    - doc_type: user-stories
       path: project/docs/active/product/
       doc_category: product
-    - artifact: requirements.md
+    - doc_type: requirements
       path: project/docs/active/specs/
       doc_category: specs
-    - artifact: backlog.md
+    - doc_type: backlog
       path: project/docs/
       doc_category: project
   project-bro:
@@ -203,10 +206,10 @@ skills:
     delegates_to:
     - devops-sre
     outputs:
-    - artifact: test-cases.md
+    - doc_type: test-cases
       path: project/docs/active/qa/
       doc_category: qa
-    - artifact: test-report.md
+    - doc_type: test-report
       path: project/docs/active/qa/
       doc_category: qa
   refactor-architect:
@@ -223,7 +226,7 @@ skills:
     - frontend-nuxt
     - devops-sre
     outputs:
-    - artifact: refactoring-overview.md
+    - doc_type: refactoring-overview
       path: project/docs/active/refactoring/
       doc_category: refactoring
   tech-spec-writer:
@@ -240,7 +243,7 @@ skills:
     - backend-go-expert
     - frontend-nuxt
     outputs:
-    - artifact: tech-spec.md
+    - doc_type: tech-spec
       path: project/docs/active/specs/
       doc_category: specs
   telegram-mechanic:
@@ -255,7 +258,7 @@ skills:
     - backend-go-expert
     - tma-expert
     outputs:
-    - artifact: webhook-config.md
+    - doc_type: webhook-config
       path: project/docs/active/architecture/
       doc_category: architecture
   tma-expert:
@@ -271,7 +274,7 @@ skills:
     delegates_to:
     - qa-lead
     outputs:
-    - artifact: tma-config.md
+    - doc_type: tma-config
       path: project/docs/active/frontend/
       doc_category: frontend
   tui-charm-expert:
@@ -285,7 +288,7 @@ skills:
     delegates_to:
     - qa-lead
     outputs:
-    - artifact: tui-design.md
+    - doc_type: tui-design
       path: project/docs/active/backend/
       doc_category: backend
   ui-implementor:
@@ -300,7 +303,7 @@ skills:
     delegates_to:
     - frontend-nuxt
     outputs:
-    - artifact: theming.md
+    - doc_type: theming
       path: project/docs/active/frontend/
       doc_category: frontend
   ux-designer:
@@ -315,10 +318,10 @@ skills:
     delegates_to:
     - ui-implementor
     outputs:
-    - artifact: tokens.json
+    - doc_type: tokens
       path: project/docs/active/design/
       doc_category: design
-    - artifact: design-system.md
+    - doc_type: design-system
       path: project/docs/active/design/
       doc_category: design
 phases:
@@ -352,141 +355,141 @@ phases:
 handoffs:
 - from: backend-go-expert
   to: qa-lead
-  artifact: service-implementation.md
+  doc_type: service-implementation
   path: project/docs/active/backend/
 - from: bmad-architect
   to: tech-spec-writer
-  artifact: context-map.md
+  doc_type: context-map
   path: project/docs/active/architecture/
 - from: bmad-architect
   to: tech-spec-writer
-  artifact: api-contracts.yaml
+  doc_type: api-contracts
   path: project/docs/active/architecture/
 - from: bmad-architect
   to: tech-spec-writer
-  artifact: decision-log.md
+  doc_type: decision-log
   path: project/docs/
 - from: cli-architect
   to: tui-charm-expert
-  artifact: cli-design.md
+  doc_type: cli-design
   path: project/docs/active/architecture/
 - from: cli-architect
   to: backend-go-expert
-  artifact: cli-design.md
+  doc_type: cli-design
   path: project/docs/active/architecture/
 - from: debugger
   to: qa-lead
-  artifact: debug-report.md
+  doc_type: debug-report
   path: project/docs/active/bugs/
 - from: debugger
   to: qa-lead
-  artifact: known-issues.md
+  doc_type: known-issues
   path: project/docs/
 - from: feature-fit
   to: product-analyst
-  artifact: feature-brief.md
+  doc_type: feature-brief
   path: project/docs/active/discovery/
 - from: frontend-nuxt
   to: qa-lead
-  artifact: ui-implementation.md
+  doc_type: ui-implementation
   path: project/docs/active/frontend/
 - from: idea-interview
   to: product-analyst
-  artifact: discovery-brief.md
+  doc_type: discovery-brief
   path: project/docs/active/discovery/
 - from: mcp-expert
   to: backend-go-expert
-  artifact: server-config.md
+  doc_type: server-config
   path: project/docs/active/architecture/
 - from: mcp-expert
   to: devops-sre
-  artifact: server-config.md
+  doc_type: server-config
   path: project/docs/active/architecture/
 - from: product-analyst
   to: bmad-architect
-  artifact: roadmap.md
+  doc_type: roadmap
   path: project/docs/active/product/
 - from: product-analyst
   to: bmad-architect
-  artifact: user-stories.md
+  doc_type: user-stories
   path: project/docs/active/product/
 - from: product-analyst
   to: bmad-architect
-  artifact: requirements.md
+  doc_type: requirements
   path: project/docs/active/specs/
 - from: product-analyst
   to: bmad-architect
-  artifact: backlog.md
+  doc_type: backlog
   path: project/docs/
 - from: product-analyst
   to: tech-spec-writer
-  artifact: roadmap.md
+  doc_type: roadmap
   path: project/docs/active/product/
 - from: product-analyst
   to: tech-spec-writer
-  artifact: user-stories.md
+  doc_type: user-stories
   path: project/docs/active/product/
 - from: product-analyst
   to: tech-spec-writer
-  artifact: requirements.md
+  doc_type: requirements
   path: project/docs/active/specs/
 - from: product-analyst
   to: tech-spec-writer
-  artifact: backlog.md
+  doc_type: backlog
   path: project/docs/
 - from: qa-lead
   to: devops-sre
-  artifact: test-cases.md
+  doc_type: test-cases
   path: project/docs/active/qa/
 - from: qa-lead
   to: devops-sre
-  artifact: test-report.md
+  doc_type: test-report
   path: project/docs/active/qa/
 - from: refactor-architect
   to: backend-go-expert
-  artifact: refactoring-overview.md
+  doc_type: refactoring-overview
   path: project/docs/active/refactoring/
 - from: refactor-architect
   to: frontend-nuxt
-  artifact: refactoring-overview.md
+  doc_type: refactoring-overview
   path: project/docs/active/refactoring/
 - from: refactor-architect
   to: devops-sre
-  artifact: refactoring-overview.md
+  doc_type: refactoring-overview
   path: project/docs/active/refactoring/
 - from: tech-spec-writer
   to: backend-go-expert
-  artifact: tech-spec.md
+  doc_type: tech-spec
   path: project/docs/active/specs/
 - from: tech-spec-writer
   to: frontend-nuxt
-  artifact: tech-spec.md
+  doc_type: tech-spec
   path: project/docs/active/specs/
 - from: telegram-mechanic
   to: backend-go-expert
-  artifact: webhook-config.md
+  doc_type: webhook-config
   path: project/docs/active/architecture/
 - from: telegram-mechanic
   to: tma-expert
-  artifact: webhook-config.md
+  doc_type: webhook-config
   path: project/docs/active/architecture/
 - from: tma-expert
   to: qa-lead
-  artifact: tma-config.md
+  doc_type: tma-config
   path: project/docs/active/frontend/
 - from: tui-charm-expert
   to: qa-lead
-  artifact: tui-design.md
+  doc_type: tui-design
   path: project/docs/active/backend/
 - from: ui-implementor
   to: frontend-nuxt
-  artifact: theming.md
+  doc_type: theming
   path: project/docs/active/frontend/
 - from: ux-designer
   to: ui-implementor
-  artifact: tokens.json
+  doc_type: tokens
   path: project/docs/active/design/
 - from: ux-designer
   to: ui-implementor
-  artifact: design-system.md
+  doc_type: design-system
   path: project/docs/active/design/

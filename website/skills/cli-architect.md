@@ -2,7 +2,7 @@
 
 > Expert in Go CLI Architecture (Cobra, Viper, POSIX).
 
-**Version:** 1.0.0
+**Version:** 1.2.0
 
 ---
 
@@ -15,6 +15,10 @@ This skill designs the Command Line Interface using Cobra, Viper, and POSIX stan
 - **Framework**: `spf13/cobra`.
 - **Config**: `spf13/viper`.
 - **Standards**: POSIX compliance, 12-factor CLI.
+
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
 
 ## Team Collaboration
 - **Architect**: `@bmad-architect` (Activates for CLI projects)
@@ -32,13 +36,19 @@ This skill designs the Command Line Interface using Cobra, Viper, and POSIX stan
 
 > [!IMPORTANT]
 > **Phase 1: Draft in Brain** — Create CLI Design as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/architecture/`
+> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/architecture/`
 
-## Artifact Ownership
+## Document Lifecycle
 
-- **Creates**: `project/docs/architecture/cli-design.md`
-- **Reads**: `project/docs/architecture/api-contracts.yaml`
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | cli-design.md | `active/architecture/` | CLI design complete |
+| 📖 Reads | api-contracts.yaml | `active/architecture/` | On activation |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | cli-design.md | `review/architecture/` | Ready for TUI implementation |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 
 ## Pre-Handoff Validation (Hard Stop)
 

@@ -17,7 +17,7 @@ delegates_to:
   - frontend-nuxt
 
 outputs:
-  - artifact: theming.md
+  - doc_type: theming
     path: project/docs/active/frontend/
     doc_category: frontend
 ---

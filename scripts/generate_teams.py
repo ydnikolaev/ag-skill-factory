@@ -124,6 +124,9 @@ def main():
     print("📝 Generating team files...")
     
     for preset_name, preset_config in presets.items():
+        if preset_name.startswith("_"):
+            continue
+            
         skill_names = resolve_skills(preset_name, presets, blueprint_skills)
         preset_desc = preset_config.get("description", f"{preset_name} preset")
         count = generate_team_file(preset_name, skill_names, blueprint_skills, output_dir, preset_desc)

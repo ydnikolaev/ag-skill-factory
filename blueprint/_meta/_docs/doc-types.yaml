@@ -1,3 +1,6 @@
+# Auto-generated from skill frontmatter
+# Run: python3 scripts/generate_pipelines.py
+
 types:
   service-implementation:
     phase: implementation
@@ -5,26 +8,30 @@ types:
     consumers:
     - qa-lead
     category: backend
-    artifact: service-implementation.md
+    doc_type: service-implementation
+    template: _service-implementation.md
   context-map:
     phase: architecture
     creator: bmad-architect
     consumers: &id001
     - tech-spec-writer
     category: architecture
-    artifact: context-map.md
+    doc_type: context-map
+    template: _context-map.md
   api-contracts:
     phase: architecture
     creator: bmad-architect
     consumers: *id001
     category: architecture
-    artifact: api-contracts.yaml
+    doc_type: api-contracts
+    template: _api-contracts.md
   decision-log:
     phase: architecture
     creator: bmad-architect
     consumers: *id001
     category: project
-    artifact: decision-log.md
+    doc_type: decision-log
+    template: _decision-log.md
   cli-design:
     phase: architecture
     creator: cli-architect
@@ -32,47 +39,54 @@ types:
     - tui-charm-expert
     - backend-go-expert
     category: architecture
-    artifact: cli-design.md
+    doc_type: cli-design
+    template: _cli-design.md
   debug-report:
     phase: utility
     creator: debugger
     consumers: &id002
     - qa-lead
     category: bugs
-    artifact: debug-report.md
+    doc_type: debug-report
+    template: _debug-report.md
   known-issues:
     phase: utility
     creator: debugger
     consumers: *id002
     category: project
-    artifact: known-issues.md
+    doc_type: known-issues
+    template: _known-issues.md
   deployment-guide:
     phase: delivery
     creator: devops-sre
     consumers: []
     category: infrastructure
-    artifact: deployment-guide.md
+    doc_type: deployment-guide
+    template: _deployment-guide.md
   feature-brief:
     phase: discovery
     creator: feature-fit
     consumers:
     - product-analyst
     category: discovery
-    artifact: feature-brief.md
+    doc_type: feature-brief
+    template: _feature-brief.md
   ui-implementation:
     phase: implementation
     creator: frontend-nuxt
     consumers:
     - qa-lead
     category: frontend
-    artifact: ui-implementation.md
+    doc_type: ui-implementation
+    template: _ui-implementation.md
   discovery-brief:
     phase: discovery
     creator: idea-interview
     consumers:
     - product-analyst
     category: discovery
-    artifact: discovery-brief.md
+    doc_type: discovery-brief
+    template: _discovery-brief.md
   server-config:
     phase: utility
     creator: mcp-expert
@@ -80,7 +94,8 @@ types:
     - backend-go-expert
     - devops-sre
     category: architecture
-    artifact: server-config.md
+    doc_type: server-config
+    template: _server-config.md
   roadmap:
     phase: definition
     creator: product-analyst
@@ -88,38 +103,44 @@ types:
     - bmad-architect
     - tech-spec-writer
     category: product
-    artifact: roadmap.md
+    doc_type: roadmap
+    template: _roadmap.md
   user-stories:
     phase: definition
     creator: product-analyst
     consumers: *id003
     category: product
-    artifact: user-stories.md
+    doc_type: user-stories
+    template: _user-stories.md
   requirements:
     phase: definition
     creator: product-analyst
     consumers: *id003
     category: specs
-    artifact: requirements.md
+    doc_type: requirements
+    template: _requirements.md
   backlog:
     phase: definition
     creator: product-analyst
     consumers: *id003
     category: project
-    artifact: backlog.md
+    doc_type: backlog
+    template: _backlog.md
   test-cases:
     phase: delivery
     creator: qa-lead
     consumers: &id004
     - devops-sre
     category: qa
-    artifact: test-cases.md
+    doc_type: test-cases
+    template: _test-cases.md
   test-report:
     phase: delivery
     creator: qa-lead
     consumers: *id004
     category: qa
-    artifact: test-report.md
+    doc_type: test-report
+    template: _test-report.md
   refactoring-overview:
     phase: utility
     creator: refactor-architect
@@ -128,7 +149,8 @@ types:
     - frontend-nuxt
     - devops-sre
     category: refactoring
-    artifact: refactoring-overview.md
+    doc_type: refactoring-overview
+    template: _refactoring-overview.md
   tech-spec:
     phase: architecture
     creator: tech-spec-writer
@@ -136,7 +158,8 @@ types:
     - backend-go-expert
     - frontend-nuxt
     category: specs
-    artifact: tech-spec.md
+    doc_type: tech-spec
+    template: _tech-spec.md
   webhook-config:
     phase: architecture
     creator: telegram-mechanic
@@ -144,38 +167,44 @@ types:
     - backend-go-expert
     - tma-expert
     category: architecture
-    artifact: webhook-config.md
+    doc_type: webhook-config
+    template: _webhook-config.md
   tma-config:
     phase: implementation
     creator: tma-expert
     consumers:
     - qa-lead
     category: frontend
-    artifact: tma-config.md
+    doc_type: tma-config
+    template: _tma-config.md
   tui-design:
     phase: implementation
     creator: tui-charm-expert
     consumers:
     - qa-lead
     category: backend
-    artifact: tui-design.md
+    doc_type: tui-design
+    template: _tui-design.md
   theming:
     phase: design
     creator: ui-implementor
     consumers:
     - frontend-nuxt
     category: frontend
-    artifact: theming.md
+    doc_type: theming
+    template: _theming.md
   tokens:
     phase: design
     creator: ux-designer
     consumers: &id005
     - ui-implementor
     category: design
-    artifact: tokens.json
+    doc_type: tokens
+    template: _tokens.md
   design-system:
     phase: design
     creator: ux-designer
     consumers: *id005
     category: design
-    artifact: design-system.md
+    doc_type: design-system
+    template: _design-system.md

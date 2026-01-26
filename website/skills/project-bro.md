@@ -2,7 +2,7 @@
 
 > Your project awareness buddy. Knows current state, reads docs, analyzes code, answers "where are we?" questions. Activate with "bro" or "project-bro".
 
-**Version:** 1.0.0
+**Version:** 1.2.0
 
 ---
 
@@ -24,7 +24,7 @@ Hey! I'm your project buddy. I know where we are, what's done, and what's next.
 | "Where are we?" | Read `project/docs/ARTIFACT_REGISTRY.md` → show artifact statuses |
 | "What's done?" | Scan `project/docs/` for completed artifacts |
 | "What's left?" | Compare roadmap vs current state |
-| "Show architecture" | Read `project/docs/architecture/` and explain |
+| "Show architecture" | Read `project/docs/active/architecture/` and explain |
 | "What's in the code?" | Analyze codebase structure |
 
 ## My Workflow
@@ -35,10 +35,10 @@ First, I look at these files (in order):
 ```
 0. project/CONFIG.yaml   → Stack, versions, modules (READ FIRST!)
 1. docs/ARTIFACT_REGISTRY.md        → Artifact registry, statuses
-2. docs/roadmap.md       → What's planned
-3. docs/discovery-brief.md → Original idea
-4. docs/architecture/    → Technical decisions
-5. docs/specs/           → Requirements, API contracts
+2. docs/active/product/roadmap.md   → What's planned
+3. docs/active/discovery/discovery-brief.md → Original idea
+4. docs/active/architecture/        → Technical decisions
+5. docs/active/specs/               → Requirements, API contracts
 ```
 
 ### Step 2: Analyze Code (if needed)
@@ -64,16 +64,16 @@ I summarize:
 | `project/CONFIG.yaml` | **Stack, versions, modules** (source of truth!) |
 | `mcp.yaml` | Project MCP server config, enabled modules |
 | `project/docs/ARTIFACT_REGISTRY.md` | Master status of all artifacts |
-| `project/docs/roadmap.md` | Planned features and phases |
-| `project/docs/discovery-brief.md` | Original project vision |
-| `project/docs/architecture/context-map.md` | System design |
-| `project/docs/specs/requirements.md` | Detailed requirements |
+| `project/docs/active/product/roadmap.md` | Planned features and phases |
+| `project/docs/active/discovery/discovery-brief.md` | Original project vision |
+| `project/docs/active/architecture/context-map.md` | System design |
+| `project/docs/active/specs/requirements.md` | Detailed requirements |
 | `README.md` | Project overview |
 | `package.json` / `go.mod` | Dependencies |
 
 ## How I Think
 
-See [decision_flow.md](examples/decision_flow.md) for the decision diagram.
+See decision_flow.md for the decision diagram.
 
 ## What I DON'T Do
 
@@ -83,6 +83,10 @@ See [decision_flow.md](examples/decision_flow.md) for the decision diagram.
 ❌ I don't deploy anything  
 
 I'm here to **understand and explain**, not to execute.
+
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
 
 ## Team Collaboration
 
@@ -135,11 +139,19 @@ When you need action, I point you to the right skill:
 > My analysis stays in conversation context only.
 > If documentation needs updating, delegate to the appropriate skill.
 
-## Artifact Ownership
+## Document Lifecycle
 
-- **Creates**: Nothing — I'm read-only
-- **Reads**: `project/docs/ARTIFACT_REGISTRY.md`, `project/docs/roadmap.md`, `project/docs/architecture/`, `project/docs/specs/`
-- **Updates**: Nothing — recommend skills that can update
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 📖 Reads | ARTIFACT_REGISTRY.md | `project/docs/` | On activation |
+| 📖 Reads | roadmap.md | `active/product/` | Status check |
+| 📖 Reads | context-map.md | `active/architecture/` | Architecture overview |
+| 📖 Reads | requirements.md | `active/specs/` | Requirements check |
+| 📖 Reads | CONFIG.yaml | `project/` | Stack info |
+| ❌ Creates | Nothing | — | I'm read-only |
+| ❌ Updates | Nothing | — | Recommend skills that can update |
 
 ## Example Conversations
 

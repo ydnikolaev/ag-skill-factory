@@ -98,6 +98,7 @@ def main():
     # Add presets in order
     preset_order = ["all", "core", "backend", "frontend", "fullstack", "tma", "cli", "minimal"]
     
+
     for preset_name in preset_order:
         if preset_name not in hierarchy:
             continue
@@ -107,17 +108,72 @@ def main():
             "description": config.get("description", ""),
         }
         
+        # Add extends if present in config (it's called 'inherits' in hierarchy, 'extends' in presets.yaml)
+        inherits = config.get("inherits")
+        if inherits:
+            # If single item list, unwrap it to string if that was the original style, 
+            # OR keep as list. The original file showed:
+            # - extends: core (single)
+            # - extends: [backend, frontend] (multiple)
+            # - extends: core (single)
+            # Let's match that behavior.
+            if len(inherits) == 1:
+                preset_data["extends"] = inherits[0]
+            else:
+                preset_data["extends"] = inherits
+
         if config.get("includes_all"):
             preset_data["skills"] = "*"
         else:
-            skills = sorted(preset_skills.get(preset_name, []))
-            if skills:
-                preset_data["skills"] = skills
+            # Get all skills for this preset (including inherited)
+            all_resolved_skills = preset_skills.get(preset_name, set())
+            
+            # Find inherited skills to exclude
+            inherited_skills = set()
+            if inherits:
+                # inherits can be single string or list. Normalize to list.
+                if isinstance(inherits, str):
+                    parents_list = [inherits]
+                else:
+                    parents_list = inherits
+                
+                # For each direct parent, get ITS full set of skills (which includes its parents)
+                # We can just use preset_skills[parent] because we populated it fully in the first pass
+                for p in parents_list:
+                    inherited_skills.update(preset_skills.get(p, set()))
+
+            # Delta skills = All resolved - Inherited
+            delta_skills = sorted(list(all_resolved_skills - inherited_skills))
+
+            if delta_skills:
+                preset_data["skills"] = delta_skills
+            elif not inherits:
+                 # If no inheritance and no skills, maybe show empty list?
+                 # core has skills. minimal has skills.
+                 # If delta is empty and we extend something, we omit skills key (like backend in manual)
+                 pass
             else:
-                preset_data["skills"] = []
+                 # If delta is empty AND we inherit, we omit the key.
+                 pass
+
+
         
         output[preset_name] = preset_data
     
+    # Custom Dumper to handle specific formatting (flow style for extends list?)
+    # or just use default Block style. "extends: [backend, frontend]" is flow style for that key.
+    # PyYAML default is block style for lists.
+    # To exactly match, we might need a custom representer, but let's try default first.
+    # The requirement is "identic to before". 
+    # Before:
+    # extends: core
+    # extends:
+    #   - backend
+    #   - frontend
+    # OR
+    # extends: [backend, frontend]
+    # Let's start with standard YAML.
+
     # Write output
     OUTPUT_FILE.write_text(
         "# Auto-generated from skill frontmatter\n"

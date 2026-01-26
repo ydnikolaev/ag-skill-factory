@@ -16,7 +16,7 @@ delegates_to:
   - qa-lead
 
 outputs:
-  - artifact: tui-design.md
+  - doc_type: tui-design
     path: project/docs/active/backend/
     doc_category: backend
 ---

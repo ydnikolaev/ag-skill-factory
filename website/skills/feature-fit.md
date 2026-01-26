@@ -2,12 +2,12 @@
 
 > Analyzes new feature requests for EXISTING projects. Reads config/mcp context, performs Gap Analysis, and creates a Feature Brief.
 
-**Version:** 1.0.0
+**Version:** 1.2.0
 
 ---
 
 
-# Feature Fit Analyst 🧩
+# Feature Fit Analyst
 
 > **MODE**: ANALYSIS. You are the bridge between a new idea and an existing system.
 > ✅ READ existing architecture first
@@ -22,7 +22,7 @@
 
 **DO NOT activate if**:
 - Project is empty (Use `@idea-interview`)
-- User wants to refactor code (Use `@backend-go-expert` or `@bmad-architect`)
+- User wants to refactor code (Use `@refactor-architect`)
 
 ## Interview Strategy (The "Why" & "How")
 
@@ -48,8 +48,8 @@ Before asking ANY questions, read the project state:
 
 1.  **Project Config**: Read `project/CONFIG.yaml` (Stack, Modules, DBs).
 2.  **MCP Context**: Read `mcp.yaml` (Available tools, External integrations).
-3.  **Architecture**: Read `project/docs/architecture/context-map.md` (Bounded Contexts).
-4.  **Product**: Read `project/docs/product/roadmap.md` (Is this already planned?).
+3.  **Architecture**: Read `project/docs/active/architecture/context-map.md` (Bounded Contexts).
+4.  **Product**: Read `project/docs/active/product/roadmap.md` (Is this already planned?).
 
 ### Phase 1.5: Stack Verification (Reality Check)
 > **Goal**: Ensure docs match reality BEFORE writing specs.
@@ -123,6 +123,10 @@ Feature Brief should follow this structure (see `resources/feature-brief-templat
 (What might break?)
 ```
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 - **Product**: `@product-analyst` (Receives Feature Brief, creates specs)
 - **Architect**: `@bmad-architect` (Validates architectural fit)
@@ -138,12 +142,21 @@ Feature Brief should follow this structure (see `resources/feature-brief-templat
 
 > [!IMPORTANT]
 > **Phase 1: Draft in Brain** — Create Feature Brief as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/features/`
+> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/features/`
 
-## Artifact Ownership
-- **Creates**: `project/docs/features/<feature-name>.md`
-- **Reads**: `project/CONFIG.yaml`, `mcp.yaml`, `project/docs/architecture/*`
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (set status to ✅ Done)
+## Document Lifecycle
+
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | `<feature-name>.md` | `active/features/` | Feature analysis complete |
+| 📖 Reads | CONFIG.yaml | `project/` | On activation |
+| 📖 Reads | mcp.yaml | `project/` | On activation |
+| 📖 Reads | context-map.md | `active/architecture/` | Gap analysis |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | `<feature-name>.md` | `review/features/` | User approves draft |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 
 ## Pre-Handoff Validation (Hard Stop)
 
@@ -164,7 +177,7 @@ Feature Brief should follow this structure (see `resources/feature-brief-templat
 
 > [!CAUTION]
 > **BEFORE delegating to next skill:**
-> 1. ✅ Final document exists in `project/docs/features/` (not just brain artifact)
+> 1. ✅ Final document exists in `project/docs/active/features/` (not just brain artifact)
 > 2. ✅ File header changed from `Draft` to `Approved`
 > 3. ✅ `project/docs/ARTIFACT_REGISTRY.md` updated to ✅ Done
 > 4. ✅ User approved via `notify_user`

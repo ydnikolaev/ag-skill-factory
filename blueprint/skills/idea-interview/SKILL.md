@@ -13,7 +13,7 @@ delegates_to:
   - product-analyst
 
 outputs:
-  - artifact: discovery-brief.md
+  - doc_type: discovery-brief
     path: project/docs/active/discovery/
     doc_category: discovery
 ---

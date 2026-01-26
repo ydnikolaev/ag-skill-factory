@@ -16,13 +16,13 @@ delegates_to:
   - tech-spec-writer
 
 outputs:
-  - artifact: context-map.md
+  - doc_type: context-map
     path: project/docs/active/architecture/
     doc_category: architecture
-  - artifact: api-contracts.yaml
+  - doc_type: api-contracts
     path: project/docs/active/architecture/
     doc_category: architecture
-  - artifact: decision-log.md
+  - doc_type: decision-log
     path: project/docs/
     doc_category: project
 ---

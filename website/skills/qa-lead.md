@@ -2,7 +2,7 @@
 
 > Quality Assurance Lead. Tests E2E, API, and UI.
 
-**Version:** 1.0.0
+**Version:** 1.2.0
 
 ---
 
@@ -40,6 +40,10 @@ Use these levels when reporting bugs:
 **Assign to**: @backend-go-expert / @frontend-nuxt
 ```
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 - **Analyst**: `@product-analyst` (Did we build what was asked?)
 - **Backend/Frontend**: `@backend-go-expert` / `@frontend-nuxt` (Fix these bugs!)
@@ -64,7 +68,7 @@ Use these levels when reporting bugs:
 > **Action**: Send back with "BLOCKER: Missing TDD Artifacts" or "BLOCKER: TDD violation - feat before test".
 
 1.  Review Specs.
-2.  Write Test Cases (`project/docs/qa/test-cases.md`).
+2.  Write Test Cases (`project/docs/active/qa/test-cases.md`).
 3.  Execute Tests (Manual + Automated).
 4.  Sign-off Release.
 
@@ -124,12 +128,22 @@ Use these levels when reporting bugs:
 
 > [!IMPORTANT]
 > **Phase 1: Draft in Brain** — Create Test Report as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/qa/`
+> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/qa/`
 
-## Artifact Ownership
-- **Creates**: `project/docs/qa/test-cases.md`, `project/docs/qa/test-report.md`
-- **Reads**: `project/docs/specs/requirements.md`, `project/docs/architecture/context-map.md`
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (update test artifacts status)
+## Document Lifecycle
+
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | test-cases.md | `active/qa/` | Test planning complete |
+| 🔵 Creates | test-report.md | `active/qa/` | Testing complete |
+| 📖 Reads | requirements.md | `active/specs/` | On activation |
+| 📖 Reads | user-stories.md | `active/product/` | Test against user stories |
+| 📖 Reads | context-map.md | `active/architecture/` | Understanding system |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | test-report.md | `review/qa/` | Ready for sign-off |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 
 
 > [!IMPORTANT]

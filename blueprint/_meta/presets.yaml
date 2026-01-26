@@ -20,84 +20,38 @@ core:
   - tech-spec-writer
 backend:
   description: Go backend development
+  extends: core
   skills:
   - backend-go-expert
-  - bmad-architect
   - debugger
   - devops-sre
-  - doc-janitor
-  - feature-fit
-  - idea-interview
-  - mcp-expert
-  - product-analyst
   - project-bro
-  - qa-lead
-  - refactor-architect
-  - tech-spec-writer
 frontend:
   description: Nuxt/Vue frontend
+  extends: core
   skills:
-  - bmad-architect
-  - doc-janitor
-  - feature-fit
   - frontend-nuxt
-  - idea-interview
-  - mcp-expert
-  - product-analyst
-  - qa-lead
-  - refactor-architect
-  - tech-spec-writer
   - ui-implementor
   - ux-designer
 fullstack:
   description: Full stack development
-  skills:
-  - backend-go-expert
-  - bmad-architect
-  - debugger
-  - devops-sre
-  - doc-janitor
-  - feature-fit
-  - frontend-nuxt
-  - idea-interview
-  - mcp-expert
-  - product-analyst
-  - project-bro
-  - qa-lead
-  - refactor-architect
-  - tech-spec-writer
-  - ui-implementor
-  - ux-designer
+  extends:
+  - backend
+  - frontend
 tma:
   description: Telegram Mini Apps
+  extends: core
   skills:
-  - bmad-architect
-  - doc-janitor
-  - feature-fit
   - frontend-nuxt
-  - idea-interview
-  - mcp-expert
-  - product-analyst
-  - qa-lead
-  - refactor-architect
-  - tech-spec-writer
   - telegram-mechanic
   - tma-expert
   - ui-implementor
   - ux-designer
 cli:
   description: CLI/TUI applications
+  extends: core
   skills:
-  - bmad-architect
   - cli-architect
-  - doc-janitor
-  - feature-fit
-  - idea-interview
-  - mcp-expert
-  - product-analyst
-  - qa-lead
-  - refactor-architect
-  - tech-spec-writer
   - tui-charm-expert
 minimal:
   description: Utilities only

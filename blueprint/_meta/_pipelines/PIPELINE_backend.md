@@ -5,43 +5,46 @@ description: Pipeline for backend preset. Skill handoffs and phases.
 
 # Pipeline (backend)
 
-> Go backend development (9 skills)
+> Go backend development
 
 ## Phases
 
 | Phase | Skills | Outputs |
 |-------|--------|---------|
-| Discovery | `@idea-interview` | discovery-brief.md |
-| Definition | `@product-analyst` | roadmap.md, user-stories.md, requirements.md, backlog.md |
-| Architecture | `@bmad-architect`, `@tech-spec-writer` | context-map.md, api-contracts.yaml, decision-log.md, tech-spec.md |
-| Implementation | `@backend-go-expert` | service-implementation.md |
-| Delivery | `@devops-sre`, `@qa-lead` | deployment-guide.md, test-cases.md, test-report.md |
-| Utility | `@debugger`, `@doc-janitor`, `@project-bro`, `@refactor-architect` | debug-report.md, known-issues.md, refactoring-overview.md |
+| Discovery | `@feature-fit`, `@idea-interview` | feature-brief, discovery-brief |
+| Definition | `@product-analyst` | roadmap, user-stories, requirements, backlog |
+| Architecture | `@bmad-architect`, `@tech-spec-writer` | context-map, api-contracts, decision-log, tech-spec |
+| Implementation | `@backend-go-expert` | service-implementation |
+| Delivery | `@devops-sre`, `@qa-lead` | deployment-guide, test-cases, test-report |
+| Utility | `@debugger`, `@doc-janitor`, `@mcp-expert`, `@project-bro`, `@refactor-architect` | debug-report, known-issues, server-config, refactoring-overview |
 
 ## Handoff Matrix
 
 | From | To | Artifact |
 |------|-----|----------|
-| `@backend-go-expert` | `@qa-lead` | service-implementation.md |
-| `@bmad-architect` | `@tech-spec-writer` | context-map.md |
-| `@bmad-architect` | `@tech-spec-writer` | api-contracts.yaml |
-| `@bmad-architect` | `@tech-spec-writer` | decision-log.md |
-| `@debugger` | `@qa-lead` | debug-report.md |
-| `@debugger` | `@qa-lead` | known-issues.md |
-| `@idea-interview` | `@product-analyst` | discovery-brief.md |
-| `@product-analyst` | `@bmad-architect` | roadmap.md |
-| `@product-analyst` | `@bmad-architect` | user-stories.md |
-| `@product-analyst` | `@bmad-architect` | requirements.md |
-| `@product-analyst` | `@bmad-architect` | backlog.md |
-| `@product-analyst` | `@tech-spec-writer` | roadmap.md |
-| `@product-analyst` | `@tech-spec-writer` | user-stories.md |
-| `@product-analyst` | `@tech-spec-writer` | requirements.md |
-| `@product-analyst` | `@tech-spec-writer` | backlog.md |
-| `@qa-lead` | `@devops-sre` | test-cases.md |
-| `@qa-lead` | `@devops-sre` | test-report.md |
-| `@refactor-architect` | `@backend-go-expert` | refactoring-overview.md |
-| `@refactor-architect` | `@devops-sre` | refactoring-overview.md |
-| `@tech-spec-writer` | `@backend-go-expert` | tech-spec.md |
+| `@backend-go-expert` | `@qa-lead` | service-implementation |
+| `@bmad-architect` | `@tech-spec-writer` | context-map |
+| `@bmad-architect` | `@tech-spec-writer` | api-contracts |
+| `@bmad-architect` | `@tech-spec-writer` | decision-log |
+| `@debugger` | `@qa-lead` | debug-report |
+| `@debugger` | `@qa-lead` | known-issues |
+| `@feature-fit` | `@product-analyst` | feature-brief |
+| `@idea-interview` | `@product-analyst` | discovery-brief |
+| `@mcp-expert` | `@backend-go-expert` | server-config |
+| `@mcp-expert` | `@devops-sre` | server-config |
+| `@product-analyst` | `@bmad-architect` | roadmap |
+| `@product-analyst` | `@bmad-architect` | user-stories |
+| `@product-analyst` | `@bmad-architect` | requirements |
+| `@product-analyst` | `@bmad-architect` | backlog |
+| `@product-analyst` | `@tech-spec-writer` | roadmap |
+| `@product-analyst` | `@tech-spec-writer` | user-stories |
+| `@product-analyst` | `@tech-spec-writer` | requirements |
+| `@product-analyst` | `@tech-spec-writer` | backlog |
+| `@qa-lead` | `@devops-sre` | test-cases |
+| `@qa-lead` | `@devops-sre` | test-report |
+| `@refactor-architect` | `@backend-go-expert` | refactoring-overview |
+| `@refactor-architect` | `@devops-sre` | refactoring-overview |
+| `@tech-spec-writer` | `@backend-go-expert` | tech-spec |
 
 ## Return Paths
 

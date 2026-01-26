@@ -35,6 +35,26 @@ active/specs/tech-spec.md             ❌ Wrong (no work-unit)
 
 ---
 
+## Document Creation Formula
+
+> **IMPORTANT:** The `doc_type` in skill frontmatter is the TYPE (links to template), NOT the filename.
+
+**Steps:**
+1. Get `work_unit` from git branch: `git branch --show-current | sed 's|/|-|g'`
+2. Get `doc_type` from skill outputs (e.g., `user-stories`)
+3. Get template: `_meta/_docs/templates/documents/_{doc_type}.md`
+4. Create file: `active/{doc_category}/{work_unit}.md`
+
+**Example:**
+```
+work_unit: feat-forum (from branch feat/forum)
+doc_type: user-stories (from skill outputs)
+template: _user-stories.md
+→ creates: active/product/feat-forum.md
+```
+
+---
+
 ## Document Frontmatter
 
 **Required in every document:**

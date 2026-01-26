@@ -5,42 +5,43 @@ description: Pipeline for frontend preset. Skill handoffs and phases.
 
 # Pipeline (frontend)
 
-> Nuxt/Vue frontend (8 skills)
+> Nuxt/Vue frontend
 
 ## Phases
 
 | Phase | Skills | Outputs |
 |-------|--------|---------|
-| Discovery | `@idea-interview` | discovery-brief.md |
-| Definition | `@product-analyst` | roadmap.md, user-stories.md, requirements.md, backlog.md |
-| Design | `@ui-implementor`, `@ux-designer` | theming.md, tokens.json, design-system.md |
-| Architecture | `@bmad-architect`, `@tech-spec-writer` | context-map.md, api-contracts.yaml, decision-log.md, tech-spec.md |
-| Implementation | `@frontend-nuxt` | ui-implementation.md |
-| Delivery | `@qa-lead` | test-cases.md, test-report.md |
-| Utility | `@doc-janitor`, `@refactor-architect` | refactoring-overview.md |
+| Discovery | `@feature-fit`, `@idea-interview` | feature-brief, discovery-brief |
+| Definition | `@product-analyst` | roadmap, user-stories, requirements, backlog |
+| Design | `@ui-implementor`, `@ux-designer` | theming, tokens, design-system |
+| Architecture | `@bmad-architect`, `@tech-spec-writer` | context-map, api-contracts, decision-log, tech-spec |
+| Implementation | `@frontend-nuxt` | ui-implementation |
+| Delivery | `@qa-lead` | test-cases, test-report |
+| Utility | `@doc-janitor`, `@mcp-expert`, `@refactor-architect` | server-config, refactoring-overview |
 
 ## Handoff Matrix
 
 | From | To | Artifact |
 |------|-----|----------|
-| `@bmad-architect` | `@tech-spec-writer` | context-map.md |
-| `@bmad-architect` | `@tech-spec-writer` | api-contracts.yaml |
-| `@bmad-architect` | `@tech-spec-writer` | decision-log.md |
-| `@frontend-nuxt` | `@qa-lead` | ui-implementation.md |
-| `@idea-interview` | `@product-analyst` | discovery-brief.md |
-| `@product-analyst` | `@bmad-architect` | roadmap.md |
-| `@product-analyst` | `@bmad-architect` | user-stories.md |
-| `@product-analyst` | `@bmad-architect` | requirements.md |
-| `@product-analyst` | `@bmad-architect` | backlog.md |
-| `@product-analyst` | `@tech-spec-writer` | roadmap.md |
-| `@product-analyst` | `@tech-spec-writer` | user-stories.md |
-| `@product-analyst` | `@tech-spec-writer` | requirements.md |
-| `@product-analyst` | `@tech-spec-writer` | backlog.md |
-| `@refactor-architect` | `@frontend-nuxt` | refactoring-overview.md |
-| `@tech-spec-writer` | `@frontend-nuxt` | tech-spec.md |
-| `@ui-implementor` | `@frontend-nuxt` | theming.md |
-| `@ux-designer` | `@ui-implementor` | tokens.json |
-| `@ux-designer` | `@ui-implementor` | design-system.md |
+| `@bmad-architect` | `@tech-spec-writer` | context-map |
+| `@bmad-architect` | `@tech-spec-writer` | api-contracts |
+| `@bmad-architect` | `@tech-spec-writer` | decision-log |
+| `@feature-fit` | `@product-analyst` | feature-brief |
+| `@frontend-nuxt` | `@qa-lead` | ui-implementation |
+| `@idea-interview` | `@product-analyst` | discovery-brief |
+| `@product-analyst` | `@bmad-architect` | roadmap |
+| `@product-analyst` | `@bmad-architect` | user-stories |
+| `@product-analyst` | `@bmad-architect` | requirements |
+| `@product-analyst` | `@bmad-architect` | backlog |
+| `@product-analyst` | `@tech-spec-writer` | roadmap |
+| `@product-analyst` | `@tech-spec-writer` | user-stories |
+| `@product-analyst` | `@tech-spec-writer` | requirements |
+| `@product-analyst` | `@tech-spec-writer` | backlog |
+| `@refactor-architect` | `@frontend-nuxt` | refactoring-overview |
+| `@tech-spec-writer` | `@frontend-nuxt` | tech-spec |
+| `@ui-implementor` | `@frontend-nuxt` | theming |
+| `@ux-designer` | `@ui-implementor` | tokens |
+| `@ux-designer` | `@ui-implementor` | design-system |
 
 ## Return Paths
 

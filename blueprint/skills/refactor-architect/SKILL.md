@@ -16,7 +16,7 @@ delegates_to:
   - devops-sre
 
 outputs:
-  - artifact: refactoring-overview.md
+  - doc_type: refactoring-overview
     path: project/docs/active/refactoring/
     doc_category: refactoring
 ---

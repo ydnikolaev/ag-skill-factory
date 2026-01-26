@@ -15,7 +15,7 @@ receives_from:
 delegates_to: []
 
 outputs:
-  - artifact: deployment-guide.md
+  - doc_type: deployment-guide
     path: project/docs/active/infrastructure/
     doc_category: infrastructure
 ---

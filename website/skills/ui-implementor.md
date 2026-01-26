@@ -2,7 +2,7 @@
 
 > UI Implementor that converts design tokens into Tailwind, shadcn components, and production CSS.
 
-**Version:** 1.0.0
+**Version:** 1.2.0
 
 ---
 
@@ -30,6 +30,10 @@ This skill **implements designs** in code. It turns tokens and specs into real c
 2.  **Component Building**: Create shadcn components with proper styling.
 3.  **Theme Support**: Implement light/dark mode via CSS variables.
 4.  **Responsive Design**: Ensure all components work across breakpoints.
+
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
 
 ## Team Collaboration
 - **UX**: `@ux-designer` (Source of tokens and specs)
@@ -69,13 +73,20 @@ This skill **implements designs** in code. It turns tokens and specs into real c
 
 > [!IMPORTANT]
 > **Phase 1: Draft in Brain** — Create Theming Doc as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/frontend/`
+> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/frontend/`
 
-## Artifact Ownership
+## Document Lifecycle
 
-- **Creates**: `components/ui/`, `project/docs/frontend/theming.md`
-- **Reads**: `project/docs/design/tokens.json`
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | theming.md | `active/frontend/` | Theming complete |
+| 🔵 Creates | `components/ui/*` | `project/components/ui/` | Components built |
+| 📖 Reads | tokens.json | `active/design/` | On activation |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | theming.md | `review/frontend/` | User approves draft |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 
 ## Pre-Handoff Validation (Hard Stop)
 

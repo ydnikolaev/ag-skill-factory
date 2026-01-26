@@ -5,7 +5,7 @@ description: Team roster for all preset. Apply when collaborating or delegating.
 
 # Team Roster (all)
 
-> Full blueprint (21 skills, all extras)
+> Full blueprint
 
 | Skill | Description |
 |-------|-------------|

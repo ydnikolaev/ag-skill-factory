@@ -18,7 +18,7 @@ delegates_to:
   - qa-lead
 
 outputs:
-  - artifact: service-implementation.md
+  - doc_type: service-implementation
     path: project/docs/active/backend/
     doc_category: backend
 ---

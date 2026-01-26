@@ -2,7 +2,7 @@
 
 > UX/UI Designer specializing in design systems, design tokens, and Figma workflows.
 
-**Version:** 1.0.0
+**Version:** 1.2.0
 
 ---
 
@@ -31,6 +31,10 @@ This skill creates **design systems** and **design strategies**. It thinks befor
 3.  **Component Library**: Define component hierarchy (atoms → molecules → organisms).
 4.  **Figma Workflow**: Extract styles from Figma, or create design specs.
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 - **Frontend**: `@ui-implementor` (Receives tokens and implements them)
 - **Architect**: `@bmad-architect` (Aligns design with system architecture)
@@ -52,7 +56,7 @@ This skill creates **design systems** and **design strategies**. It thinks befor
 ### Phase 3: Component Spec
 1.  Define button variants, inputs, cards, etc.
 2.  Document states (hover, active, disabled, focus).
-3.  Output: `project/docs/design-system.md` or Figma file.
+3.  Output: `project/docs/active/design/design-system.md` or Figma file.
 
 ### Phase 4: Handover
 1.  Provide tokens to `@ui-implementor`.
@@ -98,12 +102,20 @@ This skill creates **design systems** and **design strategies**. It thinks befor
 
 > [!IMPORTANT]
 > **Phase 1: Draft in Brain** — Create Design System as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/design/`
+> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/design/`
 
-## Artifact Ownership
-- **Creates**: `project/docs/design/tokens.json`, `project/docs/design/design-system.md`
-- **Reads**: `project/docs/product/roadmap.md`
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (update design artifacts status)
+## Document Lifecycle
+
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | tokens.json | `active/design/` | Token definition complete |
+| 🔵 Creates | design-system.md | `active/design/` | Component spec complete |
+| 📖 Reads | roadmap.md | `active/product/` | On activation |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | tokens.json, design-system.md | `review/design/` | User approves drafts |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP

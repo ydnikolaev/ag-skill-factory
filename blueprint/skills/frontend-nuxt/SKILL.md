@@ -17,7 +17,7 @@ delegates_to:
   - qa-lead
 
 outputs:
-  - artifact: ui-implementation.md
+  - doc_type: ui-implementation
     path: project/docs/active/frontend/
     doc_category: frontend
 ---

@@ -2,7 +2,7 @@
 
 > Enforces document structure, archives completed work, migrates legacy format to lifecycle-based folders. Dry-run first, then apply.
 
-**Version:** 1.0.0
+**Version:** 1.2.0
 
 ---
 
@@ -196,6 +196,10 @@ Must follow Work Units structure:
 </details>
 ```
 
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+
 ## Team Collaboration
 
 - **User** (direct trigger via `/doc-cleanup`)
@@ -231,12 +235,23 @@ Must follow Work Units structure:
 > 3. Changes committed with `chore(docs):` prefix
 > 4. Report summary via `notify_user`
 
-## Artifact Ownership
+## Iteration Protocol (Ephemeral → Persistent)
 
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md`
-- **Creates**: `project/docs/active/`, `review/`, `closed/` folders
-- **Modifies**: Document frontmatter (in-place)
-- **Reads**: `../standards/DOCUMENT_STRUCTURE_PROTOCOL.md`
+> [!IMPORTANT]
+> **Phase 1: Draft in Brain** — Create dry-run report as artifact. Iterate via `notify_user`.
+> **Phase 2: Persist on Approval** — ONLY after user says "apply" → execute changes.
+
+## Document Lifecycle
+
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On archive, on cleanup |
+| 📁 Creates | `active/`, `review/`, `closed/` folders | `project/docs/` | Structure setup |
+| 📁 Moves | Any document | `active/` → `review/` → `closed/` | Lifecycle transitions |
+| 📖 Reads | All project docs | `project/docs/` | Audit phase |
+| ✅ Archives | Completed documents | `closed/<work-unit>/` | User approves closure |
 
 ## Antigravity Best Practices
 

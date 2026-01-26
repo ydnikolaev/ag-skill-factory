@@ -2,7 +2,7 @@
 
 > Converts high-level architecture into detailed, human-readable Technical Specifications. The bridge between Architect and Developers.
 
-**Version:** 1.0.0
+**Version:** 1.2.0
 
 ---
 
@@ -22,7 +22,7 @@
 > |------|---------|
 > | `project/CONFIG.yaml` | Stack versions, modules, architecture |
 > | `mcp.yaml` | Project MCP server config |
-> | `project/docs/architecture/*` | Context Map, API Contracts |
+> | `project/docs/active/architecture/*` | Context Map, API Contracts |
 
 ## Purpose
 
@@ -39,7 +39,7 @@ Your output is for **HUMANS**, not machines. The user will review your specs bef
 
 ## Decision Tree
 
-1.  **IF** architecture docs exist (`project/docs/architecture/context-map.md`):
+1.  **IF** architecture docs exist (`project/docs/active/architecture/context-map.md`):
     - Proceed to specification writing
 2.  **IF** architecture is incomplete:
     - Return to `@bmad-architect` with specific questions
@@ -49,7 +49,7 @@ Your output is for **HUMANS**, not machines. The user will review your specs bef
 ## Workflow
 
 ### Phase 1: Read Architecture
-1.  Read `project/docs/architecture/context-map.md`
+1.  Read `project/docs/active/architecture/context-map.md`
 2.  Read `specs/backend-api.yaml` (if exists)
 3.  Identify Test Boundaries from Architect's notes
 
@@ -98,9 +98,13 @@ Commit order proves TDD compliance:
 ```
 
 ### Phase 4: Handoff
-1.  Create `project/docs/specs/<feature>-tech-spec.md`
+1.  Create `project/docs/active/specs/<feature>-tech-spec.md`
 2.  Use `notify_user` for user review
 3.  After approval, delegate to developers
+
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
 
 ## Team Collaboration
 - **Receives from**: `@bmad-architect` (Context Map, API Contracts)
@@ -120,14 +124,21 @@ Commit order proves TDD compliance:
 > - Iterate with user via `notify_user` until approved
 >
 > **Phase 2: Persist on Approval**
-> - ONLY after "Looks good" -> write final to `project/docs/specs/`
+> - ONLY after "Looks good" -> write final to `project/docs/active/specs/`
 > - Update file status: `Draft` -> `Approved` in header
 
-## Artifact Ownership
+## Document Lifecycle
 
-- **Creates**: `project/docs/specs/<feature>-tech-spec.md`
-- **Reads**: `project/docs/architecture/*`, `specs/*.yaml`
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | `<feature>-tech-spec.md` | `active/specs/` | Spec writing complete |
+| 📖 Reads | context-map.md | `active/architecture/` | On activation |
+| 📖 Reads | api-contracts.yaml | `active/architecture/` | On activation |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | `<feature>-tech-spec.md` | `review/specs/` | User approves draft |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 
 ## Traceability Protocol (Hard Stop)
 
@@ -161,7 +172,7 @@ Commit order proves TDD compliance:
 
 > [!CAUTION]
 > **BEFORE delegating to next skill:**
-> 1. Final document exists in `project/docs/specs/` (not just brain artifact)
+> 1. Final document exists in `project/docs/active/specs/` (not just brain artifact)
 > 2. File header changed from `Draft` to `Approved`
 > 3. `project/docs/ARTIFACT_REGISTRY.md` updated to Done
 > 4. User approved via `notify_user`

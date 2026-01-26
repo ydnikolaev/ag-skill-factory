@@ -17,7 +17,7 @@ delegates_to:
   - qa-lead
 
 outputs:
-  - artifact: tma-config.md
+  - doc_type: tma-config
     path: project/docs/active/frontend/
     doc_category: frontend
 ---

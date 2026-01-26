@@ -5,31 +5,32 @@ description: Pipeline for core preset. Skill handoffs and phases.
 
 # Pipeline (core)
 
-> Pipeline essentials (7 skills)
+> Pipeline essentials
 
 ## Phases
 
 | Phase | Skills | Outputs |
 |-------|--------|---------|
-| Discovery | `@idea-interview` | discovery-brief.md |
-| Definition | `@product-analyst` | roadmap.md, user-stories.md, requirements.md, backlog.md |
-| Architecture | `@bmad-architect`, `@tech-spec-writer` | context-map.md, api-contracts.yaml, decision-log.md, tech-spec.md |
-| Delivery | `@qa-lead` | test-cases.md, test-report.md |
-| Utility | `@doc-janitor`, `@refactor-architect` | refactoring-overview.md |
+| Discovery | `@feature-fit`, `@idea-interview` | feature-brief, discovery-brief |
+| Definition | `@product-analyst` | roadmap, user-stories, requirements, backlog |
+| Architecture | `@bmad-architect`, `@tech-spec-writer` | context-map, api-contracts, decision-log, tech-spec |
+| Delivery | `@qa-lead` | test-cases, test-report |
+| Utility | `@doc-janitor`, `@mcp-expert`, `@refactor-architect` | server-config, refactoring-overview |
 
 ## Handoff Matrix
 
 | From | To | Artifact |
 |------|-----|----------|
-| `@bmad-architect` | `@tech-spec-writer` | context-map.md |
-| `@bmad-architect` | `@tech-spec-writer` | api-contracts.yaml |
-| `@bmad-architect` | `@tech-spec-writer` | decision-log.md |
-| `@idea-interview` | `@product-analyst` | discovery-brief.md |
-| `@product-analyst` | `@bmad-architect` | roadmap.md |
-| `@product-analyst` | `@bmad-architect` | user-stories.md |
-| `@product-analyst` | `@bmad-architect` | requirements.md |
-| `@product-analyst` | `@bmad-architect` | backlog.md |
-| `@product-analyst` | `@tech-spec-writer` | roadmap.md |
-| `@product-analyst` | `@tech-spec-writer` | user-stories.md |
-| `@product-analyst` | `@tech-spec-writer` | requirements.md |
-| `@product-analyst` | `@tech-spec-writer` | backlog.md |
+| `@bmad-architect` | `@tech-spec-writer` | context-map |
+| `@bmad-architect` | `@tech-spec-writer` | api-contracts |
+| `@bmad-architect` | `@tech-spec-writer` | decision-log |
+| `@feature-fit` | `@product-analyst` | feature-brief |
+| `@idea-interview` | `@product-analyst` | discovery-brief |
+| `@product-analyst` | `@bmad-architect` | roadmap |
+| `@product-analyst` | `@bmad-architect` | user-stories |
+| `@product-analyst` | `@bmad-architect` | requirements |
+| `@product-analyst` | `@bmad-architect` | backlog |
+| `@product-analyst` | `@tech-spec-writer` | roadmap |
+| `@product-analyst` | `@tech-spec-writer` | user-stories |
+| `@product-analyst` | `@tech-spec-writer` | requirements |
+| `@product-analyst` | `@tech-spec-writer` | backlog |

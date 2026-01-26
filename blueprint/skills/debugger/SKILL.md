@@ -19,10 +19,10 @@ delegates_to:
   - qa-lead
 
 outputs:
-  - artifact: debug-report.md
+  - doc_type: debug-report
     path: project/docs/active/bugs/
     doc_category: bugs
-  - artifact: known-issues.md
+  - doc_type: known-issues
     path: project/docs/
     doc_category: project
 ---

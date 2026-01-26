@@ -17,7 +17,7 @@ delegates_to:
   - tma-expert
 
 outputs:
-  - artifact: webhook-config.md
+  - doc_type: webhook-config
     path: project/docs/active/architecture/
     doc_category: architecture
 ---

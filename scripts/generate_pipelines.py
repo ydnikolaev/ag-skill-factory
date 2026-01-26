@@ -76,7 +76,7 @@ def build_skill_matrix(blueprint_skills: Path) -> dict:
                 matrix["handoffs"].append({
                     "from": skill_name,
                     "to": target,
-                    "artifact": output.get("artifact", ""),
+                    "doc_type": output.get("doc_type") or output.get("artifact", "").rsplit(".", 1)[0],
                     "path": output.get("path", ""),
                 })
     
@@ -91,12 +91,14 @@ def generate_doc_types(matrix: dict, output_path: Path):
         phase = skill_data.get("phase", "utility")
         
         for output in skill_data.get("outputs", []):
-            artifact = output.get("artifact", "")
-            if not artifact:
+            # Support both doc_type (new) and artifact (legacy)
+            doc_type = output.get("doc_type") or output.get("artifact", "")
+            if not doc_type:
                 continue
             
-            # Derive doc type name from artifact (remove .md/.yaml extension)
-            doc_type = artifact.rsplit(".", 1)[0]
+            # Remove .md/.yaml extension if present (legacy artifact format)
+            if "." in doc_type:
+                doc_type = doc_type.rsplit(".", 1)[0]
             
             # Get consumers from delegates_to
             consumers = skill_data.get("delegates_to", [])
@@ -114,11 +116,15 @@ def generate_doc_types(matrix: dict, output_path: Path):
                 "creator": skill_name,
                 "consumers": consumers,
                 "category": category,
-                "artifact": artifact,
+                "doc_type": doc_type,
+                "template": f"_{doc_type}.md",
             }
     
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w") as f:
+        f.write("# Auto-generated from skill frontmatter\n")
+        f.write(f"# Run: python3 scripts/generate_pipelines.py\n\n")
         yaml.dump(doc_types, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
     
     return len(doc_types["types"])
@@ -205,7 +211,10 @@ def generate_pipeline_file(preset_name: str, skill_names: list, matrix: dict,
         outputs = []
         for s in skills:
             for o in preset_skills.get(s, {}).get("outputs", []):
-                outputs.append(o.get("artifact", ""))
+                dt = o.get("doc_type") or o.get("artifact", "")
+                if "." in dt:
+                    dt = dt.rsplit(".", 1)[0]
+                outputs.append(dt)
         outputs_str = ", ".join(outputs) if outputs else "—"
         lines.append(f"| {phase.title()} | {skill_refs} | {outputs_str} |")
     
@@ -219,7 +228,7 @@ def generate_pipeline_file(preset_name: str, skill_names: list, matrix: dict,
         ])
         
         for h in preset_handoffs:
-            lines.append(f"| `@{h['from']}` | `@{h['to']}` | {h['artifact']} |")
+            lines.append(f"| `@{h['from']}` | `@{h['to']}` | {h['doc_type']} |")
     
     if return_paths:
         lines.extend([
@@ -256,7 +265,11 @@ def main():
     
     # Save matrix
     matrix_output.parent.mkdir(parents=True, exist_ok=True)
+    # Save matrix
+    matrix_output.parent.mkdir(parents=True, exist_ok=True)
     with open(matrix_output, "w") as f:
+        f.write("# Auto-generated from skill frontmatter\n")
+        f.write(f"# Run: python3 scripts/generate_pipelines.py\n\n")
         yaml.dump(matrix, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
     print(f"  ✅ skill-matrix.yaml ({len(matrix['skills'])} skills, {len(matrix['handoffs'])} handoffs)")
     
@@ -278,6 +291,9 @@ def main():
     all_skills = set(matrix["skills"].keys())
     
     for preset_name, preset_config in presets.items():
+        if preset_name.startswith("_"):
+            continue
+
         skill_names = resolve_preset_skills(preset_name, presets, all_skills)
         preset_desc = preset_config.get("description", f"{preset_name} preset")
         count = generate_pipeline_file(preset_name, skill_names, matrix, pipelines_output, preset_desc)

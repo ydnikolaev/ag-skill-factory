@@ -2,7 +2,7 @@
 
 > Expert Go developer (1.25+) specializing in Clean Architecture and DDD.
 
-**Version:** 1.0.0
+**Version:** 1.2.0
 
 ---
 
@@ -32,10 +32,9 @@ This skill builds the **Core** of the system using Go 1.25+ and Clean Architectu
 > - ✅ Just execute the plan phase by phase
 > - ✅ Use `notify_user` ONLY for actual blockers or final review
 
-## Team Collaboration
-- **Architect**: `@bmad-architect` (Follow their Context Map)
-- **Frontend**: `@frontend-nuxt` (Serve their JSON needs)
-- **Telegram**: `@telegram-mechanic` (Trust their `initData` validation)
+<!-- INCLUDE: _meta/_skills/sections/language-requirements.md -->
+
+<!-- INCLUDE: _meta/_skills/sections/team-collaboration.md -->
 
 ## Workflow
 
@@ -94,79 +93,24 @@ Key points:
 >
 > Read Test Skeleton from tech-spec BEFORE writing any code.
 
-## Tech Debt Protocol (Hard Stop)
+<!-- INCLUDE: _meta/_skills/sections/tech-debt-protocol.md -->
 
-> [!CAUTION]
-> **Follow `../standards/TECH_DEBT_PROTOCOL.md`.**
-> When creating workarounds:
-> 1. Add `// TODO(TD-XXX): description` in code
-> 2. Register in `project/docs/TECH_DEBT.md`
->
-> **Forbidden:** Untracked TODOs, undocumented hardcoded values.
-
-## Git Protocol (Hard Stop)
-
-> [!CAUTION]
-> **Follow `../standards/GIT_PROTOCOL.md`.**
-> 1. **Branch**: Work in `feat/<name>` or `fix/<name>`. Never commit directly to `main`.
-> 2. **Commit**: Use Conventional Commits (`feat:`, `fix:`, `chore:`).
-> 3. **Atomic**: One commit = One logical change.
->
-> **Reject**: "wip", "update", "fix" as commit messages.
-
+<!-- INCLUDE: _meta/_skills/sections/git-protocol.md -->
 
 **When changing code, always report:**
 - What tests added/changed
 - How to run: `go test ./internal/...`
 - What they prove (behavior covered)
 
-## References
+<!-- INCLUDE: _meta/_skills/sections/resources.md -->
 
-See `references/` for detailed guides:
-- `security-checklist.md` — Auth, secrets, input validation
-- `observability-guide.md` — Logging, correlation ID, metrics
-- `performance-guide.md` — N+1, caching, optimization
-- `migrations-guide.md` — Safe DB migrations
-- `rest-integration-checklist.md` — External API patterns
+<!-- INCLUDE: _meta/_skills/sections/brain-to-docs.md -->
 
+<!-- INCLUDE: _meta/_skills/sections/document-structure-protocol.md -->
 
-## Iteration Protocol (Ephemeral → Persistent)
+<!-- INCLUDE: _meta/_skills/sections/pre-handoff-validation.md -->
 
-> [!IMPORTANT]
-> **Phase 1: Draft in Brain** — Create As-Built Report as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/backend/`
-
-## Artifact Ownership
-
-- **Creates**: `project/docs/backend/service-implementation.md`
-- **Reads**: `project/docs/specs/<feature>-tech-spec.md`, `project/docs/architecture/api-contracts.yaml`
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
-
-## Pre-Handoff Validation (Hard Stop)
-
-> [!CAUTION]
-> **MANDATORY self-check before `notify_user` or delegation.**
-
-| # | Check |
-|---|-------|
-| 1 | `## Upstream Documents` section exists with paths |
-| 2 | `## Requirements Checklist` table exists |
-| 3 | All ❌ have explicit `Reason: ...` |
-| 4 | Document in `review/` folder |
-| 5 | `ARTIFACT_REGISTRY.md` updated |
-
-**If ANY unchecked → DO NOT PROCEED.**
-
-## Handoff Protocol
-
-
-> [!CAUTION]
-> **BEFORE handoff:**
-> 1. Save final document to `project/docs/` path
-> 2. Change file status from `Draft` to `Approved` in header/frontmatter
-> 3. Update `project/docs/ARTIFACT_REGISTRY.md` status to ✅ Done
-> 4. Use `notify_user` for final approval
-> 5. THEN delegate to next skill
+<!-- INCLUDE: _meta/_skills/sections/handoff-protocol.md -->
 
 ## When to Delegate
 - ✅ **Delegate to `@qa-lead`** when: Feature is implemented and needs testing.

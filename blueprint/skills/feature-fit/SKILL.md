@@ -14,7 +14,7 @@ delegates_to:
   - product-analyst
 
 outputs:
-  - artifact: feature-brief.md
+  - doc_type: feature-brief
     path: project/docs/active/discovery/
     doc_category: discovery
 ---

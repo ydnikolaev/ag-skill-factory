@@ -2,7 +2,7 @@
 
 > Analyzes codebase, designs modular refactoring specs, and delegates to domain executors. Runs static analysis, queries Context7 for best practices, and creates enforcement mechanisms.
 
-**Version:** 1.0.0
+**Version:** 1.2.0
 
 ---
 
@@ -131,26 +131,26 @@ project/docs/refactoring/
 | High complexity | `gocyclo` threshold |
 | Major decisions | ADR documentation |
 
-## Artifact Ownership
+## Document Lifecycle
 
-### Creates
-| Path | Description |
-|------|-------------|
-| `project/docs/refactoring/overview.md` | Master refactoring plan |
-| `project/docs/refactoring/modules/*.md` | Per-domain module specs |
-| `project/docs/refactoring/enforcement/lint-rules.md` | Lint additions |
-| `project/docs/refactoring/enforcement/pre-commit-hooks.md` | Pre-commit config |
-| `project/docs/refactoring/enforcement/ci-additions.md` | CI additions |
-| `project/docs/refactoring/enforcement/adrs/*.md` | ADRs |
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
 
-### Reads
-- Codebase (`*.go`, `*.vue`, etc.)
-- `project/docs/` (existing architecture)
-- Context7 (best practices)
-- `golangci-lint` output
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | overview.md | `active/refactoring/` | Analysis complete |
+| 🔵 Creates | `modules/*.md` | `active/refactoring/modules/` | Per-domain specs |
+| 🔵 Creates | lint-rules.md, ci-additions.md | `active/refactoring/enforcement/` | Enforcement designed |
+| 🔵 Creates | `adrs/*.md` | `active/refactoring/enforcement/adrs/` | ADRs for decisions |
+| 📖 Reads | Codebase | `project/` | Static analysis |
+| 📖 Reads | Existing architecture docs | `active/architecture/` | Context |
+| 📖 Reads | Context7 | — | Best practices |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on handoff |
+| 🟡 To Review | overview.md | `review/refactoring/` | User approval needed |
+| ✅ Archive | — | `closed/refactoring/<name>/` | @doc-janitor on completion |
 
-### Updates
-- `project/docs/ARTIFACT_REGISTRY.md` (handoff status)
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
 
 ## Team Collaboration
 

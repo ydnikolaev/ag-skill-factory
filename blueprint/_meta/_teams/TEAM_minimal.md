@@ -5,7 +5,7 @@ description: Team roster for minimal preset. Apply when collaborating or delegat
 
 # Team Roster (minimal)
 
-> Utilities only (2 skills)
+> Utilities only
 
 | Skill | Description |
 |-------|-------------|

@@ -2,7 +2,7 @@
 
 > Nuxt 4 & TailwindCSS expert for modern web applications (SSR, SPA, Hybrid).
 
-**Version:** 1.0.0
+**Version:** 1.2.0
 
 ---
 
@@ -31,6 +31,10 @@ This skill builds modern web frontends using **Nuxt 4**, **TailwindCSS**, and **
 > - ❌ Do NOT wait for confirmation between tasks
 > - ✅ Just execute the plan phase by phase
 > - ✅ Use `notify_user` ONLY for actual blockers or final review
+
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
 
 ## Team Collaboration
 - **Architect**: `@bmad-architect` (Follow their Wireframes)
@@ -120,13 +124,21 @@ See `references/` for detailed guides:
 
 > [!IMPORTANT]
 > **Phase 1: Draft in Brain** — Create As-Built Report as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/frontend/`
+> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/frontend/`
 
-## Artifact Ownership
+## Document Lifecycle
 
-- **Creates**: `project/docs/frontend/ui-implementation.md`
-- **Reads**: `project/docs/specs/<feature>-tech-spec.md`, `project/docs/design/*`, `project/docs/architecture/context-map.md`
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | ui-implementation.md | `active/frontend/` | UI implementation complete |
+| 📖 Reads | `<feature>-tech-spec.md` | `active/specs/` | On activation |
+| 📖 Reads | design-system.md | `active/design/` | On activation |
+| 📖 Reads | context-map.md | `active/architecture/` | On activation |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | ui-implementation.md | `review/frontend/` | Ready for QA |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 
 ## Pre-Handoff Validation (Hard Stop)
 

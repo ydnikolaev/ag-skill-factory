@@ -2,7 +2,7 @@
 
 > Expert in Terminal UI (TUI) using Charm stack (BubbleTea, Lipgloss).
 
-**Version:** 1.0.0
+**Version:** 1.2.0
 
 ---
 
@@ -15,6 +15,10 @@ This skill makes the terminal beautiful using BubbleTea and Lipgloss.
 - **Framework**: `bubbletea` (The Elm Architecture).
 - **Styling**: `lipgloss`.
 - **Forms**: `huh`.
+
+## Language Requirements
+
+> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
 
 ## Team Collaboration
 - **CLI Architect**: `@cli-architect` (Integrate my models into Cobra commands)
@@ -35,13 +39,19 @@ This skill makes the terminal beautiful using BubbleTea and Lipgloss.
 
 > [!IMPORTANT]
 > **Phase 1: Draft in Brain** — Create TUI Design as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/cli/`
+> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/cli/`
 
-## Artifact Ownership
+## Document Lifecycle
 
-- **Creates**: `project/docs/cli/tui-design.md`
-- **Reads**: `project/docs/architecture/cli-design.md`
-- **Updates**: `project/docs/ARTIFACT_REGISTRY.md` (status + timestamp)
+> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
+
+| Operation | Document | Location | Trigger |
+|-----------|----------|----------|---------|
+| 🔵 Creates | tui-design.md | `active/cli/` | TUI design complete |
+| 📖 Reads | cli-design.md | `active/architecture/` | On activation |
+| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
+| 🟡 To Review | tui-design.md | `review/cli/` | Ready for implementation |
+| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
 
 ## Pre-Handoff Validation (Hard Stop)
 

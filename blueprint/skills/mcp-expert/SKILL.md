@@ -15,7 +15,7 @@ delegates_to:
   - devops-sre
 
 outputs:
-  - artifact: server-config.md
+  - doc_type: server-config
     path: project/docs/active/architecture/
     doc_category: architecture
 ---

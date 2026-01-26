@@ -5,44 +5,35 @@ description: Pipeline for cli preset. Skill handoffs and phases.
 
 # Pipeline (cli)
 
-> CLI/TUI applications (8 skills)
+> CLI/TUI applications
 
 ## Phases
 
 | Phase | Skills | Outputs |
 |-------|--------|---------|
-| Discovery | `@idea-interview` | discovery-brief.md |
-| Definition | `@product-analyst` | roadmap.md, user-stories.md, requirements.md, backlog.md |
-| Architecture | `@bmad-architect`, `@cli-architect`, `@tech-spec-writer` | context-map.md, api-contracts.yaml, decision-log.md, cli-design.md, tech-spec.md |
-| Implementation | `@backend-go-expert`, `@tui-charm-expert` | service-implementation.md, tui-design.md |
-| Delivery | `@qa-lead` | test-cases.md, test-report.md |
-| Utility | `@doc-janitor`, `@refactor-architect` | refactoring-overview.md |
+| Discovery | `@feature-fit`, `@idea-interview` | feature-brief, discovery-brief |
+| Definition | `@product-analyst` | roadmap, user-stories, requirements, backlog |
+| Architecture | `@bmad-architect`, `@cli-architect`, `@tech-spec-writer` | context-map, api-contracts, decision-log, cli-design, tech-spec |
+| Implementation | `@tui-charm-expert` | tui-design |
+| Delivery | `@qa-lead` | test-cases, test-report |
+| Utility | `@doc-janitor`, `@mcp-expert`, `@refactor-architect` | server-config, refactoring-overview |
 
 ## Handoff Matrix
 
 | From | To | Artifact |
 |------|-----|----------|
-| `@backend-go-expert` | `@qa-lead` | service-implementation.md |
-| `@bmad-architect` | `@tech-spec-writer` | context-map.md |
-| `@bmad-architect` | `@tech-spec-writer` | api-contracts.yaml |
-| `@bmad-architect` | `@tech-spec-writer` | decision-log.md |
-| `@cli-architect` | `@tui-charm-expert` | cli-design.md |
-| `@cli-architect` | `@backend-go-expert` | cli-design.md |
-| `@idea-interview` | `@product-analyst` | discovery-brief.md |
-| `@product-analyst` | `@bmad-architect` | roadmap.md |
-| `@product-analyst` | `@bmad-architect` | user-stories.md |
-| `@product-analyst` | `@bmad-architect` | requirements.md |
-| `@product-analyst` | `@bmad-architect` | backlog.md |
-| `@product-analyst` | `@tech-spec-writer` | roadmap.md |
-| `@product-analyst` | `@tech-spec-writer` | user-stories.md |
-| `@product-analyst` | `@tech-spec-writer` | requirements.md |
-| `@product-analyst` | `@tech-spec-writer` | backlog.md |
-| `@refactor-architect` | `@backend-go-expert` | refactoring-overview.md |
-| `@tech-spec-writer` | `@backend-go-expert` | tech-spec.md |
-| `@tui-charm-expert` | `@qa-lead` | tui-design.md |
-
-## Return Paths
-
-| From | To | Trigger |
-|------|-----|---------|
-| `@qa-lead` | `@backend-go-expert` | Bugs found in backend go expert |
+| `@bmad-architect` | `@tech-spec-writer` | context-map |
+| `@bmad-architect` | `@tech-spec-writer` | api-contracts |
+| `@bmad-architect` | `@tech-spec-writer` | decision-log |
+| `@cli-architect` | `@tui-charm-expert` | cli-design |
+| `@feature-fit` | `@product-analyst` | feature-brief |
+| `@idea-interview` | `@product-analyst` | discovery-brief |
+| `@product-analyst` | `@bmad-architect` | roadmap |
+| `@product-analyst` | `@bmad-architect` | user-stories |
+| `@product-analyst` | `@bmad-architect` | requirements |
+| `@product-analyst` | `@bmad-architect` | backlog |
+| `@product-analyst` | `@tech-spec-writer` | roadmap |
+| `@product-analyst` | `@tech-spec-writer` | user-stories |
+| `@product-analyst` | `@tech-spec-writer` | requirements |
+| `@product-analyst` | `@tech-spec-writer` | backlog |
+| `@tui-charm-expert` | `@qa-lead` | tui-design |

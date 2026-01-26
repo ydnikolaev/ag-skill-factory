@@ -17,10 +17,10 @@ delegates_to:
   - devops-sre
 
 outputs:
-  - artifact: test-cases.md
+  - doc_type: test-cases
     path: project/docs/active/qa/
     doc_category: qa
-  - artifact: test-report.md
+  - doc_type: test-report
     path: project/docs/active/qa/
     doc_category: qa
 ---
