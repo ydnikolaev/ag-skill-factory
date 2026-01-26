@@ -1,19 +1,27 @@
-__pycache__/
-*.pyc
-.DS_Store
-.idea/
-.vscode/
+# Build artifacts
 dist/
 build/
 bin/
+cli/bin/
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+
+# IDEs
+.idea/
+
+# OS
+.DS_Store
+
+# Website
 website/.vitepress/dist/
 website/.vitepress/cache/
 website/node_modules/
-*.egg-info/
-project/userdir/
 
-# Private skills (contain sensitive information)
-dist/
+# Project runtime
+project/userdir/
 
 # Private skills (not tracked)
 src/skills/private/
