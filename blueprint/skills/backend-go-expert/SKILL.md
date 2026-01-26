@@ -2,6 +2,7 @@
 name: backend-go-expert
 description: Expert Go developer (1.25+) specializing in Clean Architecture and DDD.
 version: 1.2.0
+status: draft
 
 phase: implementation
 category: technical
@@ -44,9 +45,7 @@ This skill builds the **Core** of the system using Go 1.25+ and Clean Architectu
 > - ✅ Just execute the plan phase by phase
 > - ✅ Use `notify_user` ONLY for actual blockers or final review
 
-## Language Requirements
-
-> All skill files must be in English. See [LANGUAGE.md](file://blueprint/rules/LANGUAGE.md).
+<!-- INCLUDE: _meta/_skills/sections/language-requirements.md -->
 
 ## Team Collaboration
 - **Architect**: `@bmad-architect` (Follow their Context Map)
