@@ -126,19 +126,7 @@ This skill owns the **Product Definition** phase. It handles Vision, Roadmap, Us
 > **Phase 1: Draft in Brain** — Create Roadmap/Specs as artifacts. Iterate via `notify_user`.
 > **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/product/` and `project/docs/active/specs/`
 
-## Document Lifecycle
-
-> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
-
-| Operation | Document | Location | Trigger |
-|-----------|----------|----------|---------|
-| 🔵 Creates | roadmap.md | `active/product/` | Product definition complete |
-| 🔵 Creates | user-stories.md | `active/product/` | User stories written |
-| 🔵 Creates | requirements.md | `active/specs/` | Requirements finalized |
-| 📖 Reads | discovery-brief.md | `active/discovery/` | On activation |
-| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
-| 🟡 To Review | roadmap.md, user-stories.md, requirements.md | `review/product/`, `review/specs/` | User approves drafts |
-| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
+<!-- INCLUDE: _meta/_skills/sections/document-structure-protocol.md -->
 
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP
