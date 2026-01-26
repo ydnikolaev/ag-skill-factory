@@ -12,6 +12,11 @@ skills:
     receives_from:
     - tech-spec-writer
     - bmad-architect
+    - cli-architect
+    - telegram-mechanic
+    - mcp-expert
+    - refactor-architect
+    - qa-lead
     delegates_to:
     - qa-lead
     outputs:
@@ -90,6 +95,8 @@ skills:
     category: technical
     receives_from:
     - qa-lead
+    - refactor-architect
+    - mcp-expert
     delegates_to: []
     outputs:
     - doc_type: deployment-guide
@@ -134,6 +141,8 @@ skills:
     category: technical
     receives_from:
     - tech-spec-writer
+    - refactor-architect
+    - qa-lead
     delegates_to:
     - qa-lead
     outputs:

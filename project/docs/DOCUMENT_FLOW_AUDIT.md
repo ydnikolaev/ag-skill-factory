@@ -13,7 +13,7 @@
 | Living docs | 4 |
 | Meta docs (registries) | 2 |
 | Skills with outputs | 16 |
-| Handoffs | 37 |
+| Handoffs | 57 |
 | Return paths | 4 |
 
 ---
