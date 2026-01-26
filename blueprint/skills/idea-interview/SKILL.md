@@ -132,11 +132,7 @@ Interview is complete when collected:
 
 <!-- INCLUDE: _meta/_skills/sections/document-structure-protocol.md -->
 
-## Resources
-
-- **Template**: See `resources/discovery-brief-template.md`
-- **Questions**: See `references/question-bank.md`
-- **Checklist**: See `references/checklist.md`
+<!-- INCLUDE: _meta/_skills/sections/resources.md -->
 
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP
