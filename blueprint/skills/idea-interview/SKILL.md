@@ -98,20 +98,7 @@ Interview is complete when collected:
 
 <!-- INCLUDE: _meta/_skills/sections/brain-to-docs.md -->
 
-## Pre-Handoff Validation (Hard Stop)
-
-> [!CAUTION]
-> **MANDATORY self-check before `notify_user` or delegation.**
-
-| # | Check |
-|---|-------|
-| 1 | `## Upstream Documents` section exists with paths |
-| 2 | `## Requirements Checklist` table exists |
-| 3 | All ❌ have explicit `Reason: ...` |
-| 4 | Document in `review/` folder |
-| 5 | `ARTIFACT_REGISTRY.md` updated |
-
-**If ANY unchecked → DO NOT PROCEED.**
+<!-- INCLUDE: _meta/_skills/sections/pre-handoff-validation.md -->
 
 <!-- INCLUDE: _meta/_skills/sections/handoff-protocol.md -->
 
@@ -122,7 +109,6 @@ Interview is complete when collected:
 - ✅ **Delegate to `@product-analyst`** when: Discovery Brief is ready and approved by user
 - ⬅️ **Return to interview** if: Product Analyst reports missing information
 - ❌ **Do NOT delegate** if: User hasn't answered key questions yet
-
 
 
 <!-- INCLUDE: _meta/_skills/sections/document-structure-protocol.md -->
@@ -139,9 +125,6 @@ Interview is complete when collected:
 > | `mcp.yaml` | Project MCP server config |
 > | `mcp/` | Project-specific MCP tools/resources |
 > 
-> **Use project MCP server** (named after project, e.g. `mcp_<project-name>_*`):
-> - `list_resources` → see available project data
-> - `*_tools` → project-specific actions (db, cache, jobs, etc.)
 > 
 
 <!-- INCLUDE: _meta/_skills/sections/mcp-context7.md -->
