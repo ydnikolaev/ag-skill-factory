@@ -1,0 +1,24 @@
+__pycache__/
+*.pyc
+.DS_Store
+.idea/
+.vscode/
+dist/
+build/
+bin/
+website/.vitepress/dist/
+website/.vitepress/cache/
+website/node_modules/
+*.egg-info/
+project/userdir/
+blueprint_backup/
+
+# User-specific content (not part of core skill-factory)
+reference/
+
+# Private skills (contain sensitive information)
+blueprint/private/
+dist/
+
+# Private skills (not tracked)
+src/skills/private/
