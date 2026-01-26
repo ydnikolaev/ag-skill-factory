@@ -28,3 +28,8 @@ Standard 5 checks +
 Standard 5 checks +
 | 6 | All User Story ACs verified (not just tech-spec sections) |
 ===== /qa-lead ===== -->
+
+<!-- ===== backend-go-expert =====
+Standard 5 checks
+===== /backend-go-expert ===== -->
+
