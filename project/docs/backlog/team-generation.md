@@ -139,7 +139,9 @@ _project/
 ├── _CONVENTIONS.md      # Code style, naming
 ├── _DECISION_LOG.md     # ADR log
 ├── _GLOSSARY.md         # Project terminology
-└── _KNOWN_ISSUES.md     # Known bugs, workarounds
+├── _KNOWN_ISSUES.md     # Known bugs, workarounds
+├── _CHANGELOG.md        # Release history
+└── _BACKLOG.md          # Future work, ideas
 ```
 
 **Not workflow docs (active/review/closed) — project knowledge docs.**
