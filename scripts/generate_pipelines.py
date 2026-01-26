@@ -165,7 +165,7 @@ def generate_pipeline_file(preset_name: str, skill_names: list, matrix: dict,
         for s in skills:
             for o in preset_skills.get(s, {}).get("outputs", []):
                 outputs.append(o.get("artifact", ""))
-        outputs_str = ", ".join(outputs[:3]) if outputs else "—"
+        outputs_str = ", ".join(outputs) if outputs else "—"
         lines.append(f"| {phase.title()} | {skill_refs} | {outputs_str} |")
     
     lines.extend([

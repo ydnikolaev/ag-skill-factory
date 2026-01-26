@@ -13,7 +13,7 @@ description: Pipeline for cli preset. Skill handoffs and phases.
 |-------|--------|---------|
 | Discovery | `@idea-interview` | discovery-brief.md |
 | Definition | `@product-analyst` | roadmap.md, user-stories.md, requirements.md |
-| Architecture | `@bmad-architect`, `@cli-architect`, `@tech-spec-writer` | context-map.md, api-contracts.yaml, cli-design.md |
+| Architecture | `@bmad-architect`, `@cli-architect`, `@tech-spec-writer` | context-map.md, api-contracts.yaml, cli-design.md, tech-spec.md |
 | Implementation | `@backend-go-expert`, `@tui-charm-expert` | service-implementation.md, tui-design.md |
 | Delivery | `@qa-lead` | test-cases.md, test-report.md |
 | Utility | `@doc-janitor`, `@refactor-architect` | refactoring-overview.md |

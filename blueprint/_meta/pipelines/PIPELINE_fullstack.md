@@ -12,7 +12,7 @@ description: Pipeline for fullstack preset. Skill handoffs and phases.
 | Phase | Skills | Outputs |
 |-------|--------|---------|
 | Discovery | `@idea-interview` | discovery-brief.md |
-| Definition | `@product-analyst`, `@ux-designer` | roadmap.md, user-stories.md, requirements.md |
+| Definition | `@product-analyst`, `@ux-designer` | roadmap.md, user-stories.md, requirements.md, tokens.json, design-system.md |
 | Architecture | `@bmad-architect`, `@tech-spec-writer` | context-map.md, api-contracts.yaml, tech-spec.md |
 | Implementation | `@backend-go-expert`, `@frontend-nuxt`, `@ui-implementor` | service-implementation.md, ui-implementation.md, theming.md |
 | Delivery | `@devops-sre`, `@qa-lead` | deployment-guide.md, test-cases.md, test-report.md |

@@ -13,7 +13,7 @@ description: Pipeline for tma preset. Skill handoffs and phases.
 |-------|--------|---------|
 | Discovery | `@idea-interview` | discovery-brief.md |
 | Definition | `@product-analyst` | roadmap.md, user-stories.md, requirements.md |
-| Architecture | `@bmad-architect`, `@tech-spec-writer`, `@telegram-mechanic` | context-map.md, api-contracts.yaml, tech-spec.md |
+| Architecture | `@bmad-architect`, `@tech-spec-writer`, `@telegram-mechanic` | context-map.md, api-contracts.yaml, tech-spec.md, webhook-config.md |
 | Implementation | `@frontend-nuxt`, `@tma-expert` | ui-implementation.md, tma-config.md |
 | Delivery | `@qa-lead` | test-cases.md, test-report.md |
 | Utility | `@doc-janitor`, `@refactor-architect` | refactoring-overview.md |
