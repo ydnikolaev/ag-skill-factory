@@ -38,10 +38,11 @@ When debugging an issue, agents are forbidden from "guessing" the fix.
 
 ## 3. Planning Protocol
 
-Planning skills (`product-analyst`, `bmad-architect`) must include a **Verification Strategy** in their outputs.
+Planning skills (`product-analyst`, `bmad-architect`, `tech-spec-writer`) must include a **Verification Strategy** in their outputs.
 
 - **Product Analyst**: Must define "Acceptance Criteria" (What does 'Done' look like?).
 - **Architect**: Must define "Test Boundaries" (What to mock? What to integration test?).
+- **Tech Spec Writer**: Must define "Test Cases" (What to test? How to test?).
 
 ## 4. Interaction with User
 

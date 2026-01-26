@@ -1,3 +1,8 @@
+---
+trigger: always_on
+description: Draft artifacts in brain/, persist to project/docs/ only after user approval.
+---
+
 # BRAIN_TO_DOCS
 
 > Draft in brain/, persist to project/docs/ only after user approval.

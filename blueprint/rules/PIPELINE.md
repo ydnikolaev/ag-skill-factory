@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: Visual workflow and handoffs between skills from discovery to deployment. Apply when planning work or handing off to another skill.
+---
+
 # TEAM Pipeline
 
 Visual workflow from idea to deployment across all skills.

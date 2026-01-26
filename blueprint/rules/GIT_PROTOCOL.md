@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: Git branching (feat/fix/chore), Conventional Commits, atomic commits. Apply when starting features, making commits, or pushing code.
+---
+
 # Git Protocol 🐙
 
 This document defines the Git workflow for all Antigravity projects.

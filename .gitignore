@@ -10,6 +10,7 @@ website/.vitepress/dist/
 website/.vitepress/cache/
 website/node_modules/
 *.egg-info/
+userdir/
 
 # User-specific content (not part of core skill-factory)
 reference/

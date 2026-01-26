@@ -1,3 +1,8 @@
+---
+trigger: always_on
+description: Use user's language for chat and drafts; English only for persistent docs.
+---
+
 # LANGUAGE_REQUIREMENTS
 
 > Ephemeral artifacts in user's language; persistent docs in English only.

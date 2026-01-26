@@ -66,6 +66,7 @@ Every document MUST have:
 ---
 status: Draft | Review | Approved
 owner: @skill-name
+next: @skill-name
 work_unit: sprint-03 | feature-name | refactor-name
 created: YYYY-MM-DD
 updated: YYYY-MM-DD

@@ -1,3 +1,7 @@
+---
+trigger: always_on
+---
+
 # BRAIN_TO_DOCS
 
 > Draft in brain/, persist to project/docs/ only after user approval.

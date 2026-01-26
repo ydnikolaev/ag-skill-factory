@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: Link artifacts to original requirements with Upstream Documents and Requirements Checklist sections. Apply when creating specs, designs, or test plans.
+---
+
 # Traceability Protocol
 
 > [!CAUTION]

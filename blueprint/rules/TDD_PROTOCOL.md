@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: Test-first development with Red-Green-Refactor cycle. Apply when writing implementation code, fixing bugs, or creating implementation docs for next skill.
+---
+
 # Antigravity TDD Protocol
 
 > [!IMPORTANT]

@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: Available skills roster with descriptions. Apply when collaborating or delegating to another skill.
+---
+
 # Team Roster
 
 Auto-generated from blueprint/skills/. Do not edit manually.

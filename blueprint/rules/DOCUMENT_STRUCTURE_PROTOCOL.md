@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: Enforces docs/ structure with active/review/closed lifecycle. Apply when creating, moving, or organizing project documents.
+---
+
 # Document Structure Protocol
 
 > **Status**: Active

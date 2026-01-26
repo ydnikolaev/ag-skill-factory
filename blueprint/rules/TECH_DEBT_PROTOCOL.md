@@ -1,3 +1,8 @@
+---
+trigger: model_decision
+description: Track TODOs and workarounds in TECH_DEBT.md registry. Apply when creating temporary solutions, hardcoded values, or deferred work.
+---
+
 # Technical Debt Protocol
 
 > [!CAUTION]
