@@ -36,6 +36,34 @@ def extract_frontmatter(skill_path: Path) -> dict:
         return {}
 
 
+def normalize_skill_list(items: list) -> list:
+    """Normalize V1 (strings) and V2 (objects) skill lists to skill names.
+    
+    V1: ["skill-a", "skill-b"]
+    V2: [{"skill": "skill-a", "docs": [...]}, {"skill": "skill-b", ...}]
+    Returns: ["skill-a", "skill-b"]
+    """
+    result = []
+    for item in items:
+        if isinstance(item, str):
+            result.append(item)
+        elif isinstance(item, dict) and "skill" in item:
+            result.append(item["skill"])
+    return result
+
+
+def normalize_outputs(fm: dict) -> list:
+    """Normalize V1 outputs and V2 creates to unified format.
+    
+    V1: outputs: [{doc_type: ..., path: ...}]
+    V2: creates: [{doc_type: ..., path: ..., trigger: ...}]
+    Returns: list of outputs with doc_type and path
+    """
+    # V2 format uses 'creates', V1 uses 'outputs'
+    outputs = fm.get("creates", []) or fm.get("outputs", [])
+    return outputs
+
+
 def build_skill_matrix(blueprint_skills: Path) -> dict:
     """Build complete skill matrix from all SKILL.md files."""
     matrix = {
@@ -53,15 +81,24 @@ def build_skill_matrix(blueprint_skills: Path) -> dict:
             continue
         
         skill_name = skill_path.name
+        
+        # Normalize V1/V2 formats
+        receives_from = normalize_skill_list(fm.get("receives_from", []))
+        delegates_to = normalize_skill_list(fm.get("delegates_to", []))
+        # Also normalize return_paths as receives_from (V2 feature)
+        return_paths = normalize_skill_list(fm.get("return_paths", []))
+        receives_from.extend(return_paths)
+        outputs = normalize_outputs(fm)
+        
         matrix["skills"][skill_name] = {
             "name": fm.get("name", skill_name),
             "description": fm.get("description", ""),
             "version": fm.get("version", "1.0.0"),
             "phase": fm.get("phase", "utility"),
             "category": fm.get("category", "utility"),
-            "receives_from": fm.get("receives_from", []),
-            "delegates_to": fm.get("delegates_to", []),
-            "outputs": fm.get("outputs", []),
+            "receives_from": receives_from,
+            "delegates_to": delegates_to,
+            "outputs": outputs,
         }
         
         # Build phase groupings
@@ -71,8 +108,8 @@ def build_skill_matrix(blueprint_skills: Path) -> dict:
         matrix["phases"][phase].append(skill_name)
         
         # Build handoffs
-        for target in fm.get("delegates_to", []):
-            for output in fm.get("outputs", []):
+        for target in delegates_to:
+            for output in outputs:
                 matrix["handoffs"].append({
                     "from": skill_name,
                     "to": target,
