@@ -142,7 +142,7 @@ Interview is complete when collected:
 - Use `notify_user` to confirm Discovery Brief before handoff
 - Read `CONFIG.yaml` if exists to pre-fill platform/stack info
 
-<!-- INCLUDE: _meta/_skills/sections/document-workflow.md -->
+<!-- INCLUDE: _meta/_skills/sections/document-structure-protocol.md -->
 
 ## Resources
 
