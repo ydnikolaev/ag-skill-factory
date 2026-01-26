@@ -3,12 +3,8 @@ status: Draft
 owner: @idea-interview
 work_unit: {WORK_UNIT}
 
-upstream: []
 downstream:
-  - doc: user-stories.md
-    owner: @product-analyst
-  - doc: roadmap.md
-    owner: @product-analyst
+  - skill: @product-analyst
 
 created: {DATE}
 updated: {DATE}
@@ -16,51 +12,20 @@ updated: {DATE}
 
 # Discovery Brief: {WORK_UNIT}
 
-## Vision
+## Overview
 
-<!-- One-liner: What are we building? -->
-
----
-
-## Problem Statement
-
-<!-- What problem does this solve? Who has this problem? -->
+<!-- Brief description -->
 
 ---
 
-## Target User
+## Details
 
-| Attribute | Value |
-|-----------|-------|
-| Who | |
-| Pain point | |
-| Current solution | |
+<!-- Main content -->
 
 ---
 
-## Core Features (MVP)
+## Checklist
 
-1. **Feature 1** — ...
-2. **Feature 2** — ...
-3. **Feature 3** — ...
+- [ ] Item 1
+- [ ] Item 2
 
----
-
-## Out of Scope (v1)
-
-- [ ] ...
-- [ ] ...
-
----
-
-## Success Criteria
-
-| Metric | Target |
-|--------|--------|
-| ... | ... |
-
----
-
-## Open Questions
-
-<!-- List any unresolved questions -->

@@ -4,15 +4,23 @@ owner: @tech-spec-writer
 work_unit: {WORK_UNIT}
 
 upstream:
-  - doc: user-stories.md
-    owner: @product-analyst
-  - doc: context-map.md
+  - doc_type: context-map
     owner: @bmad-architect
+  - doc_type: api-contracts
+    owner: @bmad-architect
+  - doc_type: decision-log
+    owner: @bmad-architect
+  - doc_type: roadmap
+    owner: @product-analyst
+  - doc_type: user-stories
+    owner: @product-analyst
+  - doc_type: requirements
+    owner: @product-analyst
+  - doc_type: backlog
+    owner: @product-analyst
 downstream:
-  - doc: service-implementation.md
-    owner: @backend-go-expert
-  - doc: ui-implementation.md
-    owner: @frontend-nuxt
+  - skill: @backend-go-expert
+  - skill: @frontend-nuxt
 
 created: {DATE}
 updated: {DATE}
@@ -20,63 +28,20 @@ updated: {DATE}
 
 # Tech Spec: {WORK_UNIT}
 
-## Upstream Documents
+## Overview
 
-| Document | Owner | Status |
-|----------|-------|--------|
-| [user-stories](../product/{WORK_UNIT}.md) | @product-analyst | ✅ |
-| [context-map](../architecture/{WORK_UNIT}.md) | @bmad-architect | ✅ |
+<!-- Brief description -->
 
 ---
 
-## Scope
+## Details
 
-<!-- What is being built in this work unit -->
-
----
-
-## Technical Decisions
-
-| Decision | Rationale |
-|----------|-----------|
-| ... | ... |
+<!-- Main content -->
 
 ---
 
-## API Contracts
+## Checklist
 
-### Endpoints
+- [ ] Item 1
+- [ ] Item 2
 
-| Method | Path | Description |
-|--------|------|-------------|
-| GET | /api/v1/... | ... |
-
----
-
-## Data Model
-
-### New Tables
-
-```sql
--- Add schema changes here
-```
-
-### Migrations
-
-- [ ] Migration file created
-- [ ] Tested locally
-
----
-
-## Requirements Checklist
-
-| ID | Requirement | Covered | Notes |
-|----|-------------|---------|-------|
-| US-01 | ... | ⬜ | |
-| US-02 | ... | ⬜ | |
-
----
-
-## Open Questions
-
-<!-- List any unresolved questions -->

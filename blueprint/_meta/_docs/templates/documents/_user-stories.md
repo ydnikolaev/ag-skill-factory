@@ -4,13 +4,13 @@ owner: @product-analyst
 work_unit: {WORK_UNIT}
 
 upstream:
-  - doc: discovery-brief.md
+  - doc_type: feature-brief
+    owner: @feature-fit
+  - doc_type: discovery-brief
     owner: @idea-interview
 downstream:
-  - doc: context-map.md
-    owner: @bmad-architect
-  - doc: tech-spec.md
-    owner: @tech-spec-writer
+  - skill: @bmad-architect
+  - skill: @tech-spec-writer
 
 created: {DATE}
 updated: {DATE}
@@ -18,57 +18,20 @@ updated: {DATE}
 
 # User Stories: {WORK_UNIT}
 
-## Upstream Documents
+## Overview
 
-| Document | Owner | Status |
-|----------|-------|--------|
-| [discovery-brief](../discovery/{WORK_UNIT}.md) | @idea-interview | ✅ |
+<!-- Brief description -->
 
 ---
 
-## Epic: {EPIC_NAME}
+## Details
 
-### US-01: {Story Title}
-
-**As a** {user type}
-**I want to** {action}
-**So that** {benefit}
-
-#### Acceptance Criteria
-
-- [ ] Given ... When ... Then ...
-- [ ] Given ... When ... Then ...
-
-#### Priority: High | Medium | Low
+<!-- Main content -->
 
 ---
 
-### US-02: {Story Title}
+## Checklist
 
-**As a** {user type}
-**I want to** {action}
-**So that** {benefit}
+- [ ] Item 1
+- [ ] Item 2
 
-#### Acceptance Criteria
-
-- [ ] Given ... When ... Then ...
-
-#### Priority: High | Medium | Low
-
----
-
-## Non-Functional Requirements
-
-| ID | Requirement | Priority |
-|----|-------------|----------|
-| NFR-01 | Performance: ... | High |
-| NFR-02 | Security: ... | High |
-
----
-
-## Story Map
-
-| Release | Stories |
-|---------|---------|
-| MVP | US-01, US-02 |
-| v1.1 | US-03 |

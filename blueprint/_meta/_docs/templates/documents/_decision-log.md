@@ -1,42 +1,40 @@
-# Decision Log (ADR)
+---
+status: Draft
+owner: @bmad-architect
+work_unit: {WORK_UNIT}
 
-> Architectural Decision Records for this project.
-> **Owner:** @bmad-architect, @tech-spec-writer
-> **Updated:** After each significant technical decision
+upstream:
+  - doc_type: roadmap
+    owner: @product-analyst
+  - doc_type: user-stories
+    owner: @product-analyst
+  - doc_type: requirements
+    owner: @product-analyst
+  - doc_type: backlog
+    owner: @product-analyst
+downstream:
+  - skill: @tech-spec-writer
+
+created: {DATE}
+updated: {DATE}
+---
+
+# Decision Log: {WORK_UNIT}
+
+## Overview
+
+<!-- Brief description -->
 
 ---
 
-## ADR Template
+## Details
 
-### ADR-001: [Decision Title]
-
-**Date:** YYYY-MM-DD
-**Status:** Proposed | Accepted | Deprecated | Superseded
-**Deciders:** @skill-name
-
-#### Context
-
-What is the issue we're addressing?
-
-#### Decision
-
-What is the change we're making?
-
-#### Consequences
-
-**Positive:**
-- ...
-
-**Negative:**
-- ...
-
-**Risks:**
-- ...
+<!-- Main content -->
 
 ---
 
-## Decisions
+## Checklist
 
-| ID | Date | Title | Status | Deciders |
-|----|------|-------|--------|----------|
-| ADR-001 | YYYY-MM-DD | ... | Accepted | @bmad-architect |
+- [ ] Item 1
+- [ ] Item 2
+

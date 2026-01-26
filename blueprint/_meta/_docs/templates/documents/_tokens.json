@@ -1,0 +1,26 @@
+---
+status: Draft
+owner: @ux-designer
+work_unit: {WORK_UNIT}
+
+downstream:
+  - skill: @ui-implementor
+
+created: {DATE}
+updated: {DATE}
+---
+
+# Tokens: {WORK_UNIT}
+
+{
+  "colors": {
+    "primary": {"500": "#3b82f6", "600": "#2563eb"},
+    "gray": {"50": "#f9fafb", "900": "#111827"}
+  },
+  "typography": {
+    "fontFamily": {"sans": ["Inter", "system-ui"]},
+    "fontSize": {"base": "1rem", "lg": "1.125rem"}
+  },
+  "spacing": {"1": "0.25rem", "2": "0.5rem", "4": "1rem"}
+}
+

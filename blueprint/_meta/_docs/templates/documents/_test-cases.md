@@ -23,22 +23,26 @@ created: {DATE}
 updated: {DATE}
 ---
 
-# Test Report: {WORK_UNIT}
+# Test Cases: {WORK_UNIT}
 
-## Overview
+## Test Summary
 
-<!-- Brief description -->
-
----
-
-## Details
-
-<!-- Main content -->
+| Type | Count | Pass | Fail |
+|------|-------|------|------|
+| Unit | ... | ... | ... |
+| Integration | ... | ... | ... |
+| E2E | ... | ... | ... |
 
 ---
 
-## Checklist
+## Test Cases
 
-- [ ] Item 1
-- [ ] Item 2
+### TC-01: ...
+
+| Field | Value |
+|-------|-------|
+| **Preconditions** | ... |
+| **Steps** | 1. ... 2. ... |
+| **Expected** | ... |
+| **Status** | ⬜ |
 

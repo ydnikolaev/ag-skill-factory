@@ -1,35 +1,31 @@
-# Known Issues
+---
+status: Draft
+owner: @debugger
+work_unit: {WORK_UNIT}
 
-> Active bugs, workarounds, and limitations.
-> **Owner:** @debugger, @qa-lead
-> **Updated:** After bug discovery or workaround implementation
+downstream:
+  - skill: @qa-lead
+
+created: {DATE}
+updated: {DATE}
+---
+
+# Known Issues: {WORK_UNIT}
+
+## Overview
+
+<!-- Brief description -->
 
 ---
 
-## Active Issues
+## Details
 
-| ID | Severity | Component | Description | Workaround | Status |
-|----|----------|-----------|-------------|------------|--------|
-| KI-001 | High | ... | ... | ... | Open |
+<!-- Main content -->
 
 ---
 
-## Severity Legend
+## Checklist
 
-| Level | Meaning |
-|-------|---------|
-| Critical | System unusable |
-| High | Major feature broken |
-| Medium | Feature degraded |
-| Low | Minor inconvenience |
+- [ ] Item 1
+- [ ] Item 2
 
----
-
-## Status
-
-| Status | Meaning |
-|--------|---------|
-| Open | Active, no fix |
-| Workaround | Temporary fix applied |
-| In Progress | Being fixed |
-| Resolved | Fixed, pending verification |

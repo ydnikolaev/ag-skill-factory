@@ -4,11 +4,18 @@ owner: @backend-go-expert
 work_unit: {WORK_UNIT}
 
 upstream:
-  - doc: tech-spec.md
+  - doc_type: cli-design
+    owner: @cli-architect
+  - doc_type: server-config
+    owner: @mcp-expert
+  - doc_type: refactoring-overview
+    owner: @refactor-architect
+  - doc_type: tech-spec
     owner: @tech-spec-writer
+  - doc_type: webhook-config
+    owner: @telegram-mechanic
 downstream:
-  - doc: test-report.md
-    owner: @qa-lead
+  - skill: @qa-lead
 
 created: {DATE}
 updated: {DATE}
@@ -16,63 +23,20 @@ updated: {DATE}
 
 # Service Implementation: {WORK_UNIT}
 
-## Upstream Documents
+## Overview
 
-| Document | Owner | Status |
-|----------|-------|--------|
-| [tech-spec](../specs/{WORK_UNIT}.md) | @tech-spec-writer | ✅ |
+<!-- Brief description -->
 
 ---
 
-## Implementation Summary
+## Details
 
-<!-- Brief overview of what was implemented -->
-
----
-
-## Components Created
-
-| Package | Files | Purpose |
-|---------|-------|---------|
-| `internal/domain/...` | ... | Domain entities |
-| `internal/app/...` | ... | Use cases |
-| `internal/infra/...` | ... | Repositories |
+<!-- Main content -->
 
 ---
 
-## API Endpoints Implemented
+## Checklist
 
-| Method | Path | Handler | Status |
-|--------|------|---------|--------|
-| GET | /api/v1/... | ... | ✅ |
+- [ ] Item 1
+- [ ] Item 2
 
----
-
-## Database Migrations
-
-| Migration | Description | Status |
-|-----------|-------------|--------|
-| 001_... | Initial schema | ✅ |
-
----
-
-## Tests
-
-| Type | Coverage | Status |
-|------|----------|--------|
-| Unit | ...% | ✅ |
-| Integration | ...% | ✅ |
-
----
-
-## Requirements Coverage
-
-| ID | Requirement | Implemented | Notes |
-|----|-------------|-------------|-------|
-| US-01 | ... | ✅ | |
-
----
-
-## Known Issues
-
-<!-- List any known issues or tech debt -->

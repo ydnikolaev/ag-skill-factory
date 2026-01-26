@@ -1,47 +1,37 @@
-# Backlog
+---
+status: Draft
+owner: @product-analyst
+work_unit: {WORK_UNIT}
 
-> Future work, ideas, and improvements.
-> **Owner:** @product-analyst
-> **Updated:** When user requests to save an idea
+upstream:
+  - doc_type: feature-brief
+    owner: @feature-fit
+  - doc_type: discovery-brief
+    owner: @idea-interview
+downstream:
+  - skill: @bmad-architect
+  - skill: @tech-spec-writer
+
+created: {DATE}
+updated: {DATE}
+---
+
+# Backlog: {WORK_UNIT}
+
+## Overview
+
+<!-- Brief description -->
 
 ---
 
-## Ideas
+## Details
 
-| ID | Priority | Category | Description | Source | Status |
-|----|----------|----------|-------------|--------|--------|
-| IDEA-001 | P2 | Feature | ... | User | Open |
+<!-- Main content -->
 
 ---
 
-## Priority Legend
+## Checklist
 
-| Level | Meaning |
-|-------|---------|
-| P0 | Critical, do now |
-| P1 | High, next sprint |
-| P2 | Medium, roadmap |
-| P3 | Low, someday |
+- [ ] Item 1
+- [ ] Item 2
 
----
-
-## Categories
-
-| Category | Examples |
-|----------|----------|
-| Feature | New functionality |
-| Improvement | Enhance existing |
-| Tech | Infrastructure, tooling |
-| UX | User experience |
-| Performance | Speed, efficiency |
-
----
-
-## Status
-
-| Status | Meaning |
-|--------|---------|
-| Open | Not started |
-| In Progress | Being worked on |
-| Done | Completed |
-| Rejected | Won't do |
