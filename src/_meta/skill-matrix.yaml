@@ -6,7 +6,7 @@ skills:
     name: backend-go-expert
     description: Expert Go developer (1.25+) specializing in Clean Architecture and
       DDD.
-    version: 1.2.0
+    version: 1.3.0
     phase: implementation
     category: technical
     receives_from:
@@ -15,8 +15,8 @@ skills:
     - cli-architect
     - telegram-mechanic
     - mcp-expert
-    - refactor-architect
     - qa-lead
+    - refactor-architect
     delegates_to:
     - qa-lead
     outputs:
@@ -24,11 +24,13 @@ skills:
       path: project/docs/active/backend/
       doc_category: backend
       lifecycle: per-feature
+      initial_status: draft
+      trigger: implementation_complete
   bmad-architect:
     name: bmad-architect
     description: The Lead Architect for Antigravity TMA projects. Enforces DDD, BMAD
       V6, and coordinates the squad.
-    version: 1.2.0
+    version: 1.3.0
     phase: architecture
     category: analyst
     receives_from:
@@ -40,14 +42,14 @@ skills:
       path: project/docs/active/architecture/
       doc_category: architecture
       lifecycle: per-feature
+      initial_status: draft
+      trigger: design_complete
     - doc_type: api-contracts
       path: project/docs/active/architecture/
       doc_category: architecture
       lifecycle: per-feature
-    - doc_type: decision-log
-      path: project/docs/
-      doc_category: project
-      lifecycle: living
+      initial_status: draft
+      trigger: design_complete
   cli-architect:
     name: cli-architect
     description: Expert in Go CLI Architecture (Cobra, Viper, POSIX).
@@ -193,7 +195,7 @@ skills:
     name: product-analyst
     description: Defines Vision, Roadmap, User Stories, and translates them into Technical
       Specs. Combines "The Why" with "The What".
-    version: 1.2.0
+    version: 1.3.0
     phase: definition
     category: analyst
     receives_from:
@@ -203,22 +205,18 @@ skills:
     - bmad-architect
     - tech-spec-writer
     outputs:
-    - doc_type: roadmap
-      path: project/docs/
-      doc_category: product
-      lifecycle: living
     - doc_type: user-stories
       path: project/docs/active/product/
       doc_category: product
       lifecycle: per-feature
+      initial_status: draft
+      trigger: spec_approved
     - doc_type: requirements
       path: project/docs/active/specs/
       doc_category: specs
       lifecycle: per-feature
-    - doc_type: backlog
-      path: project/docs/
-      doc_category: project
-      lifecycle: living
+      initial_status: draft
+      trigger: spec_approved
   project-bro:
     name: project-bro
     description: Your project awareness buddy. Knows current state, reads docs, analyzes
@@ -232,10 +230,12 @@ skills:
   qa-lead:
     name: qa-lead
     description: Quality Assurance Lead. Tests E2E, API, and UI.
-    version: 1.2.0
+    version: 1.3.0
     phase: delivery
     category: analyst
     receives_from:
+    - backend-go-expert
+    - frontend-nuxt
     - backend-go-expert
     - frontend-nuxt
     delegates_to:
@@ -245,10 +245,14 @@ skills:
       path: project/docs/active/qa/
       doc_category: qa
       lifecycle: per-feature
+      initial_status: draft
+      trigger: on_activation
     - doc_type: test-report
       path: project/docs/active/qa/
       doc_category: qa
       lifecycle: per-feature
+      initial_status: draft
+      trigger: qa_signoff
   refactor-architect:
     name: refactor-architect
     description: Analyzes codebase, designs modular refactoring specs, and delegates
@@ -271,7 +275,7 @@ skills:
     name: tech-spec-writer
     description: Converts high-level architecture into detailed, human-readable Technical
       Specifications. The bridge between Architect and Developers.
-    version: 1.2.0
+    version: 1.3.0
     phase: architecture
     category: analyst
     receives_from:
@@ -285,6 +289,8 @@ skills:
       path: project/docs/active/specs/
       doc_category: specs
       lifecycle: per-feature
+      initial_status: draft
+      trigger: spec_approved
   telegram-mechanic:
     name: telegram-mechanic
     description: Expert in Telegram Bot API, Webhooks, and Mini App Authentication.
@@ -412,10 +418,6 @@ handoffs:
   to: tech-spec-writer
   doc_type: api-contracts
   path: project/docs/active/architecture/
-- from: bmad-architect
-  to: tech-spec-writer
-  doc_type: decision-log
-  path: project/docs/
 - from: cli-architect
   to: tui-charm-expert
   doc_type: cli-design
@@ -462,24 +464,12 @@ handoffs:
   path: project/docs/active/architecture/
 - from: product-analyst
   to: bmad-architect
-  doc_type: roadmap
-  path: project/docs/
-- from: product-analyst
-  to: bmad-architect
   doc_type: user-stories
   path: project/docs/active/product/
 - from: product-analyst
   to: bmad-architect
   doc_type: requirements
   path: project/docs/active/specs/
-- from: product-analyst
-  to: bmad-architect
-  doc_type: backlog
-  path: project/docs/
-- from: product-analyst
-  to: tech-spec-writer
-  doc_type: roadmap
-  path: project/docs/
 - from: product-analyst
   to: tech-spec-writer
   doc_type: user-stories
@@ -488,10 +478,6 @@ handoffs:
   to: tech-spec-writer
   doc_type: requirements
   path: project/docs/active/specs/
-- from: product-analyst
-  to: tech-spec-writer
-  doc_type: backlog
-  path: project/docs/
 - from: qa-lead
   to: devops-sre
   doc_type: test-cases

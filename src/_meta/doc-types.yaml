@@ -28,14 +28,6 @@ types:
     doc_type: api-contracts
     template: _api-contracts.md
     lifecycle: per-feature
-  decision-log:
-    phase: architecture
-    creator: bmad-architect
-    consumers: *id001
-    category: project
-    doc_type: decision-log
-    template: _decision-log.md
-    lifecycle: living
   cli-design:
     phase: architecture
     creator: cli-architect
@@ -116,20 +108,12 @@ types:
     doc_type: server-config
     template: _server-config.md
     lifecycle: per-feature
-  roadmap:
+  user-stories:
     phase: definition
     creator: product-analyst
     consumers: &id004
     - bmad-architect
     - tech-spec-writer
-    category: product
-    doc_type: roadmap
-    template: _roadmap.md
-    lifecycle: living
-  user-stories:
-    phase: definition
-    creator: product-analyst
-    consumers: *id004
     category: product
     doc_type: user-stories
     template: _user-stories.md
@@ -142,14 +126,6 @@ types:
     doc_type: requirements
     template: _requirements.md
     lifecycle: per-feature
-  backlog:
-    phase: definition
-    creator: product-analyst
-    consumers: *id004
-    category: project
-    doc_type: backlog
-    template: _backlog.md
-    lifecycle: living
   test-cases:
     phase: delivery
     creator: qa-lead

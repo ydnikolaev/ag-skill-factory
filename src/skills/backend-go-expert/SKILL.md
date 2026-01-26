@@ -1,32 +1,124 @@
 ---
+# === IDENTITY ===
 name: backend-go-expert
 description: Expert Go developer (1.25+) specializing in Clean Architecture and DDD.
-version: 1.2.0
-status: draft
+version: 1.3.0
 
 phase: implementation
 category: technical
-
 presets:
   - backend
 
+# === HANDOFFS ===
 receives_from:
-  - tech-spec-writer
-  - bmad-architect
-  - cli-architect
-  - telegram-mechanic
-  - mcp-expert
-  - refactor-architect
-  - qa-lead  # return path: bugs found in testing
+  - skill: tech-spec-writer
+    docs:
+      - doc_type: tech-spec
+        trigger: spec_approved
+  - skill: bmad-architect
+    docs:
+      - doc_type: api-contracts
+        trigger: spec_approved
+  - skill: cli-architect
+    docs:
+      - doc_type: cli-design
+        trigger: spec_approved
+  - skill: telegram-mechanic
+    docs:
+      - doc_type: webhook-config
+        trigger: spec_approved
+  - skill: mcp-expert
+    docs:
+      - doc_type: server-config
+        trigger: spec_approved
 
 delegates_to:
-  - qa-lead
+  - skill: qa-lead
+    docs:
+      - doc_type: service-implementation
+        trigger: implementation_complete
 
-outputs:
+return_paths:
+  - skill: qa-lead
+    docs:
+      - doc_type: bug-report
+        trigger: bugs_found
+  - skill: refactor-architect
+    docs:
+      - doc_type: refactoring-overview
+        trigger: spec_approved
+
+# === DOCUMENTS ===
+requires:
+  - doc_type: tech-spec
+    status: approved
+
+creates:
   - doc_type: service-implementation
     path: project/docs/active/backend/
     doc_category: backend
     lifecycle: per-feature
+    initial_status: draft
+    trigger: implementation_complete
+
+reads:
+  - doc_type: tech-spec
+    path: project/docs/active/specs/
+    trigger: on_activation
+  - doc_type: api-contracts
+    path: project/docs/active/architecture/
+    trigger: on_activation
+  - doc_type: context-map
+    path: project/docs/active/architecture/
+    trigger: on_activation
+
+updates:
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+
+archives:
+  - doc_type: service-implementation
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - traceability
+    - handoff
+    - tdd
+    - git
+  checks:
+    - artifact_registry_updated
+
+# === STATUS TRANSITIONS ===
+transitions:
+  - doc_type: service-implementation
+    flow:
+      - from: draft
+        to: in_review
+        trigger: notify_user
+      - from: in_review
+        to: approved
+        trigger: user_approval
+      - from: approved
+        to: archived
+        trigger: qa_signoff
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - tech_stack
+  - language_requirements
+  - workflow
+  - protocols
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 # Backend Go Expert

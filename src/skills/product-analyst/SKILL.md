@@ -1,39 +1,122 @@
 ---
+# === IDENTITY ===
 name: product-analyst
 description: Defines Vision, Roadmap, User Stories, and translates them into Technical Specs. Combines "The Why" with "The What".
-version: 1.2.0
+version: 1.3.0
 
 phase: definition
 category: analyst
-
 presets:
   - core
 
+# === HANDOFFS ===
 receives_from:
-  - idea-interview
-  - feature-fit
+  - skill: idea-interview
+    docs:
+      - doc_type: problem-statement
+        trigger: spec_approved
+  - skill: feature-fit
+    docs:
+      - doc_type: feature-brief
+        trigger: spec_approved
 
 delegates_to:
-  - bmad-architect
-  - tech-spec-writer
+  - skill: bmad-architect
+    docs:
+      - doc_type: user-stories
+        trigger: spec_approved
+      - doc_type: requirements
+        trigger: spec_approved
+  - skill: tech-spec-writer
+    docs:
+      - doc_type: user-stories
+        trigger: spec_approved
 
-outputs:
-  - doc_type: roadmap
-    path: project/docs/
-    doc_category: product
-    lifecycle: living
+# === DOCUMENTS ===
+requires:
+  - doc_type: problem-statement
+    status: approved
+  - doc_type: feature-brief
+    status: any
+
+creates:
   - doc_type: user-stories
     path: project/docs/active/product/
     doc_category: product
     lifecycle: per-feature
+    initial_status: draft
+    trigger: spec_approved
   - doc_type: requirements
     path: project/docs/active/specs/
     doc_category: specs
     lifecycle: per-feature
+    initial_status: draft
+    trigger: spec_approved
+
+updates:
+  - doc_type: roadmap
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
   - doc_type: backlog
     path: project/docs/
-    doc_category: project
     lifecycle: living
+    trigger: on_create_on_complete
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+  - doc_type: work-unit-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+
+reads:
+  - doc_type: problem-statement
+    path: project/docs/active/discovery/
+    trigger: on_activation
+  - doc_type: feature-brief
+    path: project/docs/active/discovery/
+    trigger: on_activation
+
+archives:
+  - doc_type: user-stories
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+  - doc_type: requirements
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - traceability
+    - handoff
+  checks:
+    - artifact_registry_updated
+    - work_unit_registry_updated
+
+# === STATUS TRANSITIONS ===
+transitions:
+  - doc_type: user-stories
+    flow:
+      - from: draft
+        to: in_review
+        trigger: notify_user
+      - from: in_review
+        to: approved
+        trigger: user_approval
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - language_requirements
+  - workflow
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 # Product Analyst

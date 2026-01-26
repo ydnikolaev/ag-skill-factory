@@ -1,33 +1,105 @@
 ---
+# === IDENTITY ===
 name: bmad-architect
 description: The Lead Architect for Antigravity TMA projects. Enforces DDD, BMAD V6, and coordinates the squad.
-version: 1.2.0
+version: 1.3.0
 
 phase: architecture
 category: analyst
-
 presets:
   - core
 
+# === HANDOFFS ===
 receives_from:
-  - product-analyst
+  - skill: product-analyst
+    docs:
+      - doc_type: user-stories
+        trigger: spec_approved
+      - doc_type: requirements
+        trigger: spec_approved
 
 delegates_to:
-  - tech-spec-writer
+  - skill: tech-spec-writer
+    docs:
+      - doc_type: context-map
+        trigger: design_complete
+      - doc_type: api-contracts
+        trigger: design_complete
 
-outputs:
+# === DOCUMENTS ===
+requires:
+  - doc_type: user-stories
+    status: approved
+
+creates:
   - doc_type: context-map
     path: project/docs/active/architecture/
     doc_category: architecture
     lifecycle: per-feature
+    initial_status: draft
+    trigger: design_complete
   - doc_type: api-contracts
     path: project/docs/active/architecture/
     doc_category: architecture
     lifecycle: per-feature
+    initial_status: draft
+    trigger: design_complete
+
+updates:
   - doc_type: decision-log
     path: project/docs/
-    doc_category: project
     lifecycle: living
+    trigger: on_create_on_complete
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+
+reads:
+  - doc_type: user-stories
+    path: project/docs/active/product/
+    trigger: on_activation
+  - doc_type: requirements
+    path: project/docs/active/product/
+    trigger: on_activation
+
+archives:
+  - doc_type: context-map
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+  - doc_type: api-contracts
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - traceability
+    - handoff
+  checks:
+    - artifact_registry_updated
+
+# === STATUS TRANSITIONS ===
+transitions:
+  - doc_type: context-map
+    flow:
+      - from: draft
+        to: in_review
+        trigger: notify_user
+      - from: in_review
+        to: approved
+        trigger: user_approval
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - language_requirements
+  - workflow
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 # BMAD Architect (Team Lead)

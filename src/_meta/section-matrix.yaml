@@ -38,7 +38,15 @@ categories:
     - refactor-architect
     - tech-spec-writer
     - ux-designer
-    required: []
+    required:
+    - brain_to_docs
+    - document_lifecycle
+    - frontmatter
+    - handoff_protocol
+    - language_requirements
+    - team_collaboration
+    - when_to_delegate
+    - workflow
   technical:
     skills:
     - backend-go-expert

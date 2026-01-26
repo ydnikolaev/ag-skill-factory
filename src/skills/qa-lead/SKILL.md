@@ -1,30 +1,114 @@
 ---
+# === IDENTITY ===
 name: qa-lead
 description: Quality Assurance Lead. Tests E2E, API, and UI.
-version: 1.2.0
+version: 1.3.0
 
 phase: delivery
 category: analyst
-
 presets:
   - core
 
+# === HANDOFFS ===
 receives_from:
-  - backend-go-expert
-  - frontend-nuxt
+  - skill: backend-go-expert
+    docs:
+      - doc_type: service-implementation
+        trigger: implementation_complete
+  - skill: frontend-nuxt
+    docs:
+      - doc_type: ui-implementation
+        trigger: implementation_complete
 
 delegates_to:
-  - devops-sre
+  - skill: devops-sre
+    docs:
+      - doc_type: test-report
+        trigger: qa_signoff
 
-outputs:
+return_paths:
+  - skill: backend-go-expert
+    docs:
+      - doc_type: bug-report
+        trigger: bugs_found
+  - skill: frontend-nuxt
+    docs:
+      - doc_type: bug-report
+        trigger: bugs_found
+
+# === DOCUMENTS ===
+requires:
+  - doc_type: service-implementation
+    status: approved
+  - doc_type: ui-implementation
+    status: approved
+
+creates:
   - doc_type: test-cases
     path: project/docs/active/qa/
     doc_category: qa
     lifecycle: per-feature
+    initial_status: draft
+    trigger: on_activation
   - doc_type: test-report
     path: project/docs/active/qa/
     doc_category: qa
     lifecycle: per-feature
+    initial_status: draft
+    trigger: qa_signoff
+
+reads:
+  - doc_type: service-implementation
+    path: project/docs/active/backend/
+    trigger: on_activation
+  - doc_type: ui-implementation
+    path: project/docs/active/frontend/
+    trigger: on_activation
+  - doc_type: tech-spec
+    path: project/docs/active/specs/
+    trigger: on_activation
+
+updates:
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+
+archives:
+  - doc_type: test-cases
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+  - doc_type: test-report
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - traceability
+    - handoff
+  checks:
+    - artifact_registry_updated
+    - work_unit_registry_updated
+
+# === STATUS TRANSITIONS ===
+transitions:
+  - doc_type: test-report
+    flow:
+      - from: draft
+        to: approved
+        trigger: qa_signoff
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - language_requirements
+  - workflow
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 # QA Lead

@@ -1,27 +1,103 @@
 ---
+# === IDENTITY ===
 name: tech-spec-writer
 description: Converts high-level architecture into detailed, human-readable Technical Specifications. The bridge between Architect and Developers.
-version: 1.2.0
+version: 1.3.0
 
 phase: architecture
 category: analyst
-
 presets:
   - core
 
+# === HANDOFFS ===
 receives_from:
-  - bmad-architect
-  - product-analyst
+  - skill: bmad-architect
+    docs:
+      - doc_type: context-map
+        trigger: design_complete
+      - doc_type: api-contracts
+        trigger: design_complete
+  - skill: product-analyst
+    docs:
+      - doc_type: user-stories
+        trigger: spec_approved
 
 delegates_to:
-  - backend-go-expert
-  - frontend-nuxt
+  - skill: backend-go-expert
+    docs:
+      - doc_type: tech-spec
+        trigger: spec_approved
+  - skill: frontend-nuxt
+    docs:
+      - doc_type: tech-spec
+        trigger: spec_approved
 
-outputs:
+# === DOCUMENTS ===
+requires:
+  - doc_type: context-map
+    status: approved
+  - doc_type: user-stories
+    status: approved
+
+creates:
   - doc_type: tech-spec
     path: project/docs/active/specs/
     doc_category: specs
     lifecycle: per-feature
+    initial_status: draft
+    trigger: spec_approved
+
+reads:
+  - doc_type: context-map
+    path: project/docs/active/architecture/
+    trigger: on_activation
+  - doc_type: api-contracts
+    path: project/docs/active/architecture/
+    trigger: on_activation
+  - doc_type: user-stories
+    path: project/docs/active/product/
+    trigger: on_activation
+
+updates:
+  - doc_type: artifact-registry
+    path: project/docs/
+    lifecycle: living
+    trigger: on_create_on_complete
+
+archives:
+  - doc_type: tech-spec
+    destination: project/docs/closed/<work-unit>/
+    trigger: qa_signoff
+
+# === VALIDATION ===
+pre_handoff:
+  protocols:
+    - traceability
+    - handoff
+  checks:
+    - artifact_registry_updated
+
+# === STATUS TRANSITIONS ===
+transitions:
+  - doc_type: tech-spec
+    flow:
+      - from: draft
+        to: in_review
+        trigger: notify_user
+      - from: in_review
+        to: approved
+        trigger: user_approval
+
+# === REQUIRED SECTIONS ===
+required_sections:
+  - frontmatter
+  - language_requirements
+  - workflow
+  - team_collaboration
+  - when_to_delegate
+  - brain_to_docs
+  - document_lifecycle
+  - handoff_protocol
 ---
 
 <!-- TODO: FRONTMATTER DELEDGATES: ALL EXECUTORS -->
