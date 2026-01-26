@@ -43,14 +43,40 @@ if exists("project/docs/") {
 **Creates:**
 ```
 project/docs/
-├── registry/feat-forum-topics.md    ← from template
+├── registry/feat-forum-topics.md    ← from _work-unit-registry.md
 ├── active/
 │   ├── discovery/feat-forum-topics.md
 │   ├── specs/feat-forum-topics.md
 │   └── ...
 ```
 
-**Templates source:** `blueprint/_meta/_docs/templates/`
+**Template source in factory:** `blueprint/_meta/_docs/templates/`
+
+**Copies to project:** `project/docs/_templates/`
+
+---
+
+## P1: Factory Install Copies Doc Templates
+
+**Goal:** `factory install` creates docs structure with templates.
+
+**If `project/docs/` does NOT exist:**
+
+```
+project/docs/
+├── _templates/
+│   ├── _ARTIFACT_REGISTRY.md
+│   ├── _discovery-brief.md
+│   ├── _tech-spec.md
+│   └── ...
+├── ARTIFACT_REGISTRY.md
+├── active/{discovery,product,design,specs,backend,frontend,qa}
+├── review/{...}
+├── closed/{sprints,features,bugs,refactoring}
+└── registry/
+```
+
+**If `project/docs/` EXISTS:** Skip entirely, DO NOT overwrite.
 
 ---
 
