@@ -13,6 +13,11 @@ presets:
 receives_from:
   - tech-spec-writer
   - bmad-architect
+  - cli-architect
+  - telegram-mechanic
+  - mcp-expert
+  - refactor-architect
+  - qa-lead  # return path: bugs found in testing
 
 delegates_to:
   - qa-lead
@@ -23,6 +28,8 @@ outputs:
     doc_category: backend
     lifecycle: per-feature
 ---
+
+# Backend Go Expert
 
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP
@@ -42,7 +49,7 @@ outputs:
 > - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
 > - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
 
-# Backend Go Expert
+
 
 This skill builds the **Core** of the system using Go 1.25+ and Clean Architecture.
 

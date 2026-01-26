@@ -23,6 +23,8 @@ outputs:
     lifecycle: per-feature
 ---
 
+# TUI Charm Expert
+
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP
 > Before making technical decisions, **always check**:
@@ -41,7 +43,6 @@ outputs:
 > - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
 > - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
 
-# TUI Charm Expert
 
 This skill makes the terminal beautiful using BubbleTea and Lipgloss.
 

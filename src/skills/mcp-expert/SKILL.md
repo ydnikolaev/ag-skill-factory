@@ -21,6 +21,8 @@ outputs:
     lifecycle: per-feature
 ---
 
+# MCP Expert
+
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP
 > Before making technical decisions, **always check**:
@@ -38,8 +40,6 @@ outputs:
 > **Use `mcp_context7`** for library docs:
 > - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
 > - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
-
-# MCP Expert
 
 Expert-level guidance for building MCP servers. **Primary language: Go** (official SDK). Also covers Python and TypeScript.
 

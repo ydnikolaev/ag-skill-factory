@@ -9,12 +9,9 @@ category: utility
 presets:
   - core
 
-
-delegates_to: []
-
 ---
 
-# Doc Janitor 🧹
+# Doc Janitor
 
 > **MODE**: AUTONOMOUS EXECUTOR. You clean up and organize project docs.
 > ✅ Move files to correct lifecycle folders

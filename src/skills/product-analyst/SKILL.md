@@ -36,6 +36,8 @@ outputs:
     lifecycle: living
 ---
 
+# Product Analyst
+
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP
 > Before making technical decisions, **always check**:
@@ -53,8 +55,6 @@ outputs:
 > **Use `mcp_context7`** for library docs:
 > - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
 > - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
-
-# Product Analyst
 
 This skill owns the **Product Definition** phase. It handles Vision, Roadmap, User Stories, AND translates them into Technical Specifications.
 

@@ -23,6 +23,8 @@ outputs:
     lifecycle: per-feature
 ---
 
+# Idea Interview 
+
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP
 > Before making technical decisions, **always check**:
@@ -33,7 +35,6 @@ outputs:
 > | `mcp.yaml` | Project MCP server config |
 > | `mcp/` | Project-specific MCP tools/resources |
 
-# Idea Interview
 
 > **MODE**: INTERVIEW. You are the Discovery phase conductor.
 > ❌ DO NOT write code

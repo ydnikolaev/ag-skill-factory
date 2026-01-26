@@ -11,6 +11,8 @@ presets:
 
 receives_from:
   - qa-lead
+  - refactor-architect
+  - mcp-expert
 
 delegates_to: []
 
@@ -20,6 +22,8 @@ outputs:
     doc_category: infrastructure
     lifecycle: per-feature
 ---
+
+# DevOps SRE
 
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP
@@ -39,7 +43,6 @@ outputs:
 > - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
 > - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
 
-# DevOps SRE
 
 This skill delivers the code. It handles Docker, CI/CD, and deployments.
 

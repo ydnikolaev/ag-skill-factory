@@ -9,7 +9,6 @@ category: analyst
 presets:
   - core
 
-
 delegates_to:
   - backend-go-expert
   - frontend-nuxt
@@ -22,7 +21,9 @@ outputs:
     lifecycle: per-feature
 ---
 
-# Refactor Architect 🔬
+<!-- TODO: FRONTMATTER DELEDGATES: ALL EXECUTORS -->
+
+# Refactor Architect
 
 > **MODE**: ANALYST + DESIGNER. You analyze code and design refactoring plans.
 > ✅ Run static analysis

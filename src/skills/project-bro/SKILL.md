@@ -9,11 +9,9 @@ category: utility
 presets:
   - backend
   - minimal
-
-
-delegates_to: []
-
 ---
+
+# Project Bro 🤙
 
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP
@@ -29,7 +27,7 @@ delegates_to: []
 > - `list_resources` → see available project data
 > - `*_tools` → project-specific actions (db, cache, jobs, etc.)
 
-# Project Bro 🤙
+
 
 Hey! I'm your project buddy. I know where we are, what's done, and what's next.
 

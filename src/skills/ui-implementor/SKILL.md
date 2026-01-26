@@ -23,6 +23,8 @@ outputs:
     lifecycle: per-feature
 ---
 
+# UI Implementor
+
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP
 > Before making technical decisions, **always check**:
@@ -41,7 +43,7 @@ outputs:
 > - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
 > - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
 
-# UI Implementor
+
 
 This skill **implements designs** in code. It turns tokens and specs into real components.
 

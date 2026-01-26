@@ -24,6 +24,8 @@ outputs:
     lifecycle: per-feature
 ---
 
+<!-- TODO: FRONTMATTER DELEDGATES: ALL EXECUTORS -->
+
 # Tech Spec Writer
 
 > **MODE**: SPECIFICATION. You translate architecture into implementation blueprints.

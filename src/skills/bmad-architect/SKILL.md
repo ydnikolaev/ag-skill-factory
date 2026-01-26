@@ -30,6 +30,8 @@ outputs:
     lifecycle: living
 ---
 
+# BMAD Architect (Team Lead)
+
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP
 > Before making technical decisions, **always check**:
@@ -47,8 +49,6 @@ outputs:
 > **Use `mcp_context7`** for library docs:
 > - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
 > - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
-
-# BMAD Architect (Team Lead)
 
 This skill designs systems using DDD and BMAD V6 methodology. It does not write code; it creates architecture.
 

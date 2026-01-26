@@ -24,6 +24,8 @@ outputs:
     lifecycle: per-feature
 ---
 
+# TMA Expert (Telegram Mini Apps)
+
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP
 > Before making technical decisions, **always check**:
@@ -41,8 +43,6 @@ outputs:
 > **Use `mcp_context7`** for library docs:
 > - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
 > - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
-
-# TMA Expert (Telegram Mini Apps)
 
 This skill specializes in building **Telegram Mini Apps** that feel native to the Telegram ecosystem.
 

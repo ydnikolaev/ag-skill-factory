@@ -29,9 +29,7 @@ outputs:
     lifecycle: living
 ---
 
-# Debugger 🔍
-
-Systematic problem-solving for runtime errors, failing tests, and unexpected behavior.
+# Debugger
 
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP

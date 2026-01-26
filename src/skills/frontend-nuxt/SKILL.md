@@ -12,6 +12,8 @@ presets:
 
 receives_from:
   - tech-spec-writer
+  - refactor-architect
+  - qa-lead  # return path: bugs found in testing
 
 delegates_to:
   - qa-lead
@@ -22,6 +24,8 @@ outputs:
     doc_category: frontend
     lifecycle: per-feature
 ---
+
+# Frontend Nuxt Expert
 
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP
@@ -40,8 +44,6 @@ outputs:
 > **Use `mcp_context7`** for library docs:
 > - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
 > - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
-
-# Frontend Nuxt Expert
 
 This skill builds modern web frontends using **Nuxt 4**, **TailwindCSS**, and **shadcn-vue**.
 

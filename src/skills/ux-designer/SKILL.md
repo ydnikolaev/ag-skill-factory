@@ -27,6 +27,8 @@ outputs:
     lifecycle: per-feature
 ---
 
+# UX Designer
+
 > [!IMPORTANT]
 > ## First Step: Read Project Config & MCP
 > Before making technical decisions, **always check**:
@@ -45,7 +47,6 @@ outputs:
 > - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
 > - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
 
-# UX Designer
 
 This skill creates **design systems** and **design strategies**. It thinks before coding begins.
 
