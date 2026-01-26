@@ -1,7 +1,21 @@
 ---
 name: cli-architect
 description: Expert in Go CLI Architecture (Cobra, Viper, POSIX).
-version: 1.1.0
+version: 1.2.0
+
+phase: architecture
+category: technical
+
+receives_from:
+  - bmad-architect
+
+delegates_to:
+  - tui-charm-expert
+  - backend-go-expert
+
+outputs:
+  - artifact: cli-design.md
+    path: project/docs/active/architecture/
 ---
 
 # CLI Architect

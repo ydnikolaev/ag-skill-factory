@@ -13,10 +13,10 @@ description: Pipeline for tma preset. Skill handoffs and phases.
 |-------|--------|---------|
 | Discovery | `@idea-interview` | discovery-brief.md |
 | Definition | `@product-analyst` | roadmap.md, user-stories.md, requirements.md |
-| Architecture | `@bmad-architect`, `@tech-spec-writer` | context-map.md, api-contracts.yaml, tech-spec.md |
-| Implementation | `@frontend-nuxt` | ui-implementation.md |
+| Architecture | `@bmad-architect`, `@tech-spec-writer`, `@telegram-mechanic` | context-map.md, api-contracts.yaml, tech-spec.md |
+| Implementation | `@frontend-nuxt`, `@tma-expert` | ui-implementation.md, tma-config.md |
 | Delivery | `@qa-lead` | test-cases.md, test-report.md |
-| Utility | `@doc-janitor`, `@refactor-architect`, `@telegram-mechanic`, `@tma-expert` | — |
+| Utility | `@doc-janitor`, `@refactor-architect` | refactoring-overview.md |
 
 ## Handoff Matrix
 
@@ -32,7 +32,10 @@ description: Pipeline for tma preset. Skill handoffs and phases.
 | `@product-analyst` | `@tech-spec-writer` | roadmap.md |
 | `@product-analyst` | `@tech-spec-writer` | user-stories.md |
 | `@product-analyst` | `@tech-spec-writer` | requirements.md |
+| `@refactor-architect` | `@frontend-nuxt` | refactoring-overview.md |
 | `@tech-spec-writer` | `@frontend-nuxt` | tech-spec.md |
+| `@telegram-mechanic` | `@tma-expert` | webhook-config.md |
+| `@tma-expert` | `@qa-lead` | tma-config.md |
 
 ## Return Paths
 

@@ -1,7 +1,21 @@
 ---
 name: refactor-architect
 description: Analyzes codebase, designs modular refactoring specs, and delegates to domain executors. Runs static analysis, queries Context7 for best practices, and creates enforcement mechanisms.
-version: 1.1.0
+version: 1.2.0
+
+phase: utility
+category: analyst
+
+receives_from: []
+
+delegates_to:
+  - backend-go-expert
+  - frontend-nuxt
+  - devops-sre
+
+outputs:
+  - artifact: refactoring-overview.md
+    path: project/docs/active/refactoring/
 ---
 
 # Refactor Architect 🔬

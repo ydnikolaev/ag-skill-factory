@@ -1,7 +1,20 @@
 ---
 name: ui-implementor
 description: UI Implementor that converts design tokens into Tailwind, shadcn components, and production CSS.
-version: 1.1.0
+version: 1.2.0
+
+phase: implementation
+category: technical
+
+receives_from:
+  - ux-designer
+
+delegates_to:
+  - frontend-nuxt
+
+outputs:
+  - artifact: theming.md
+    path: project/docs/active/frontend/
 ---
 
 # UI Implementor

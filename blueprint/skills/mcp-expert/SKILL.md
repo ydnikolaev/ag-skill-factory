@@ -1,7 +1,20 @@
 ---
 name: mcp-expert
 description: Expert on Model Context Protocol (MCP) servers. Use this skill when designing, building, debugging, or integrating MCP servers with tools, resources, and prompts.
-version: 1.1.0
+version: 1.2.0
+
+phase: utility
+category: technical
+
+receives_from: []
+
+delegates_to:
+  - backend-go-expert
+  - devops-sre
+
+outputs:
+  - artifact: server-config.md
+    path: project/docs/active/mcp/
 ---
 
 # MCP Expert

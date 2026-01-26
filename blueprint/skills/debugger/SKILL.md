@@ -1,7 +1,22 @@
 ---
 name: debugger
 description: Systematic debugging skill. 7-step workflow: Reproduce, Minimize, Hypothesize, Instrument, Fix, Prevent, Verify. Activate when troubleshooting errors.
-version: 1.1.0
+version: 1.2.0
+
+phase: utility
+category: utility
+
+receives_from:
+  - qa-lead
+  - backend-go-expert
+  - frontend-nuxt
+
+delegates_to:
+  - qa-lead
+
+outputs:
+  - artifact: debug-report.md
+    path: project/docs/active/bugs/
 ---
 
 # Debugger 🔍

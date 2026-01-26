@@ -1,7 +1,21 @@
 ---
 name: tma-expert
 description: Expert in Telegram Mini Apps (TMA) using @tma.js/sdk for native Telegram integration.
-version: 1.1.0
+version: 1.2.0
+
+phase: implementation
+category: technical
+
+receives_from:
+  - telegram-mechanic
+  - frontend-nuxt
+
+delegates_to:
+  - qa-lead
+
+outputs:
+  - artifact: tma-config.md
+    path: project/docs/active/tma/
 ---
 
 # TMA Expert (Telegram Mini Apps)

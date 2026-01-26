@@ -16,7 +16,7 @@ description: Pipeline for backend preset. Skill handoffs and phases.
 | Architecture | `@bmad-architect`, `@tech-spec-writer` | context-map.md, api-contracts.yaml, tech-spec.md |
 | Implementation | `@backend-go-expert` | service-implementation.md |
 | Delivery | `@devops-sre`, `@qa-lead` | deployment-guide.md, test-cases.md, test-report.md |
-| Utility | `@doc-janitor`, `@project-bro`, `@refactor-architect` | — |
+| Utility | `@doc-janitor`, `@project-bro`, `@refactor-architect` | refactoring-overview.md |
 
 ## Handoff Matrix
 
@@ -34,6 +34,8 @@ description: Pipeline for backend preset. Skill handoffs and phases.
 | `@product-analyst` | `@tech-spec-writer` | requirements.md |
 | `@qa-lead` | `@devops-sre` | test-cases.md |
 | `@qa-lead` | `@devops-sre` | test-report.md |
+| `@refactor-architect` | `@backend-go-expert` | refactoring-overview.md |
+| `@refactor-architect` | `@devops-sre` | refactoring-overview.md |
 | `@tech-spec-writer` | `@backend-go-expert` | tech-spec.md |
 
 ## Return Paths

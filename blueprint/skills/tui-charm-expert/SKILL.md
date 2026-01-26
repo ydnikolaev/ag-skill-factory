@@ -1,7 +1,20 @@
 ---
 name: tui-charm-expert
 description: Expert in Terminal UI (TUI) using Charm stack (BubbleTea, Lipgloss).
-version: 1.1.0
+version: 1.2.0
+
+phase: implementation
+category: technical
+
+receives_from:
+  - cli-architect
+
+delegates_to:
+  - qa-lead
+
+outputs:
+  - artifact: tui-design.md
+    path: project/docs/active/cli/
 ---
 
 # TUI Charm Expert

@@ -1,7 +1,19 @@
 ---
 name: feature-fit
 description: Analyzes new feature requests for EXISTING projects. Reads config/mcp context, performs Gap Analysis, and creates a Feature Brief.
-version: 1.1.0
+version: 1.2.0
+
+phase: discovery
+category: analyst
+
+receives_from: []
+
+delegates_to:
+  - product-analyst
+
+outputs:
+  - artifact: feature-brief.md
+    path: project/docs/active/features/
 ---
 
 # Feature Fit Analyst

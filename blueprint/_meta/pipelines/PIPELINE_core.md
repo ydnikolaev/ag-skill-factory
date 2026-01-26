@@ -15,7 +15,7 @@ description: Pipeline for core preset. Skill handoffs and phases.
 | Definition | `@product-analyst` | roadmap.md, user-stories.md, requirements.md |
 | Architecture | `@bmad-architect`, `@tech-spec-writer` | context-map.md, api-contracts.yaml, tech-spec.md |
 | Delivery | `@qa-lead` | test-cases.md, test-report.md |
-| Utility | `@doc-janitor`, `@refactor-architect` | — |
+| Utility | `@doc-janitor`, `@refactor-architect` | refactoring-overview.md |
 
 ## Handoff Matrix
 

@@ -1,7 +1,21 @@
 ---
 name: telegram-mechanic
 description: Expert in Telegram Bot API, Webhooks, and Mini App Authentication.
-version: 1.1.0
+version: 1.2.0
+
+phase: architecture
+category: technical
+
+receives_from:
+  - bmad-architect
+
+delegates_to:
+  - backend-go-expert
+  - tma-expert
+
+outputs:
+  - artifact: webhook-config.md
+    path: project/docs/active/bot/
 ---
 
 # Telegram Mechanic

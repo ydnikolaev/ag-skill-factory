@@ -1,7 +1,22 @@
 ---
 name: ux-designer
 description: UX/UI Designer specializing in design systems, design tokens, and Figma workflows.
-version: 1.1.0
+version: 1.2.0
+
+phase: definition
+category: analyst
+
+receives_from:
+  - product-analyst
+
+delegates_to:
+  - ui-implementor
+
+outputs:
+  - artifact: tokens.json
+    path: project/docs/active/design/
+  - artifact: design-system.md
+    path: project/docs/active/design/
 ---
 
 # UX Designer

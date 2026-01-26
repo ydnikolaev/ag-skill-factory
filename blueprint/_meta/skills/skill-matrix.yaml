@@ -33,12 +33,17 @@ skills:
   cli-architect:
     name: cli-architect
     description: Expert in Go CLI Architecture (Cobra, Viper, POSIX).
-    version: 1.1.0
-    phase: utility
-    category: utility
-    receives_from: []
-    delegates_to: []
-    outputs: []
+    version: 1.2.0
+    phase: architecture
+    category: technical
+    receives_from:
+    - bmad-architect
+    delegates_to:
+    - tui-charm-expert
+    - backend-go-expert
+    outputs:
+    - artifact: cli-design.md
+      path: project/docs/active/architecture/
   devops-sre:
     name: devops-sre
     description: Expert in Docker, CI/CD, and delivering Go/Nuxt apps.
@@ -55,7 +60,7 @@ skills:
     name: doc-janitor
     description: Enforces document structure, archives completed work, migrates legacy
       format to lifecycle-based folders. Dry-run first, then apply.
-    version: 1.1.0
+    version: 1.2.0
     phase: utility
     category: utility
     receives_from: []
@@ -65,12 +70,15 @@ skills:
     name: feature-fit
     description: Analyzes new feature requests for EXISTING projects. Reads config/mcp
       context, performs Gap Analysis, and creates a Feature Brief.
-    version: 1.1.0
-    phase: utility
-    category: utility
+    version: 1.2.0
+    phase: discovery
+    category: analyst
     receives_from: []
-    delegates_to: []
-    outputs: []
+    delegates_to:
+    - product-analyst
+    outputs:
+    - artifact: feature-brief.md
+      path: project/docs/active/features/
   frontend-nuxt:
     name: frontend-nuxt
     description: Nuxt 4 & TailwindCSS expert for modern web applications (SSR, SPA,
@@ -104,12 +112,16 @@ skills:
     description: Expert on Model Context Protocol (MCP) servers. Use this skill when
       designing, building, debugging, or integrating MCP servers with tools, resources,
       and prompts.
-    version: 1.1.0
+    version: 1.2.0
     phase: utility
-    category: utility
+    category: technical
     receives_from: []
-    delegates_to: []
-    outputs: []
+    delegates_to:
+    - backend-go-expert
+    - devops-sre
+    outputs:
+    - artifact: server-config.md
+      path: project/docs/active/mcp/
   product-analyst:
     name: product-analyst
     description: Defines Vision, Roadmap, User Stories, and translates them into Technical
@@ -134,7 +146,7 @@ skills:
     name: project-bro
     description: Your project awareness buddy. Knows current state, reads docs, analyzes
       code, answers "where are we?" questions. Activate with "bro" or "project-bro".
-    version: 1.1.0
+    version: 1.2.0
     phase: utility
     category: utility
     receives_from: []
@@ -161,12 +173,17 @@ skills:
     description: Analyzes codebase, designs modular refactoring specs, and delegates
       to domain executors. Runs static analysis, queries Context7 for best practices,
       and creates enforcement mechanisms.
-    version: 1.1.0
+    version: 1.2.0
     phase: utility
-    category: utility
+    category: analyst
     receives_from: []
-    delegates_to: []
-    outputs: []
+    delegates_to:
+    - backend-go-expert
+    - frontend-nuxt
+    - devops-sre
+    outputs:
+    - artifact: refactoring-overview.md
+      path: project/docs/active/refactoring/
   tech-spec-writer:
     name: tech-spec-writer
     description: Converts high-level architecture into detailed, human-readable Technical
@@ -186,77 +203,101 @@ skills:
   telegram-mechanic:
     name: telegram-mechanic
     description: Expert in Telegram Bot API, Webhooks, and Mini App Authentication.
-    version: 1.1.0
-    phase: utility
-    category: utility
-    receives_from: []
-    delegates_to: []
-    outputs: []
+    version: 1.2.0
+    phase: architecture
+    category: technical
+    receives_from:
+    - bmad-architect
+    delegates_to:
+    - backend-go-expert
+    - tma-expert
+    outputs:
+    - artifact: webhook-config.md
+      path: project/docs/active/bot/
   tma-expert:
     name: tma-expert
     description: Expert in Telegram Mini Apps (TMA) using @tma.js/sdk for native Telegram
       integration.
-    version: 1.1.0
-    phase: utility
-    category: utility
-    receives_from: []
-    delegates_to: []
-    outputs: []
+    version: 1.2.0
+    phase: implementation
+    category: technical
+    receives_from:
+    - telegram-mechanic
+    - frontend-nuxt
+    delegates_to:
+    - qa-lead
+    outputs:
+    - artifact: tma-config.md
+      path: project/docs/active/tma/
   tui-charm-expert:
     name: tui-charm-expert
     description: Expert in Terminal UI (TUI) using Charm stack (BubbleTea, Lipgloss).
-    version: 1.1.0
-    phase: utility
-    category: utility
-    receives_from: []
-    delegates_to: []
-    outputs: []
+    version: 1.2.0
+    phase: implementation
+    category: technical
+    receives_from:
+    - cli-architect
+    delegates_to:
+    - qa-lead
+    outputs:
+    - artifact: tui-design.md
+      path: project/docs/active/cli/
   ui-implementor:
     name: ui-implementor
     description: UI Implementor that converts design tokens into Tailwind, shadcn
       components, and production CSS.
-    version: 1.1.0
-    phase: utility
-    category: utility
-    receives_from: []
-    delegates_to: []
-    outputs: []
+    version: 1.2.0
+    phase: implementation
+    category: technical
+    receives_from:
+    - ux-designer
+    delegates_to:
+    - frontend-nuxt
+    outputs:
+    - artifact: theming.md
+      path: project/docs/active/frontend/
   ux-designer:
     name: ux-designer
     description: UX/UI Designer specializing in design systems, design tokens, and
       Figma workflows.
-    version: 1.1.0
-    phase: utility
-    category: utility
-    receives_from: []
-    delegates_to: []
-    outputs: []
+    version: 1.2.0
+    phase: definition
+    category: analyst
+    receives_from:
+    - product-analyst
+    delegates_to:
+    - ui-implementor
+    outputs:
+    - artifact: tokens.json
+      path: project/docs/active/design/
+    - artifact: design-system.md
+      path: project/docs/active/design/
 phases:
   implementation:
   - backend-go-expert
   - frontend-nuxt
-  architecture:
-  - bmad-architect
-  - tech-spec-writer
-  utility:
-  - cli-architect
-  - doc-janitor
-  - feature-fit
-  - mcp-expert
-  - project-bro
-  - refactor-architect
-  - telegram-mechanic
   - tma-expert
   - tui-charm-expert
   - ui-implementor
-  - ux-designer
+  architecture:
+  - bmad-architect
+  - cli-architect
+  - tech-spec-writer
+  - telegram-mechanic
   delivery:
   - devops-sre
   - qa-lead
+  utility:
+  - doc-janitor
+  - mcp-expert
+  - project-bro
+  - refactor-architect
   discovery:
+  - feature-fit
   - idea-interview
   definition:
   - product-analyst
+  - ux-designer
 handoffs:
 - from: backend-go-expert
   to: qa-lead
@@ -270,6 +311,18 @@ handoffs:
   to: tech-spec-writer
   artifact: api-contracts.yaml
   path: project/docs/active/architecture/
+- from: cli-architect
+  to: tui-charm-expert
+  artifact: cli-design.md
+  path: project/docs/active/architecture/
+- from: cli-architect
+  to: backend-go-expert
+  artifact: cli-design.md
+  path: project/docs/active/architecture/
+- from: feature-fit
+  to: product-analyst
+  artifact: feature-brief.md
+  path: project/docs/active/features/
 - from: frontend-nuxt
   to: qa-lead
   artifact: ui-implementation.md
@@ -278,6 +331,14 @@ handoffs:
   to: product-analyst
   artifact: discovery-brief.md
   path: project/docs/active/discovery/
+- from: mcp-expert
+  to: backend-go-expert
+  artifact: server-config.md
+  path: project/docs/active/mcp/
+- from: mcp-expert
+  to: devops-sre
+  artifact: server-config.md
+  path: project/docs/active/mcp/
 - from: product-analyst
   to: bmad-architect
   artifact: roadmap.md
@@ -310,6 +371,18 @@ handoffs:
   to: devops-sre
   artifact: test-report.md
   path: project/docs/active/qa/
+- from: refactor-architect
+  to: backend-go-expert
+  artifact: refactoring-overview.md
+  path: project/docs/active/refactoring/
+- from: refactor-architect
+  to: frontend-nuxt
+  artifact: refactoring-overview.md
+  path: project/docs/active/refactoring/
+- from: refactor-architect
+  to: devops-sre
+  artifact: refactoring-overview.md
+  path: project/docs/active/refactoring/
 - from: tech-spec-writer
   to: backend-go-expert
   artifact: tech-spec.md
@@ -318,3 +391,31 @@ handoffs:
   to: frontend-nuxt
   artifact: tech-spec.md
   path: project/docs/active/specs/
+- from: telegram-mechanic
+  to: backend-go-expert
+  artifact: webhook-config.md
+  path: project/docs/active/bot/
+- from: telegram-mechanic
+  to: tma-expert
+  artifact: webhook-config.md
+  path: project/docs/active/bot/
+- from: tma-expert
+  to: qa-lead
+  artifact: tma-config.md
+  path: project/docs/active/tma/
+- from: tui-charm-expert
+  to: qa-lead
+  artifact: tui-design.md
+  path: project/docs/active/cli/
+- from: ui-implementor
+  to: frontend-nuxt
+  artifact: theming.md
+  path: project/docs/active/frontend/
+- from: ux-designer
+  to: ui-implementor
+  artifact: tokens.json
+  path: project/docs/active/design/
+- from: ux-designer
+  to: ui-implementor
+  artifact: design-system.md
+  path: project/docs/active/design/
