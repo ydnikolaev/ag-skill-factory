@@ -72,7 +72,7 @@ active/  review/   review/   closed/
 | Draft | `active/` | Being worked on |
 | Review | `review/` | Ready for approval |
 | Approved | `review/` | User said "looks good" |
-| Archived | `closed/` | Moved by @doc-janitor |
+| Archived | `closed/` | Moved by user or current skill |
 
 ---
 
@@ -111,7 +111,7 @@ project/docs/
 
 ### After User Approval
 
-1. `@doc-janitor` moves to `closed/{type}/{work-unit}/`
+1. Move document to `closed/{type}/{work-unit}/`
 2. Updates main `ARTIFACT_REGISTRY.md`
 
 ---
