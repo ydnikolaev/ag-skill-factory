@@ -120,11 +120,7 @@ This skill owns the **Product Definition** phase. It handles Vision, Roadmap, Us
 > 5. THEN delegate to next skill
 
 
-## Iteration Protocol (Ephemeral → Persistent)
-
-> [!IMPORTANT]
-> **Phase 1: Draft in Brain** — Create Roadmap/Specs as artifacts. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/product/` and `project/docs/active/specs/`
+<!-- INCLUDE: _meta/_skills/sections/brain-to-docs.md -->
 
 <!-- INCLUDE: _meta/_skills/sections/document-structure-protocol.md -->
 
