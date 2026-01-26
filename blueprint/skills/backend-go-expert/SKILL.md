@@ -106,18 +106,9 @@ Key points:
 >
 > Read Test Skeleton from tech-spec BEFORE writing any code.
 
-## Tech Debt Protocol (Hard Stop)
-
-> [!CAUTION]
-> **Follow `../standards/TECH_DEBT_PROTOCOL.md`.**
-> When creating workarounds:
-> 1. Add `// TODO(TD-XXX): description` in code
-> 2. Register in `project/docs/TECH_DEBT.md`
->
-> **Forbidden:** Untracked TODOs, undocumented hardcoded values.
+<!-- INCLUDE: _meta/_skills/sections/tech-debt-protocol.md -->
 
 <!-- INCLUDE: _meta/_skills/sections/git-protocol.md -->
-
 
 **When changing code, always report:**
 - What tests added/changed
@@ -125,7 +116,6 @@ Key points:
 - What they prove (behavior covered)
 
 <!-- INCLUDE: _meta/_skills/sections/resources.md -->
-
 
 <!-- INCLUDE: _meta/_skills/sections/brain-to-docs.md -->
 
