@@ -40,12 +40,14 @@ fullstack:
     - frontend
 
 tma:
-  description: "Telegram Mini Apps (8 skills)"
+  description: "Telegram Mini Apps (10 skills)"
   extends: core
   skills:
     - tma-expert
     - telegram-mechanic
     - frontend-nuxt
+    - ux-designer
+    - ui-implementor
 
 cli:
   description: "CLI/TUI applications (8 skills)"

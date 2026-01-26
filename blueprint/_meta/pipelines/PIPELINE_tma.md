@@ -5,7 +5,7 @@ description: Pipeline for tma preset. Skill handoffs and phases.
 
 # Pipeline (tma)
 
-> Telegram Mini Apps (8 skills)
+> Telegram Mini Apps (10 skills)
 
 ## Phases
 
@@ -13,6 +13,7 @@ description: Pipeline for tma preset. Skill handoffs and phases.
 |-------|--------|---------|
 | Discovery | `@idea-interview` | discovery-brief.md |
 | Definition | `@product-analyst` | roadmap.md, user-stories.md, requirements.md |
+| Design | `@ui-implementor`, `@ux-designer` | theming.md, tokens.json, design-system.md |
 | Architecture | `@bmad-architect`, `@tech-spec-writer`, `@telegram-mechanic` | context-map.md, api-contracts.yaml, tech-spec.md, webhook-config.md |
 | Implementation | `@frontend-nuxt`, `@tma-expert` | ui-implementation.md, tma-config.md |
 | Delivery | `@qa-lead` | test-cases.md, test-report.md |
@@ -36,6 +37,9 @@ description: Pipeline for tma preset. Skill handoffs and phases.
 | `@tech-spec-writer` | `@frontend-nuxt` | tech-spec.md |
 | `@telegram-mechanic` | `@tma-expert` | webhook-config.md |
 | `@tma-expert` | `@qa-lead` | tma-config.md |
+| `@ui-implementor` | `@frontend-nuxt` | theming.md |
+| `@ux-designer` | `@ui-implementor` | tokens.json |
+| `@ux-designer` | `@ui-implementor` | design-system.md |
 
 ## Return Paths
 

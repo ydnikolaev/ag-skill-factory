@@ -5,7 +5,7 @@ description: Team roster for tma preset. Apply when collaborating or delegating.
 
 # Team Roster (tma)
 
-> Telegram Mini Apps (8 skills)
+> Telegram Mini Apps (10 skills)
 
 | Skill | Description |
 |-------|-------------|
@@ -19,6 +19,8 @@ description: Team roster for tma preset. Apply when collaborating or delegating.
 | `tech-spec-writer` | Converts high-level architecture into detailed, human-readable Technical Specifications. The bridge between Architect and Developers. |
 | `telegram-mechanic` | Expert in Telegram Bot API, Webhooks, and Mini App Authentication. |
 | `tma-expert` | Expert in Telegram Mini Apps (TMA) using @tma.js/sdk for native Telegram integration. |
+| `ui-implementor` | UI Implementor that converts design tokens into Tailwind, shadcn components, and production CSS. |
+| `ux-designer` | UX/UI Designer specializing in design systems, design tokens, and Figma workflows. |
 
 ## Usage
 
