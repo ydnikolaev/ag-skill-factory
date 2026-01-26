@@ -117,10 +117,38 @@ presets:
 
 ---
 
+## P3: Enrich DOCUMENT_STRUCTURE_PROTOCOL
+
+**Goal:** Make protocol comprehensive enough to not need separate AGENTS.md.
+
+**Add:**
+- Quick start section (first-time setup)
+- Registry module usage examples
+- Project lifecycle examples (from discovery to closed)
+
+---
+
+## P3: Project Doc Templates
+
+**Goal:** Bootstrap project-specific documentation.
+
+**Add to `docs/_project/`:**
+```
+_project/
+├── _CODEBASE_MAP.md     # Project code structure
+├── _CONVENTIONS.md      # Code style, naming
+├── _DECISION_LOG.md     # ADR log
+├── _GLOSSARY.md         # Project terminology
+└── _KNOWN_ISSUES.md     # Known bugs, workarounds
+```
+
+**Not workflow docs (active/review/closed) — project knowledge docs.**
+
+---
+
 ## Notes
 
 - Team files: `blueprint/_meta/_teams/TEAM_*.md`
 - Pipeline files: `blueprint/_meta/_pipelines/PIPELINE_*.md`
 - Doc templates: `blueprint/_meta/_docs/templates/`
 - Generated via `make generate-all`
-
