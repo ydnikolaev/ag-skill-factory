@@ -164,7 +164,5 @@ Interview is complete when collected:
 > - `list_resources` → see available project data
 > - `*_tools` → project-specific actions (db, cache, jobs, etc.)
 > 
-> **Use `mcp_context7`** for library docs:
-> - Check `mcp.yaml → context7.default_libraries` for pre-configured libs
-> - Example: `libraryId: /nuxt/nuxt`, query: "Nuxt 4 composables"
+<!-- INCLUDE: _meta/_skills/sections/mcp-context7.md -->
 
