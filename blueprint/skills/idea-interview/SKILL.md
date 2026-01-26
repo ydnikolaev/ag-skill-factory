@@ -6,7 +6,6 @@ version: 1.2.0
 phase: discovery
 category: analyst
 
-receives_from: []
 
 delegates_to:
   - product-analyst

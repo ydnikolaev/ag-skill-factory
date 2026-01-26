@@ -6,11 +6,9 @@ version: 1.2.0
 phase: utility
 category: utility
 
-receives_from: []
 
 delegates_to: []
 
-outputs: []
 ---
 
 # Project Bro 🤙

@@ -6,7 +6,6 @@ version: 1.2.0
 phase: utility
 category: technical
 
-receives_from: []
 
 delegates_to:
   - backend-go-expert
