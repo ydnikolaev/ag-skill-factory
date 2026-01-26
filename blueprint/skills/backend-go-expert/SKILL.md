@@ -123,16 +123,7 @@ Key points:
 
 <!-- INCLUDE: _meta/_skills/sections/pre-handoff-validation.md -->
 
-## Handoff Protocol
-
-
-> [!CAUTION]
-> **BEFORE handoff:**
-> 1. Save final document to `project/docs/` path
-> 2. Change file status from `Draft` to `Approved` in header/frontmatter
-> 3. Update `project/docs/ARTIFACT_REGISTRY.md` status to ✅ Done
-> 4. Use `notify_user` for final approval
-> 5. THEN delegate to next skill
+<!-- INCLUDE: _meta/_skills/sections/handoff-protocol.md -->
 
 ## When to Delegate
 - ✅ **Delegate to `@qa-lead`** when: Feature is implemented and needs testing.

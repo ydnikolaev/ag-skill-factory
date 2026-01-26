@@ -13,3 +13,14 @@ See @TRACEABILITY_PROTOCOL for handoff rules.
 4. After approval — hand off to `@product-analyst`:
    > "Discovery complete. Handing off to `@product-analyst` to create Roadmap and Specs."
 ===== /idea-interview ===== -->
+
+<!-- ===== backend-go-expert =====
+> [!CAUTION]
+> **BEFORE handoff:**
+> 1. Save final document to `project/docs/` path
+> 2. Change file status from `Draft` to `Approved` in header/frontmatter
+> 3. Update `project/docs/ARTIFACT_REGISTRY.md` status to ✅ Done
+> 4. Use `notify_user` for final approval
+> 5. THEN delegate to next skill
+===== /backend-go-expert ===== -->
+
