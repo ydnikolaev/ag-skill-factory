@@ -70,9 +70,9 @@ def process_includes(content: str, src_dir: Path, file_path: Path) -> str:
 
 
 def build_skills(src_dir: Path, dist_dir: Path):
-    """Build skills from src/ to dist/_agent/skills/."""
+    """Build skills from src/ to dist/skills/."""
     src_skills = src_dir / "skills"
-    dist_skills = dist_dir / "_agent" / "skills"
+    dist_skills = dist_dir / "skills"
     
     if not src_skills.exists():
         print("  ⚠️  No src/skills/ directory")
@@ -110,11 +110,10 @@ def build_skills(src_dir: Path, dist_dir: Path):
     
     return count
 
-
 def build_rules(src_dir: Path, dist_dir: Path):
-    """Build rules from src/ to dist/_agent/rules/."""
+    """Build rules from src/ to dist/rules/."""
     src_rules = src_dir / "rules"
-    dist_rules = dist_dir / "_agent" / "rules"
+    dist_rules = dist_dir / "rules"
     
     if not src_rules.exists():
         print("  ⚠️  No src/rules/ directory")
@@ -132,11 +131,10 @@ def build_rules(src_dir: Path, dist_dir: Path):
     
     return count
 
-
 def build_workflows(src_dir: Path, dist_dir: Path):
-    """Build workflows from src/ to dist/_agent/workflows/."""
+    """Build workflows from src/ to dist/workflows/."""
     src_workflows = src_dir / "workflows"
-    dist_workflows = dist_dir / "_agent" / "workflows"
+    dist_workflows = dist_dir / "workflows"
     
     if not src_workflows.exists():
         print("  ⚠️  No src/workflows/ directory")
@@ -154,11 +152,10 @@ def build_workflows(src_dir: Path, dist_dir: Path):
     
     return count
 
-
 def build_templates(src_dir: Path, dist_dir: Path):
-    """Copy templates to dist/project/docs/templates/."""
+    """Copy templates to dist/docs/templates/."""
     src_templates = src_dir / "templates" / "documents"
-    dist_templates = dist_dir / "project" / "docs" / "templates"
+    dist_templates = dist_dir / "docs" / "templates"
     
     if not src_templates.exists():
         print("  ⚠️  No src/templates/documents/ directory")
@@ -176,13 +173,32 @@ def build_templates(src_dir: Path, dist_dir: Path):
     
     print(f"  ✅ {count} document templates")
     
-    # Copy folder-structure template (directory structure for project/docs/)
+    # Copy folder-structure template
     src_folder_struct = src_dir / "templates" / "folder-structure"
-    dist_folder_struct = dist_dir / "project" / "docs" / "folder-structure"
+    dist_folder_struct = dist_dir / "docs" / "folder-structure"
     
     if src_folder_struct.exists():
         shutil.copytree(src_folder_struct, dist_folder_struct, dirs_exist_ok=True)
         print(f"  ✅ folder-structure template")
+    
+    return count
+
+def build_configs(src_dir: Path, dist_dir: Path):
+    """Copy configs from src/ to dist/configs/."""
+    src_configs = src_dir / "configs"
+    dist_configs = dist_dir / "configs"
+    
+    if not src_configs.exists():
+        return 0
+    
+    dist_configs.mkdir(parents=True, exist_ok=True)
+    count = 0
+    
+    for config_file in src_configs.iterdir():
+        if config_file.is_file():
+            shutil.copy2(config_file, dist_configs / config_file.name)
+            count += 1
+            print(f"  ✅ {config_file.name}")
     
     return count
 
@@ -221,6 +237,9 @@ def main():
     print("\n📄 Building templates...")
     templates_count = build_templates(src_dir, dist_dir)
     
+    print("\n⚙️  Building configs...")
+    configs_count = build_configs(src_dir, dist_dir)
+    
     # Summary
     print("\n" + "=" * 40)
     print(f"✅ Build complete!")
@@ -228,6 +247,7 @@ def main():
     print(f"   Rules:     {rules_count}")
     print(f"   Workflows: {workflows_count}")
     print(f"   Templates: {templates_count}")
+    print(f"   Configs:   {configs_count}")
     print(f"\n📁 Output: {dist_dir}")
 
 
