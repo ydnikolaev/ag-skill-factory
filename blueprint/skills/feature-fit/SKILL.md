@@ -13,7 +13,7 @@ delegates_to:
 
 outputs:
   - artifact: feature-brief.md
-    path: project/docs/active/features/
+    path: project/docs/active/discovery/
 ---
 
 # Feature Fit Analyst

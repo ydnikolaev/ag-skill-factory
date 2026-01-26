@@ -15,7 +15,7 @@ delegates_to:
 
 outputs:
   - artifact: webhook-config.md
-    path: project/docs/active/bot/
+    path: project/docs/active/architecture/
 ---
 
 # Telegram Mechanic

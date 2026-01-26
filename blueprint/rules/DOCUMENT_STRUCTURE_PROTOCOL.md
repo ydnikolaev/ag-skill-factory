@@ -118,16 +118,21 @@ project/docs/
 
 ## Categories
 
+> **Naming:** `{category}/{work-unit}.md` → `specs/feat-forum.md`
+
 | Category | Documents |
 |----------|-----------|
-| `discovery/` | discovery-brief |
+| `discovery/` | discovery-brief, feature-brief |
 | `product/` | user-stories, roadmap |
-| `design/` | design-tokens, design-system |
-| `architecture/` | context-map, api-contracts |
+| `design/` | design-tokens, design-system, theming |
+| `architecture/` | context-map, api-contracts, cli-design, webhook-config |
 | `specs/` | tech-spec, requirements |
 | `backend/` | service-implementation |
 | `frontend/` | ui-implementation, tma-config |
 | `qa/` | test-cases, test-report |
+| `infrastructure/` | deployment-guide |
+| `bugs/` | debug-report |
+| `refactoring/` | refactoring-overview |
 
 ---
 

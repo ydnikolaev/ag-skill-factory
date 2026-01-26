@@ -14,7 +14,7 @@ delegates_to:
 
 outputs:
   - artifact: server-config.md
-    path: project/docs/active/mcp/
+    path: project/docs/active/architecture/
 ---
 
 # MCP Expert

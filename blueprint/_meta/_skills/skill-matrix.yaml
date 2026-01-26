@@ -95,7 +95,7 @@ skills:
     - product-analyst
     outputs:
     - artifact: feature-brief.md
-      path: project/docs/active/features/
+      path: project/docs/active/discovery/
   frontend-nuxt:
     name: frontend-nuxt
     description: Nuxt 4 & TailwindCSS expert for modern web applications (SSR, SPA,
@@ -138,7 +138,7 @@ skills:
     - devops-sre
     outputs:
     - artifact: server-config.md
-      path: project/docs/active/mcp/
+      path: project/docs/active/architecture/
   product-analyst:
     name: product-analyst
     description: Defines Vision, Roadmap, User Stories, and translates them into Technical
@@ -230,7 +230,7 @@ skills:
     - tma-expert
     outputs:
     - artifact: webhook-config.md
-      path: project/docs/active/bot/
+      path: project/docs/active/architecture/
   tma-expert:
     name: tma-expert
     description: Expert in Telegram Mini Apps (TMA) using @tma.js/sdk for native Telegram
@@ -245,7 +245,7 @@ skills:
     - qa-lead
     outputs:
     - artifact: tma-config.md
-      path: project/docs/active/tma/
+      path: project/docs/active/frontend/
   tui-charm-expert:
     name: tui-charm-expert
     description: Expert in Terminal UI (TUI) using Charm stack (BubbleTea, Lipgloss).
@@ -258,7 +258,7 @@ skills:
     - qa-lead
     outputs:
     - artifact: tui-design.md
-      path: project/docs/active/cli/
+      path: project/docs/active/backend/
   ui-implementor:
     name: ui-implementor
     description: UI Implementor that converts design tokens into Tailwind, shadcn
@@ -345,7 +345,7 @@ handoffs:
 - from: feature-fit
   to: product-analyst
   artifact: feature-brief.md
-  path: project/docs/active/features/
+  path: project/docs/active/discovery/
 - from: frontend-nuxt
   to: qa-lead
   artifact: ui-implementation.md
@@ -357,11 +357,11 @@ handoffs:
 - from: mcp-expert
   to: backend-go-expert
   artifact: server-config.md
-  path: project/docs/active/mcp/
+  path: project/docs/active/architecture/
 - from: mcp-expert
   to: devops-sre
   artifact: server-config.md
-  path: project/docs/active/mcp/
+  path: project/docs/active/architecture/
 - from: product-analyst
   to: bmad-architect
   artifact: roadmap.md
@@ -417,19 +417,19 @@ handoffs:
 - from: telegram-mechanic
   to: backend-go-expert
   artifact: webhook-config.md
-  path: project/docs/active/bot/
+  path: project/docs/active/architecture/
 - from: telegram-mechanic
   to: tma-expert
   artifact: webhook-config.md
-  path: project/docs/active/bot/
+  path: project/docs/active/architecture/
 - from: tma-expert
   to: qa-lead
   artifact: tma-config.md
-  path: project/docs/active/tma/
+  path: project/docs/active/frontend/
 - from: tui-charm-expert
   to: qa-lead
   artifact: tui-design.md
-  path: project/docs/active/cli/
+  path: project/docs/active/backend/
 - from: ui-implementor
   to: frontend-nuxt
   artifact: theming.md
