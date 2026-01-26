@@ -116,10 +116,7 @@ Interview is complete when collected:
 <!-- INCLUDE: _meta/_skills/sections/handoff-protocol.md -->
 
 
-## Team Collaboration
-
-- **Product**: `@product-analyst` — receives interview results
-- **Self-Evolve**: After each interview — check if question-bank needs updates
+<!-- INCLUDE: _meta/_skills/sections/team-collaboration.md -->
 
 ## When to Delegate
 
