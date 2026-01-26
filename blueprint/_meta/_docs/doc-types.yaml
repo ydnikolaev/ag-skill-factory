@@ -1,157 +1,163 @@
-# Document Types Schema
-# Defines all document types used in Antigravity projects
-
 types:
-  # Discovery Phase
-  discovery-brief:
-    phase: discovery
-    creator: idea-interview
-    consumers: [product-analyst]
-    category: discovery
-    description: Initial project vision and concept
-
-  feature-brief:
-    phase: discovery
-    creator: feature-fit
-    consumers: [product-analyst]
-    category: discovery
-    description: Feature fit analysis for existing projects
-
-  # Definition Phase
-  roadmap:
-    phase: definition
-    creator: product-analyst
-    consumers: [bmad-architect, tech-spec-writer]
-    category: product
-    description: Product roadmap and phases
-
-  user-stories:
-    phase: definition
-    creator: product-analyst
-    consumers: [bmad-architect, tech-spec-writer, qa-lead]
-    category: product
-    description: User stories and acceptance criteria
-
-  requirements:
-    phase: definition
-    creator: product-analyst
-    consumers: [tech-spec-writer, backend-go-expert, frontend-nuxt]
-    category: specs
-    description: Detailed functional requirements
-
-  # Design Phase
-  design-tokens:
-    phase: design
-    creator: ux-designer
-    consumers: [ui-implementor]
-    category: design
-    description: Design tokens (colors, spacing, typography)
-
-  design-system:
-    phase: design
-    creator: ux-designer
-    consumers: [ui-implementor, frontend-nuxt]
-    category: design
-    description: Component specs and design patterns
-
-  theming:
-    phase: design
-    creator: ui-implementor
-    consumers: [frontend-nuxt]
-    category: design
-    description: Tailwind/CSS theme configuration
-
-  # Architecture Phase
-  context-map:
-    phase: architecture
-    creator: bmad-architect
-    consumers: [tech-spec-writer, backend-go-expert]
-    category: architecture
-    description: DDD context map and bounded contexts
-
-  api-contracts:
-    phase: architecture
-    creator: bmad-architect
-    consumers: [tech-spec-writer, backend-go-expert, frontend-nuxt]
-    category: architecture
-    description: API contracts (OpenAPI/gRPC)
-
-  tech-spec:
-    phase: architecture
-    creator: tech-spec-writer
-    consumers: [backend-go-expert, frontend-nuxt]
-    category: specs
-    description: Technical specification for implementation
-
-  cli-design:
-    phase: architecture
-    creator: cli-architect
-    consumers: [tui-charm-expert, backend-go-expert]
-    category: architecture
-    description: CLI command structure and design
-
-  webhook-config:
-    phase: architecture
-    creator: telegram-mechanic
-    consumers: [backend-go-expert, tma-expert]
-    category: architecture
-    description: Telegram bot and webhook configuration
-
-  # Implementation Phase
   service-implementation:
     phase: implementation
     creator: backend-go-expert
-    consumers: [qa-lead]
+    consumers:
+    - qa-lead
     category: backend
-    description: Backend service implementation report
-
-  ui-implementation:
-    phase: implementation
-    creator: frontend-nuxt
-    consumers: [qa-lead]
-    category: frontend
-    description: Frontend implementation report
-
-  tma-config:
-    phase: implementation
-    creator: tma-expert
-    consumers: [qa-lead]
-    category: frontend
-    description: Telegram Mini App configuration
-
-  # Delivery Phase
-  test-cases:
-    phase: delivery
-    creator: qa-lead
-    consumers: [devops-sre]
-    category: qa
-    description: Test cases and scenarios
-
-  test-report:
-    phase: delivery
-    creator: qa-lead
-    consumers: [devops-sre]
-    category: qa
-    description: Test execution report
-
+    artifact: service-implementation.md
+  context-map:
+    phase: architecture
+    creator: bmad-architect
+    consumers: &id001
+    - tech-spec-writer
+    category: architecture
+    artifact: context-map.md
+  api-contracts:
+    phase: architecture
+    creator: bmad-architect
+    consumers: *id001
+    category: architecture
+    artifact: api-contracts.yaml
+  cli-design:
+    phase: architecture
+    creator: cli-architect
+    consumers:
+    - tui-charm-expert
+    - backend-go-expert
+    category: architecture
+    artifact: cli-design.md
+  debug-report:
+    phase: utility
+    creator: debugger
+    consumers:
+    - qa-lead
+    category: bugs
+    artifact: debug-report.md
   deployment-guide:
     phase: delivery
     creator: devops-sre
     consumers: []
     category: infrastructure
-    description: Deployment and operations guide
-
-  # Utility
-  debug-report:
+    artifact: deployment-guide.md
+  feature-brief:
+    phase: discovery
+    creator: feature-fit
+    consumers:
+    - product-analyst
+    category: discovery
+    artifact: feature-brief.md
+  ui-implementation:
+    phase: implementation
+    creator: frontend-nuxt
+    consumers:
+    - qa-lead
+    category: frontend
+    artifact: ui-implementation.md
+  discovery-brief:
+    phase: discovery
+    creator: idea-interview
+    consumers:
+    - product-analyst
+    category: discovery
+    artifact: discovery-brief.md
+  server-config:
     phase: utility
-    creator: debugger
-    consumers: [qa-lead]
-    category: bugs
-    description: Bug investigation and fix report
-
+    creator: mcp-expert
+    consumers:
+    - backend-go-expert
+    - devops-sre
+    category: architecture
+    artifact: server-config.md
+  roadmap:
+    phase: definition
+    creator: product-analyst
+    consumers: &id002
+    - bmad-architect
+    - tech-spec-writer
+    category: product
+    artifact: roadmap.md
+  user-stories:
+    phase: definition
+    creator: product-analyst
+    consumers: *id002
+    category: product
+    artifact: user-stories.md
+  requirements:
+    phase: definition
+    creator: product-analyst
+    consumers: *id002
+    category: specs
+    artifact: requirements.md
+  test-cases:
+    phase: delivery
+    creator: qa-lead
+    consumers: &id003
+    - devops-sre
+    category: qa
+    artifact: test-cases.md
+  test-report:
+    phase: delivery
+    creator: qa-lead
+    consumers: *id003
+    category: qa
+    artifact: test-report.md
   refactoring-overview:
     phase: utility
     creator: refactor-architect
-    consumers: [backend-go-expert, frontend-nuxt]
+    consumers:
+    - backend-go-expert
+    - frontend-nuxt
+    - devops-sre
     category: refactoring
-    description: Refactoring plan and modules
+    artifact: refactoring-overview.md
+  tech-spec:
+    phase: architecture
+    creator: tech-spec-writer
+    consumers:
+    - backend-go-expert
+    - frontend-nuxt
+    category: specs
+    artifact: tech-spec.md
+  webhook-config:
+    phase: architecture
+    creator: telegram-mechanic
+    consumers:
+    - backend-go-expert
+    - tma-expert
+    category: architecture
+    artifact: webhook-config.md
+  tma-config:
+    phase: implementation
+    creator: tma-expert
+    consumers:
+    - qa-lead
+    category: frontend
+    artifact: tma-config.md
+  tui-design:
+    phase: implementation
+    creator: tui-charm-expert
+    consumers:
+    - qa-lead
+    category: backend
+    artifact: tui-design.md
+  theming:
+    phase: design
+    creator: ui-implementor
+    consumers:
+    - frontend-nuxt
+    category: frontend
+    artifact: theming.md
+  tokens:
+    phase: design
+    creator: ux-designer
+    consumers: &id004
+    - ui-implementor
+    category: design
+    artifact: tokens.json
+  design-system:
+    phase: design
+    creator: ux-designer
+    consumers: *id004
+    category: design
+    artifact: design-system.md

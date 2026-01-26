@@ -83,6 +83,47 @@ def build_skill_matrix(blueprint_skills: Path) -> dict:
     return matrix
 
 
+def generate_doc_types(matrix: dict, output_path: Path):
+    """Generate doc-types.yaml from skill matrix outputs."""
+    doc_types = {"types": {}}
+    
+    for skill_name, skill_data in matrix["skills"].items():
+        phase = skill_data.get("phase", "utility")
+        
+        for output in skill_data.get("outputs", []):
+            artifact = output.get("artifact", "")
+            if not artifact:
+                continue
+            
+            # Derive doc type name from artifact (remove .md/.yaml extension)
+            doc_type = artifact.rsplit(".", 1)[0]
+            
+            # Get consumers from delegates_to
+            consumers = skill_data.get("delegates_to", [])
+            
+            # Get category from doc_category or derive from path
+            category = output.get("doc_category", "")
+            if not category:
+                path = output.get("path", "")
+                # Extract category from path like project/docs/active/specs/
+                parts = path.rstrip("/").split("/")
+                category = parts[-1] if parts else "other"
+            
+            doc_types["types"][doc_type] = {
+                "phase": phase,
+                "creator": skill_name,
+                "consumers": consumers,
+                "category": category,
+                "artifact": artifact,
+            }
+    
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(output_path, "w") as f:
+        yaml.dump(doc_types, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
+    
+    return len(doc_types["types"])
+
+
 def resolve_preset_skills(preset_name: str, presets: dict, all_skills: set) -> list:
     """Resolve full skill list for a preset."""
     preset = presets.get(preset_name, {})
@@ -202,6 +243,7 @@ def main():
     blueprint_skills = root / "blueprint" / "skills"
     presets_file = root / "blueprint" / "_meta" / "presets.yaml"
     matrix_output = root / "blueprint" / "_meta" / "_skills" / "skill-matrix.yaml"
+    doc_types_output = root / "blueprint" / "_meta" / "_docs" / "doc-types.yaml"
     pipelines_output = root / "blueprint" / "_meta" / "_pipelines"
     
     if not blueprint_skills.exists():
@@ -217,6 +259,10 @@ def main():
     with open(matrix_output, "w") as f:
         yaml.dump(matrix, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
     print(f"  ✅ skill-matrix.yaml ({len(matrix['skills'])} skills, {len(matrix['handoffs'])} handoffs)")
+    
+    # Generate doc-types.yaml
+    doc_count = generate_doc_types(matrix, doc_types_output)
+    print(f"  ✅ doc-types.yaml ({doc_count} document types)")
     
     # Load presets
     if not presets_file.exists():
