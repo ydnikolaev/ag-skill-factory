@@ -12,9 +12,3 @@ description: Pipeline for minimal preset. Skill handoffs and phases.
 | Phase | Skills | Outputs |
 |-------|--------|---------|
 | Utility | `@debugger`, `@project-bro` | debug-report.md |
-
-## Handoff Matrix
-
-| From | To | Artifact |
-|------|-----|----------|
-| — | — | — |

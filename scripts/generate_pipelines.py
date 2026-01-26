@@ -168,19 +168,17 @@ def generate_pipeline_file(preset_name: str, skill_names: list, matrix: dict,
         outputs_str = ", ".join(outputs) if outputs else "—"
         lines.append(f"| {phase.title()} | {skill_refs} | {outputs_str} |")
     
-    lines.extend([
-        "",
-        "## Handoff Matrix",
-        "",
-        "| From | To | Artifact |",
-        "|------|-----|----------|",
-    ])
-    
-    for h in preset_handoffs:
-        lines.append(f"| `@{h['from']}` | `@{h['to']}` | {h['artifact']} |")
-    
-    if not preset_handoffs:
-        lines.append("| — | — | — |")
+    if preset_handoffs:
+        lines.extend([
+            "",
+            "## Handoff Matrix",
+            "",
+            "| From | To | Artifact |",
+            "|------|-----|----------|",
+        ])
+        
+        for h in preset_handoffs:
+            lines.append(f"| `@{h['from']}` | `@{h['to']}` | {h['artifact']} |")
     
     if return_paths:
         lines.extend([
