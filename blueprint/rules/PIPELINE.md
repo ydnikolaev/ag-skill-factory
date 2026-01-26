@@ -1,11 +1,11 @@
-# Squad Pipeline
+# TEAM Pipeline
 
 Visual workflow from idea to deployment across all skills.
 
 ## Core Pipeline
 
 ```mermaid
-graph LR
+graph TB
     subgraph "🎯 DISCOVERY"
         A[User Idea] --> B[idea-interview]
         A2[New Feature] --> B2[feature-fit]

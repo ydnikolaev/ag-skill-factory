@@ -10,13 +10,13 @@ section_order:
   - mode_block          # > MODE: ... (optional)
   - when_to_activate    # When to Activate / Purpose
   - role_boundary       # Role Boundary (optional)
+  - brain_to_docs  # Brain to Docs (MANDATORY, HIGH PRIORITY)
   - tech_stack          # Tech Stack (for technical skills)
   - critical_rules      # Critical Rules (for technical skills)
   - workflow            # Workflow / Decision Tree
   - protocols           # TDD/Git/Tech Debt protocols (Hard Stops)
   - team_collaboration  # Team Collaboration (MANDATORY)
   - when_to_delegate    # When to Delegate (MANDATORY)
-  - iteration_protocol  # Iteration Protocol (MANDATORY)
   - document_lifecycle  # Document Lifecycle (MANDATORY)
   - pre_handoff         # Pre-Handoff Validation (Hard Stop)
   - handoff_protocol    # Handoff Protocol (MANDATORY)
@@ -42,7 +42,7 @@ categories:
       - workflow
       - team_collaboration
       - when_to_delegate
-      - iteration_protocol
+      - brain_to_docs
       - document_lifecycle
       - handoff_protocol
 
@@ -65,7 +65,7 @@ categories:
       - protocols
       - team_collaboration
       - when_to_delegate
-      - iteration_protocol
+      - brain_to_docs
       - document_lifecycle
       - handoff_protocol
 
@@ -84,7 +84,7 @@ categories:
       - workflow
       - team_collaboration
       - when_to_delegate
-      - iteration_protocol
+      - brain_to_docs
       - document_lifecycle
       - handoff_protocol
 
@@ -101,7 +101,7 @@ categories:
       - workflow
       - team_collaboration
       - when_to_delegate
-      - iteration_protocol
+      - brain_to_docs
       - document_lifecycle
       - handoff_protocol
 
@@ -113,7 +113,7 @@ section_headers:
   workflow: "## Workflow"
   team_collaboration: "## Team Collaboration"
   when_to_delegate: "## When to Delegate"
-  iteration_protocol: "## Iteration Protocol"
+  brain_to_docs: "## (Iteration Protocol|Brain to Docs)"
   document_lifecycle: "## Document Lifecycle"
   handoff_protocol: "## Handoff Protocol"
   pre_handoff: "## Pre-Handoff Validation"

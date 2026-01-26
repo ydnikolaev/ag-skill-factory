@@ -119,10 +119,10 @@ def validate_skill(path: str) -> bool:
         warnings.append("Missing '## Handoff Protocol' section (New Requirement)")
     
     if "## Language Requirements" not in content:
-        errors.append("Missing '## Language Requirements' section. See .agent/rules/LANGUAGE.md")
+        errors.append("Missing '## Language Requirements' section. See .agent/rules/LANGUAGE_REQUIREMENTS.md")
     
-    if "## Iteration Protocol" not in content and "Iteration Protocol" not in content:
-        warnings.append("Missing '## Iteration Protocol' section explaining brain→docs flow")
+    if "## Iteration Protocol" not in content and "## Brain to Docs" not in content:
+        errors.append("Missing '## Iteration Protocol' or '## Brain to Docs' section. See .agent/rules/BRAIN_TO_DOCS.md")
     
     # ========================================
     # 5. Link Checker (NEW)
