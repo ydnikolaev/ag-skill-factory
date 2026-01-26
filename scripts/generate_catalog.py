@@ -82,15 +82,15 @@ def generate_skill_page(skill_path: Path, docs_path: Path) -> dict:
 
 def main():
     root = Path(__file__).parent.parent
-    blueprint_skills = root / "blueprint" / "skills"
+    src_skills = root / "src" / "skills"
     website_path = root / "website"
     
-    if not blueprint_skills.exists():
-        print("❌ blueprint/skills not found")
+    if not src_skills.exists():
+        print("❌ src/skills not found")
         return
     
     skills = []
-    for skill_path in sorted(blueprint_skills.iterdir()):
+    for skill_path in sorted(src_skills.iterdir()):
         if skill_path.is_dir() and not skill_path.name.startswith("."):
             info = generate_skill_page(skill_path, website_path)
             if info:

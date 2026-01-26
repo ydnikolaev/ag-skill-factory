@@ -18,10 +18,10 @@ import yaml
 from pathlib import Path
 from collections import defaultdict
 
-BLUEPRINT_DIR = Path(__file__).parent.parent / "blueprint"
-SKILLS_DIR = BLUEPRINT_DIR / "skills"
-HIERARCHY_FILE = BLUEPRINT_DIR / "_meta" / "preset-hierarchy.yaml"
-OUTPUT_FILE = BLUEPRINT_DIR / "_meta" / "presets.yaml"
+SRC_DIR = Path(__file__).parent.parent / "src"
+SKILLS_DIR = SRC_DIR / "skills"
+HIERARCHY_FILE = SRC_DIR / "_meta" / "preset-hierarchy.yaml"
+OUTPUT_FILE = SRC_DIR / "_meta" / "presets.yaml"
 
 
 def extract_frontmatter(skill_path: Path) -> dict:

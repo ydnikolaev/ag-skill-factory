@@ -3,7 +3,7 @@
 import re
 from pathlib import Path
 
-SKILLS_DIR = Path("blueprint/skills")
+SKILLS_DIR = Path("src/skills")
 
 # Mapping: skill -> leaf preset(s)
 SKILL_PRESETS = {
