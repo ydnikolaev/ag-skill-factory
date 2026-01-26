@@ -96,11 +96,7 @@ Interview is complete when collected:
 
 
 
-## Iteration Protocol (Ephemeral → Persistent)
-
-> [!IMPORTANT]
-> **Phase 1: Draft in Brain** — Create Discovery Brief as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/discovery/`
+<!-- INCLUDE: _meta/_skills/sections/brain-to-docs.md -->
 
 ## Pre-Handoff Validation (Hard Stop)
 
