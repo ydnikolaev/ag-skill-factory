@@ -275,6 +275,8 @@ All notable changes to this project will be documented in this file.
 
 ### Miscellaneous
 
+- Remove golangci.yml from root (moved to cli) ([36bc297](https://github.com/ydnikolaev/antigravity-factory/commit/36bc29721a3336d0821021caa30e41d8561bf612))
+
 - Fix gitignore, remove userdir from tracking, move golangci to cli ([3eb829d](https://github.com/ydnikolaev/antigravity-factory/commit/3eb829d5136919aaf01cda5c5e02ece111ab9d22))
 
 - Update .gitignore for new structure ([ebc7057](https://github.com/ydnikolaev/antigravity-factory/commit/ebc70571d8bf8dc1987b0577d610a0382d306f16))
