@@ -5,13 +5,51 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- **(blueprint)** Add versioning, workflows, and validation improvements ([cd52e30](https://github.com/ydnikolaev/antigravity-factory/commit/cd52e30cdbc072ff75ebf52870d302c15a6ba7dd))
+- **(build)** Add private skills support ([da32f94](https://github.com/ydnikolaev/antigravity-factory/commit/da32f948c6befd0222b903e330a7a7f7741dabc5))
 
-- **(website)** Premium landing page redesign ([32349ed](https://github.com/ydnikolaev/antigravity-factory/commit/32349ed571c81693a2237bbabe1000dc227c7c71))
+- **(generators)** Add generate_rules.py for rules-matrix.yaml ([2881cf7](https://github.com/ydnikolaev/antigravity-factory/commit/2881cf7b6cd60b21b7efacda46524885502359b0))
 
-- Automate changelog with git-cliff ([168c171](https://github.com/ydnikolaev/antigravity-factory/commit/168c1718f724ec69c75c713d73290a4a233c021f))
+- **(templates)** Add folder-structure and ARTIFACT_REGISTRY ([6a18fb5](https://github.com/ydnikolaev/antigravity-factory/commit/6a18fb5e235a2bd71da85d25bfb170fda1c181a8))
 
-- Add skill catalog website (VitePress) ([0fbeefe](https://github.com/ydnikolaev/antigravity-factory/commit/0fbeefe1775a13e273f7f6824d0721d6dc194956))
+- **(installer)** Add template copying and backlog item ([c6875e6](https://github.com/ydnikolaev/antigravity-factory/commit/c6875e6a1d387671274c5574485e4acf30c6c7bc))
+
+- **(build)** Add src/ → dist/ build pipeline ([0716a71](https://github.com/ydnikolaev/antigravity-factory/commit/0716a710848d3324220eb01f888358193df4e886))
+
+- **(docs)** Add document lifecycle (per-feature vs living) ([f324a9c](https://github.com/ydnikolaev/antigravity-factory/commit/f324a9cd4e45bc69dd230c80b3ceec3c6bcb5249))
+
+- **(templates)** Auto-generate doc templates from SSOT ([052856b](https://github.com/ydnikolaev/antigravity-factory/commit/052856b1650734b1d4abbf2e22bfbe67f302f27c))
+
+- **(presets)** Auto-generate presets.yaml from skill frontmatter ([f7f7f4a](https://github.com/ydnikolaev/antigravity-factory/commit/f7f7f4a1dffcc9ad433bc77aaa7f6866ee7d1482))
+
+- **(docs)** Add project document templates and skill outputs ([f6ba46c](https://github.com/ydnikolaev/antigravity-factory/commit/f6ba46c0ac8f5b44a2eadc3d93a0d452e3962e3b))
+
+- **(generator)** Auto-generate doc-types.yaml from skills ([994cd7b](https://github.com/ydnikolaev/antigravity-factory/commit/994cd7be3dcd74053996cdac7dda711a1965c632))
+
+- **(skills)** Add doc_category to all skill outputs ([51f563f](https://github.com/ydnikolaev/antigravity-factory/commit/51f563f4b8a90552054fb4b4c7752d87a49f6864))
+
+- **(docs)** Add document workflow templates and structure ([19f1c56](https://github.com/ydnikolaev/antigravity-factory/commit/19f1c56607323f71c5652645e088353de61b38be))
+
+- **(phases)** Add separate Design phase ([f04edc7](https://github.com/ydnikolaev/antigravity-factory/commit/f04edc7ec195d14cc5fbdeec169cfb168805a32e))
+
+- **(skills)** Complete extended frontmatter for all 19 skills ([9bb1778](https://github.com/ydnikolaev/antigravity-factory/commit/9bb1778804e4bd87500a87b1e4b046b2a210e91d))
+
+- **(skills)** Add extended frontmatter and auto-generate pipelines ([c6a4b5f](https://github.com/ydnikolaev/antigravity-factory/commit/c6a4b5fd4c4ad414c2a921ffab0b6f736773d243))
+
+- **(_meta)** Reorganize project structure and add preset-based teams ([a8803eb](https://github.com/ydnikolaev/antigravity-factory/commit/a8803eb752a840f6a82c36484e629384badd7b48))
+
+- **(rules)** Migrate protocols from standards/ to rules/ with frontmatter ([9dcfbfa](https://github.com/ydnikolaev/antigravity-factory/commit/9dcfbfa54ae4ef42caae2ab15d89df3d467fdade))
+
+- **(rules)** Systemize LANGUAGE_REQUIREMENTS and BRAIN_TO_DOCS rules ([5111caf](https://github.com/ydnikolaev/antigravity-factory/commit/5111cafbbeba5b3d36d80f4e334c4e060bd11d92))
+
+- **(rules)** Add Language Requirements as mandatory workflow rule ([ec5597b](https://github.com/ydnikolaev/antigravity-factory/commit/ec5597b17e2248be346322ca4e285b067afd7a0a))
+
+- **(blueprint)** Add versioning, workflows, and validation improvements ([d0a2b84](https://github.com/ydnikolaev/antigravity-factory/commit/d0a2b84d191388c691363311409c2147085d917b))
+
+- **(website)** Premium landing page redesign ([c60d549](https://github.com/ydnikolaev/antigravity-factory/commit/c60d5493bdadfecd12ea64484183b55be936fd6a))
+
+- Automate changelog with git-cliff ([85e3e6a](https://github.com/ydnikolaev/antigravity-factory/commit/85e3e6a589de95dbd53590566315387cc2cf3fae))
+
+- Add skill catalog website (VitePress) ([86f0e45](https://github.com/ydnikolaev/antigravity-factory/commit/86f0e45fa1d07b2e1dbe26c1799a7cb97510c8ac))
 
 - **(factory)** Add preset selection with TUI ([63d93b5](https://github.com/ydnikolaev/antigravity-factory/commit/63d93b569c1c506e03265db278be4675ab814bd6))
 
@@ -64,6 +102,76 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- Move Go code to cli/ subdirectory ([cce0f51](https://github.com/ydnikolaev/antigravity-factory/commit/cce0f51927760ea042ad6228b33571a4bff9ed40))
+
+- **(build)** Flatten dist/ structure ([a84d914](https://github.com/ydnikolaev/antigravity-factory/commit/a84d91490882fe32d725474db71684e5a662578d))
+
+- **(templates)** Remove empty upstream/downstream from artifact-registry ([10e9848](https://github.com/ydnikolaev/antigravity-factory/commit/10e9848b0fa6ea2d2cf28ed6e4d7868fc6a79383))
+
+- **(templates)** Rename ARTIFACT_REGISTRY to lowercase, add frontmatter ([de4d72b](https://github.com/ydnikolaev/antigravity-factory/commit/de4d72be0b67812c7c65b2e03bc36a9ea50269d0))
+
+- Delete blueprint/, copy workflows and preset-hierarchy to src/ ([d6df384](https://github.com/ydnikolaev/antigravity-factory/commit/d6df38437df2d9ccade1ce634aee12b065fc9edc))
+
+- **(generators)** Migrate from blueprint/ to src/ ([43c4ce8](https://github.com/ydnikolaev/antigravity-factory/commit/43c4ce85cd0d8ac406d8eae0bf8762428db6929c))
+
+- **(build)** Rename dist/.agent to dist/_agent ([402d838](https://github.com/ydnikolaev/antigravity-factory/commit/402d8389a2c52fab60b3ed4e58349cec1b53b42a))
+
+- **(skills)** Artifact → doc_type for SSOT naming alignment ([e7f0177](https://github.com/ydnikolaev/antigravity-factory/commit/e7f0177a0c4c435322db504f5aae206e7c39c214))
+
+- **(backend-go-expert)** Use INCLUDE for handoff-protocol ([9d2f6dd](https://github.com/ydnikolaev/antigravity-factory/commit/9d2f6ddd8a4bbafed2661500899ffc41c78beef0))
+
+- **(backend-go-expert)** Use INCLUDE for pre-handoff-validation ([6a8c23e](https://github.com/ydnikolaev/antigravity-factory/commit/6a8c23e389ab749fc9cbd7f60d12368ee481c679))
+
+- **(backend-go-expert)** Add tech-debt-protocol section ([adbc2bd](https://github.com/ydnikolaev/antigravity-factory/commit/adbc2bd97580248ff4f952e4589191dd074d907f))
+
+- **(backend-go-expert)** Use INCLUDE for shared sections ([51f50c8](https://github.com/ydnikolaev/antigravity-factory/commit/51f50c8f4630cbaf505df73456debefcb33de0e8))
+
+- **(backend-go-expert)** Use INCLUDE for language-requirements ([9980c31](https://github.com/ydnikolaev/antigravity-factory/commit/9980c312418724ebd3bbdee1923c6c57077d499c))
+
+- **(product-analyst)** Use INCLUDE for brain-to-docs ([7835cb2](https://github.com/ydnikolaev/antigravity-factory/commit/7835cb2f52b3ba303f38abd5d9254de9716f16ea))
+
+- **(product-analyst)** Use INCLUDE for document-structure-protocol ([ae36153](https://github.com/ydnikolaev/antigravity-factory/commit/ae36153648a4291dc6a3080f6037b515c86a059e))
+
+- **(product-analyst)** Use INCLUDE for team-collaboration ([2a6ec01](https://github.com/ydnikolaev/antigravity-factory/commit/2a6ec0151e939df45e30f7bc9f9f350a1f621164))
+
+- **(product-analyst)** Use INCLUDE for language-requirements ([3ae06de](https://github.com/ydnikolaev/antigravity-factory/commit/3ae06de4c4fa30fa2febfcbe0d167380e23314c4))
+
+- **(idea-interview)** Remove Activation Triggers section ([4a84dd0](https://github.com/ydnikolaev/antigravity-factory/commit/4a84dd0e678110cd805b90c6c49cc90f75ac1f7c))
+
+- **(idea-interview)** Extract pre-handoff-validation section ([1df2dde](https://github.com/ydnikolaev/antigravity-factory/commit/1df2ddea699f55e892072a217cc24141f5b0bede))
+
+- **(idea-interview)** Remove Antigravity Best Practices section ([0170634](https://github.com/ydnikolaev/antigravity-factory/commit/017063417c9f2de151fdaa0b1c2f2cb115460b8f))
+
+- **(idea-interview)** Extract resources section ([1e56ab1](https://github.com/ydnikolaev/antigravity-factory/commit/1e56ab1cd774265392b9bd3d1770a0924c628c73))
+
+- **(idea-interview)** Extract team-collaboration section ([407fdc8](https://github.com/ydnikolaev/antigravity-factory/commit/407fdc82b6838dadd34452e407c783415e16206c))
+
+- **(idea-interview)** Extract handoff-protocol section ([379b9d7](https://github.com/ydnikolaev/antigravity-factory/commit/379b9d74f513b0a972d21a9f792fb209b5767df1))
+
+- **(idea-interview)** Extract mcp-context7 section ([f36df50](https://github.com/ydnikolaev/antigravity-factory/commit/f36df50d7db142847916c1a76c3e9a85688cce84))
+
+- **(sections)** Rename document-workflow → document-structure-protocol ([03213ad](https://github.com/ydnikolaev/antigravity-factory/commit/03213ad2869bdbeb58596cf5c888740ced646cd4))
+
+- **(sections)** Use @ syntax for rule references ([954eef6](https://github.com/ydnikolaev/antigravity-factory/commit/954eef6cf813684da7dade00e3b8d213708d5b65))
+
+- **(idea-interview)** Use INCLUDE for document-workflow section ([de53771](https://github.com/ydnikolaev/antigravity-factory/commit/de53771645b9ff113e47bab832f39881b073d6b2))
+
+- **(idea-interview)** Use INCLUDE for brain-to-docs section ([3c86c42](https://github.com/ydnikolaev/antigravity-factory/commit/3c86c42531c513e64318f824c5df8addf21f04e3))
+
+- **(skills)** Use INCLUDE marker for shared sections ([6bdb775](https://github.com/ydnikolaev/antigravity-factory/commit/6bdb7755886a0c5088dcd7768cc239c657f0ec64))
+
+- **(skills)** Remove empty arrays from frontmatter ([04107f5](https://github.com/ydnikolaev/antigravity-factory/commit/04107f5a47fa82fcee3bfc55643240c326bdb9eb))
+
+- **(skills)** Sync output paths with protocol categories ([4c36c02](https://github.com/ydnikolaev/antigravity-factory/commit/4c36c02bfb9cc2e028cee1f92399a0784d9f2330))
+
+- **(templates)** Rename ARTIFACT_REGISTRY.md to _ARTIFACT_REGISTRY.md ([96b7093](https://github.com/ydnikolaev/antigravity-factory/commit/96b70937b482db59258ae8234ec5539497a248c4))
+
+- **(templates)** Prefix all template files with underscore ([35ecc3c](https://github.com/ydnikolaev/antigravity-factory/commit/35ecc3c5a612ed14489d1ef2d0427d622f04181e))
+
+- **(rules)** Lean DOCUMENT_STRUCTURE_PROTOCOL ([36c7009](https://github.com/ydnikolaev/antigravity-factory/commit/36c700965314970a13ccb3336701204813374d3a))
+
+- **(meta)** Rename subfolders with underscore prefix ([24162e1](https://github.com/ydnikolaev/antigravity-factory/commit/24162e1502490f2013306431f622c2b7930c8027))
+
 - Rename ag-skill-factory to antigravity-factory ([83b489a](https://github.com/ydnikolaev/antigravity-factory/commit/83b489a3bc345dc2cf833dd0fc8548072ce4ca22))
 
 - **(factory)** Update factory skills with ARTIFACT_REGISTRY.md ([4018159](https://github.com/ydnikolaev/antigravity-factory/commit/401815982e4427301fe70fd56f96f7642e789b71))
@@ -83,7 +191,17 @@ All notable changes to this project will be documented in this file.
 
 ### Documentation
 
-- Update README and AGENTS ([bf1ac6d](https://github.com/ydnikolaev/antigravity-factory/commit/bf1ac6ddcac967b6a096adda4bf646a9fd68a069))
+- **(backlog)** Add skill-maintainer with key decisions ([d226da4](https://github.com/ydnikolaev/antigravity-factory/commit/d226da4ac0344d724567f348fa77155be8663204))
+
+- **(backlog)** Add CHANGELOG and BACKLOG to project templates ([dc75d04](https://github.com/ydnikolaev/antigravity-factory/commit/dc75d0471a1d2aa604b2669ef2c9fc1166861f2e))
+
+- **(backlog)** Add P3 documentation improvements ([eaec413](https://github.com/ydnikolaev/antigravity-factory/commit/eaec413878865def0dd09502af50cdf24477b907))
+
+- **(backlog)** Add P3 auto-generate presets.yaml from skills ([bb95202](https://github.com/ydnikolaev/antigravity-factory/commit/bb9520201ae8a17ab1d082bbf2897a879369b854))
+
+- **(backlog)** Update factory CLI tasks with correct template paths ([3f07be4](https://github.com/ydnikolaev/antigravity-factory/commit/3f07be42fbc453b2b3fbc712b6bbb9b44d070518))
+
+- Update README and AGENTS ([f788729](https://github.com/ydnikolaev/antigravity-factory/commit/f78872993c742154d5f3604e30c8d670c1db2aaf))
 
 - **(changelog)** Add pipeline hardening release notes ([7fa6894](https://github.com/ydnikolaev/antigravity-factory/commit/7fa68947342f153b2f0e9e2391801eff1df78e9a))
 
@@ -108,11 +226,31 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
-- Sort changelog entries newest-first ([9b8ed7b](https://github.com/ydnikolaev/antigravity-factory/commit/9b8ed7bb6b3016d934dee1cdd6105c08d147511b))
+- **(.gitignore)** Untrack bin/, clean up structure, remove duplicate dist/ ([b4b835a](https://github.com/ydnikolaev/antigravity-factory/commit/b4b835aa1575622038fba5a695fa052838447cc0))
 
-- Strip internal links in catalog generator ([533b914](https://github.com/ydnikolaev/antigravity-factory/commit/533b914aa3dfc2bc3ab94bcabfb80141199fbd77))
+- **(Makefile)** Use go build -C flag to avoid Users/ directory bug ([8841e49](https://github.com/ydnikolaev/antigravity-factory/commit/8841e499ae7270ab25642b8edb1b22a2d583de02))
 
-- Ignore dead links in VitePress build ([24f2f8c](https://github.com/ydnikolaev/antigravity-factory/commit/24f2f8cae8005d2407726463c73d49884222fc08))
+- Remove accidental Users/ directory (artifact from absolute path) ([6f3f2dc](https://github.com/ydnikolaev/antigravity-factory/commit/6f3f2dcc7d815d92be3c9f494722e5586cc9ec26))
+
+- **(rules)** Remove apostrophe from LANGUAGE_REQUIREMENTS description ([99b05ed](https://github.com/ydnikolaev/antigravity-factory/commit/99b05ed2d48e3c317c354516db5b5ca381b8196d))
+
+- **(rules)** Remove doc-janitor references ([0deef28](https://github.com/ydnikolaev/antigravity-factory/commit/0deef28ee40cae3bfcb217d93280fcb776900be3))
+
+- **(rules)** Remove blueprint references from DOCUMENT_STRUCTURE_PROTOCOL ([9ca5a88](https://github.com/ydnikolaev/antigravity-factory/commit/9ca5a88a6db8f76097fc85aa2b9d46be47e8d4f7))
+
+- **(pipeline)** Hide empty Handoff Matrix section ([8f300b4](https://github.com/ydnikolaev/antigravity-factory/commit/8f300b45946550fb2a6cb5399cbc3aa997a3e9e9))
+
+- **(debugger)** Quote description with colon for valid YAML ([d7dc151](https://github.com/ydnikolaev/antigravity-factory/commit/d7dc151d92378623d99d114087aa3863499577fc))
+
+- **(presets)** Add design skills to TMA preset ([539870e](https://github.com/ydnikolaev/antigravity-factory/commit/539870e9c973ce8f21469ce3485a9f80ee3c5096))
+
+- **(pipeline)** Show all outputs in Phases table ([be04fa5](https://github.com/ydnikolaev/antigravity-factory/commit/be04fa5fd3d63028143cc398331c24c875b160f5))
+
+- Sort changelog entries newest-first ([5223ddd](https://github.com/ydnikolaev/antigravity-factory/commit/5223dddcf985746c3638b86f2a51da283ef9b21f))
+
+- Strip internal links in catalog generator ([1bddcda](https://github.com/ydnikolaev/antigravity-factory/commit/1bddcdaf8a07ec430d1c77df7cf491b42346d751))
+
+- Ignore dead links in VitePress build ([dc4e8f7](https://github.com/ydnikolaev/antigravity-factory/commit/dc4e8f799a84354eb3aae28a2a9af1cb97874443))
 
 - **(go.mod)** Correct GitHub username yuranikolaev → ydnikolaev ([e915e6c](https://github.com/ydnikolaev/antigravity-factory/commit/e915e6ccc7fd8be76213adf29d274ce6e3a93bde))
 
@@ -137,7 +275,15 @@ All notable changes to this project will be documented in this file.
 
 ### Miscellaneous
 
-- Add blueprint/private for sensitive skills ([ce08faf](https://github.com/ydnikolaev/antigravity-factory/commit/ce08faf1791114ca9abc49bf70cd9134822599f1))
+- Fix gitignore, remove userdir from tracking, move golangci to cli ([3eb829d](https://github.com/ydnikolaev/antigravity-factory/commit/3eb829d5136919aaf01cda5c5e02ece111ab9d22))
+
+- Update .gitignore for new structure ([ebc7057](https://github.com/ydnikolaev/antigravity-factory/commit/ebc70571d8bf8dc1987b0577d610a0382d306f16))
+
+- Copy rules-template.md and section-template.md to src/_meta/ ([a0639dd](https://github.com/ydnikolaev/antigravity-factory/commit/a0639dd1f8ee9371fdf07c9078130f9d7aa6c15a))
+
+- Copy section-matrix.yaml and frontmatter-schema.md to src/_meta/ ([6d239ac](https://github.com/ydnikolaev/antigravity-factory/commit/6d239ac2eb10a0a5532b80bf70c38635c4b5a14d))
+
+- Add blueprint/private for sensitive skills ([8e093de](https://github.com/ydnikolaev/antigravity-factory/commit/8e093dee010b783080e03fb73c1529ef4f71180b))
 
 - **(factory)** Self-evolve skill-factory-expert (20→21 skills) ([f4cb90f](https://github.com/ydnikolaev/antigravity-factory/commit/f4cb90ffd2a9fc611c819ee77609045ad0b47c56))
 
@@ -148,6 +294,11 @@ All notable changes to this project will be documented in this file.
 - Un-gitignore squads/ to make skills public ([13bcce3](https://github.com/ydnikolaev/antigravity-factory/commit/13bcce38198916df6a71bd6f91b5ce21250eea11))
 
 - Gitignore squads/ and reference/ (user-specific content) ([ab5ddcd](https://github.com/ydnikolaev/antigravity-factory/commit/ab5ddcd0d7f6649d060daa448282de86ab81b696))
+
+
+### SECURITY
+
+- Remove private skills from tracking ([7572138](https://github.com/ydnikolaev/antigravity-factory/commit/7572138c6d0e8ffbc4224090c0853dee75e93a75))
 
 
 
