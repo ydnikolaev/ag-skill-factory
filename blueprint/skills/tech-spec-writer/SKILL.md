@@ -1,8 +1,22 @@
 ---
 name: tech-spec-writer
 description: Converts high-level architecture into detailed, human-readable Technical Specifications. The bridge between Architect and Developers.
-version: 1.1.0
-requires: [bmad-architect]
+version: 1.2.0
+
+phase: architecture
+category: analyst
+
+receives_from:
+  - bmad-architect
+  - product-analyst
+
+delegates_to:
+  - backend-go-expert
+  - frontend-nuxt
+
+outputs:
+  - artifact: tech-spec.md
+    path: project/docs/active/specs/
 ---
 
 # Tech Spec Writer

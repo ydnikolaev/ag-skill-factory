@@ -1,7 +1,19 @@
 ---
 name: idea-interview
 description: Interview-mode skill that extracts complete project information from the user. Activates when starting a new project or discussing an idea. NO CODE — only structured discovery.
-version: 1.1.0
+version: 1.2.0
+
+phase: discovery
+category: analyst
+
+receives_from: []
+
+delegates_to:
+  - product-analyst
+
+outputs:
+  - artifact: discovery-brief.md
+    path: project/docs/active/discovery/
 ---
 
 # Idea Interview

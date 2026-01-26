@@ -1,8 +1,20 @@
 ---
 name: frontend-nuxt
 description: Nuxt 4 & TailwindCSS expert for modern web applications (SSR, SPA, Hybrid).
-version: 1.1.0
-requires: [tech-spec-writer]
+version: 1.2.0
+
+phase: implementation
+category: technical
+
+receives_from:
+  - tech-spec-writer
+
+delegates_to:
+  - qa-lead
+
+outputs:
+  - artifact: ui-implementation.md
+    path: project/docs/active/frontend/
 ---
 
 # Frontend Nuxt Expert

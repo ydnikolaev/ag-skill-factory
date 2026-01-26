@@ -1,8 +1,26 @@
 ---
 name: product-analyst
 description: Defines Vision, Roadmap, User Stories, and translates them into Technical Specs. Combines "The Why" with "The What".
-version: 1.1.0
-requires: [idea-interview]
+version: 1.2.0
+
+phase: definition
+category: analyst
+
+receives_from:
+  - idea-interview
+  - feature-fit
+
+delegates_to:
+  - bmad-architect
+  - tech-spec-writer
+
+outputs:
+  - artifact: roadmap.md
+    path: project/docs/active/product/
+  - artifact: user-stories.md
+    path: project/docs/active/product/
+  - artifact: requirements.md
+    path: project/docs/active/specs/
 ---
 
 # Product Analyst

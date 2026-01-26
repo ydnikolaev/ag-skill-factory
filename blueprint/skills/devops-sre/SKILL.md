@@ -1,8 +1,19 @@
 ---
 name: devops-sre
 description: Expert in Docker, CI/CD, and delivering Go/Nuxt apps.
-version: 1.1.0
-requires: [qa-lead]
+version: 1.2.0
+
+phase: delivery
+category: technical
+
+receives_from:
+  - qa-lead
+
+delegates_to: []
+
+outputs:
+  - artifact: deployment-guide.md
+    path: project/docs/active/infrastructure/
 ---
 
 # DevOps SRE

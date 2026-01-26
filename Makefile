@@ -58,6 +58,13 @@ bump-versions:
 generate-teams:
 	@python3 scripts/generate_teams.py
 
+# Generate skill matrix and PIPELINE files (Python script)
+generate-pipelines:
+	@python3 scripts/generate_pipelines.py
+
+# Generate all (teams + pipelines)
+generate-all: generate-teams generate-pipelines
+
 # Build factory CLI binary
 build-factory:
 	@echo "🔨 Building factory CLI..."

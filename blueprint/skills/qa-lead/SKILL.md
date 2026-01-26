@@ -1,8 +1,23 @@
 ---
 name: qa-lead
 description: Quality Assurance Lead. Tests E2E, API, and UI.
-version: 1.1.0
-requires: [backend-go-expert, frontend-nuxt]
+version: 1.2.0
+
+phase: delivery
+category: analyst
+
+receives_from:
+  - backend-go-expert
+  - frontend-nuxt
+
+delegates_to:
+  - devops-sre
+
+outputs:
+  - artifact: test-cases.md
+    path: project/docs/active/qa/
+  - artifact: test-report.md
+    path: project/docs/active/qa/
 ---
 
 # QA Lead

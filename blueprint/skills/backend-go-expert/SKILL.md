@@ -1,8 +1,21 @@
 ---
 name: backend-go-expert
 description: Expert Go developer (1.25+) specializing in Clean Architecture and DDD.
-version: 1.1.0
-requires: [tech-spec-writer]
+version: 1.2.0
+
+phase: implementation
+category: technical
+
+receives_from:
+  - tech-spec-writer
+  - bmad-architect
+
+delegates_to:
+  - qa-lead
+
+outputs:
+  - artifact: service-implementation.md
+    path: project/docs/active/backend/
 ---
 
 # Backend Go Expert
