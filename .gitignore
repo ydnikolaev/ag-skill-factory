@@ -19,3 +19,6 @@ reference/
 # Private skills (contain sensitive information)
 blueprint/private/
 dist/
+
+# Private skills (not tracked)
+src/skills/private/

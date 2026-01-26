@@ -81,10 +81,21 @@ def build_skills(src_dir: Path, dist_dir: Path):
     dist_skills.mkdir(parents=True, exist_ok=True)
     count = 0
     
-    for skill_dir in src_skills.iterdir():
-        if not skill_dir.is_dir():
+    # Process all skill directories (including private/*)
+    skill_dirs = []
+    
+    for item in src_skills.iterdir():
+        if not item.is_dir():
             continue
-        
+        if item.name == "private":
+            # Add private skills as top-level
+            for private_skill in item.iterdir():
+                if private_skill.is_dir():
+                    skill_dirs.append((private_skill, True))
+        else:
+            skill_dirs.append((item, False))
+    
+    for skill_dir, is_private in skill_dirs:
         skill_name = skill_dir.name
         skill_md = skill_dir / "SKILL.md"
         
@@ -95,7 +106,7 @@ def build_skills(src_dir: Path, dist_dir: Path):
         content = skill_md.read_text()
         processed = process_includes(content, src_dir, skill_md)
         
-        # Write to dist
+        # Write to dist (private skills go to top-level, not private/)
         dist_skill_dir = dist_skills / skill_name
         dist_skill_dir.mkdir(parents=True, exist_ok=True)
         (dist_skill_dir / "SKILL.md").write_text(processed)
@@ -105,8 +116,19 @@ def build_skills(src_dir: Path, dist_dir: Path):
         if examples_dir.exists():
             shutil.copytree(examples_dir, dist_skill_dir / "examples", dirs_exist_ok=True)
         
+        # Copy references if exist
+        references_dir = skill_dir / "references"
+        if references_dir.exists():
+            shutil.copytree(references_dir, dist_skill_dir / "references", dirs_exist_ok=True)
+        
+        # Copy resources if exist
+        resources_dir = skill_dir / "resources"
+        if resources_dir.exists():
+            shutil.copytree(resources_dir, dist_skill_dir / "resources", dirs_exist_ok=True)
+        
         count += 1
-        print(f"  ✅ {skill_name}")
+        marker = "🔒" if is_private else "✅"
+        print(f"  {marker} {skill_name}")
     
     return count
 
