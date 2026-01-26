@@ -1,6 +1,8 @@
-.PHONY: install uninstall build-factory install-factory install-completions generate-team validate validate-all validate-blueprint test lint clean check-loc changelog
+.PHONY: install uninstall build build-factory install-factory install-completions generate-team validate validate-all validate-blueprint test lint clean check-loc changelog
 
 # Paths
+SRC_DIR := $(shell pwd)/src
+DIST_DIR := $(shell pwd)/dist
 BLUEPRINT_DIR := $(shell pwd)/blueprint
 FACTORY_SKILLS_DIR := $(shell pwd)/.agent/skills
 VALIDATOR := $(FACTORY_SKILLS_DIR)/skill-creator/scripts/validate_skill.py
@@ -10,25 +12,35 @@ FACTORY_BIN := $(BIN_DIR)/factory
 SYMLINK_PATH := /usr/local/bin/factory
 SHELL_RC := $(HOME)/.zshrc
 
-# Install the factory CLI (no global_skills anymore)
-install: validate-all build-factory install-factory install-completions
+# Build src/ → dist/ (resolve includes, assemble files)
+build:
+	@echo "🔨 Building src/ → dist/..."
+	@python3 scripts/build.py
+	@echo ""
+
+# Install the factory CLI (builds first)
+install: build validate-all build-factory install-factory install-completions
 	@echo ""
 	@echo "🎉 Installation complete!"
 	@echo "   Run 'factory install' in any project to get started."
 
-# Validate a single skill: make validate SKILL=mcp-expert
+# Validate a single skill in dist/: make validate SKILL=mcp-expert
 validate:
 	@if [ -z "$(SKILL)" ]; then \
 		echo "Usage: make validate SKILL=<skill-name>"; \
 		exit 1; \
 	fi
-	@python3 $(VALIDATOR) $(BLUEPRINT_DIR)/skills/$(SKILL)
+	@python3 $(VALIDATOR) $(DIST_DIR)/.agent/skills/$(SKILL)
 
-# Validate all blueprint skills
+# Validate all dist/ skills (must run build first)
 validate-all:
-	@echo "🔍 Validating all skills..."
+	@echo "🔍 Validating all skills in dist/..."
+	@if [ ! -d "$(DIST_DIR)/.agent/skills" ]; then \
+		echo "⚠️  dist/ not found. Run 'make build' first."; \
+		exit 1; \
+	fi
 	@failed=0; \
-	for skill in $(BLUEPRINT_DIR)/skills/*/; do \
+	for skill in $(DIST_DIR)/.agent/skills/*/; do \
 		if [ -f "$$skill/SKILL.md" ]; then \
 			skill_name=$$(basename "$$skill"); \
 			if ! python3 $(VALIDATOR) "$$skill" > /dev/null 2>&1; then \

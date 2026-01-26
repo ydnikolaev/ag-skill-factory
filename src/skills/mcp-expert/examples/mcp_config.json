@@ -1,0 +1,22 @@
+{
+	"mcpServers": {
+		"my-python-server": {
+			"command": "python3",
+			"args": [
+				"/absolute/path/to/server.py"
+			],
+			"env": {
+				"DEBUG": "true",
+				"API_KEY": "your-api-key"
+			}
+		},
+		"my-typescript-server": {
+			"command": "npx",
+			"args": [
+				"tsx",
+				"/absolute/path/to/server.ts"
+			],
+			"env": {}
+		}
+	}
+}
