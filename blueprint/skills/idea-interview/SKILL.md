@@ -142,17 +142,7 @@ Interview is complete when collected:
 - Use `notify_user` to confirm Discovery Brief before handoff
 - Read `CONFIG.yaml` if exists to pre-fill platform/stack info
 
-## Document Lifecycle
-
-> **Protocol**: [`DOCUMENT_STRUCTURE_PROTOCOL.md`](../standards/DOCUMENT_STRUCTURE_PROTOCOL.md)
-
-| Operation | Document | Location | Trigger |
-|-----------|----------|----------|---------|
-| 🔵 Creates | discovery-brief.md | `active/discovery/` | Interview complete |
-| 📖 Reads | CONFIG.yaml | `project/` | On activation (if exists) |
-| 📝 Updates | ARTIFACT_REGISTRY.md | `project/docs/` | On create, on complete |
-| 🟡 To Review | discovery-brief.md | `review/discovery/` | User approves draft |
-| ✅ Archive | — | `closed/<work-unit>/` | @doc-janitor on final approval |
+<!-- INCLUDE: _meta/_skills/sections/document-workflow.md -->
 
 ## Resources
 
