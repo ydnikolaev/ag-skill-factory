@@ -180,11 +180,7 @@ server.Run(ctx, &mcp.StdioTransport{})
 - ⬅️ **Return to `@systems-analyst`** if: Requirements unclear for tool design
 
 
-## Iteration Protocol (Ephemeral → Persistent)
-
-> [!IMPORTANT]
-> **Phase 1: Draft in Brain** — Create MCP Server Config as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/mcp/`
+<!-- INCLUDE: _meta/_skills/sections/brain-to-docs.md -->
 
 ## Document Lifecycle
 

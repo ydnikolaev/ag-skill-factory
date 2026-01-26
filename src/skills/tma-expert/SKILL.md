@@ -148,11 +148,7 @@ bindViewportCSSVars(vp);
 - ✅ **Delegate to `@qa-lead`** when: Ready for testing.
 
 
-## Iteration Protocol (Ephemeral → Persistent)
-
-> [!IMPORTANT]
-> **Phase 1: Draft in Brain** — Create TMA Config as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/tma/`
+<!-- INCLUDE: _meta/_skills/sections/brain-to-docs.md -->
 
 ## Document Lifecycle
 

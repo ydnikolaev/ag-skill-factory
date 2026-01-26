@@ -103,11 +103,7 @@ This skill **implements designs** in code. It turns tokens and specs into real c
 - 🤝 **Coordinate with `@tma-expert`** for: Telegram-specific theming.
 
 
-## Iteration Protocol (Ephemeral → Persistent)
-
-> [!IMPORTANT]
-> **Phase 1: Draft in Brain** — Create Theming Doc as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/frontend/`
+<!-- INCLUDE: _meta/_skills/sections/brain-to-docs.md -->
 
 ## Document Lifecycle
 

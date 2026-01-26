@@ -157,11 +157,7 @@ This skill designs systems using DDD and BMAD V6 methodology. It does not write 
 - Use `notify_user` before major architectural decisions that need user approval.
 
 
-## Iteration Protocol (Ephemeral → Persistent)
-
-> [!IMPORTANT]
-> **Phase 1: Draft in Brain** — Create Context Map as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/architecture/`
+<!-- INCLUDE: _meta/_skills/sections/brain-to-docs.md -->
 
 ## Document Lifecycle
 

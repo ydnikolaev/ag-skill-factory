@@ -152,11 +152,7 @@ When reporting a fix, use this structure:
 - ⬅️ **Return to reporter** when: More info needed to reproduce
 - 🤝 **Coordinate with code owner** when: Fix requires architectural changes
 
-## Iteration Protocol (Ephemeral → Persistent)
-
-> [!IMPORTANT]
-> **Phase 1: Draft in Brain** — Create debug report as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after fix verified → write to `project/docs/bugs/`
+<!-- INCLUDE: _meta/_skills/sections/brain-to-docs.md -->
 
 ## Document Lifecycle
 

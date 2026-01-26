@@ -153,11 +153,7 @@ Feature Brief should follow this structure (see `resources/feature-brief-templat
 - ⬅️ **Return to `@idea-interview`** if: This is a new project, not a feature
 - ❌ **Do NOT delegate** if: Gap Analysis is incomplete or user hasn't approved
 
-## Iteration Protocol (Ephemeral → Persistent)
-
-> [!IMPORTANT]
-> **Phase 1: Draft in Brain** — Create Feature Brief as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/features/`
+<!-- INCLUDE: _meta/_skills/sections/brain-to-docs.md -->
 
 ## Document Lifecycle
 

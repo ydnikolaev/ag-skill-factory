@@ -71,11 +71,7 @@ This skill is the **Gateway**. It manages the Bot, Webhooks, and Security.
 - ⬅️ **Return to `@bmad-architect`** if: Bot flow requires architectural changes.
 
 
-## Iteration Protocol (Ephemeral → Persistent)
-
-> [!IMPORTANT]
-> **Phase 1: Draft in Brain** — Create Webhook Config as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/bot/`
+<!-- INCLUDE: _meta/_skills/sections/brain-to-docs.md -->
 
 ## Document Lifecycle
 

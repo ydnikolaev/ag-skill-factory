@@ -68,11 +68,7 @@ This skill makes the terminal beautiful using BubbleTea and Lipgloss.
 - 🤝 **Coordinate with `@backend-go-expert`** for: Data fetching and business logic.
 
 
-## Iteration Protocol (Ephemeral → Persistent)
-
-> [!IMPORTANT]
-> **Phase 1: Draft in Brain** — Create TUI Design as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/cli/`
+<!-- INCLUDE: _meta/_skills/sections/brain-to-docs.md -->
 
 ## Document Lifecycle
 

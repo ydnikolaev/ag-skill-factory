@@ -154,11 +154,7 @@ See `references/` for detailed guides:
 - `performance-guide.md` — Lazy loading, Core Web Vitals
 - `accessibility-guide.md` — ARIA, keyboard, contrast
 
-## Iteration Protocol (Ephemeral → Persistent)
-
-> [!IMPORTANT]
-> **Phase 1: Draft in Brain** — Create As-Built Report as artifact. Iterate via `notify_user`.
-> **Phase 2: Persist on Approval** — ONLY after "Looks good" → write to `project/docs/active/frontend/`
+<!-- INCLUDE: _meta/_skills/sections/brain-to-docs.md -->
 
 ## Document Lifecycle
 
