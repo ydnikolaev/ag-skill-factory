@@ -47,10 +47,7 @@ This skill owns the **Product Definition** phase. It handles Vision, Roadmap, Us
 
 <!-- INCLUDE: _meta/_skills/sections/language-requirements.md -->
 
-## Team Collaboration
-- **Discovery**: `@idea-interview` (Receives discovery-brief.md)
-- **Architect**: `@bmad-architect` (Pass specs for DDD design)
-- **QA**: `@qa-lead` (They test against your specs)
+<!-- INCLUDE: _meta/_skills/sections/team-collaboration.md -->
 
 ## TDD Planning (Mandatory)
 
@@ -84,10 +81,6 @@ This skill owns the **Product Definition** phase. It handles Vision, Roadmap, Us
 - ⬅️ **Return to `@idea-interview`** if: Discovery Brief is missing critical information
 - ❌ **Do NOT delegate** if: Business requirements are still unclear or specs unconfirmed
 
-## Antigravity Best Practices
-- Use `task_boundary` with mode PLANNING when drafting roadmap
-- Use `notify_user` to confirm priorities and specs before handoff
-- Keep User Stories business-focused, specs technical-focused
 
 
 ## Traceability Protocol (Hard Stop)

@@ -10,3 +10,9 @@ See PIPELINE.md for full team structure.
 - **Product**: `@product-analyst` — receives interview results
 - **Self-Evolve**: After each interview — check if question-bank needs updates
 ===== /idea-interview ===== -->
+
+<!-- ===== product-analyst =====
+- **Discovery**: `@idea-interview` (Receives discovery-brief.md)
+- **Architect**: `@bmad-architect` (Pass specs for DDD design)
+- **QA**: `@qa-lead` (They test against your specs)
+===== /product-analyst ===== -->
