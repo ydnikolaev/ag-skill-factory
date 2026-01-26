@@ -1,6 +1,6 @@
 ## Document Workflow
 
-> **Protocol**: See [DOCUMENT_STRUCTURE_PROTOCOL.md](file://.agent/rules/DOCUMENT_STRUCTURE_PROTOCOL.md)
+> **Protocol**: See @DOCUMENT_STRUCTURE_PROTOCOL
 
 <!-- TODO: доработать, сделать заглушку с автогенерацией правильных путей из пайплайнов для каждого скилла -->
 
