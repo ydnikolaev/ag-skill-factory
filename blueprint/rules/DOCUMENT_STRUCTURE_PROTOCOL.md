@@ -1,206 +1,139 @@
 ---
 trigger: model_decision
-description: Enforces docs/ structure with active/review/closed lifecycle. Apply when creating, moving, or organizing project documents.
+description: Document lifecycle and naming conventions. Apply when creating or moving ANY project document.
 ---
 
 # Document Structure Protocol
 
-> **Status**: Active
-> **Enforced by**: `@doc-janitor`
-> **Last Updated**: 2026-01-25
-
-This protocol defines the **mandatory** document structure for all projects using Antigravity skills.
+> **Enforced by**: `@doc-janitor` | **Templates**: `blueprint/_meta/_docs/templates/`
 
 ---
 
-## Folder Structure (Lifecycle-Based)
+## Quick Reference
+
+| Action | Path Pattern | Example |
+|--------|--------------|---------|
+| **Create** | `active/{category}/{work-unit}.md` | `active/specs/feat-forum.md` |
+| **Review** | `review/{category}/{work-unit}.md` | `review/specs/feat-forum.md` |
+| **Archive** | `closed/{type}/{work-unit}/` | `closed/features/feat-forum/` |
+
+---
+
+## Naming Convention
+
+**Format:** `{category}/{work-unit}.md`
 
 ```
-project/docs/
-├── ARTIFACT_REGISTRY.md       # 📋 Single Source of Truth
-│
-├── active/                    # 🔵 Currently being worked on
-│   ├── discovery/             # Discovery phase docs
-│   ├── product/               # Roadmap, user stories
-│   ├── specs/                 # Tech specs
-│   ├── architecture/          # Context maps, API contracts
-│   ├── design/                # Tokens, design system
-│   ├── backend/               # Implementation reports
-│   ├── frontend/              # UI implementation
-│   └── qa/                    # Test cases, reports
-│
-├── review/                    # 🟡 Awaiting approval
-│   └── (same subfolders)
-│
-└── closed/                    # ✅ Done — archived, read-only
-    ├── sprints/sprint-XX/
-    ├── features/<feature-name>/
-    ├── refactoring/<refactor-name>/
-    └── bugs/<bug-id>/
+active/specs/feat-forum-topics.md     ✅ Correct
+active/specs/tech-spec.md             ❌ Wrong (no work-unit)
 ```
 
----
-
-## Lifecycle States
-
-| State | Folder | Meaning | Who moves here |
-|-------|--------|---------|----------------|
-| 🔵 **Active** | `active/` | Being worked on | Creator skill |
-| 🟡 **Review** | `review/` | Ready for approval | Owner skill |
-| ✅ **Closed** | `closed/` | Done, archived | User or `@doc-janitor` |
+**Work Unit = Branch Name:**
+- `feat/forum-topics` → `feat-forum-topics`
+- `fix/login-bug` → `fix-login-bug`
+- Sprint → `sprint-03`
 
 ---
 
-## Movement Rules
+## Document Frontmatter
 
-1. **Create** → always in `active/<category>/`
-2. **Ready for handoff** → move to `review/<category>/`
-3. **User approves** → move to `closed/<context>/`
-4. Skills read from `active/` or `review/`
-5. `closed/` is **read-only** — never modified
-
----
-
-## Document Requirements
-
-### YAML Frontmatter (Required)
-
-Every document MUST have:
+**Required in every document:**
 
 ```yaml
 ---
 status: Draft | Review | Approved
 owner: @skill-name
-work_unit: sprint-03 | feature-name | refactor-name
-created: YYYY-MM-DD
-updated: YYYY-MM-DD
+work_unit: feat-forum-topics
+
+upstream:
+  - doc: user-stories.md
+    owner: @product-analyst
+downstream:
+  - doc: service-implementation.md
+    owner: @backend-go-expert
+
+created: 2026-01-26
+updated: 2026-01-26
 ---
 ```
 
-### Required Sections
+---
 
-| Section | When Required |
-|---------|---------------|
-| `## Upstream Documents` | When document references other docs |
-| `## Requirements Checklist` | When implementing user stories |
+## Lifecycle
+
+```
+Draft → Review → Approved → Archived
+  ↓        ↓         ↓          ↓
+active/  review/   review/   closed/
+```
+
+| Status | Folder | Action |
+|--------|--------|--------|
+| Draft | `active/` | Being worked on |
+| Review | `review/` | Ready for approval |
+| Approved | `review/` | User said "looks good" |
+| Archived | `closed/` | Moved by @doc-janitor |
 
 ---
 
-## ARTIFACT_REGISTRY.md Format
+## Registry System
 
-### Work Units Structure
+### Main Registry (`ARTIFACT_REGISTRY.md`)
+Lists all work units with status. Light-weight.
 
-```markdown
-# Artifact Registry
+### Per-Work-Unit Module (`registry/{work-unit}.md`)  
+Full document list for each work unit. Detailed.
 
-> **Project**: <project-name>
-> **Current Focus**: `🔵 <active-work-unit>`
-
----
-
-## 🔵 Active: <Work Unit Name>
-
-> **Type**: Feature | Sprint | Refactoring
-> **Started**: YYYY-MM-DD
-> **Lead**: @skill-name
-
-### Artifacts
-
-| Phase | Document | Owner | Status |
-|-------|----------|-------|--------|
-| Discovery | [discovery-brief.md](active/discovery/) | @idea-interview | ✅ |
-| Definition | [user-stories.md](active/product/) | @product-analyst | ✅ |
-| Architecture | [context-map.md](active/architecture/) | @bmad-architect | 🔵 |
-
----
-
-## ✅ Closed
-
-<details>
-<summary><b>Sprint 01: Name</b> (YYYY-MM-DD)</summary>
-
-| Document | Owner | Archive |
-|----------|-------|---------|
-| discovery-brief.md | @idea-interview | `closed/sprints/01/` |
-
-</details>
-
----
-
-## Quick Links
-
-| Work Unit | Type | Status | Lead |
-|-----------|------|--------|------|
-| feature-name | Feature | 🔵 Active | @skill |
-| Sprint 01 | Sprint | ✅ Closed | — |
+```
+project/docs/
+├── ARTIFACT_REGISTRY.md          # Light: work units list
+├── registry/
+│   └── feat-forum-topics.md      # Heavy: all docs for feature
+└── active/...
 ```
 
 ---
 
-## Archive Rules
+## Skill Workflow
 
-### Archive Paths
+### Creating a Document
 
-| Work Type | Path Template | Example |
-|-----------|---------------|---------|
-| Sprint | `closed/sprints/sprint-XX/` | `closed/sprints/sprint-03/` |
-| Feature | `closed/features/<name>/` | `closed/features/forum-topics/` |
-| Refactoring | `closed/refactoring/<name>/` | `closed/refactoring/test-coverage/` |
-| Bug | `closed/bugs/<id>/` | `closed/bugs/BUG-042/` |
+1. Use template from `blueprint/_meta/_docs/templates/documents/`
+2. Create in `active/{category}/{work-unit}.md`
+3. Add to `registry/{work-unit}.md`
 
-### What Gets Archived
+### Completing a Document
 
-All documents with:
-- `status: Approved` in frontmatter
-- Status = ✅ in ARTIFACT_REGISTRY.md
-- User confirmation
-
-### Archive Is Read-Only
-
-> [!CAUTION]
-> Files in `closed/` are NEVER modified.
-> If changes needed → copy back to `active/`, modify, re-archive.
-
----
-
-## Status Icons
-
-| Icon | Meaning | Folder |
-|------|---------|--------|
-| 🔵 | Active — in progress | `active/` |
-| 🟡 | Review — awaiting approval | `review/` |
-| ✅ | Done / Closed | `closed/` |
-| ⏳ | Pending — not started | (no file yet) |
-
----
-
-## Skill Responsibilities
-
-### Creating Documents
-
-1. Create in `active/<category>/`
-2. Add YAML frontmatter
-3. Update ARTIFACT_REGISTRY.md
-
-### Completing Documents
-
-1. Change frontmatter `status: Review`
-2. Move to `review/<category>/`
-3. Update ARTIFACT_REGISTRY.md status
+1. Set `status: Review` in frontmatter
+2. Move to `review/{category}/{work-unit}.md`
+3. Update `registry/{work-unit}.md`
+4. Use `notify_user` for approval
 
 ### After User Approval
 
-1. `@doc-janitor` moves to `closed/<context>/`
-2. Updates ARTIFACT_REGISTRY.md with `<details>` block
-3. Commits changes
+1. `@doc-janitor` moves to `closed/{type}/{work-unit}/`
+2. Updates main `ARTIFACT_REGISTRY.md`
 
 ---
 
-## Enforcement
+## Categories
 
-This protocol is enforced by:
-- `@doc-janitor` skill (manual cleanup)
-- Pre-Handoff Validation in all skills
-- `/doc-cleanup` workflow
+| Category | Documents |
+|----------|-----------|
+| `discovery/` | discovery-brief |
+| `product/` | user-stories, roadmap |
+| `design/` | design-tokens, design-system |
+| `architecture/` | context-map, api-contracts |
+| `specs/` | tech-spec, requirements |
+| `backend/` | service-implementation |
+| `frontend/` | ui-implementation, tma-config |
+| `qa/` | test-cases, test-report |
 
-Violations will be flagged and corrected automatically.
+---
+
+## Rules
+
+1. **Never** create document without `work_unit` in name
+2. **Never** modify files in `closed/`
+3. **Always** update `registry/{work-unit}.md` when document status changes
+4. **Always** use templates from `_meta/_docs/templates/`
