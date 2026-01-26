@@ -44,6 +44,23 @@ skills:
     outputs:
     - artifact: cli-design.md
       path: project/docs/active/architecture/
+  debugger:
+    name: debugger
+    description: 'Systematic debugging skill. 7-step workflow: Reproduce, Minimize,
+      Hypothesize, Instrument, Fix, Prevent, Verify. Activate when troubleshooting
+      errors.'
+    version: 1.2.0
+    phase: utility
+    category: utility
+    receives_from:
+    - qa-lead
+    - backend-go-expert
+    - frontend-nuxt
+    delegates_to:
+    - qa-lead
+    outputs:
+    - artifact: debug-report.md
+      path: project/docs/active/bugs/
   devops-sre:
     name: devops-sre
     description: Expert in Docker, CI/CD, and delivering Go/Nuxt apps.
@@ -283,14 +300,15 @@ phases:
   - cli-architect
   - tech-spec-writer
   - telegram-mechanic
-  delivery:
-  - devops-sre
-  - qa-lead
   utility:
+  - debugger
   - doc-janitor
   - mcp-expert
   - project-bro
   - refactor-architect
+  delivery:
+  - devops-sre
+  - qa-lead
   discovery:
   - feature-fit
   - idea-interview
@@ -320,6 +338,10 @@ handoffs:
   to: backend-go-expert
   artifact: cli-design.md
   path: project/docs/active/architecture/
+- from: debugger
+  to: qa-lead
+  artifact: debug-report.md
+  path: project/docs/active/bugs/
 - from: feature-fit
   to: product-analyst
   artifact: feature-brief.md

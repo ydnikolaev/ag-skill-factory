@@ -11,7 +11,7 @@ description: Team roster for fullstack preset. Apply when collaborating or deleg
 |-------|-------------|
 | `backend-go-expert` | Expert Go developer (1.25+) specializing in Clean Architecture and DDD. |
 | `bmad-architect` | The Lead Architect for Antigravity TMA projects. Enforces DDD, BMAD V6, and coordinates the squad. |
-| `debugger` | Systematic debugging skill. 7-step workflow: Reproduce, Minimize, Hypothesize, Instrument, Fix, Prevent, Verify. Activate when troubleshooting errors. |
+| `debugger` | "Systematic debugging skill. 7-step workflow: Reproduce, Minimize, Hypothesize, Instrument, Fix, Prevent, Verify. Activate when troubleshooting errors." |
 | `devops-sre` | Expert in Docker, CI/CD, and delivering Go/Nuxt apps. |
 | `doc-janitor` | Enforces document structure, archives completed work, migrates legacy format to lifecycle-based folders. Dry-run first, then apply. |
 | `frontend-nuxt` | Nuxt 4 & TailwindCSS expert for modern web applications (SSR, SPA, Hybrid). |

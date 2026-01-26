@@ -17,7 +17,7 @@ description: Pipeline for all preset. Skill handoffs and phases.
 | Architecture | `@bmad-architect`, `@cli-architect`, `@tech-spec-writer`, `@telegram-mechanic` | context-map.md, api-contracts.yaml, cli-design.md, tech-spec.md, webhook-config.md |
 | Implementation | `@backend-go-expert`, `@frontend-nuxt`, `@tma-expert`, `@tui-charm-expert` | service-implementation.md, ui-implementation.md, tma-config.md, tui-design.md |
 | Delivery | `@devops-sre`, `@qa-lead` | deployment-guide.md, test-cases.md, test-report.md |
-| Utility | `@doc-janitor`, `@mcp-expert`, `@project-bro`, `@refactor-architect` | server-config.md, refactoring-overview.md |
+| Utility | `@debugger`, `@doc-janitor`, `@mcp-expert`, `@project-bro`, `@refactor-architect` | debug-report.md, server-config.md, refactoring-overview.md |
 
 ## Handoff Matrix
 
@@ -28,6 +28,7 @@ description: Pipeline for all preset. Skill handoffs and phases.
 | `@bmad-architect` | `@tech-spec-writer` | api-contracts.yaml |
 | `@cli-architect` | `@tui-charm-expert` | cli-design.md |
 | `@cli-architect` | `@backend-go-expert` | cli-design.md |
+| `@debugger` | `@qa-lead` | debug-report.md |
 | `@feature-fit` | `@product-analyst` | feature-brief.md |
 | `@frontend-nuxt` | `@qa-lead` | ui-implementation.md |
 | `@idea-interview` | `@product-analyst` | discovery-brief.md |

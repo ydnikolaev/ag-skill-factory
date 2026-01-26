@@ -17,7 +17,7 @@ description: Pipeline for fullstack preset. Skill handoffs and phases.
 | Architecture | `@bmad-architect`, `@tech-spec-writer` | context-map.md, api-contracts.yaml, tech-spec.md |
 | Implementation | `@backend-go-expert`, `@frontend-nuxt` | service-implementation.md, ui-implementation.md |
 | Delivery | `@devops-sre`, `@qa-lead` | deployment-guide.md, test-cases.md, test-report.md |
-| Utility | `@doc-janitor`, `@project-bro`, `@refactor-architect` | refactoring-overview.md |
+| Utility | `@debugger`, `@doc-janitor`, `@project-bro`, `@refactor-architect` | debug-report.md, refactoring-overview.md |
 
 ## Handoff Matrix
 
@@ -26,6 +26,7 @@ description: Pipeline for fullstack preset. Skill handoffs and phases.
 | `@backend-go-expert` | `@qa-lead` | service-implementation.md |
 | `@bmad-architect` | `@tech-spec-writer` | context-map.md |
 | `@bmad-architect` | `@tech-spec-writer` | api-contracts.yaml |
+| `@debugger` | `@qa-lead` | debug-report.md |
 | `@frontend-nuxt` | `@qa-lead` | ui-implementation.md |
 | `@idea-interview` | `@product-analyst` | discovery-brief.md |
 | `@product-analyst` | `@bmad-architect` | roadmap.md |

@@ -1,6 +1,6 @@
 ---
 name: debugger
-description: Systematic debugging skill. 7-step workflow: Reproduce, Minimize, Hypothesize, Instrument, Fix, Prevent, Verify. Activate when troubleshooting errors.
+description: "Systematic debugging skill. 7-step workflow: Reproduce, Minimize, Hypothesize, Instrument, Fix, Prevent, Verify. Activate when troubleshooting errors."
 version: 1.2.0
 
 phase: utility
