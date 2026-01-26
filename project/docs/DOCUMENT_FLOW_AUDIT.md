@@ -1,6 +1,7 @@
 # Document Flow Audit
 
 > Complete document lifecycle map: who creates → who reads → who archives
+> Presets resolved via inheritance from `preset-hierarchy.yaml`
 
 ---
 
@@ -8,17 +9,17 @@
 
 | Metric | Value |
 |--------|-------|
-| Total doc types | 27 |
-| Per-feature docs | 22 |
+| Total doc types | 23 |
+| Per-feature docs | 18 |
 | Living docs | 4 |
 | Meta docs (registries) | 2 |
-| Skills with outputs | 16 |
-| Handoffs | 57 |
+| Skills with outputs | 18 |
+| Handoffs | 31 |
 | Return paths | 4 |
 
 ---
 
-## Per-Feature Documents (22 types)
+## Per-Feature Documents (18 types)
 
 | Doc Type | Creator | Phase | Consumers | Archival |
 |----------|---------|-------|-----------|----------|
@@ -45,6 +46,7 @@
 | deployment-guide | @devops-sre | Delivery | — (end of chain) | @doc-janitor |
 | debug-report | @debugger | Utility | @qa-lead | @doc-janitor |
 | refactoring-overview | @refactor-architect | Utility | @backend-go-expert, @frontend-nuxt, @devops-sre | @doc-janitor |
+| bug-report | @qa-lead | Delivery | Implementation skills (return path) | @doc-janitor |
 
 ---
 
@@ -68,6 +70,24 @@
 
 ---
 
+## Preset Hierarchy
+
+```yaml
+# preset-hierarchy.yaml (inheritance source of truth)
+core:        # Base — analysts, shared by all via inheritance
+backend:     inherits: [core]
+frontend:    inherits: [core]
+fullstack:   inherits: [backend, frontend]
+tma:         inherits: [core]
+cli:         inherits: [core]
+minimal:     # Standalone utilities
+all:         # Full blueprint
+```
+
+Skills specify **leaf presets only**. Generators resolve inheritance.
+
+---
+
 ## Pipeline Flow
 
 ```
@@ -79,7 +99,7 @@ DISCOVERY (Entry Points)
 DEFINITION
 ├── @product-analyst → user-stories, requirements
 ├── Updates: roadmap, backlog (living)
-└── Handoff → @bmad-architect, @tech-spec-writer
+└── Handoff → @bmad-architect, @tech-spec-writer, @ux-designer
 
 DESIGN
 ├── @ux-designer → tokens, design-system
@@ -90,6 +110,7 @@ ARCHITECTURE
 ├── @bmad-architect → context-map, api-contracts, decision-log
 ├── @cli-architect → cli-design
 ├── @telegram-mechanic → webhook-config
+├── @mcp-expert → server-config
 ├── @tech-spec-writer → tech-spec
 └── Handoff → Implementation skills
 
@@ -145,3 +166,16 @@ per-feature doc created
 | Return paths defined | ✅ |
 | Living docs have updaters | ✅ |
 | Meta docs (registries) have workflow | ✅ |
+| Preset inheritance validated | ✅ |
+
+---
+
+## Validation
+
+```bash
+# Validate handoffs respect preset inheritance
+python3 scripts/validate_handoffs.py
+
+# Generate all docs
+make generate-all
+```
