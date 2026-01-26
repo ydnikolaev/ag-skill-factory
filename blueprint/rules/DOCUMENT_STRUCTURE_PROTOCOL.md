@@ -5,7 +5,7 @@ description: Document lifecycle and naming conventions. Apply when creating or m
 
 # Document Structure Protocol
 
-> **Enforced by**: `@doc-janitor` | **Templates**: `blueprint/_meta/_docs/templates/`
+> Apply when creating, moving, or archiving project documents.
 
 ---
 
@@ -98,7 +98,7 @@ project/docs/
 
 ### Creating a Document
 
-1. Use template from `blueprint/_meta/_docs/templates/documents/`
+1. Use document template from your skill (see skill SKILL.md)
 2. Create in `active/{category}/{work-unit}.md`
 3. Add to `registry/{work-unit}.md`
 
@@ -136,4 +136,4 @@ project/docs/
 1. **Never** create document without `work_unit` in name
 2. **Never** modify files in `closed/`
 3. **Always** update `registry/{work-unit}.md` when document status changes
-4. **Always** use templates from `_meta/_docs/templates/`
+4. **Always** follow document frontmatter format shown above
