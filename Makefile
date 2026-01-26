@@ -81,7 +81,7 @@ generate-all: generate-teams generate-pipelines
 build-factory:
 	@echo "🔨 Building factory CLI..."
 	@mkdir -p $(BIN_DIR)
-	@go build -o $(FACTORY_BIN) .
+	@cd cli && go build -o ../$(FACTORY_BIN) .
 	@echo "✅ Built $(FACTORY_BIN)"
 
 # Install factory CLI symlink to /usr/local/bin

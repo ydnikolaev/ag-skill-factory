@@ -1,0 +1,50 @@
+{
+  "Alert Note": {
+    "scope": "markdown",
+    "prefix": "!note",
+    "body": "> [!NOTE]\n> $0",
+    "description": "GitHub alert NOTE (blue)"
+  },
+  "Alert Tip": {
+    "scope": "markdown",
+    "prefix": "!tip",
+    "body": "> [!TIP]\n> $0",
+    "description": "GitHub alert TIP (green)"
+  },
+  "Alert Important": {
+    "scope": "markdown",
+    "prefix": "!imp",
+    "body": "> [!IMPORTANT]\n> $0",
+    "description": "GitHub alert IMPORTANT (purple)"
+  },
+  "Alert Warning": {
+    "scope": "markdown",
+    "prefix": "!warn",
+    "body": "> [!WARNING]\n> $0",
+    "description": "GitHub alert WARNING (yellow)"
+  },
+  "Alert Caution": {
+    "scope": "markdown",
+    "prefix": "!caution",
+    "body": "> [!CAUTION]\n> $0",
+    "description": "GitHub alert CAUTION (red)"
+  },
+  "TODO Comment": {
+    "scope": "markdown",
+    "prefix": "!todo",
+    "body": "<!-- TODO: $0 -->",
+    "description": "Hidden TODO comment"
+  },
+  "REVIEW Comment": {
+    "scope": "markdown",
+    "prefix": "!review",
+    "body": "<!-- REVIEW: $0 -->",
+    "description": "Hidden REVIEW comment"
+  },
+  "QUESTION Comment": {
+    "scope": "markdown",
+    "prefix": "!q",
+    "body": "<!-- QUESTION: $0 -->",
+    "description": "Hidden QUESTION comment"
+  }
+}
