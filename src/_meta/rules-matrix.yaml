@@ -1,0 +1,49 @@
+# Rules Matrix - Auto-generated from src/rules/
+# Run: python3 scripts/generate_rules.py
+
+'# AUTO-GENERATED': 'Do not edit manually. Run: python3 scripts/generate_rules.py'
+rules:
+- name: BRAIN_TO_DOCS
+  file: rules/BRAIN_TO_DOCS.md
+  trigger: always_on
+  description: Draft artifacts in brain/, persist to project/docs/ only after user
+    approval.
+- name: DOCUMENT_CREATION
+  file: rules/DOCUMENT_CREATION.md
+  trigger: model_decision
+  description: Creating new markdown documents not covered by existing templates.
+    Use when no template exists in project/docs/templates/.
+- name: DOCUMENT_STRUCTURE_PROTOCOL
+  file: rules/DOCUMENT_STRUCTURE_PROTOCOL.md
+  trigger: model_decision
+  description: Document naming and lifecycle. Apply when creating ANY project document.
+- name: GIT_PROTOCOL
+  file: rules/GIT_PROTOCOL.md
+  trigger: model_decision
+  description: Git branching (feat/fix/chore), Conventional Commits, atomic commits.
+    Apply when starting features, making commits, or pushing code.
+- name: LANGUAGE_REQUIREMENTS
+  file: rules/LANGUAGE_REQUIREMENTS.md
+  trigger: always_on
+  description: Match the user language for chat and drafts; English only for persistent
+    docs.
+- name: TDD_PROTOCOL
+  file: rules/TDD_PROTOCOL.md
+  trigger: model_decision
+  description: Test-first development with Red-Green-Refactor cycle. Apply when writing
+    implementation code, fixing bugs, or creating implementation docs for next skill.
+- name: TECH_DEBT_PROTOCOL
+  file: rules/TECH_DEBT_PROTOCOL.md
+  trigger: model_decision
+  description: Track TODOs and workarounds in TECH_DEBT.md registry. Apply when creating
+    temporary solutions, hardcoded values, or deferred work.
+- name: TRACEABILITY_PROTOCOL
+  file: rules/TRACEABILITY_PROTOCOL.md
+  trigger: model_decision
+  description: Link artifacts to original requirements with Upstream Documents and
+    Requirements Checklist sections. Apply when creating specs, designs, or test plans.
+triggers:
+  always_on: Applied to every conversation
+  model_decision: Model decides based on description
+  manual: Only via @mention
+  glob: When working with matching files
