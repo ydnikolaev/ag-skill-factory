@@ -1,55 +1,82 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: feature-fit
 description: Analyzes new feature requests for EXISTING projects. Reads config/mcp context, performs Gap Analysis, and creates a Feature Brief.
-version: 1.3.0
-
+version: 3.0.0
 phase: discovery
 category: analyst
+scope: project
+tags:
+  - feature
+  - analysis
+  - gap-analysis
+  - discovery
+
+# === SECTION 2: CAPABILITIES ===
+mcp_servers: []
+allowed_tools:
+  - notify_user
+  - view_file
+  - write_to_file
+  - grep_search
+  - list_dir
+dependencies: []
+context:
+  required:
+    - path: project/CONFIG.yaml
+      purpose: Existing stack and architecture decisions
+  optional:
+    - path: mcp.yaml
+      purpose: Project MCP server config
+    - path: project/docs/active/architecture/
+      purpose: Existing architecture docs
+reads:
+  - type: project_config
+    from: project/CONFIG.yaml
+  - type: context_map
+    from: project/docs/active/architecture/
+produces:
+  - type: feature_brief
+  - type: gap_analysis
+
+# === SECTION 3: WORKFLOW ===
 presets:
   - core
-
-# === HANDOFFS ===
+receives_from: []
 delegates_to:
   - skill: product-analyst
     docs:
       - doc_type: feature-brief
         trigger: spec_approved
+return_paths: []
 
-# === DOCUMENTS ===
+# === SECTION 4: DOCUMENTS ===
+requires: []
 creates:
   - doc_type: feature-brief
     path: project/docs/active/discovery/
     doc_category: discovery
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: spec_approved
   - doc_type: work-unit-registry
     path: project/docs/registry/
-    doc_category: project
+    doc_category: discovery
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: work_unit_opened
-
-reads:
-  - doc_type: config
-    path: project/
-    trigger: on_activation
-  - doc_type: context-map
-    path: project/docs/active/architecture/
-    trigger: on_activation
-
 updates:
   - doc_type: work-unit-registry
     path: project/docs/registry/
     lifecycle: living
-    trigger: on_create_on_complete
+    trigger: on_complete
   - doc_type: artifact-registry
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
+    trigger: on_complete
+archives: []
 
-# === VALIDATION ===
+# === SECTION 5: VALIDATION ===
 pre_handoff:
   protocols:
     - traceability
@@ -57,8 +84,9 @@ pre_handoff:
   checks:
     - artifact_registry_updated
     - work_unit_registry_updated
+quality_gates: []
 
-# === REQUIRED SECTIONS ===
+# === SECTION 6: REQUIRED_SECTIONS ===
 required_sections:
   - frontmatter
   - when_to_activate
