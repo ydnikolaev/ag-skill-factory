@@ -1,6 +1,6 @@
 # Workflow Schema V1
-# Defines structure for workflows in src/workflows/
-# SSOT for automation workflows
+# Describes frontmatter structure for workflows
+# SSOT: src/workflows/ (real files)
 
 $schema_version: "1.0.0"
 

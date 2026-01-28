@@ -1,6 +1,6 @@
 # Document Schema V1
-# Defines structure for document templates in src/templates/documents/
-# SSOT for all document templates
+# Describes frontmatter structure for document templates
+# SSOT: src/templates/documents/ (real files)
 
 $schema_version: "1.0.0"
 

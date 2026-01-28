@@ -1,5 +1,5 @@
 # Workflow Enums
-# SSOT for workflow-related enum values
+# Enum values for workflow validation
 
 # Turbo modes (auto-execution annotations)
 turbo_modes:

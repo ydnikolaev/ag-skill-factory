@@ -1,6 +1,6 @@
 # Rule Schema V1
-# Defines structure for rules in src/rules/
-# SSOT for agent behavior rules
+# Describes frontmatter structure for rules
+# SSOT: src/rules/ (real files)
 
 $schema_version: "1.0.0"
 

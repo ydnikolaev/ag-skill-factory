@@ -1,6 +1,6 @@
 # Project Structure Schema V1
-# Defines standard folder structure for Factory output
-# SSOT for project organization
+# Describes standard folder structure for Factory output
+# SSOT: src/templates/folder-structure/ (real folders)
 
 $schema_version: "1.0.0"
 

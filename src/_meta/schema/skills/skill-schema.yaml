@@ -1,6 +1,6 @@
 # Skill Schema V3
-# Core schema definition with 5 sections: IDENTITY, CAPABILITIES, WORKFLOW, DOCUMENTS, VALIDATION
-# SSOT for all Antigravity skills
+# Describes frontmatter structure for Antigravity skills
+# SSOT: src/skills/*/SKILL.md (real files)
 
 $schema_version: "3.0.0"
 
