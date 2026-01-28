@@ -1,15 +1,48 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: devops-sre
 description: Expert in Docker, CI/CD, and delivering Go/Nuxt apps.
-version: 1.3.0
-
+version: 3.0.0
 phase: delivery
 category: technical
+scope: project
+tags:
+  - docker
+  - ci-cd
+  - deployment
+  - infrastructure
+
+# === SECTION 2: CAPABILITIES ===
+mcp_servers:
+  - context7
+  - sky-cli
+allowed_tools:
+  - notify_user
+  - view_file
+  - write_to_file
+  - run_command
+dependencies:
+  - docker
+context:
+  required:
+    - path: project/docs/active/qa/
+      purpose: Test report
+  optional:
+    - path: project/docs/active/architecture/
+      purpose: Context map
+reads:
+  - type: test_report
+    from: project/docs/active/qa/
+  - type: context_map
+    from: project/docs/active/architecture/
+produces:
+  - type: dockerfile
+  - type: docker_compose
+  - type: deployment_guide
+
+# === SECTION 3: WORKFLOW ===
 presets:
   - backend
-
-# === HANDOFFS ===
 receives_from:
   - skill: qa-lead
     docs:
@@ -19,64 +52,50 @@ receives_from:
     docs:
       - doc_type: server-config
         trigger: spec_approved
-
+delegates_to: []
 return_paths:
   - skill: refactor-architect
     docs:
       - doc_type: refactoring-overview
         trigger: spec_approved
 
-delegates_to: []
-
-# === DOCUMENTS ===
+# === SECTION 4: DOCUMENTS ===
 requires:
   - doc_type: test-report
-    status: approved
-
+    status: Approved
 creates:
   - doc_type: deployment-guide
     path: project/docs/active/infrastructure/
     doc_category: infrastructure
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: implementation_complete
-
-reads:
-  - doc_type: test-report
-    path: project/docs/active/qa/
-    trigger: on_activation
-  - doc_type: context-map
-    path: project/docs/active/architecture/
-    trigger: on_activation
-
 updates:
   - doc_type: artifact-registry
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
-
+    trigger: on_complete
 archives:
   - doc_type: deployment-guide
     destination: project/docs/closed/<work-unit>/
     trigger: user_approval
 
-# === VALIDATION ===
+# === SECTION 5: VALIDATION ===
 pre_handoff:
   protocols:
     - traceability
     - handoff
   checks:
     - artifact_registry_updated
-
-# === STATUS TRANSITIONS ===
+quality_gates: []
 transitions:
   - doc_type: deployment-guide
     flow:
-      - from: draft
-        to: approved
+      - from: Draft
+        to: Approved
         trigger: user_approval
 
-# === REQUIRED SECTIONS ===
+# === SECTION 6: REQUIRED_SECTIONS ===
 required_sections:
   - frontmatter
   - tech_stack

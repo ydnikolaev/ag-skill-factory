@@ -1,15 +1,52 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: qa-lead
 description: Quality Assurance Lead. Tests E2E, API, and UI.
-version: 1.3.0
-
+version: 3.0.0
 phase: delivery
 category: analyst
+scope: project
+tags:
+  - qa
+  - testing
+  - e2e
+  - automation
+
+# === SECTION 2: CAPABILITIES ===
+mcp_servers:
+  - context7
+allowed_tools:
+  - notify_user
+  - view_file
+  - write_to_file
+  - run_command
+  - browser_subagent
+dependencies:
+  - node22
+context:
+  required:
+    - path: project/docs/active/backend/
+      purpose: Service implementations
+    - path: project/docs/active/frontend/
+      purpose: UI implementations
+  optional:
+    - path: project/docs/active/specs/
+      purpose: Tech specs
+reads:
+  - type: service_implementation
+    from: project/docs/active/backend/
+  - type: ui_implementation
+    from: project/docs/active/frontend/
+  - type: tech_spec
+    from: project/docs/active/specs/
+produces:
+  - type: test_cases
+  - type: test_report
+  - type: bug_report
+
+# === SECTION 3: WORKFLOW ===
 presets:
   - core
-
-# === HANDOFFS ===
 receives_from:
   - skill: backend-go-expert
     docs:
@@ -19,13 +56,11 @@ receives_from:
     docs:
       - doc_type: ui-implementation
         trigger: implementation_complete
-
 delegates_to:
   - skill: devops-sre
     docs:
       - doc_type: test-report
         trigger: qa_signoff
-
 return_paths:
   - skill: backend-go-expert
     docs:
@@ -36,44 +71,30 @@ return_paths:
       - doc_type: bug-report
         trigger: bugs_found
 
-# === DOCUMENTS ===
+# === SECTION 4: DOCUMENTS ===
 requires:
   - doc_type: service-implementation
-    status: approved
+    status: Approved
   - doc_type: ui-implementation
-    status: approved
-
+    status: Approved
 creates:
   - doc_type: test-cases
     path: project/docs/active/qa/
     doc_category: qa
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: on_activation
   - doc_type: test-report
     path: project/docs/active/qa/
     doc_category: qa
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: qa_signoff
-
-reads:
-  - doc_type: service-implementation
-    path: project/docs/active/backend/
-    trigger: on_activation
-  - doc_type: ui-implementation
-    path: project/docs/active/frontend/
-    trigger: on_activation
-  - doc_type: tech-spec
-    path: project/docs/active/specs/
-    trigger: on_activation
-
 updates:
   - doc_type: artifact-registry
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
-
+    trigger: on_complete
 archives:
   - doc_type: test-cases
     destination: project/docs/closed/<work-unit>/
@@ -82,7 +103,7 @@ archives:
     destination: project/docs/closed/<work-unit>/
     trigger: qa_signoff
 
-# === VALIDATION ===
+# === SECTION 5: VALIDATION ===
 pre_handoff:
   protocols:
     - traceability
@@ -90,16 +111,15 @@ pre_handoff:
   checks:
     - artifact_registry_updated
     - work_unit_registry_updated
-
-# === STATUS TRANSITIONS ===
+quality_gates: []
 transitions:
   - doc_type: test-report
     flow:
-      - from: draft
-        to: approved
+      - from: Draft
+        to: Approved
         trigger: qa_signoff
 
-# === REQUIRED SECTIONS ===
+# === SECTION 6: REQUIRED_SECTIONS ===
 required_sections:
   - frontmatter
   - language_requirements
