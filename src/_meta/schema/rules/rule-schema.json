@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://antigravity.dev/rule-schema-v1.json",
+  "title": "Antigravity Rule Schema V1",
+  "description": "Schema for validating rule frontmatter",
+  "type": "object",
+  "required": [
+    "trigger"
+  ],
+  "properties": {
+    "trigger": {
+      "type": "string",
+      "enum": [
+        "always_on",
+        "glob",
+        "model_decision",
+        "manual"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "globs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

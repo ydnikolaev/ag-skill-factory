@@ -94,10 +94,10 @@ generate-sections:
 
 # === SCHEMA V3 TARGETS ===
 
-# Generate JSON Schema from YAML schema
+# Generate JSON Schema from YAML schemas (all types)
 json-schema:
-	@echo "📋 Generating JSON Schema..."
-	@python3 scripts/generate_json_schema.py
+	@echo "📋 Generating JSON Schemas..."
+	@python3 scripts/generate_all_schemas.py
 
 # Validate skills against Schema V3 (src/)
 skill-validate:
