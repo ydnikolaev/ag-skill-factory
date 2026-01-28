@@ -32,9 +32,15 @@ root:
             categories:
               - architecture/
               - backend/
-              - frontend/
+              - bugs/
               - design/
+              - discovery/
+              - frontend/
+              - infrastructure/
               - product/
+              - project/
+              - qa/
+              - refactoring/
               - specs/
           review/:
             description: Documents awaiting review

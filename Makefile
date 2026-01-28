@@ -140,7 +140,13 @@ schema-validate-all:
 	@python3 scripts/validate_skills.py
 	@python3 scripts/validate_rules.py
 	@python3 scripts/validate_workflows.py
+	@python3 scripts/validate_structure.py
 	@echo "✅ All validators passed"
+
+# Validate structure consistency (cross-schema)
+structure-validate:
+	@echo "🔍 Validating structure consistency..."
+	@python3 scripts/validate_structure.py
 
 # Generate all artifacts
 generate-all: json-schema generate-teams generate-pipelines generate-sections presets-rebuild
