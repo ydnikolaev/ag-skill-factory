@@ -6,6 +6,7 @@
 triggers:
   # Document events
   - on_activation       # When skill activates
+  - on_create           # When document is created
   - on_complete         # When skill completes work
   - on_handoff          # When handing off to next skill
   - spec_approved       # Specification approved
@@ -13,6 +14,7 @@ triggers:
   - implementation_complete  # Implementation done
   - qa_signoff          # QA approved
   - user_approved       # User approved
+  - user_approval       # Alias for user_approved (archives)
   - work_unit_opened    # New work unit started
   - work_unit_closed    # Work unit completed
 
