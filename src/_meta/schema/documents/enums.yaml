@@ -1,0 +1,42 @@
+# Document Enums
+# SSOT for document-related enum values
+
+# Document statuses
+statuses:
+  - Draft           # Initial creation
+  - In Progress     # Being worked on
+  - Review          # Ready for review
+  - Approved        # Approved by stakeholder
+  - Archived        # Completed and archived
+  - Obsolete        # Superseded by another doc
+
+# Document lifecycles
+lifecycles:
+  - per-feature     # One document per feature
+  - per-work-unit   # One document per work unit
+  - living          # Continuously updated
+
+# Document categories (matches folder structure)
+categories:
+  - architecture    # System design, API contracts
+  - backend         # Backend implementation
+  - frontend        # Frontend implementation
+  - bugs            # Bug reports, debug reports
+  - design          # UI/UX design, theming
+  - discovery       # Feature briefs, roadmaps
+  - infrastructure  # Deployment, configs
+  - product         # Requirements, user stories
+  - project         # Registry, decision log
+  - qa              # Test cases, test reports
+  - refactoring     # Refactoring docs
+  - specs           # Tech specs
+
+# Phases (when document is typically created)
+phases:
+  - discovery       # Idea extraction
+  - definition      # Requirements definition
+  - design          # UX/UI design
+  - architecture    # System design
+  - implementation  # Code implementation
+  - delivery        # Deployment
+  - utility         # Cross-phase

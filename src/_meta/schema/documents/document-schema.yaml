@@ -1,0 +1,79 @@
+# Document Schema V1
+# Defines structure for document templates in src/templates/documents/
+# SSOT for all document templates
+
+$schema_version: "1.0.0"
+
+# Frontmatter Structure (required in all templates)
+frontmatter:
+  status:
+    type: enum
+    ref: enums.yaml#statuses
+    required: true
+    description: Current document status
+  owner:
+    type: string
+    format: "@skill-name"
+    required: true
+    description: Skill that creates this document
+  lifecycle:
+    type: enum
+    ref: enums.yaml#lifecycles
+    required: true
+    description: Document lifecycle type
+  work_unit:
+    type: string
+    format: "{WORK_UNIT}"
+    required: true
+    description: Work unit this document belongs to
+  upstream:
+    type: list[object]
+    required: false
+    description: Documents this depends on
+    properties:
+      doc_type: string
+      owner: string
+  downstream:
+    type: list[object]
+    required: false
+    description: Skills/docs that consume this
+    properties:
+      skill: string
+      doc_type: string
+  created:
+    type: string
+    format: "{DATE}"
+    required: true
+  updated:
+    type: string
+    format: "{DATE}"
+    required: true
+
+# Body Structure (markdown after frontmatter)
+body:
+  title:
+    type: h1
+    format: "{DOC_TYPE}: {WORK_UNIT}"
+    required: true
+    description: Document title as H1
+  sections:
+    type: list[h2]
+    required: true
+    description: Main content sections (H2 headings)
+  checklist:
+    type: section
+    required: false
+    description: Optional checklist section
+
+# Template Naming Convention
+naming:
+  pattern: "_<doc-type>.md"
+  examples:
+    - _tech-spec.md
+    - _feature-brief.md
+    - _user-stories.md
+
+# File Location
+location:
+  templates: "src/templates/documents/"
+  generated: "project/docs/active/{category}/"
