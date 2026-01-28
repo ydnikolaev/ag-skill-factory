@@ -1,6 +1,5 @@
-# Rule Enums
-# SSOT for rule-related enum values
-# Domain-specific: activation_modes, rule_categories
+# Rule Factory Enums
+# SSOT for rule-related enum values (used at creation time)
 
 # Rule activation modes (from Antigravity platform)
 # NOT the same as lifecycle triggers in shared/runtime.yaml
