@@ -25,29 +25,25 @@ def load_yaml(path: Path) -> dict:
         return yaml.safe_load(f) or {}
 
 
-def extract_structure_categories(schema_path: Path) -> set:
-    """Extract valid categories from structure schema (text parsing)."""
+def extract_structure_categories() -> set:
+    """Extract valid categories from folder-structure/ template (SSOT).
+    
+    SSOT: src/templates/folder-structure/active/ is the single source of truth
+    for document categories. Validators check against real folder structure.
+    """
     categories = set()
     
-    if not schema_path.exists():
+    # SSOT: Real folder structure at src/templates/folder-structure/active/
+    active_dir = Path("src/templates/folder-structure/active")
+    
+    if not active_dir.exists():
+        print(f"⚠️  SSOT folder-structure not found: {active_dir}")
         return categories
     
-    content = schema_path.read_text()
-    
-    # Find categories section and extract category names
-    # Looking for pattern like: - architecture/
-    in_categories = False
-    for line in content.split('\n'):
-        if 'categories:' in line:
-            in_categories = True
-            continue
-        if in_categories:
-            if line.strip().startswith('- '):
-                cat = line.strip()[2:].rstrip('/')
-                categories.add(cat)
-            elif line.strip() and not line.strip().startswith('-'):
-                # End of categories list
-                in_categories = False
+    # Scan real directories
+    for item in active_dir.iterdir():
+        if item.is_dir() and not item.name.startswith('.'):
+            categories.add(item.name)
     
     return categories
 
@@ -110,8 +106,8 @@ def main():
     errors = []
     warnings = []
     
-    # Load structure schema
-    structure_categories = extract_structure_categories(Path("src/_meta/schema/structure/structure-schema.yaml"))
+    # SSOT: Read from real folder structure
+    structure_categories = extract_structure_categories()
     
     # Load document enums
     doc_categories = extract_document_categories(Path("src/_meta/schema/documents/enums.yaml"))

@@ -26,7 +26,6 @@ categories:
   - discovery       # Feature briefs, roadmaps
   - infrastructure  # Deployment, configs
   - product         # Requirements, user stories
-  - project         # Registry, decision log
   - qa              # Test cases, test reports
   - refactoring     # Refactoring docs
   - specs           # Tech specs
