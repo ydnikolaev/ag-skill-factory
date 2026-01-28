@@ -81,7 +81,7 @@ def main():
     
     # Load enums
     schema_dir = Path("src/_meta/schema/rules")
-    enums = load_yaml(schema_dir / "enums.yaml")
+    enums = load_yaml(schema_dir / "enums" / "enums.yaml")
     
     # Find rules
     rules_dir = Path("src/rules")

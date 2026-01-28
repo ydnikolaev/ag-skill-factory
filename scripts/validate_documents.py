@@ -98,7 +98,7 @@ def main():
     
     # Load enums
     schema_dir = Path("src/_meta/schema/documents")
-    enums = load_yaml(schema_dir / "enums.yaml")
+    enums = load_yaml(schema_dir / "enums" / "enums.yaml")
     
     # Find documents
     docs_dir = Path("src/templates/documents")

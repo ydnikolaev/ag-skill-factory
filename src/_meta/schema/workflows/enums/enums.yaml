@@ -1,0 +1,15 @@
+# Workflow Enums
+# SSOT for workflow-related enum values
+
+# Turbo modes (auto-execution annotations)
+turbo_modes:
+  - turbo       # Auto-run single step
+  - turbo-all   # Auto-run all steps in workflow
+
+# Workflow categories
+categories:
+  - development   # Code development workflows
+  - quality       # Testing, linting, validation
+  - deployment    # Build, deploy, release
+  - documentation # Doc generation, updates
+  - maintenance   # Cleanup, refactoring

@@ -56,7 +56,7 @@ def generate_skills_schema(schema_dir: Path) -> dict:
 
 def generate_documents_schema(schema_dir: Path) -> dict:
     """Generate documents JSON Schema."""
-    enums = load_yaml(schema_dir / "enums.yaml")
+    enums = load_yaml(schema_dir / "enums" / "enums.yaml")
     
     return {
         "$schema": "http://json-schema.org/draft-07/schema#",
@@ -98,7 +98,7 @@ def generate_documents_schema(schema_dir: Path) -> dict:
 
 def generate_rules_schema(schema_dir: Path) -> dict:
     """Generate rules JSON Schema."""
-    enums = load_yaml(schema_dir / "enums.yaml")
+    enums = load_yaml(schema_dir / "enums" / "enums.yaml")
     
     return {
         "$schema": "http://json-schema.org/draft-07/schema#",
