@@ -45,7 +45,9 @@ updated: {DATE}
 | File | Purpose |
 |------|---------|
 | `document-schema.yaml` | Core schema |
-| `enums.yaml` | Statuses, lifecycles, categories |
+| `enums/enums.yaml` | References shared enums |
+| `../../shared/factory.yaml` | Shared: phases, categories |
+| `../../shared/runtime.yaml` | Shared: statuses, lifecycles, triggers |
 | `examples/` | Example templates |
 
 ## Frontmatter Fields

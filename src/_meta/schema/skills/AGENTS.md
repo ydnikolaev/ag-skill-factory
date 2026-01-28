@@ -26,8 +26,10 @@
 | Purpose | Path |
 |---------|------|
 | Core schema | `skill-schema.yaml` |
-| Factory enums | `enums/factory.yaml` |
-| Runtime enums | `enums/runtime.yaml` |
+| Skill factory enums | `enums/factory.yaml` |
+| Skill runtime enums | `enums/runtime.yaml` |
+| Shared factory enums | `../shared/factory.yaml` (phases, categories) |
+| Shared runtime enums | `../shared/runtime.yaml` (statuses, lifecycles, triggers) |
 | Section definitions | `definitions/section-definitions.yaml` |
 | Protocol definitions | `definitions/protocol-definitions.yaml` |
 | Category defaults | `defaults/category-defaults.yaml` |
@@ -60,8 +62,8 @@
 
 - [ ] `identity.description` explains WHAT and WHEN
 - [ ] `identity.name` is lowercase-with-hyphens
-- [ ] `identity.phase` is valid (from factory.yaml)
-- [ ] `identity.category` is valid (from factory.yaml)
+- [ ] `identity.phase` is valid (from `../shared/factory.yaml`)
+- [ ] `identity.category` is valid (from `enums/factory.yaml#skill_categories`)
 - [ ] `workflow.presets` are leaf presets only
 - [ ] All handoffs share at least one preset
 - [ ] `documents.creates.doc_type` exists in doc-types.yaml

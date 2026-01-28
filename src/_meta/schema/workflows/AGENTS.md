@@ -40,8 +40,10 @@ Next step...
 ## Key Files
 
 | File | Purpose |
-|------|---------|
+|------------|--------|
 | `workflow-schema.yaml` | Core schema |
+| `enums/factory.yaml` | workflow_categories |
+| `enums/runtime.yaml` | turbo_modes |
 
 ## Turbo Annotations
 

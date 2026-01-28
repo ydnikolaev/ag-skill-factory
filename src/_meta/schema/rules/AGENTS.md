@@ -35,7 +35,7 @@ What agents MUST do and MUST NOT do.
 | File | Purpose |
 |------|---------|
 | `rule-schema.yaml` | Core schema |
-| `enums.yaml` | Triggers, categories |
+| `enums/factory.yaml` | activation_modes, rule_categories |
 
 ## Trigger Types
 
