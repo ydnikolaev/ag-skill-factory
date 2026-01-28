@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://antigravity.dev/document-schema-v1.json",
+  "$id": "urn:factory:schema:document-v1",
   "$comment": "AUTO-GENERATED from document-schema.yaml. Do not edit manually.",
   "title": "Antigravity Document Schema V1",
   "description": "Schema for validating document template frontmatter",

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://antigravity.dev/skill-schema-v3.json",
+  "$id": "urn:factory:schema:skill-v3",
   "$comment": "AUTO-GENERATED from skill-schema.yaml. Do not edit manually.",
   "title": "Antigravity Skill Schema V3",
   "description": "Schema for validating Antigravity skill definitions",
