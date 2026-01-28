@@ -74,8 +74,9 @@ class SchemaValidator:
         self.schema = load_yaml(schema_dir / "skill-schema.yaml")
         self.factory = load_yaml(schema_dir / "enums" / "factory.yaml")
         self.runtime = load_yaml(schema_dir / "enums" / "runtime.yaml")
-        # Shared enums are at schema/shared/, not skills/shared/
-        self.shared = load_yaml(schema_dir.parent / "shared" / "enums.yaml")
+        # Shared enums are at schema/shared/
+        self.shared_factory = load_yaml(schema_dir.parent / "shared" / "factory.yaml")
+        self.shared_runtime = load_yaml(schema_dir.parent / "shared" / "runtime.yaml")
         self.errors = []
         self.warnings = []
     
@@ -128,9 +129,9 @@ class SchemaValidator:
     
     def _validate_enums(self, fm: dict):
         """Validate enum values against enums/*.yaml."""
-        # Phase (from shared)
+        # Phase (from shared_factory)
         phase = fm.get("phase")
-        valid_phases = self._get_enum_keys(self.shared, "phases")
+        valid_phases = self._get_enum_keys(self.shared_factory, "phases")
         if phase and phase not in valid_phases:
             self.errors.append(f"{self.skill_name}: invalid phase '{phase}'")
         
@@ -154,9 +155,9 @@ class SchemaValidator:
                 if preset not in valid_presets:
                     self.errors.append(f"{self.skill_name}: invalid preset '{preset}'")
         
-        # MCP servers (from shared)
+        # MCP servers (from shared_runtime)
         mcp_servers = fm.get("mcp_servers", [])
-        valid_mcp = self._get_enum_keys(self.shared, "mcp_servers")
+        valid_mcp = self._get_enum_keys(self.shared_runtime, "mcp_servers")
         if isinstance(mcp_servers, list):
             for server in mcp_servers:
                 if valid_mcp and server not in valid_mcp:
@@ -180,8 +181,8 @@ class SchemaValidator:
                     if check not in valid_checks:
                         self.errors.append(f"{self.skill_name}: invalid check '{check}'")
         
-        # Triggers in creates/updates/archives (from shared)
-        valid_triggers = self._get_enum_keys(self.shared, "triggers")
+        # Triggers in creates/updates/archives (from shared_runtime)
+        valid_triggers = self._get_enum_keys(self.shared_runtime, "triggers")
         for section in ["creates", "updates", "archives"]:
             items = fm.get(section, [])
             if isinstance(items, list):

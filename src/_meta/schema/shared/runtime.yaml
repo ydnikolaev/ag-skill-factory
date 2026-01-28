@@ -1,31 +1,6 @@
-# Shared Enums
-# SSOT for cross-domain enum values
+# Shared Runtime Enums
+# SSOT for cross-domain values used during execution
 # Used by: skills, documents, structure validators
-
-# Pipeline phases (when work happens)
-phases:
-  - discovery       # Idea extraction, interviews
-  - definition      # Requirements, user stories
-  - design          # UX/UI design
-  - architecture    # System design, API contracts
-  - implementation  # Code, tests
-  - delivery        # Deployment, docs, handoff
-  - utility         # Cross-phase helpers
-
-# Document/artifact categories (matches folder structure)
-categories:
-  - architecture    # System design, API contracts
-  - backend         # Backend implementation
-  - bugs            # Bug reports, debug reports
-  - design          # UI/UX design, theming
-  - discovery       # Feature briefs, roadmaps
-  - frontend        # Frontend implementation
-  - infrastructure  # Deployment, configs
-  - product         # Requirements, user stories
-  - project         # Project-wide docs
-  - qa              # Test cases, test reports
-  - refactoring     # Refactoring docs
-  - specs           # Tech specs
 
 # Document statuses
 statuses:
