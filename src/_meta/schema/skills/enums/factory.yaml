@@ -32,6 +32,7 @@ presets:
   - all             # Everything
 
 # SKILL.md sections
+# Definition: definitions/section-definitions.yaml#sections
 sections:
   - frontmatter       # YAML header with identity
   - header            # Skill name as H1

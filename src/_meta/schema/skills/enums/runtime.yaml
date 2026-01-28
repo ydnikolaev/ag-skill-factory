@@ -39,6 +39,7 @@ scopes:
   - global              # Available globally
 
 # Validation protocols
+# Definition: definitions/protocol-definitions.yaml#protocols
 protocols:
   - git                 # Git protocol (branching, commits)
   - tdd                 # Test-driven development
@@ -49,6 +50,7 @@ protocols:
   - handoff             # Handoff protocol
 
 # Pre-handoff checks
+# Definition: definitions/protocol-definitions.yaml#checks
 checks:
   # Code quality
   - tests_pass          # All tests pass
