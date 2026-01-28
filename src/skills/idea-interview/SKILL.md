@@ -1,47 +1,78 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: idea-interview
 description: Interview-mode skill that extracts complete project information from the user. Activates when starting a new project or discussing an idea. NO CODE — only structured discovery.
-version: 1.3.0
-
+version: 3.0.0
 phase: discovery
 category: analyst
+scope: project
+tags:
+  - interview
+  - discovery
+  - requirements
+  - onboarding
+
+# === SECTION 2: CAPABILITIES ===
+mcp_servers: []
+allowed_tools:
+  - notify_user
+  - view_file
+  - write_to_file
+dependencies: []
+context:
+  required:
+    - path: project/CONFIG.yaml
+      purpose: Check existing stack/architecture decisions
+  optional:
+    - path: mcp.yaml
+      purpose: Project MCP server config
+    - path: project/docs/registry/
+      purpose: Existing work unit registry
+reads:
+  - type: project_config
+    from: project/CONFIG.yaml
+produces:
+  - type: discovery_brief
+  - type: work_unit_registry_entry
+
+# === SECTION 3: WORKFLOW ===
 presets:
   - core
-
-# === HANDOFFS ===
+receives_from: []
 delegates_to:
   - skill: product-analyst
     docs:
       - doc_type: discovery-brief
         trigger: spec_approved
+return_paths: []
 
-# === DOCUMENTS ===
+# === SECTION 4: DOCUMENTS ===
+requires: []
 creates:
   - doc_type: discovery-brief
     path: project/docs/active/discovery/
     doc_category: discovery
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: spec_approved
   - doc_type: work-unit-registry
     path: project/docs/registry/
-    doc_category: project
+    doc_category: discovery
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: work_unit_opened
-
 updates:
   - doc_type: work-unit-registry
     path: project/docs/registry/
     lifecycle: living
-    trigger: on_create_on_complete
+    trigger: on_complete
   - doc_type: artifact-registry
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
+    trigger: on_complete
+archives: []
 
-# === VALIDATION ===
+# === SECTION 5: VALIDATION ===
 pre_handoff:
   protocols:
     - traceability
@@ -49,8 +80,9 @@ pre_handoff:
   checks:
     - artifact_registry_updated
     - work_unit_registry_updated
+quality_gates: []
 
-# === REQUIRED SECTIONS ===
+# === SECTION 6: REQUIRED_SECTIONS ===
 required_sections:
   - frontmatter
   - when_to_activate
