@@ -1,5 +1,5 @@
 # Document Enums
-# Enum values for document validation
+# SSOT for document-related enum values (status, lifecycle, categories)
 
 # Document statuses
 statuses:

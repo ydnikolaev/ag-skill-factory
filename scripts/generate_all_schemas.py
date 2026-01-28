@@ -32,6 +32,7 @@ def generate_skills_schema(schema_dir: Path) -> dict:
     return {
         "$schema": "http://json-schema.org/draft-07/schema#",
         "$id": "https://antigravity.dev/skill-schema-v3.json",
+        "$comment": "AUTO-GENERATED from skill-schema.yaml. Do not edit manually.",
         "title": "Antigravity Skill Schema V3",
         "description": "Schema for validating Antigravity skill definitions",
         "type": "object",
@@ -61,6 +62,7 @@ def generate_documents_schema(schema_dir: Path) -> dict:
     return {
         "$schema": "http://json-schema.org/draft-07/schema#",
         "$id": "https://antigravity.dev/document-schema-v1.json",
+        "$comment": "AUTO-GENERATED from document-schema.yaml. Do not edit manually.",
         "title": "Antigravity Document Schema V1",
         "description": "Schema for validating document template frontmatter",
         "type": "object",
@@ -103,6 +105,7 @@ def generate_rules_schema(schema_dir: Path) -> dict:
     return {
         "$schema": "http://json-schema.org/draft-07/schema#",
         "$id": "https://antigravity.dev/rule-schema-v1.json",
+        "$comment": "AUTO-GENERATED from rule-schema.yaml. Do not edit manually.",
         "title": "Antigravity Rule Schema V1",
         "description": "Schema for validating rule frontmatter",
         "type": "object",
@@ -120,6 +123,7 @@ def generate_workflows_schema(schema_dir: Path) -> dict:
     return {
         "$schema": "http://json-schema.org/draft-07/schema#",
         "$id": "https://antigravity.dev/workflow-schema-v1.json",
+        "$comment": "AUTO-GENERATED from workflow-schema.yaml. Do not edit manually.",
         "title": "Antigravity Workflow Schema V1",
         "description": "Schema for validating workflow frontmatter",
         "type": "object",

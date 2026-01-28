@@ -1,6 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://antigravity.dev/workflow-schema-v1.json",
+  "$comment": "AUTO-GENERATED from workflow-schema.yaml. Do not edit manually.",
   "title": "Antigravity Workflow Schema V1",
   "description": "Schema for validating workflow frontmatter",
   "type": "object",

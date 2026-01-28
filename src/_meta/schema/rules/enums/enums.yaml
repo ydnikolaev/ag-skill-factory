@@ -1,5 +1,5 @@
 # Rule Enums
-# Enum values for rule validation
+# SSOT for rule-related enum values (triggers)
 
 # Rule activation triggers (from Antigravity platform)
 triggers:
