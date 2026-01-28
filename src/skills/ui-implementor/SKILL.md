@@ -1,16 +1,49 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: ui-implementor
 description: UI Implementor that converts design tokens into Tailwind, shadcn components, and production CSS.
-version: 1.3.0
-
+version: 3.0.0
 phase: design
 category: technical
+scope: project
+tags:
+  - ui
+  - tailwind
+  - shadcn
+  - css
+
+# === SECTION 2: CAPABILITIES ===
+mcp_servers:
+  - context7
+  - mcp-ui-shadcn-vue
+allowed_tools:
+  - notify_user
+  - view_file
+  - write_to_file
+  - run_command
+dependencies:
+  - node22
+context:
+  required:
+    - path: project/docs/active/design/
+      purpose: Design tokens and system
+  optional:
+    - path: project/CONFIG.yaml
+      purpose: Stack decisions
+reads:
+  - type: design_system
+    from: project/docs/active/design/
+  - type: tokens
+    from: project/docs/active/design/
+produces:
+  - type: tailwind_config
+  - type: shadcn_components
+  - type: theming_doc
+
+# === SECTION 3: WORKFLOW ===
 presets:
   - frontend
   - tma
-
-# === HANDOFFS ===
 receives_from:
   - skill: ux-designer
     docs:
@@ -18,56 +51,46 @@ receives_from:
         trigger: design_complete
       - doc_type: tokens
         trigger: design_complete
-
 delegates_to:
   - skill: frontend-nuxt
     docs:
       - doc_type: theming
         trigger: implementation_complete
+return_paths: []
 
-# === DOCUMENTS ===
+# === SECTION 4: DOCUMENTS ===
 requires:
   - doc_type: design-system
-    status: approved
+    status: Approved
   - doc_type: tokens
-    status: approved
-
+    status: Approved
 creates:
   - doc_type: theming
     path: project/docs/active/frontend/
     doc_category: frontend
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: implementation_complete
-
-reads:
-  - doc_type: design-system
-    path: project/docs/active/design/
-    trigger: on_activation
-  - doc_type: tokens
-    path: project/docs/active/design/
-    trigger: on_activation
-
 updates:
   - doc_type: artifact-registry
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
-
+    trigger: on_complete
 archives:
   - doc_type: theming
     destination: project/docs/closed/<work-unit>/
     trigger: qa_signoff
 
-# === VALIDATION ===
+# === SECTION 5: VALIDATION ===
 pre_handoff:
   protocols:
     - traceability
     - handoff
   checks:
     - artifact_registry_updated
+quality_gates: []
 
-# === REQUIRED SECTIONS ===
+# === SECTION 6: REQUIRED_SECTIONS ===
 required_sections:
   - frontmatter
   - tech_stack

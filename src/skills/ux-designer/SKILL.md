@@ -1,22 +1,51 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: ux-designer
 description: UX/UI Designer specializing in design systems, design tokens, and Figma workflows.
-version: 1.3.0
-
+version: 3.0.0
 phase: design
 category: analyst
+scope: project
+tags:
+  - ux
+  - design-tokens
+  - figma
+  - design-system
+
+# === SECTION 2: CAPABILITIES ===
+mcp_servers:
+  - context7
+  - figma
+allowed_tools:
+  - notify_user
+  - view_file
+  - write_to_file
+  - generate_image
+dependencies: []
+context:
+  required:
+    - path: project/docs/active/product/
+      purpose: User stories
+  optional:
+    - path: project/CONFIG.yaml
+      purpose: Stack decisions
+reads:
+  - type: user_stories
+    from: project/docs/active/product/
+produces:
+  - type: design_tokens
+  - type: design_system
+  - type: component_specs
+
+# === SECTION 3: WORKFLOW ===
 presets:
   - frontend
   - tma
-
-# === HANDOFFS ===
 receives_from:
   - skill: product-analyst
     docs:
       - doc_type: user-stories
         trigger: spec_approved
-
 delegates_to:
   - skill: ui-implementor
     docs:
@@ -24,37 +53,30 @@ delegates_to:
         trigger: design_complete
       - doc_type: tokens
         trigger: design_complete
+return_paths: []
 
-# === DOCUMENTS ===
+# === SECTION 4: DOCUMENTS ===
 requires:
   - doc_type: user-stories
-    status: approved
-
+    status: Approved
 creates:
   - doc_type: tokens
     path: project/docs/active/design/
     doc_category: design
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: design_complete
   - doc_type: design-system
     path: project/docs/active/design/
     doc_category: design
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: design_complete
-
-reads:
-  - doc_type: user-stories
-    path: project/docs/active/product/
-    trigger: on_activation
-
 updates:
   - doc_type: artifact-registry
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
-
+    trigger: on_complete
 archives:
   - doc_type: tokens
     destination: project/docs/closed/<work-unit>/
@@ -63,15 +85,16 @@ archives:
     destination: project/docs/closed/<work-unit>/
     trigger: qa_signoff
 
-# === VALIDATION ===
+# === SECTION 5: VALIDATION ===
 pre_handoff:
   protocols:
     - traceability
     - handoff
   checks:
     - artifact_registry_updated
+quality_gates: []
 
-# === REQUIRED SECTIONS ===
+# === SECTION 6: REQUIRED_SECTIONS ===
 required_sections:
   - frontmatter
   - language_requirements
