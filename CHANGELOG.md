@@ -5,6 +5,58 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- **(skills)** Migrate debugger, mcp-expert, project-bro, refactor-architect to V3 schema ([9e94ff1](https://github.com/ydnikolaev/antigravity-factory/commit/9e94ff1b67e34b3484e9a09523c37630ad8b0a7b))
+
+- **(skills)** Migrate devops-sre, qa-lead to V3 schema ([f94382f](https://github.com/ydnikolaev/antigravity-factory/commit/f94382fcdea06925fe6ea292b4bfd2b774ebacff))
+
+- **(skills)** Migrate frontend-nuxt, tma-expert, tui-charm-expert to V3 schema ([78c2446](https://github.com/ydnikolaev/antigravity-factory/commit/78c2446ced384cab93de99c37e85425dde07de52))
+
+- **(skills)** Migrate backend-go-expert to V3 schema ([b0448b3](https://github.com/ydnikolaev/antigravity-factory/commit/b0448b371c529b5683c4989c661e6f3576952fb1))
+
+- **(skills)** Migrate ux-designer, ui-implementor to V3 schema ([0138411](https://github.com/ydnikolaev/antigravity-factory/commit/0138411291ee1ac60faa07df4889c87065d29d08))
+
+- **(skills)** Migrate telegram-mechanic to V3 schema ([99e4eca](https://github.com/ydnikolaev/antigravity-factory/commit/99e4eca977d141abd093f3edc107c546530f3722))
+
+- **(skills)** Migrate tech-spec-writer to V3 schema ([a430855](https://github.com/ydnikolaev/antigravity-factory/commit/a430855df68ee9fae9520290e93b7c0ce8af6528))
+
+- **(skills)** Migrate cli-architect to V3 schema ([cefb8e9](https://github.com/ydnikolaev/antigravity-factory/commit/cefb8e95b1fa5c229c1d60cab9ceab4de377068e))
+
+- **(skills)** Migrate bmad-architect to V3 schema ([ae9f212](https://github.com/ydnikolaev/antigravity-factory/commit/ae9f212d315bc1c162a13ea09635d0ed5630a829))
+
+- **(skills)** Migrate product-analyst to V3 schema ([01dca95](https://github.com/ydnikolaev/antigravity-factory/commit/01dca954718d2131dff83e0bf6900f2df816ff3e))
+
+- **(skills)** Migrate feature-fit to V3 schema ([5713143](https://github.com/ydnikolaev/antigravity-factory/commit/57131433fd0d70a2c8f3c7532978da9132bfa9b3))
+
+- **(skills)** Migrate idea-interview to V3 schema ([178d196](https://github.com/ydnikolaev/antigravity-factory/commit/178d1966e2f0e0b4044c4a38337c6293895865a3))
+
+- **(schema)** Add cross-schema structure validator ([efe4d35](https://github.com/ydnikolaev/antigravity-factory/commit/efe4d3597bcd043c9b091aa31b770ddd61372397))
+
+- **(schema)** Add validators for rules and workflows ([bcea211](https://github.com/ydnikolaev/antigravity-factory/commit/bcea21196289daff67c92e4314dc53d24bf0ff3c))
+
+- **(schema)** Add unified JSON Schema generator for all types ([a628c5b](https://github.com/ydnikolaev/antigravity-factory/commit/a628c5b107af0f0ceb5912bbbc91cbfa3748134c))
+
+- **(schema)** Add Rules, Workflows, and Structure schemas ([87d6107](https://github.com/ydnikolaev/antigravity-factory/commit/87d6107c554561f374de3287a6177fe288a6104a))
+
+- **(schema)** Add Document Schema for template standardization ([0c22017](https://github.com/ydnikolaev/antigravity-factory/commit/0c2201797e72efdd0ce95ffe97f3c8c146882174))
+
+- **(schema)** Implement Skill Schema V3 modular architecture ([afdc52a](https://github.com/ydnikolaev/antigravity-factory/commit/afdc52a5a7349bad0af158c618cf2ad93062f486))
+
+- **(scripts)** Add validate_handoffs.py with inheritance support ([b0e5d20](https://github.com/ydnikolaev/antigravity-factory/commit/b0e5d20cc249b4392ee1f0c054bf97fc19f16da8))
+
+- **(skills)** Complete V2 frontmatter migration for all 21 skills ([f617bf7](https://github.com/ydnikolaev/antigravity-factory/commit/f617bf76297cef070a8544a69981d6b314b7b11b))
+
+- **(skills)** Migrate 7 skills to V2 frontmatter schema ([d4b6925](https://github.com/ydnikolaev/antigravity-factory/commit/d4b692557bb8e60fb0c68ac84b8aa6205db88509))
+
+- **(scripts)** Add V1/V2 frontmatter support to generate_pipelines.py ([f2cfd1b](https://github.com/ydnikolaev/antigravity-factory/commit/f2cfd1b4013f040bd8e4e6018b25e4ea4e8e0deb))
+
+- **(scripts)** Add generate_section_matrix.py for auto-generation ([b51eb74](https://github.com/ydnikolaev/antigravity-factory/commit/b51eb7424382fd5455819115aa47314b6b3f9040))
+
+- **(schema)** Move to _meta/schema, add required_sections for auto-generation ([57fc17c](https://github.com/ydnikolaev/antigravity-factory/commit/57fc17cb31bbc2841f7184d5fd045fec6dadf367))
+
+- **(schema)** Add frontmatter V2 schema and migrate frontend-nuxt pilot ([ee59202](https://github.com/ydnikolaev/antigravity-factory/commit/ee592020fa9fa541e4f559c306c8e5441d3c1530))
+
+- **(docs)** Complete document flow audit and system fixes ([13c10ae](https://github.com/ydnikolaev/antigravity-factory/commit/13c10aed4140a271e4aa0096a352991f71d44f49))
+
 - **(build)** Add private skills support ([da32f94](https://github.com/ydnikolaev/antigravity-factory/commit/da32f948c6befd0222b903e330a7a7f7741dabc5))
 
 - **(generators)** Add generate_rules.py for rules-matrix.yaml ([2881cf7](https://github.com/ydnikolaev/antigravity-factory/commit/2881cf7b6cd60b21b7efacda46524885502359b0))
@@ -102,6 +154,34 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- **(schema)** Unify enum file naming across all domains ([14ae988](https://github.com/ydnikolaev/antigravity-factory/commit/14ae988d5f70864de377f6550cd96f1e06c7d64a))
+
+- **(schema)** Clarify domain-specific enum names ([367bf78](https://github.com/ydnikolaev/antigravity-factory/commit/367bf780b71f4127de9918e423c3d30da38f66c1))
+
+- **(schema)** Split shared enums into factory and runtime ([b38a94e](https://github.com/ydnikolaev/antigravity-factory/commit/b38a94ebd6c298559344070dcc34be752e7ffa97))
+
+- **(schema)** Move triggers and mcp_servers to shared enums ([9011263](https://github.com/ydnikolaev/antigravity-factory/commit/90112633e462792d197852b3f28e67c9e4ac1f06))
+
+- **(schema)** Create shared enums to remove duplication ([59f8424](https://github.com/ydnikolaev/antigravity-factory/commit/59f8424bf245cf982d1119beb7fae0cf55649091))
+
+- **(schema)** Keep enums and definitions separate ([e4921f5](https://github.com/ydnikolaev/antigravity-factory/commit/e4921f56148176d23c335d67f6675e08c0d2a2c8))
+
+- **(validator)** Dynamic V3 schema validation ([7765399](https://github.com/ydnikolaev/antigravity-factory/commit/7765399b143692242e86536bba5a7a97825f76a2))
+
+- **(skill)** Migrate doc-janitor to Schema V3 ([daf8890](https://github.com/ydnikolaev/antigravity-factory/commit/daf8890b44cc2ca5c02186566d8c9a174407d829))
+
+- **(schema)** Standardize folder structure across all schema types ([e1684af](https://github.com/ydnikolaev/antigravity-factory/commit/e1684afce09c808a4d614123f793c1c51935cf08))
+
+- **(validator)** Use folder-structure/ as SSOT instead of schema ([3225cc4](https://github.com/ydnikolaev/antigravity-factory/commit/3225cc42e65cccedf5e82d2bf0aaa742b0c97a7d))
+
+- **(schema)** Restructure to src/_meta/schema/{skills,rules,workflows} ([bc43f37](https://github.com/ydnikolaev/antigravity-factory/commit/bc43f37cb4633264c8983db61a38e8837a6ef901))
+
+- **(skills)** Replace inline Iteration Protocol with INCLUDE ([2d624ff](https://github.com/ydnikolaev/antigravity-factory/commit/2d624ffb55e242907ccb4af23a459fbb2a92233d))
+
+- **(skills)** Replace inline Language Requirements with INCLUDE ([2f7041a](https://github.com/ydnikolaev/antigravity-factory/commit/2f7041aa81e15276a5334d2ba4cb1161d56fe279))
+
+- **(skills)** Move First Step section after frontmatter in all skills ([dc8ed0a](https://github.com/ydnikolaev/antigravity-factory/commit/dc8ed0a5d949d46d484b4815174d044ddb28aeb6))
+
 - Move Go code to cli/ subdirectory ([cce0f51](https://github.com/ydnikolaev/antigravity-factory/commit/cce0f51927760ea042ad6228b33571a4bff9ed40))
 
 - **(build)** Flatten dist/ structure ([a84d914](https://github.com/ydnikolaev/antigravity-factory/commit/a84d91490882fe32d725474db71684e5a662578d))
@@ -191,6 +271,16 @@ All notable changes to this project will be documented in this file.
 
 ### Documentation
 
+- **(agents)** Update enum file references in all AGENTS.md ([337e7da](https://github.com/ydnikolaev/antigravity-factory/commit/337e7dae9eac4ae169e0ccebaba90fd1d3ea3276))
+
+- **(enums)** Add definition file references ([ab2632f](https://github.com/ydnikolaev/antigravity-factory/commit/ab2632f82a76a9bd46947b1c2f31823a10e7d53c))
+
+- Add SSOT Architecture Policy ([a004081](https://github.com/ydnikolaev/antigravity-factory/commit/a00408106bb11129202071db2fee4eec55d4697a))
+
+- Update DOCUMENT_FLOW_AUDIT.md with V2 migration results ([1aa45cf](https://github.com/ydnikolaev/antigravity-factory/commit/1aa45cf64de0f2b5c6717ce0e5fb470d95d43ec6))
+
+- Regenerate skill matrix and update audit metrics ([9ea56d8](https://github.com/ydnikolaev/antigravity-factory/commit/9ea56d80ac5b9b18fd5fcff0032770c55e984996))
+
 - **(backlog)** Add skill-maintainer with key decisions ([d226da4](https://github.com/ydnikolaev/antigravity-factory/commit/d226da4ac0344d724567f348fa77155be8663204))
 
 - **(backlog)** Add CHANGELOG and BACKLOG to project templates ([dc75d04](https://github.com/ydnikolaev/antigravity-factory/commit/dc75d0471a1d2aa604b2669ef2c9fc1166861f2e))
@@ -225,6 +315,28 @@ All notable changes to this project will be documented in this file.
 
 
 ### Fixed
+
+- **(skills)** Correct project-bro scope to valid value ([996d5cf](https://github.com/ydnikolaev/antigravity-factory/commit/996d5cff545b45cbc4a928d45823e41cea367127))
+
+- **(validators)** Update all validators for new enum structure ([58ef853](https://github.com/ydnikolaev/antigravity-factory/commit/58ef85395063b127124de4a032737b3aaffe18ec))
+
+- **(enums)** Add missing triggers (on_create, user_approval) ([8af66fb](https://github.com/ydnikolaev/antigravity-factory/commit/8af66fb8221692d1e9f1f8d26101d6ab483a1831))
+
+- **(schema)** Replace fake antigravity.dev with internal URN ([7db598f](https://github.com/ydnikolaev/antigravity-factory/commit/7db598f07a6b4299ffef2ce16cfc580993b762b9))
+
+- **(schema)** Correct SSOT comments per policy ([bb0c17f](https://github.com/ydnikolaev/antigravity-factory/commit/bb0c17f8b1d5d08731d81ad43a158234b4dae33f))
+
+- **(schema)** Correct SSOT comments - schemas describe, real files are SSOT ([6a60024](https://github.com/ydnikolaev/antigravity-factory/commit/6a600245af8fa58b013eeb604720207e116103af))
+
+- **(templates)** Update document templates to match schema ([5224684](https://github.com/ydnikolaev/antigravity-factory/commit/5224684200ac87f8d053b773b9a74068338472ca))
+
+- **(skills)** Ensure all handoffs have common presets (A+C approach) ([bddfa76](https://github.com/ydnikolaev/antigravity-factory/commit/bddfa76248c1a4622a7b11b024c49eb364c7e3c6))
+
+- **(skills)** Template and preset discrepancies ([a9fcd3f](https://github.com/ydnikolaev/antigravity-factory/commit/a9fcd3fe91b94d9a4f640300a172e060dec92f73))
+
+- **(skills)** Add work-unit-registry to creates section in discovery skills ([d53dbe7](https://github.com/ydnikolaev/antigravity-factory/commit/d53dbe7205263b7a9f7e47cfdc41d19de78f16cd))
+
+- **(skills)** Add missing receives_from for handoff symmetry ([bd28f6a](https://github.com/ydnikolaev/antigravity-factory/commit/bd28f6a73182af971efd17a53f0be0d5970e8c4f))
 
 - **(scripts)** Update paths from blueprint/ to src/ ([2543c7e](https://github.com/ydnikolaev/antigravity-factory/commit/2543c7eac8d5a7a5537317f59471507069cf67ae))
 
