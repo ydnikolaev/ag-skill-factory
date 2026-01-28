@@ -1,21 +1,50 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: cli-architect
 description: Expert in Go CLI Architecture (Cobra, Viper, POSIX).
-version: 1.3.0
-
+version: 3.0.0
 phase: architecture
 category: technical
+scope: project
+tags:
+  - cli
+  - cobra
+  - viper
+  - posix
+
+# === SECTION 2: CAPABILITIES ===
+mcp_servers:
+  - context7
+allowed_tools:
+  - notify_user
+  - view_file
+  - write_to_file
+  - grep_search
+  - run_command
+dependencies:
+  - go1.25
+context:
+  required:
+    - path: project/docs/active/architecture/
+      purpose: Context map and API contracts
+  optional:
+    - path: project/CONFIG.yaml
+      purpose: Stack decisions
+reads:
+  - type: context_map
+    from: project/docs/active/architecture/
+produces:
+  - type: cli_design
+  - type: command_structure
+
+# === SECTION 3: WORKFLOW ===
 presets:
   - cli
-
-# === HANDOFFS ===
 receives_from:
   - skill: bmad-architect
     docs:
       - doc_type: context-map
         trigger: design_complete
-
 delegates_to:
   - skill: tui-charm-expert
     docs:
@@ -25,45 +54,39 @@ delegates_to:
     docs:
       - doc_type: cli-design
         trigger: design_complete
+return_paths: []
 
-# === DOCUMENTS ===
+# === SECTION 4: DOCUMENTS ===
 requires:
   - doc_type: context-map
-    status: approved
-
+    status: Approved
 creates:
   - doc_type: cli-design
     path: project/docs/active/architecture/
     doc_category: architecture
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: design_complete
-
-reads:
-  - doc_type: context-map
-    path: project/docs/active/architecture/
-    trigger: on_activation
-
 updates:
   - doc_type: artifact-registry
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
-
+    trigger: on_complete
 archives:
   - doc_type: cli-design
     destination: project/docs/closed/<work-unit>/
     trigger: qa_signoff
 
-# === VALIDATION ===
+# === SECTION 5: VALIDATION ===
 pre_handoff:
   protocols:
     - traceability
     - handoff
   checks:
     - artifact_registry_updated
+quality_gates: []
 
-# === REQUIRED SECTIONS ===
+# === SECTION 6: REQUIRED_SECTIONS ===
 required_sections:
   - frontmatter
   - tech_stack
