@@ -60,7 +60,7 @@ def validate_rule(rule_path: Path, enums: dict) -> list:
     trigger = fm.get("trigger")
     if not trigger:
         errors.append(f"{rule_name}: missing required field 'trigger'")
-    elif trigger not in enums.get("triggers", []):
+    elif trigger not in enums.get("activation_modes", []):
         errors.append(f"{rule_name}: invalid trigger '{trigger}'")
     
     # model_decision requires description
@@ -81,7 +81,7 @@ def main():
     
     # Load enums
     schema_dir = Path("src/_meta/schema/rules")
-    enums = load_yaml(schema_dir / "enums" / "enums.yaml")
+    enums = load_yaml(schema_dir / "enums" / "factory.yaml")
     
     # Find rules
     rules_dir = Path("src/rules")

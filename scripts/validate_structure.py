@@ -109,8 +109,8 @@ def main():
     # SSOT: Read from real folder structure
     structure_categories = extract_structure_categories()
     
-    # Load document enums
-    doc_categories = extract_document_categories(Path("src/_meta/schema/documents/enums/enums.yaml"))
+    # Load document enums from shared
+    doc_categories = extract_document_categories(Path("src/_meta/schema/shared/factory.yaml"))
     
     # Extract skill paths
     skill_paths = extract_skill_paths(Path("src/skills"))

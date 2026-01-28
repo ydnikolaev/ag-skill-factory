@@ -2,14 +2,14 @@
 # SSOT for cross-domain values used during execution
 # Used by: skills, documents, structure validators
 
-# Document statuses
+# Document statuses (Title Case to match templates)
 statuses:
-  - draft           # Initial creation
-  - in_progress     # Being worked on
-  - review          # Ready for review
-  - approved        # Approved by stakeholder
-  - archived        # Completed and archived
-  - obsolete        # Superseded by another doc
+  - Draft           # Initial creation
+  - In Progress     # Being worked on
+  - Review          # Ready for review
+  - Approved        # Approved by stakeholder
+  - Archived        # Completed and archived
+  - Obsolete        # Superseded by another doc
 
 # Document lifecycles
 lifecycles:

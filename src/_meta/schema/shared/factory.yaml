@@ -22,7 +22,6 @@ categories:
   - frontend        # Frontend implementation
   - infrastructure  # Deployment, configs
   - product         # Requirements, user stories
-  - project         # Project-wide docs
   - qa              # Test cases, test reports
   - refactoring     # Refactoring docs
   - specs           # Tech specs

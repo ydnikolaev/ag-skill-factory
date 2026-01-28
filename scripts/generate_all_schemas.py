@@ -57,7 +57,9 @@ def generate_skills_schema(schema_dir: Path) -> dict:
 
 def generate_documents_schema(schema_dir: Path) -> dict:
     """Generate documents JSON Schema."""
-    enums = load_yaml(schema_dir / "enums" / "enums.yaml")
+    # Load statuses/lifecycles from shared
+    shared_dir = schema_dir.parent / "shared"
+    enums = load_yaml(shared_dir / "runtime.yaml")
     
     return {
         "$schema": "http://json-schema.org/draft-07/schema#",
@@ -100,7 +102,7 @@ def generate_documents_schema(schema_dir: Path) -> dict:
 
 def generate_rules_schema(schema_dir: Path) -> dict:
     """Generate rules JSON Schema."""
-    enums = load_yaml(schema_dir / "enums" / "enums.yaml")
+    enums = load_yaml(schema_dir / "enums" / "factory.yaml")
     
     return {
         "$schema": "http://json-schema.org/draft-07/schema#",
@@ -111,7 +113,7 @@ def generate_rules_schema(schema_dir: Path) -> dict:
         "type": "object",
         "required": ["trigger"],
         "properties": {
-            "trigger": {"type": "string", "enum": enums.get("triggers", [])},
+            "trigger": {"type": "string", "enum": enums.get("activation_modes", [])},
             "description": {"type": "string"},
             "globs": {"type": "array", "items": {"type": "string"}}
         }

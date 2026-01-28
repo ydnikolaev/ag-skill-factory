@@ -96,9 +96,9 @@ def main():
     parser.add_argument("--doc", help="Validate single document")
     args = parser.parse_args()
     
-    # Load enums
-    schema_dir = Path("src/_meta/schema/documents")
-    enums = load_yaml(schema_dir / "enums" / "enums.yaml")
+    # Load enums from shared
+    shared_dir = Path("src/_meta/schema/shared")
+    enums = load_yaml(shared_dir / "runtime.yaml")
     
     # Find documents
     docs_dir = Path("src/templates/documents")
