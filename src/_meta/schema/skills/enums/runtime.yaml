@@ -1,26 +1,11 @@
 # Skill Runtime Enums
-# SSOT for runtime-specific enum values
-# Shared enums (statuses, lifecycles): ../shared/enums.yaml
+# SSOT for skill-specific enum values
+# Shared enums: ../../shared/enums.yaml (triggers, mcp_servers, statuses, lifecycles)
 
 # Skill scopes
 scopes:
   - project             # Project-local skill
   - global              # Available globally
-
-# Document lifecycle triggers
-triggers:
-  - on_activation       # When skill activates
-  - on_create           # When document is created
-  - on_complete         # When skill completes work
-  - on_handoff          # When handing off to next skill
-  - spec_approved       # Specification approved
-  - design_complete     # Design phase complete
-  - implementation_complete  # Implementation done
-  - qa_signoff          # QA approved
-  - user_approved       # User approved
-  - user_approval       # Alias for user_approved (archives)
-  - work_unit_opened    # New work unit started
-  - work_unit_closed    # Work unit completed
 
 # Validation protocols
 # Definition: definitions/protocol-definitions.yaml#protocols
@@ -56,11 +41,3 @@ checks:
   - handoff_doc_created # Handoff document exists
   - approval_received   # Required approvals
   - artifact_registry_updated # Registry updated
-
-# MCP servers (known)
-mcp_servers:
-  - context7            # Documentation search
-  - sky-cli             # Project management
-  - github              # GitHub integration
-  - figma               # Design system
-  - telegram-docs       # Telegram API docs

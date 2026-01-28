@@ -154,9 +154,9 @@ class SchemaValidator:
                 if preset not in valid_presets:
                     self.errors.append(f"{self.skill_name}: invalid preset '{preset}'")
         
-        # MCP servers
+        # MCP servers (from shared)
         mcp_servers = fm.get("mcp_servers", [])
-        valid_mcp = self._get_enum_keys(self.runtime, "mcp_servers")
+        valid_mcp = self._get_enum_keys(self.shared, "mcp_servers")
         if isinstance(mcp_servers, list):
             for server in mcp_servers:
                 if valid_mcp and server not in valid_mcp:
@@ -180,8 +180,8 @@ class SchemaValidator:
                     if check not in valid_checks:
                         self.errors.append(f"{self.skill_name}: invalid check '{check}'")
         
-        # Triggers in creates/updates/archives
-        valid_triggers = self._get_enum_keys(self.runtime, "triggers")
+        # Triggers in creates/updates/archives (from shared)
+        valid_triggers = self._get_enum_keys(self.shared, "triggers")
         for section in ["creates", "updates", "archives"]:
             items = fm.get(section, [])
             if isinstance(items, list):
