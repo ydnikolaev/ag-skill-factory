@@ -5,7 +5,7 @@ description: Your project awareness buddy. Knows current state, reads docs, anal
 version: 3.0.0
 phase: utility
 category: utility
-scope: workspace
+scope: project
 tags:
   - project
   - awareness
