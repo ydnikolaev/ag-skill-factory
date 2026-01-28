@@ -1,15 +1,55 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: backend-go-expert
 description: Expert Go developer (1.25+) specializing in Clean Architecture and DDD.
-version: 1.3.0
-
+version: 3.0.0
 phase: implementation
 category: technical
+scope: project
+tags:
+  - go
+  - backend
+  - ddd
+  - clean-architecture
+
+# === SECTION 2: CAPABILITIES ===
+mcp_servers:
+  - context7
+  - sky-cli
+allowed_tools:
+  - notify_user
+  - view_file
+  - write_to_file
+  - run_command
+  - grep_search
+  - replace_file_content
+dependencies:
+  - go1.25
+  - docker
+context:
+  required:
+    - path: project/docs/active/specs/
+      purpose: Tech specs
+    - path: project/docs/active/architecture/
+      purpose: API contracts, context map
+  optional:
+    - path: project/CONFIG.yaml
+      purpose: Stack decisions
+reads:
+  - type: tech_spec
+    from: project/docs/active/specs/
+  - type: api_contracts
+    from: project/docs/active/architecture/
+  - type: context_map
+    from: project/docs/active/architecture/
+produces:
+  - type: go_code
+  - type: tests
+  - type: service_implementation
+
+# === SECTION 3: WORKFLOW ===
 presets:
   - backend
-
-# === HANDOFFS ===
 receives_from:
   - skill: tech-spec-writer
     docs:
@@ -31,13 +71,11 @@ receives_from:
     docs:
       - doc_type: server-config
         trigger: spec_approved
-
 delegates_to:
   - skill: qa-lead
     docs:
       - doc_type: service-implementation
         trigger: implementation_complete
-
 return_paths:
   - skill: qa-lead
     docs:
@@ -48,42 +86,28 @@ return_paths:
       - doc_type: refactoring-overview
         trigger: spec_approved
 
-# === DOCUMENTS ===
+# === SECTION 4: DOCUMENTS ===
 requires:
   - doc_type: tech-spec
-    status: approved
-
+    status: Approved
 creates:
   - doc_type: service-implementation
     path: project/docs/active/backend/
     doc_category: backend
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: implementation_complete
-
-reads:
-  - doc_type: tech-spec
-    path: project/docs/active/specs/
-    trigger: on_activation
-  - doc_type: api-contracts
-    path: project/docs/active/architecture/
-    trigger: on_activation
-  - doc_type: context-map
-    path: project/docs/active/architecture/
-    trigger: on_activation
-
 updates:
   - doc_type: artifact-registry
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
-
+    trigger: on_complete
 archives:
   - doc_type: service-implementation
     destination: project/docs/closed/<work-unit>/
     trigger: qa_signoff
 
-# === VALIDATION ===
+# === SECTION 5: VALIDATION ===
 pre_handoff:
   protocols:
     - traceability
@@ -92,22 +116,21 @@ pre_handoff:
     - git
   checks:
     - artifact_registry_updated
-
-# === STATUS TRANSITIONS ===
+quality_gates: []
 transitions:
   - doc_type: service-implementation
     flow:
-      - from: draft
-        to: in_review
+      - from: Draft
+        to: In Progress
         trigger: notify_user
-      - from: in_review
-        to: approved
+      - from: In Progress
+        to: Approved
         trigger: user_approval
-      - from: approved
-        to: archived
+      - from: Approved
+        to: Archived
         trigger: qa_signoff
 
-# === REQUIRED SECTIONS ===
+# === SECTION 6: REQUIRED_SECTIONS ===
 required_sections:
   - frontmatter
   - tech_stack
