@@ -1,0 +1,43 @@
+# Shared Enums
+# SSOT for cross-domain enum values
+# Used by: skills, documents, structure validators
+
+# Pipeline phases (when work happens)
+phases:
+  - discovery       # Idea extraction, interviews
+  - definition      # Requirements, user stories
+  - design          # UX/UI design
+  - architecture    # System design, API contracts
+  - implementation  # Code, tests
+  - delivery        # Deployment, docs, handoff
+  - utility         # Cross-phase helpers
+
+# Document/artifact categories (matches folder structure)
+categories:
+  - architecture    # System design, API contracts
+  - backend         # Backend implementation
+  - bugs            # Bug reports, debug reports
+  - design          # UI/UX design, theming
+  - discovery       # Feature briefs, roadmaps
+  - frontend        # Frontend implementation
+  - infrastructure  # Deployment, configs
+  - product         # Requirements, user stories
+  - project         # Project-wide docs
+  - qa              # Test cases, test reports
+  - refactoring     # Refactoring docs
+  - specs           # Tech specs
+
+# Document statuses
+statuses:
+  - draft           # Initial creation
+  - in_progress     # Being worked on
+  - review          # Ready for review
+  - approved        # Approved by stakeholder
+  - archived        # Completed and archived
+  - obsolete        # Superseded by another doc
+
+# Document lifecycles
+lifecycles:
+  - per-feature     # One document per feature
+  - per-work-unit   # One document per work unit
+  - living          # Continuously updated

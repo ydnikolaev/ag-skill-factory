@@ -1,10 +1,14 @@
-# Runtime Enums
-# Used during agent execution
-# SSOT for runtime decisions
+# Skill Runtime Enums
+# SSOT for runtime-specific enum values
+# Shared enums (statuses, lifecycles): ../shared/enums.yaml
+
+# Skill scopes
+scopes:
+  - project             # Project-local skill
+  - global              # Available globally
 
 # Document lifecycle triggers
 triggers:
-  # Document events
   - on_activation       # When skill activates
   - on_create           # When document is created
   - on_complete         # When skill completes work
@@ -17,26 +21,6 @@ triggers:
   - user_approval       # Alias for user_approved (archives)
   - work_unit_opened    # New work unit started
   - work_unit_closed    # Work unit completed
-
-# Document statuses
-statuses:
-  - draft               # Initial state
-  - in_progress         # Being worked on
-  - review              # Ready for review
-  - approved            # Approved by stakeholder
-  - archived            # Completed and archived
-  - obsolete            # Superseded by another doc
-
-# Document lifecycles
-lifecycles:
-  - per-feature         # One doc per feature
-  - per-work-unit       # One doc per work unit
-  - living              # Continuously updated
-
-# Skill scopes
-scopes:
-  - project             # Project-local skill
-  - global              # Available globally
 
 # Validation protocols
 # Definition: definitions/protocol-definitions.yaml#protocols
@@ -61,17 +45,17 @@ checks:
   # Git state
   - branch_not_main     # Not on main/master
   - branch_clean        # No uncommitted changes
-  - commits_conventional # Conventional commits
+  - commits_conventional # Follows conventional format
   
   # Documentation
-  - docs_updated        # Relevant docs updated
+  - docs_updated        # Docs updated
   - changelog_updated   # CHANGELOG.md updated
   - work_unit_registry_updated  # Work unit tracked
   
   # Workflow
   - handoff_doc_created # Handoff document exists
-  - approval_received   # Required approvals obtained
-  - artifact_registry_updated  # Artifact registry updated
+  - approval_received   # Required approvals
+  - artifact_registry_updated # Registry updated
 
 # MCP servers (known)
 mcp_servers:

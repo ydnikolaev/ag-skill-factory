@@ -74,6 +74,8 @@ class SchemaValidator:
         self.schema = load_yaml(schema_dir / "skill-schema.yaml")
         self.factory = load_yaml(schema_dir / "enums" / "factory.yaml")
         self.runtime = load_yaml(schema_dir / "enums" / "runtime.yaml")
+        # Shared enums are at schema/shared/, not skills/shared/
+        self.shared = load_yaml(schema_dir.parent / "shared" / "enums.yaml")
         self.errors = []
         self.warnings = []
     
@@ -126,15 +128,15 @@ class SchemaValidator:
     
     def _validate_enums(self, fm: dict):
         """Validate enum values against enums/*.yaml."""
-        # Phase
+        # Phase (from shared)
         phase = fm.get("phase")
-        valid_phases = self._get_enum_keys(self.factory, "phases")
+        valid_phases = self._get_enum_keys(self.shared, "phases")
         if phase and phase not in valid_phases:
             self.errors.append(f"{self.skill_name}: invalid phase '{phase}'")
         
-        # Category
+        # Category (skill_categories from factory)
         category = fm.get("category")
-        valid_categories = self._get_enum_keys(self.factory, "categories")
+        valid_categories = self._get_enum_keys(self.factory, "skill_categories")
         if category and category not in valid_categories:
             self.errors.append(f"{self.skill_name}: invalid category '{category}'")
         

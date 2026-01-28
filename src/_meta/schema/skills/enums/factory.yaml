@@ -1,26 +1,15 @@
-# Factory Enums
-# Used during skill creation and auto-generation
-# SSOT for factory-time decisions
+# Skill Factory Enums
+# SSOT for skill-specific enum values
+# Shared enums (phases, categories): ../shared/enums.yaml
 
-# Pipeline order for skill-matrix
-phases:
-  - discovery       # Idea extraction, interviews
-  - definition      # Requirements, user stories
-  - design          # UX/UI, design tokens
-  - architecture    # System design, API contracts
-  - implementation  # Code, tests
-  - delivery        # Deploy, docs, handoff
-  - utility         # Cross-phase helpers
-
-# Output type categories
-categories:
+# Output type categories (skill type, not document category)
+skill_categories:
   - analyst         # Requirements, stories, specs
   - technical       # Code, tests, APIs
   - utility         # Helpers, validators
   - meta            # Skills that create skills
 
 # Team configurations (leaf presets only in skill frontmatter)
-# See preset-hierarchy.yaml for inheritance
 presets:
   - core            # Discovery + definition only
   - backend         # + backend implementation
@@ -53,18 +42,3 @@ sections:
   - resources         # External resources
   - language_requirements # Language rules
   - best_practices    # Best practices
-
-# Document categories
-doc_categories:
-  - architecture
-  - backend
-  - bugs
-  - design
-  - discovery
-  - frontend
-  - infrastructure
-  - product
-  - project
-  - qa
-  - refactoring
-  - specs
