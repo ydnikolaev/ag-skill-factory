@@ -1,15 +1,48 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: bmad-architect
 description: The Lead Architect for Antigravity TMA projects. Enforces DDD, BMAD V6, and coordinates the squad.
-version: 1.3.0
-
+version: 3.0.0
 phase: architecture
 category: analyst
+scope: project
+tags:
+  - ddd
+  - architecture
+  - bmad
+  - context-map
+  - api-contracts
+
+# === SECTION 2: CAPABILITIES ===
+mcp_servers:
+  - context7
+allowed_tools:
+  - notify_user
+  - view_file
+  - write_to_file
+  - grep_search
+  - list_dir
+dependencies: []
+context:
+  required:
+    - path: project/docs/active/product/
+      purpose: User stories and requirements
+  optional:
+    - path: project/CONFIG.yaml
+      purpose: Stack decisions
+reads:
+  - type: user_stories
+    from: project/docs/active/product/
+  - type: requirements
+    from: project/docs/active/product/
+produces:
+  - type: context_map
+  - type: api_contracts
+  - type: event_storming
+
+# === SECTION 3: WORKFLOW ===
 presets:
   - core
-
-# === HANDOFFS ===
 receives_from:
   - skill: product-analyst
     docs:
@@ -17,7 +50,6 @@ receives_from:
         trigger: spec_approved
       - doc_type: requirements
         trigger: spec_approved
-
 delegates_to:
   - skill: tech-spec-writer
     docs:
@@ -25,44 +57,34 @@ delegates_to:
         trigger: design_complete
       - doc_type: api-contracts
         trigger: design_complete
+return_paths: []
 
-# === DOCUMENTS ===
+# === SECTION 4: DOCUMENTS ===
 requires:
   - doc_type: user-stories
-    status: approved
-
+    status: Approved
 creates:
   - doc_type: context-map
     path: project/docs/active/architecture/
     doc_category: architecture
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: design_complete
   - doc_type: api-contracts
     path: project/docs/active/architecture/
     doc_category: architecture
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: design_complete
-
 updates:
   - doc_type: decision-log
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
+    trigger: on_complete
   - doc_type: artifact-registry
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
-
-reads:
-  - doc_type: user-stories
-    path: project/docs/active/product/
-    trigger: on_activation
-  - doc_type: requirements
-    path: project/docs/active/product/
-    trigger: on_activation
-
+    trigger: on_complete
 archives:
   - doc_type: context-map
     destination: project/docs/closed/<work-unit>/
@@ -71,26 +93,25 @@ archives:
     destination: project/docs/closed/<work-unit>/
     trigger: qa_signoff
 
-# === VALIDATION ===
+# === SECTION 5: VALIDATION ===
 pre_handoff:
   protocols:
     - traceability
     - handoff
   checks:
     - artifact_registry_updated
-
-# === STATUS TRANSITIONS ===
+quality_gates: []
 transitions:
   - doc_type: context-map
     flow:
-      - from: draft
-        to: in_review
+      - from: Draft
+        to: In Progress
         trigger: notify_user
-      - from: in_review
-        to: approved
+      - from: In Progress
+        to: Approved
         trigger: user_approval
 
-# === REQUIRED SECTIONS ===
+# === SECTION 6: REQUIRED_SECTIONS ===
 required_sections:
   - frontmatter
   - language_requirements
