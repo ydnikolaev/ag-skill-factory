@@ -1,15 +1,46 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: tma-expert
 description: Expert in Telegram Mini Apps (TMA) using @tma.js/sdk for native Telegram integration.
-version: 1.3.0
-
+version: 3.0.0
 phase: implementation
 category: technical
+scope: project
+tags:
+  - tma
+  - telegram
+  - mini-app
+  - vue
+
+# === SECTION 2: CAPABILITIES ===
+mcp_servers:
+  - context7
+  - telegram-docs
+allowed_tools:
+  - notify_user
+  - view_file
+  - write_to_file
+  - run_command
+dependencies:
+  - node22
+context:
+  required:
+    - path: project/docs/active/architecture/
+      purpose: Webhook config
+  optional:
+    - path: project/docs/active/frontend/
+      purpose: UI implementation
+reads:
+  - type: webhook_config
+    from: project/docs/active/architecture/
+produces:
+  - type: tma_config
+  - type: theme_bindings
+  - type: native_features
+
+# === SECTION 3: WORKFLOW ===
 presets:
   - tma
-
-# === HANDOFFS ===
 receives_from:
   - skill: telegram-mechanic
     docs:
@@ -19,49 +50,39 @@ receives_from:
     docs:
       - doc_type: ui-implementation
         trigger: implementation_complete
-
 delegates_to:
   - skill: qa-lead
     docs:
       - doc_type: tma-config
         trigger: implementation_complete
-
 return_paths:
   - skill: qa-lead
     docs:
       - doc_type: bug-report
         trigger: bugs_found
 
-# === DOCUMENTS ===
+# === SECTION 4: DOCUMENTS ===
 requires:
   - doc_type: webhook-config
-    status: approved
-
+    status: Approved
 creates:
   - doc_type: tma-config
     path: project/docs/active/frontend/
     doc_category: frontend
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: implementation_complete
-
-reads:
-  - doc_type: webhook-config
-    path: project/docs/active/architecture/
-    trigger: on_activation
-
 updates:
   - doc_type: artifact-registry
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
-
+    trigger: on_complete
 archives:
   - doc_type: tma-config
     destination: project/docs/closed/<work-unit>/
     trigger: qa_signoff
 
-# === VALIDATION ===
+# === SECTION 5: VALIDATION ===
 pre_handoff:
   protocols:
     - traceability
@@ -69,8 +90,9 @@ pre_handoff:
     - tdd
   checks:
     - artifact_registry_updated
+quality_gates: []
 
-# === REQUIRED SECTIONS ===
+# === SECTION 6: REQUIRED_SECTIONS ===
 required_sections:
   - frontmatter
   - tech_stack

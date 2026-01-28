@@ -1,63 +1,83 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: tui-charm-expert
 description: Expert in Terminal UI (TUI) using Charm stack (BubbleTea, Lipgloss).
-version: 1.3.0
-
+version: 3.0.0
 phase: implementation
 category: technical
-presets:
+scope: project
+tags:
+  - tui
+  - bubbletea
+  - lipgloss
   - cli
 
-# === HANDOFFS ===
+# === SECTION 2: CAPABILITIES ===
+mcp_servers:
+  - context7
+allowed_tools:
+  - notify_user
+  - view_file
+  - write_to_file
+  - run_command
+dependencies:
+  - go1.25
+context:
+  required:
+    - path: project/docs/active/architecture/
+      purpose: CLI design
+  optional:
+    - path: project/CONFIG.yaml
+      purpose: Stack decisions
+reads:
+  - type: cli_design
+    from: project/docs/active/architecture/
+produces:
+  - type: tui_model
+  - type: tui_views
+  - type: tui_design
+
+# === SECTION 3: WORKFLOW ===
+presets:
+  - cli
 receives_from:
   - skill: cli-architect
     docs:
       - doc_type: cli-design
         trigger: design_complete
-
 delegates_to:
   - skill: qa-lead
     docs:
       - doc_type: tui-design
         trigger: implementation_complete
-
 return_paths:
   - skill: qa-lead
     docs:
       - doc_type: bug-report
         trigger: bugs_found
 
-# === DOCUMENTS ===
+# === SECTION 4: DOCUMENTS ===
 requires:
   - doc_type: cli-design
-    status: approved
-
+    status: Approved
 creates:
   - doc_type: tui-design
     path: project/docs/active/backend/
     doc_category: backend
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: implementation_complete
-
-reads:
-  - doc_type: cli-design
-    path: project/docs/active/architecture/
-    trigger: on_activation
-
 updates:
   - doc_type: artifact-registry
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
-
+    trigger: on_complete
 archives:
   - doc_type: tui-design
     destination: project/docs/closed/<work-unit>/
     trigger: qa_signoff
 
-# === VALIDATION ===
+# === SECTION 5: VALIDATION ===
 pre_handoff:
   protocols:
     - traceability
@@ -65,8 +85,9 @@ pre_handoff:
     - tdd
   checks:
     - artifact_registry_updated
+quality_gates: []
 
-# === REQUIRED SECTIONS ===
+# === SECTION 6: REQUIRED_SECTIONS ===
 required_sections:
   - frontmatter
   - tech_stack

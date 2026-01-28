@@ -1,28 +1,66 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: frontend-nuxt
 description: Nuxt 4 & TailwindCSS expert for modern web applications (SSR, SPA, Hybrid).
-version: 1.3.0
-
+version: 3.0.0
 phase: implementation
 category: technical
+scope: project
+tags:
+  - nuxt
+  - vue
+  - tailwind
+  - frontend
+
+# === SECTION 2: CAPABILITIES ===
+mcp_servers:
+  - context7
+  - mcp-docs-nuxt
+  - mcp-ui-shadcn-vue
+allowed_tools:
+  - notify_user
+  - view_file
+  - write_to_file
+  - run_command
+  - grep_search
+  - replace_file_content
+dependencies:
+  - node22
+context:
+  required:
+    - path: project/docs/active/specs/
+      purpose: Tech specs
+  optional:
+    - path: project/docs/active/design/
+      purpose: Design system
+    - path: project/CONFIG.yaml
+      purpose: Stack decisions
+reads:
+  - type: tech_spec
+    from: project/docs/active/specs/
+  - type: design_system
+    from: project/docs/active/design/
+  - type: context_map
+    from: project/docs/active/architecture/
+produces:
+  - type: vue_components
+  - type: nuxt_pages
+  - type: ui_implementation
+
+# === SECTION 3: WORKFLOW ===
 presets:
   - frontend
   - tma
-
-# === HANDOFFS ===
 receives_from:
   - skill: tech-spec-writer
     docs:
       - doc_type: tech-spec
         trigger: spec_approved
-
 delegates_to:
   - skill: qa-lead
     docs:
       - doc_type: ui-implementation
         trigger: implementation_complete
-
 return_paths:
   - skill: qa-lead
     docs:
@@ -33,66 +71,51 @@ return_paths:
       - doc_type: refactoring-overview
         trigger: spec_approved
 
-# === DOCUMENTS ===
+# === SECTION 4: DOCUMENTS ===
 requires:
   - doc_type: tech-spec
-    status: approved
+    status: Approved
   - doc_type: design-system
     status: any
-
 creates:
   - doc_type: ui-implementation
     path: project/docs/active/frontend/
     doc_category: frontend
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: implementation_complete
-
-reads:
-  - doc_type: tech-spec
-    path: project/docs/active/specs/
-    trigger: on_activation
-  - doc_type: design-system
-    path: project/docs/active/design/
-    trigger: on_activation
-  - doc_type: context-map
-    path: project/docs/active/architecture/
-    trigger: on_activation
-
 updates:
   - doc_type: artifact-registry
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
-
+    trigger: on_complete
 archives:
   - doc_type: ui-implementation
     destination: project/docs/closed/<work-unit>/
     trigger: qa_signoff
 
-# === VALIDATION ===
+# === SECTION 5: VALIDATION ===
 pre_handoff:
   protocols:
     - traceability
     - handoff
   checks:
     - artifact_registry_updated
-
-# === STATUS TRANSITIONS ===
+quality_gates: []
 transitions:
   - doc_type: ui-implementation
     flow:
-      - from: draft
-        to: in_review
+      - from: Draft
+        to: In Progress
         trigger: notify_user
-      - from: in_review
-        to: approved
+      - from: In Progress
+        to: Approved
         trigger: user_approval
-      - from: approved
-        to: archived
+      - from: Approved
+        to: Archived
         trigger: qa_signoff
 
-# === REQUIRED SECTIONS ===
+# === SECTION 6: REQUIRED_SECTIONS ===
 required_sections:
   - frontmatter
   - tech_stack
