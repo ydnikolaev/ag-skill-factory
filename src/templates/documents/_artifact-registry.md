@@ -1,6 +1,6 @@
 ---
 status: Draft
-owner: @idea-interview | @feature-fit
+owner: @project-orchestrator
 lifecycle: living
 
 created: {DATE}

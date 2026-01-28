@@ -2,6 +2,7 @@
 status: Draft
 owner: @debugger
 lifecycle: living
+work_unit: {WORK_UNIT}
 
 downstream:
   - skill: @qa-lead

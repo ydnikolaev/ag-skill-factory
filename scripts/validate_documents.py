@@ -63,8 +63,12 @@ def validate_document(doc_path: Path, enums: dict) -> list:
         errors.append(f"{doc_name}: no valid frontmatter")
         return errors
     
-    # Required fields
-    required = ["status", "owner", "lifecycle", "work_unit"]
+    # Required fields (work_unit optional for 'living' lifecycle)
+    lifecycle = fm.get("lifecycle")
+    required = ["status", "owner", "lifecycle"]
+    if lifecycle != "living":
+        required.append("work_unit")
+    
     for field in required:
         if field not in fm:
             errors.append(f"{doc_name}: missing required field '{field}'")

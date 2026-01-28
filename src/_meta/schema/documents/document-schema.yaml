@@ -24,7 +24,8 @@ frontmatter:
   work_unit:
     type: string
     format: "{WORK_UNIT}"
-    required: true
+    required: conditional
+    condition: "required unless lifecycle=living"
     description: Work unit this document belongs to
   upstream:
     type: list[object]

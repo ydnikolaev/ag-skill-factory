@@ -1,3 +1,13 @@
+---
+status: Draft
+owner: @project-orchestrator
+lifecycle: per-work-unit
+work_unit: {WORK_UNIT}
+
+created: {DATE}
+updated: {DATE}
+---
+
 # Work Unit: {WORK_UNIT}
 
 > **Type**: Feature | Sprint | Refactoring

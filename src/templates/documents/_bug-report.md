@@ -1,9 +1,11 @@
 ---
-doc_type: bug-report
-work_unit: WU-XXX
-status: draft
-author: qa-lead
-created: YYYY-MM-DD
+status: Draft
+owner: @qa-lead
+lifecycle: per-feature
+work_unit: {WORK_UNIT}
+
+created: {DATE}
+updated: {DATE}
 ---
 
 # Bug Report: {BUG_TITLE}
