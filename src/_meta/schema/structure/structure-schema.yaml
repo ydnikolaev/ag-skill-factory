@@ -1,0 +1,103 @@
+# Project Structure Schema V1
+# Defines standard folder structure for Factory output
+# SSOT for project organization
+
+$schema_version: "1.0.0"
+
+# Root Structure (after `factory install`)
+root:
+  .agent/
+    description: Agent configuration directory
+    required: true
+    subdirs:
+      rules/:
+        description: Project-specific rules
+        files: "*.md"
+      skills/:
+        description: Project-specific skills
+        files: "*/SKILL.md"
+      workflows/:
+        description: Project-specific workflows
+        files: "*.md"
+
+  project/
+    description: Project documentation and artifacts
+    required: true
+    subdirs:
+      docs/:
+        description: All project documents
+        subdirs:
+          active/:
+            description: Active work documents
+            categories:
+              - architecture/
+              - backend/
+              - frontend/
+              - design/
+              - product/
+              - specs/
+          review/:
+            description: Documents awaiting review
+          closed/:
+            description: Archived documents
+      planning/:
+        description: Planning artifacts
+        files:
+          - roadmap.md
+          - backlog.md
+      userdir/:
+        description: User-specific files
+        files:
+          - todo.md
+
+# Factory Source Structure
+factory_source:
+  src/
+    description: Source files for factory
+    subdirs:
+      skills/:
+        description: Skill source files
+        structure: "{skill-name}/SKILL.md"
+      rules/:
+        description: Rule source files
+        files: "SCREAMING_SNAKE.md"
+      workflows/:
+        description: Workflow source files
+        files: "lowercase-hyphen.md"
+      templates/:
+        description: Template files
+        subdirs:
+          documents/:
+            description: Document templates
+            files: "_doc-type.md"
+          projects/:
+            description: Project scaffolds
+      sections/:
+        description: Shared include sections
+        subdirs:
+          protocols/:
+            description: Protocol sections
+          triggers/:
+            description: Trigger sections
+      _meta/:
+        description: Metadata and auto-generated files
+        subdirs:
+          schema/:
+            description: All schemas
+            subdirs:
+              - skills/
+              - documents/
+              - rules/
+              - workflows/
+              - structure/
+          pipelines/:
+            description: Auto-generated pipelines
+          teams/:
+            description: Auto-generated team files
+
+  dist/
+    description: Built output (gitignored locally, installed to projects)
+    subdirs:
+      skills/: "Compiled skills"
+      rules/: "Compiled rules"
+      workflows/: "Compiled workflows"

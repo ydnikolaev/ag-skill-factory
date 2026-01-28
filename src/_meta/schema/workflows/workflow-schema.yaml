@@ -1,0 +1,54 @@
+# Workflow Schema V1
+# Defines structure for workflows in src/workflows/
+# SSOT for automation workflows
+
+$schema_version: "1.0.0"
+
+# Frontmatter Structure
+frontmatter:
+  description:
+    type: string
+    required: true
+    description: Short description for slash command help
+
+# Body Structure
+body:
+  title:
+    type: h1
+    format: "/{WORKFLOW_NAME} Workflow"
+    required: true
+    description: Workflow title with slash command
+  introduction:
+    type: paragraph
+    required: true
+    description: Brief explanation of workflow purpose
+  steps:
+    type: section
+    required: true
+    description: H2 "Steps" section with numbered steps
+  step:
+    type: h3
+    required: true
+    description: Individual step as H3 heading
+
+# Step Annotations
+annotations:
+  turbo:
+    pattern: "// turbo"
+    description: Auto-run the following command without user confirmation
+  turbo_all:
+    pattern: "// turbo-all"
+    description: Auto-run ALL commands in this workflow
+
+# Naming Convention
+naming:
+  pattern: "lowercase-with-hyphens.md"
+  examples:
+    - refactor.md
+    - new-feature.md
+    - doc-cleanup.md
+
+# File Location
+location:
+  source: "src/workflows/"
+  output: "dist/workflows/"

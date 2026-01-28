@@ -1,0 +1,54 @@
+# Rule Schema V1
+# Defines structure for rules in src/rules/
+# SSOT for agent behavior rules
+
+$schema_version: "1.0.0"
+
+# Frontmatter Structure
+frontmatter:
+  trigger:
+    type: enum
+    ref: enums.yaml#triggers
+    required: true
+    description: When this rule activates
+  description:
+    type: string
+    required: true
+    description: Brief explanation for model_decision rules
+  globs:
+    type: list[string]
+    required: false
+    description: File patterns for glob trigger type
+
+# Body Structure
+body:
+  title:
+    type: h1
+    format: "{RULE_NAME} 🔧"
+    required: true
+    description: Rule title with emoji
+  introduction:
+    type: paragraph
+    required: true
+    description: Brief intro explaining rule purpose
+  sections:
+    type: list[h2]
+    required: true
+    description: Main content organized by H2 headings
+  enforcement:
+    type: section
+    required: false
+    description: What agents MUST/MUST NOT do
+
+# Naming Convention
+naming:
+  pattern: "SCREAMING_SNAKE_CASE.md"
+  examples:
+    - GIT_PROTOCOL.md
+    - TDD_PROTOCOL.md
+    - LANGUAGE_REQUIREMENTS.md
+
+# File Location
+location:
+  source: "src/rules/"
+  output: "dist/rules/"

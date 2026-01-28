@@ -1,0 +1,16 @@
+# Rule Enums
+# SSOT for rule trigger types
+
+# Rule activation triggers (from Antigravity platform)
+triggers:
+  - always_on        # Always applied to every conversation
+  - glob             # Applied when matching file patterns
+  - model_decision   # AI decides based on context
+  - manual           # User must explicitly invoke
+
+# Rule categories
+categories:
+  - protocol         # Development protocols (Git, TDD, etc.)
+  - documentation    # Documentation standards
+  - language         # Language requirements
+  - workflow         # Workflow integration
