@@ -119,6 +119,29 @@ presets-rebuild:
 	@python3 scripts/generate-presets.py
 	@python3 scripts/generate_pipelines.py
 
+# Validate rules against schema
+rule-validate:
+	@echo "🔍 Validating rules..."
+	@python3 scripts/validate_rules.py
+
+# Validate workflows against schema
+workflow-validate:
+	@echo "🔍 Validating workflows..."
+	@python3 scripts/validate_workflows.py
+
+# Validate documents against schema
+doc-validate:
+	@echo "🔍 Validating documents..."
+	@python3 scripts/validate_documents.py
+
+# Validate ALL schemas (skills, rules, workflows, documents)
+schema-validate-all:
+	@echo "🔍 Validating all schemas..."
+	@python3 scripts/validate_skills.py
+	@python3 scripts/validate_rules.py
+	@python3 scripts/validate_workflows.py
+	@echo "✅ All validators passed"
+
 # Generate all artifacts
 generate-all: json-schema generate-teams generate-pipelines generate-sections presets-rebuild
 	@echo "✅ All artifacts generated"
