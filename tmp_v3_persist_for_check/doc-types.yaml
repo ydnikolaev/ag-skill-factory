@@ -1,0 +1,212 @@
+# Auto-generated from skill frontmatter
+# Run: python3 scripts/generate_pipelines.py
+
+types:
+  service-implementation:
+    phase: implementation
+    creator: backend-go-expert
+    consumers:
+    - qa-lead
+    category: backend
+    doc_type: service-implementation
+    template: _service-implementation.md
+    lifecycle: per-feature
+  context-map:
+    phase: architecture
+    creator: bmad-architect
+    consumers: &id001
+    - tech-spec-writer
+    category: architecture
+    doc_type: context-map
+    template: _context-map.md
+    lifecycle: per-feature
+  api-contracts:
+    phase: architecture
+    creator: bmad-architect
+    consumers: *id001
+    category: architecture
+    doc_type: api-contracts
+    template: _api-contracts.md
+    lifecycle: per-feature
+  cli-design:
+    phase: architecture
+    creator: cli-architect
+    consumers:
+    - tui-charm-expert
+    - backend-go-expert
+    category: architecture
+    doc_type: cli-design
+    template: _cli-design.md
+    lifecycle: per-feature
+  debug-report:
+    phase: utility
+    creator: debugger
+    consumers:
+    - qa-lead
+    category: bugs
+    doc_type: debug-report
+    template: _debug-report.md
+    lifecycle: per-feature
+  deployment-guide:
+    phase: delivery
+    creator: devops-sre
+    consumers: []
+    category: infrastructure
+    doc_type: deployment-guide
+    template: _deployment-guide.md
+    lifecycle: per-feature
+  feature-brief:
+    phase: discovery
+    creator: feature-fit
+    consumers:
+    - product-analyst
+    category: discovery
+    doc_type: feature-brief
+    template: _feature-brief.md
+    lifecycle: per-feature
+  work-unit-registry:
+    phase: discovery
+    creator: idea-interview
+    consumers: &id002
+    - product-analyst
+    category: project
+    doc_type: work-unit-registry
+    template: _work-unit-registry.md
+    lifecycle: per-feature
+  ui-implementation:
+    phase: implementation
+    creator: frontend-nuxt
+    consumers:
+    - qa-lead
+    category: frontend
+    doc_type: ui-implementation
+    template: _ui-implementation.md
+    lifecycle: per-feature
+  discovery-brief:
+    phase: discovery
+    creator: idea-interview
+    consumers: *id002
+    category: discovery
+    doc_type: discovery-brief
+    template: _discovery-brief.md
+    lifecycle: per-feature
+  server-config:
+    phase: utility
+    creator: mcp-expert
+    consumers:
+    - backend-go-expert
+    - devops-sre
+    category: architecture
+    doc_type: server-config
+    template: _server-config.md
+    lifecycle: per-feature
+  user-stories:
+    phase: definition
+    creator: product-analyst
+    consumers: &id003
+    - bmad-architect
+    - tech-spec-writer
+    category: product
+    doc_type: user-stories
+    template: _user-stories.md
+    lifecycle: per-feature
+  requirements:
+    phase: definition
+    creator: product-analyst
+    consumers: *id003
+    category: specs
+    doc_type: requirements
+    template: _requirements.md
+    lifecycle: per-feature
+  test-cases:
+    phase: delivery
+    creator: qa-lead
+    consumers: &id004
+    - devops-sre
+    category: qa
+    doc_type: test-cases
+    template: _test-cases.md
+    lifecycle: per-feature
+  test-report:
+    phase: delivery
+    creator: qa-lead
+    consumers: *id004
+    category: qa
+    doc_type: test-report
+    template: _test-report.md
+    lifecycle: per-feature
+  refactoring-overview:
+    phase: utility
+    creator: refactor-architect
+    consumers:
+    - backend-go-expert
+    - frontend-nuxt
+    - devops-sre
+    category: refactoring
+    doc_type: refactoring-overview
+    template: _refactoring-overview.md
+    lifecycle: per-feature
+  tech-spec:
+    phase: architecture
+    creator: tech-spec-writer
+    consumers:
+    - backend-go-expert
+    - frontend-nuxt
+    category: specs
+    doc_type: tech-spec
+    template: _tech-spec.md
+    lifecycle: per-feature
+  webhook-config:
+    phase: architecture
+    creator: telegram-mechanic
+    consumers:
+    - backend-go-expert
+    - tma-expert
+    category: architecture
+    doc_type: webhook-config
+    template: _webhook-config.md
+    lifecycle: per-feature
+  tma-config:
+    phase: implementation
+    creator: tma-expert
+    consumers:
+    - qa-lead
+    category: frontend
+    doc_type: tma-config
+    template: _tma-config.md
+    lifecycle: per-feature
+  tui-design:
+    phase: implementation
+    creator: tui-charm-expert
+    consumers:
+    - qa-lead
+    category: backend
+    doc_type: tui-design
+    template: _tui-design.md
+    lifecycle: per-feature
+  theming:
+    phase: design
+    creator: ui-implementor
+    consumers:
+    - frontend-nuxt
+    category: frontend
+    doc_type: theming
+    template: _theming.md
+    lifecycle: per-feature
+  tokens:
+    phase: design
+    creator: ux-designer
+    consumers: &id005
+    - ui-implementor
+    category: design
+    doc_type: tokens
+    template: _tokens.md
+    lifecycle: per-feature
+  design-system:
+    phase: design
+    creator: ux-designer
+    consumers: *id005
+    category: design
+    doc_type: design-system
+    template: _design-system.md
+    lifecycle: per-feature

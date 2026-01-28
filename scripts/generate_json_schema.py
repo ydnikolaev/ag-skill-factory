@@ -6,7 +6,7 @@ Usage:
     python3 scripts/generate_json_schema.py
 
 Output:
-    src/_meta/skills/schema/skill-schema.json
+    src/_meta/schema/skills/skill-schema.json
 """
 
 import json
@@ -264,7 +264,7 @@ def generate_json_schema(schema_dir: Path) -> dict:
 
 
 def main():
-    schema_dir = Path("src/_meta/skills/schema")
+    schema_dir = Path("src/_meta/schema/skills")
     output_path = schema_dir / "skill-schema.json"
     
     json_schema = generate_json_schema(schema_dir)

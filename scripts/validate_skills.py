@@ -163,7 +163,7 @@ def main():
     args = parser.parse_args()
     
     # Load schema files
-    schema_dir = Path("src/_meta/skills/schema")
+    schema_dir = Path("src/_meta/schema/skills")
     factory = load_yaml(schema_dir / "enums" / "factory.yaml")
     runtime = load_yaml(schema_dir / "enums" / "runtime.yaml")
     

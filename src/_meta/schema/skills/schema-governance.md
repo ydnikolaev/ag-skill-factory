@@ -67,7 +67,7 @@ make generate-all
 
 Keep backup:
 ```bash
-cp -r src/_meta/skills/schema tmp_schema_backup
+cp -r src/_meta/schema/skills tmp_schema_backup
 ```
 
 ## Validation After Change

@@ -1,0 +1,105 @@
+# Skill Section Matrix (AUTO-GENERATED)
+# 
+# DO NOT EDIT MANUALLY!
+# Generated from SKILL.md frontmatter required_sections.
+# Run: python3 scripts/generate_section_matrix.py
+#
+# Defines the order and applicability of sections across skill types.
+# Used by validation and skill-updater for compliance checks.
+
+section_order:
+- frontmatter
+- header
+- mode_block
+- when_to_activate
+- role_boundary
+- brain_to_docs
+- tech_stack
+- critical_rules
+- workflow
+- protocols
+- team_collaboration
+- when_to_delegate
+- document_lifecycle
+- pre_handoff
+- handoff_protocol
+- artifact_ownership
+- resources
+- language_requirements
+- best_practices
+categories:
+  analyst:
+    skills:
+    - bmad-architect
+    - feature-fit
+    - idea-interview
+    - product-analyst
+    - qa-lead
+    - refactor-architect
+    - tech-spec-writer
+    - ux-designer
+    required:
+    - brain_to_docs
+    - document_lifecycle
+    - frontmatter
+    - handoff_protocol
+    - language_requirements
+    - team_collaboration
+    - when_to_activate
+    - when_to_delegate
+    - workflow
+  technical:
+    skills:
+    - backend-go-expert
+    - cli-architect
+    - devops-sre
+    - frontend-nuxt
+    - mcp-expert
+    - telegram-mechanic
+    - tma-expert
+    - tui-charm-expert
+    - ui-implementor
+    required:
+    - brain_to_docs
+    - document_lifecycle
+    - frontmatter
+    - handoff_protocol
+    - language_requirements
+    - protocols
+    - team_collaboration
+    - tech_stack
+    - when_to_delegate
+    - workflow
+  utility:
+    skills:
+    - debugger
+    - doc-janitor
+    - project-bro
+    - timeweb-sysadmin
+    required:
+    - brain_to_docs
+    - document_lifecycle
+    - frontmatter
+    - handoff_protocol
+    - language_requirements
+    - team_collaboration
+    - when_to_activate
+    - when_to_delegate
+    - workflow
+section_headers:
+  frontmatter: ^---
+  language_requirements: '## Language Requirements|INCLUDE.*language-requirements'
+  tech_stack: '## Tech Stack'
+  workflow: '## Workflow'
+  team_collaboration: '## Team Collaboration'
+  when_to_delegate: '## When to Delegate'
+  brain_to_docs: '## (Iteration Protocol|Brain to Docs)|INCLUDE.*brain-to-docs'
+  document_lifecycle: '## Document Lifecycle'
+  handoff_protocol: '## Handoff Protocol'
+  pre_handoff: '## Pre-Handoff Validation'
+  protocols: '## (TDD|Git|Tech Debt) Protocol'
+  critical_rules: '## Critical Rules'
+  when_to_activate: '## When to Activate'
+  role_boundary: '## Role Boundary'
+  artifact_ownership: '## Artifact Ownership'
+  best_practices: '## Antigravity Best Practices'
