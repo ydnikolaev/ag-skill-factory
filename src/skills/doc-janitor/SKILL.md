@@ -1,34 +1,72 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: doc-janitor
 description: Enforces document structure, archives completed work, migrates legacy format to lifecycle-based folders. Dry-run first, then apply.
-version: 1.3.0
-
+version: 3.0.0
 phase: utility
 category: utility
+scope: project
+tags:
+  - cleanup
+  - structure
+  - archive
+  - migration
+
+# === SECTION 2: CAPABILITIES ===
+mcp_servers: []
+allowed_tools:
+  - list_dir
+  - view_file
+  - run_command
+  - write_to_file
+  - notify_user
+dependencies: []
+context:
+  required:
+    - path: project/docs/
+      purpose: Document root to organize
+  optional:
+    - path: project/docs/ARTIFACT_REGISTRY.md
+      purpose: Registry to update after cleanup
+reads:
+  - type: document_frontmatter
+    from: all-project-docs
+  - type: folder_structure
+    from: project/docs/
+produces:
+  - type: cleanup_report
+  - type: archive_structure
+
+# === SECTION 3: WORKFLOW ===
 presets:
   - core
+receives_from: []
+delegates_to: []
+return_paths: []
 
-# === DOCUMENTS ===
+# === SECTION 4: DOCUMENTS ===
+requires: []
+creates: []
 updates:
   - doc_type: artifact-registry
     path: project/docs/
     lifecycle: living
     trigger: on_complete
-
 archives:
   - doc_type: all-per-feature
     destination: project/docs/closed/<work-unit>/
     trigger: user_approval
+    final_status: archived
 
-# === VALIDATION ===
+# === SECTION 5: VALIDATION ===
 pre_handoff:
   protocols:
     - handoff
   checks:
     - artifact_registry_updated
+quality_gates: []
 
-# === REQUIRED SECTIONS ===
+# === SECTION 6: REQUIRED SECTIONS ===
 required_sections:
   - frontmatter
   - when_to_activate
