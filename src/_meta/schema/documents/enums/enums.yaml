@@ -1,6 +1,7 @@
 # Document Enums
 # SSOT for document-specific enum values
-# Shared enums: ../shared/enums.yaml (statuses, lifecycles, categories, phases)
+# Shared enums: ../../shared/factory.yaml (phases, categories)
+# Shared enums: ../../shared/runtime.yaml (statuses, lifecycles, triggers, mcp_servers)
 
 # This file exists for document-specific extensions only.
-# All common enums are in shared/enums.yaml
+# All common enums are in shared/*.yaml

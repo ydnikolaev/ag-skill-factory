@@ -1,15 +1,17 @@
 # Rule Enums
-# SSOT for rule-related enum values (triggers)
+# SSOT for rule-related enum values
+# Domain-specific: activation_modes, rule_categories
 
-# Rule activation triggers (from Antigravity platform)
-triggers:
+# Rule activation modes (from Antigravity platform)
+# NOT the same as lifecycle triggers in shared/runtime.yaml
+activation_modes:
   - always_on        # Always applied to every conversation
   - glob             # Applied when matching file patterns
   - model_decision   # AI decides based on context
   - manual           # User must explicitly invoke
 
-# Rule categories
-categories:
+# Rule categories (domain-specific)
+rule_categories:
   - protocol         # Development protocols (Git, TDD, etc.)
   - documentation    # Documentation standards
   - language         # Language requirements
