@@ -77,6 +77,13 @@ class SchemaValidator:
         self.errors = []
         self.warnings = []
     
+    def _get_enum_keys(self, source: dict, key: str) -> list:
+        """Get enum values from source (handles both list and dict formats)."""
+        data = source.get(key, [])
+        if isinstance(data, dict):
+            return list(data.keys())
+        return data if isinstance(data, list) else []
+    
     def validate(self, fm: dict, skill_name: str) -> tuple[list, list]:
         """Validate frontmatter against schema. Returns (errors, warnings)."""
         self.errors = []
@@ -121,25 +128,25 @@ class SchemaValidator:
         """Validate enum values against enums/*.yaml."""
         # Phase
         phase = fm.get("phase")
-        valid_phases = self.factory.get("phases", [])
+        valid_phases = self._get_enum_keys(self.factory, "phases")
         if phase and phase not in valid_phases:
             self.errors.append(f"{self.skill_name}: invalid phase '{phase}'")
         
         # Category
         category = fm.get("category")
-        valid_categories = self.factory.get("categories", [])
+        valid_categories = self._get_enum_keys(self.factory, "categories")
         if category and category not in valid_categories:
             self.errors.append(f"{self.skill_name}: invalid category '{category}'")
         
         # Scope
         scope = fm.get("scope")
-        valid_scopes = self.runtime.get("scopes", [])
+        valid_scopes = self._get_enum_keys(self.runtime, "scopes")
         if scope and scope not in valid_scopes:
             self.errors.append(f"{self.skill_name}: invalid scope '{scope}'")
         
         # Presets
         presets = fm.get("presets", [])
-        valid_presets = self.factory.get("presets", [])
+        valid_presets = self._get_enum_keys(self.factory, "presets")
         if isinstance(presets, list):
             for preset in presets:
                 if preset not in valid_presets:
@@ -147,7 +154,7 @@ class SchemaValidator:
         
         # MCP servers
         mcp_servers = fm.get("mcp_servers", [])
-        valid_mcp = self.runtime.get("mcp_servers", [])
+        valid_mcp = self._get_enum_keys(self.runtime, "mcp_servers")
         if isinstance(mcp_servers, list):
             for server in mcp_servers:
                 if valid_mcp and server not in valid_mcp:
@@ -157,7 +164,7 @@ class SchemaValidator:
         pre_handoff = fm.get("pre_handoff", {})
         if isinstance(pre_handoff, dict):
             protocols = pre_handoff.get("protocols", [])
-            valid_protocols = self.runtime.get("protocols", [])
+            valid_protocols = self._get_enum_keys(self.runtime, "protocols")
             if isinstance(protocols, list):
                 for protocol in protocols:
                     if protocol not in valid_protocols:
@@ -165,17 +172,17 @@ class SchemaValidator:
             
             # Checks
             checks = pre_handoff.get("checks", [])
-            valid_checks = self.runtime.get("checks", [])
+            valid_checks = self._get_enum_keys(self.runtime, "checks")
             if isinstance(checks, list):
                 for check in checks:
                     if check not in valid_checks:
                         self.errors.append(f"{self.skill_name}: invalid check '{check}'")
         
         # Triggers in creates/updates/archives
+        valid_triggers = self._get_enum_keys(self.runtime, "triggers")
         for section in ["creates", "updates", "archives"]:
             items = fm.get(section, [])
             if isinstance(items, list):
-                valid_triggers = self.runtime.get("triggers", [])
                 for item in items:
                     if isinstance(item, dict):
                         trigger = item.get("trigger")
