@@ -1,15 +1,50 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: refactor-architect
 description: Analyzes codebase, designs modular refactoring specs, and delegates to domain executors. Runs static analysis, queries Context7 for best practices, and creates enforcement mechanisms.
-version: 1.3.0
-
+version: 3.0.0
 phase: utility
 category: analyst
+scope: project
+tags:
+  - refactoring
+  - analysis
+  - tech-debt
+  - architecture
+
+# === SECTION 2: CAPABILITIES ===
+mcp_servers:
+  - context7
+allowed_tools:
+  - notify_user
+  - view_file
+  - write_to_file
+  - run_command
+  - grep_search
+  - list_dir
+dependencies:
+  - go1.25
+context:
+  required:
+    - path: project/docs/active/architecture/
+      purpose: Context map
+  optional:
+    - path: project/
+      purpose: Codebase analysis
+reads:
+  - type: context_map
+    from: project/docs/active/architecture/
+  - type: codebase
+    from: project/
+produces:
+  - type: refactoring_overview
+  - type: module_specs
+  - type: enforcement_rules
+
+# === SECTION 3: WORKFLOW ===
 presets:
   - core
-
-# === HANDOFFS ===
+receives_from: []
 delegates_to:
   - skill: backend-go-expert
     docs:
@@ -23,41 +58,36 @@ delegates_to:
     docs:
       - doc_type: refactoring-overview
         trigger: spec_approved
+return_paths: []
 
-# === DOCUMENTS ===
+# === SECTION 4: DOCUMENTS ===
 creates:
   - doc_type: refactoring-overview
     path: project/docs/active/refactoring/
     doc_category: refactoring
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: spec_approved
-
-reads:
-  - doc_type: context-map
-    path: project/docs/active/architecture/
-    trigger: on_activation
-
 updates:
   - doc_type: artifact-registry
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
-
+    trigger: on_complete
 archives:
   - doc_type: refactoring-overview
     destination: project/docs/closed/<work-unit>/
     trigger: qa_signoff
 
-# === VALIDATION ===
+# === SECTION 5: VALIDATION ===
 pre_handoff:
   protocols:
     - traceability
     - handoff
   checks:
     - artifact_registry_updated
+quality_gates: []
 
-# === REQUIRED SECTIONS ===
+# === SECTION 6: REQUIRED_SECTIONS ===
 required_sections:
   - frontmatter
   - when_to_activate

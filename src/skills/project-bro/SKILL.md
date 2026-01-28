@@ -1,28 +1,60 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: project-bro
 description: Your project awareness buddy. Knows current state, reads docs, analyzes code, answers "where are we?" questions. Activate with "bro" or "project-bro".
-version: 1.3.0
-
+version: 3.0.0
 phase: utility
 category: utility
+scope: workspace
+tags:
+  - project
+  - awareness
+  - status
+  - analysis
+
+# === SECTION 2: CAPABILITIES ===
+mcp_servers:
+  - context7
+  - sky-cli
+allowed_tools:
+  - notify_user
+  - view_file
+  - list_dir
+  - grep_search
+  - view_file_outline
+dependencies: []
+context:
+  required:
+    - path: project/CONFIG.yaml
+      purpose: Stack and config
+  optional:
+    - path: project/docs/ARTIFACT_REGISTRY.md
+      purpose: Artifact statuses
+reads:
+  - type: config
+    from: project/
+  - type: artifact_registry
+    from: project/docs/
+  - type: work_unit_registry
+    from: project/docs/registry/
+produces:
+  - type: analysis_summary
+  - type: status_report
+
+# === SECTION 3: WORKFLOW ===
 presets:
   - backend
   - minimal
+receives_from: []
+delegates_to: []
+return_paths: []
 
-# === DOCUMENTS ===
-reads:
-  - doc_type: config
-    path: project/
-    trigger: on_activation
-  - doc_type: artifact-registry
-    path: project/docs/
-    trigger: on_activation
-  - doc_type: work-unit-registry
-    path: project/docs/registry/
-    trigger: on_activation
+# === SECTION 4: DOCUMENTS ===
 
-# === REQUIRED SECTIONS ===
+# === SECTION 5: VALIDATION ===
+quality_gates: []
+
+# === SECTION 6: REQUIRED_SECTIONS ===
 required_sections:
   - frontmatter
   - when_to_activate

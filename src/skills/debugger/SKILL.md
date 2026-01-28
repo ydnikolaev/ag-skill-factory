@@ -1,17 +1,50 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: debugger
 description: "Systematic debugging skill. 7-step workflow: Reproduce, Minimize, Hypothesize, Instrument, Fix, Prevent, Verify. Activate when troubleshooting errors."
-version: 1.3.0
-
+version: 3.0.0
 phase: utility
 category: utility
+scope: project
+tags:
+  - debugging
+  - troubleshooting
+  - errors
+  - systematic
+
+# === SECTION 2: CAPABILITIES ===
+mcp_servers:
+  - context7
+allowed_tools:
+  - notify_user
+  - view_file
+  - write_to_file
+  - run_command
+  - grep_search
+  - replace_file_content
+dependencies: []
+context:
+  required: []
+  optional:
+    - path: project/docs/active/backend/
+      purpose: Implementation context
+    - path: project/docs/active/frontend/
+      purpose: UI context
+reads:
+  - type: bug_report
+    from: project/docs/active/bugs/
+  - type: error_logs
+    from: project/
+produces:
+  - type: debug_report
+  - type: fix
+  - type: regression_test
+
+# === SECTION 3: WORKFLOW ===
 presets:
   - backend
   - fullstack
   - minimal
-
-# === HANDOFFS ===
 receives_from:
   - skill: qa-lead
     docs:
@@ -25,22 +58,21 @@ receives_from:
     docs:
       - doc_type: error-report
         trigger: bugs_found
-
 delegates_to:
   - skill: qa-lead
     docs:
       - doc_type: debug-report
         trigger: implementation_complete
+return_paths: []
 
-# === DOCUMENTS ===
+# === SECTION 4: DOCUMENTS ===
 creates:
   - doc_type: debug-report
     path: project/docs/active/bugs/
     doc_category: bugs
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: implementation_complete
-
 updates:
   - doc_type: known-issues
     path: project/docs/
@@ -49,22 +81,22 @@ updates:
   - doc_type: artifact-registry
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
-
+    trigger: on_complete
 archives:
   - doc_type: debug-report
     destination: project/docs/closed/<work-unit>/
     trigger: qa_signoff
 
-# === VALIDATION ===
+# === SECTION 5: VALIDATION ===
 pre_handoff:
   protocols:
     - traceability
     - handoff
   checks:
     - artifact_registry_updated
+quality_gates: []
 
-# === REQUIRED SECTIONS ===
+# === SECTION 6: REQUIRED_SECTIONS ===
 required_sections:
   - frontmatter
   - when_to_activate
