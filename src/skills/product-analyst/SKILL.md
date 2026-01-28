@@ -1,15 +1,50 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: product-analyst
 description: Defines Vision, Roadmap, User Stories, and translates them into Technical Specs. Combines "The Why" with "The What".
-version: 1.3.0
-
+version: 3.0.0
 phase: definition
 category: analyst
+scope: project
+tags:
+  - product
+  - requirements
+  - user-stories
+  - roadmap
+  - specs
+
+# === SECTION 2: CAPABILITIES ===
+mcp_servers:
+  - context7
+allowed_tools:
+  - notify_user
+  - view_file
+  - write_to_file
+  - grep_search
+  - list_dir
+dependencies: []
+context:
+  required:
+    - path: project/docs/active/discovery/
+      purpose: Discovery or feature briefs
+  optional:
+    - path: project/CONFIG.yaml
+      purpose: Stack and architecture decisions
+    - path: mcp.yaml
+      purpose: Project MCP config
+reads:
+  - type: discovery_brief
+    from: project/docs/active/discovery/
+  - type: feature_brief
+    from: project/docs/active/discovery/
+produces:
+  - type: user_stories
+  - type: requirements
+  - type: roadmap
+
+# === SECTION 3: WORKFLOW ===
 presets:
   - core
-
-# === HANDOFFS ===
 receives_from:
   - skill: idea-interview
     docs:
@@ -19,7 +54,6 @@ receives_from:
     docs:
       - doc_type: feature-brief
         trigger: spec_approved
-
 delegates_to:
   - skill: bmad-architect
     docs:
@@ -31,54 +65,44 @@ delegates_to:
     docs:
       - doc_type: user-stories
         trigger: spec_approved
+return_paths: []
 
-# === DOCUMENTS ===
+# === SECTION 4: DOCUMENTS ===
 requires:
   - doc_type: discovery-brief
-    status: approved
+    status: Approved
   - doc_type: feature-brief
     status: any
-
 creates:
   - doc_type: user-stories
     path: project/docs/active/product/
     doc_category: product
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: spec_approved
   - doc_type: requirements
     path: project/docs/active/specs/
     doc_category: specs
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: spec_approved
-
 updates:
   - doc_type: roadmap
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
+    trigger: on_complete
   - doc_type: backlog
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
+    trigger: on_complete
   - doc_type: artifact-registry
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
+    trigger: on_complete
   - doc_type: work-unit-registry
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
-
-reads:
-  - doc_type: discovery-brief
-    path: project/docs/active/discovery/
-    trigger: on_activation
-  - doc_type: feature-brief
-    path: project/docs/active/discovery/
-    trigger: on_activation
-
+    trigger: on_complete
 archives:
   - doc_type: user-stories
     destination: project/docs/closed/<work-unit>/
@@ -87,7 +111,7 @@ archives:
     destination: project/docs/closed/<work-unit>/
     trigger: qa_signoff
 
-# === VALIDATION ===
+# === SECTION 5: VALIDATION ===
 pre_handoff:
   protocols:
     - traceability
@@ -95,19 +119,18 @@ pre_handoff:
   checks:
     - artifact_registry_updated
     - work_unit_registry_updated
-
-# === STATUS TRANSITIONS ===
+quality_gates: []
 transitions:
   - doc_type: user-stories
     flow:
-      - from: draft
-        to: in_review
+      - from: Draft
+        to: In Progress
         trigger: notify_user
-      - from: in_review
-        to: approved
+      - from: In Progress
+        to: Approved
         trigger: user_approval
 
-# === REQUIRED SECTIONS ===
+# === SECTION 6: REQUIRED_SECTIONS ===
 required_sections:
   - frontmatter
   - language_requirements
