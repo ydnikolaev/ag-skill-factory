@@ -1,15 +1,50 @@
 ---
-# === IDENTITY ===
+# === SECTION 1: IDENTITY ===
 name: tech-spec-writer
 description: Converts high-level architecture into detailed, human-readable Technical Specifications. The bridge between Architect and Developers.
-version: 1.3.0
-
+version: 3.0.0
 phase: architecture
 category: analyst
+scope: project
+tags:
+  - specs
+  - documentation
+  - technical-writing
+  - tdd
+
+# === SECTION 2: CAPABILITIES ===
+mcp_servers:
+  - context7
+allowed_tools:
+  - notify_user
+  - view_file
+  - write_to_file
+  - grep_search
+  - list_dir
+dependencies: []
+context:
+  required:
+    - path: project/docs/active/architecture/
+      purpose: Context map and API contracts
+    - path: project/docs/active/product/
+      purpose: User stories
+  optional:
+    - path: project/CONFIG.yaml
+      purpose: Stack decisions
+reads:
+  - type: context_map
+    from: project/docs/active/architecture/
+  - type: api_contracts
+    from: project/docs/active/architecture/
+  - type: user_stories
+    from: project/docs/active/product/
+produces:
+  - type: tech_spec
+  - type: test_skeleton
+
+# === SECTION 3: WORKFLOW ===
 presets:
   - core
-
-# === HANDOFFS ===
 receives_from:
   - skill: bmad-architect
     docs:
@@ -21,7 +56,6 @@ receives_from:
     docs:
       - doc_type: user-stories
         trigger: spec_approved
-
 delegates_to:
   - skill: backend-go-expert
     docs:
@@ -31,64 +65,50 @@ delegates_to:
     docs:
       - doc_type: tech-spec
         trigger: spec_approved
+return_paths: []
 
-# === DOCUMENTS ===
+# === SECTION 4: DOCUMENTS ===
 requires:
   - doc_type: context-map
-    status: approved
+    status: Approved
   - doc_type: user-stories
-    status: approved
-
+    status: Approved
 creates:
   - doc_type: tech-spec
     path: project/docs/active/specs/
     doc_category: specs
     lifecycle: per-feature
-    initial_status: draft
+    initial_status: Draft
     trigger: spec_approved
-
-reads:
-  - doc_type: context-map
-    path: project/docs/active/architecture/
-    trigger: on_activation
-  - doc_type: api-contracts
-    path: project/docs/active/architecture/
-    trigger: on_activation
-  - doc_type: user-stories
-    path: project/docs/active/product/
-    trigger: on_activation
-
 updates:
   - doc_type: artifact-registry
     path: project/docs/
     lifecycle: living
-    trigger: on_create_on_complete
-
+    trigger: on_complete
 archives:
   - doc_type: tech-spec
     destination: project/docs/closed/<work-unit>/
     trigger: qa_signoff
 
-# === VALIDATION ===
+# === SECTION 5: VALIDATION ===
 pre_handoff:
   protocols:
     - traceability
     - handoff
   checks:
     - artifact_registry_updated
-
-# === STATUS TRANSITIONS ===
+quality_gates: []
 transitions:
   - doc_type: tech-spec
     flow:
-      - from: draft
-        to: in_review
+      - from: Draft
+        to: In Progress
         trigger: notify_user
-      - from: in_review
-        to: approved
+      - from: In Progress
+        to: Approved
         trigger: user_approval
 
-# === REQUIRED SECTIONS ===
+# === SECTION 6: REQUIRED_SECTIONS ===
 required_sections:
   - frontmatter
   - language_requirements
