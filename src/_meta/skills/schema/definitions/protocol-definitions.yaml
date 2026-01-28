@@ -1,0 +1,127 @@
+# Protocol Definitions
+# Describes what each validation protocol checks
+# Used by validators and pre-handoff validation
+
+protocols:
+  git:
+    name: Git Protocol
+    description: Git branching, conventional commits, atomic changes
+    include_path: "{{include: sections/git-protocol.md}}"
+    applies_to: [technical, analyst]
+    checks:
+      - branch_not_main
+      - commits_conventional
+      - branch_clean
+    enforcement: automatic
+    documentation: "project/docs/CONTRIBUTING.md"
+
+  tdd:
+    name: TDD Protocol
+    description: Test-driven development with Red-Green-Refactor
+    include_path: "{{include: sections/tdd-protocol.md}}"
+    applies_to: [technical]
+    checks:
+      - tests_pass
+      - coverage_min
+    enforcement: automatic
+    quality_gates:
+      - type: coverage_min
+        value: 80
+
+  tech_debt:
+    name: Tech Debt Protocol
+    description: Track TODOs and workarounds in TECH_DEBT.md
+    include_path: "{{include: sections/tech-debt-protocol.md}}"
+    applies_to: [technical]
+    checks:
+      - docs_updated
+    enforcement: automatic
+    registry: "project/docs/TECH_DEBT.md"
+
+  traceability:
+    name: Traceability Protocol
+    description: Link artifacts to original requirements
+    include_path: "{{include: sections/traceability-protocol.md}}"
+    applies_to: [analyst, technical]
+    checks:
+      - docs_updated
+    enforcement: automatic
+
+  document_structure:
+    name: Document Structure Protocol
+    description: Document naming, lifecycle, folder structure
+    include_path: "rules/DOCUMENT_STRUCTURE_PROTOCOL.md"
+    applies_to: [analyst, technical, utility]
+    checks:
+      - docs_updated
+    enforcement: automatic
+
+  language:
+    name: Language Requirements
+    description: Match user language for drafts, English for persistent docs
+    include_path: "{{include: sections/language-requirements.md}}"
+    applies_to: [analyst, technical, utility, meta]
+    checks:
+      - docs_updated
+    enforcement: automatic
+
+# Check definitions
+checks:
+  tests_pass:
+    command: "make test"
+    description: All tests pass
+    failure_message: "Tests failed. Fix before handoff."
+
+  lint_clean:
+    command: "make lint"
+    description: No lint errors
+    failure_message: "Lint errors found. Run 'make lint-fix'."
+
+  build_success:
+    command: "make build"
+    description: Build succeeds
+    failure_message: "Build failed. Fix errors before handoff."
+
+  coverage_min:
+    command: "make coverage"
+    description: Coverage threshold met
+    default_threshold: 80
+    failure_message: "Coverage below threshold."
+
+  branch_not_main:
+    command: "git branch --show-current | grep -v '^main$' | grep -v '^master$'"
+    description: Not on main/master branch
+    failure_message: "Cannot work directly on main/master. Create feature branch."
+
+  branch_clean:
+    command: "git status --porcelain"
+    description: No uncommitted changes
+    failure_message: "Uncommitted changes. Commit or stash before handoff."
+
+  commits_conventional:
+    description: Commits follow conventional format
+    format: "type(scope): message"
+    types: [feat, fix, docs, style, refactor, test, chore]
+    failure_message: "Commits must follow conventional format."
+
+  docs_updated:
+    description: Relevant documentation updated
+    failure_message: "Documentation not updated."
+
+  changelog_updated:
+    file: "project/CHANGELOG.md"
+    description: CHANGELOG.md updated
+    failure_message: "CHANGELOG.md not updated."
+
+  work_unit_registry_updated:
+    file: "project/docs/registry/work-unit-registry.md"
+    description: Work unit tracked in registry
+    failure_message: "Work unit not registered."
+
+  handoff_doc_created:
+    description: Handoff document exists
+    failure_message: "Handoff document missing."
+
+  approval_received:
+    description: Required approvals obtained
+    failure_message: "Missing required approval."

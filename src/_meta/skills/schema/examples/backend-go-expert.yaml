@@ -1,0 +1,110 @@
+# Backend Go Expert - Example Skill V3
+# Complete example demonstrating all schema fields
+
+# IDENTITY
+name: backend-go-expert
+description: Expert Go developer (1.25+) specializing in Clean Architecture and DDD. Activate when implementing Go services, APIs, or CLI tools.
+version: 1.3.0
+phase: implementation
+category: technical
+scope: project
+tags:
+  - go
+  - backend
+  - api
+  - ddd
+  - clean-architecture
+
+# WORKFLOW
+presets:
+  - backend
+  - fullstack
+  - cli
+
+receives_from:
+  - skill: tech-spec-writer
+    docs: [tech-spec]
+  - skill: bmad-architect
+    docs: [context-map, api-contracts]
+  - skill: cli-architect
+    docs: [cli-design]
+  - skill: telegram-mechanic
+    docs: [webhook-config]
+  - skill: mcp-expert
+    docs: [server-config]
+  - skill: qa-lead
+    docs: [debug-report]
+  - skill: refactor-architect
+    docs: [refactoring-overview]
+
+delegates_to:
+  - skill: qa-lead
+    docs: [service-implementation]
+
+return_paths:
+  - skill: qa-lead
+    docs: [debug-report]
+
+# DOCUMENTS
+creates:
+  - doc_type: service-implementation
+    path: project/docs/active/backend/
+    lifecycle: per-feature
+    initial_status: draft
+    trigger: implementation_complete
+
+requires:
+  - doc_type: tech-spec
+    status: approved
+
+# CAPABILITIES
+mcp_servers:
+  - context7
+  - sky-cli
+
+dependencies:
+  - go1.25
+  - docker
+
+context:
+  required:
+    - path: go.mod
+      purpose: Go module definition
+    - path: Makefile
+      purpose: Build automation
+  optional:
+    - path: .golangci.yml
+      purpose: Linter configuration
+
+reads:
+  - type: api_contracts
+    from: api-contracts
+  - type: domain_models
+    from: tech-spec
+  - type: db_schema
+    from: context-map
+
+produces:
+  - type: go_code
+  - type: unit_tests
+  - type: integration_tests
+
+# VALIDATION
+pre_handoff:
+  protocols:
+    - git
+    - tdd
+    - tech_debt
+  checks:
+    - tests_pass
+    - lint_clean
+    - build_success
+    - coverage_min
+    - branch_not_main
+    - docs_updated
+
+quality_gates:
+  - type: coverage_min
+    value: 80
+  - type: complexity_max
+    value: 10

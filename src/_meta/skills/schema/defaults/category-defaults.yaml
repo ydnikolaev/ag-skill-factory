@@ -1,0 +1,59 @@
+# Category Defaults
+# Default values inherited by skills based on category
+# Reduces boilerplate in skill definitions
+
+defaults:
+  technical:
+    scope: project
+    mcp_servers:
+      - context7
+      - sky-cli
+    protocols:
+      - git
+      - tdd
+      - tech_debt
+    checks:
+      - tests_pass
+      - lint_clean
+      - build_success
+      - branch_not_main
+    quality_gates:
+      - type: coverage_min
+        value: 80
+
+  analyst:
+    scope: project
+    mcp_servers:
+      - context7
+    protocols:
+      - git
+      - traceability
+    checks:
+      - docs_updated
+      - branch_not_main
+      - changelog_updated
+
+  utility:
+    scope: project
+    mcp_servers:
+      - context7
+      - sky-cli
+    protocols:
+      - git
+    checks:
+      - docs_updated
+      - branch_not_main
+
+  meta:
+    scope: project
+    mcp_servers:
+      - context7
+      - sky-cli
+    protocols:
+      - git
+    checks:
+      - docs_updated
+      - branch_not_main
+
+# Note: Document paths are skill-specific
+# See project/docs/DOCUMENT_FLOW.md for path patterns

@@ -1,0 +1,167 @@
+# Skill Schema V3
+# Core schema definition with 5 sections: IDENTITY, CAPABILITIES, WORKFLOW, DOCUMENTS, VALIDATION
+# SSOT for all Antigravity skills
+
+$schema_version: "3.0.0"
+
+# Section 1: IDENTITY
+identity:
+  name:
+    type: string
+    required: true
+    format: lowercase-with-hyphens
+    description: Unique skill identifier
+  description:
+    type: string
+    required: true
+    description: Agent activation trigger - WHAT it does and WHEN to use it
+  version:
+    type: string
+    required: true
+    format: semver
+    description: Skill version (e.g. 1.0.0)
+  phase:
+    type: enum
+    ref: factory.yaml#phases
+    required: true
+    description: Pipeline phase where skill operates
+  category:
+    type: enum
+    ref: factory.yaml#categories
+    required: true
+    description: Output type category
+  scope:
+    type: enum
+    values: [project, global]
+    default: project
+    description: Skill availability scope
+  tags:
+    type: list[string]
+    required: false
+    description: Search keywords
+
+# Section 2: CAPABILITIES
+capabilities:
+  mcp_servers:
+    type: list[string]
+    description: MCP servers needed (context7, sky-cli, github)
+  allowed_tools:
+    type: list[string]
+    description: Tools skill can use
+  dependencies:
+    type: list[string]
+    description: Runtime requirements (go1.25, python3, docker)
+  context:
+    required:
+      type: list[object]
+      properties:
+        path: string
+        purpose: string
+      description: Files that MUST exist for activation
+    optional:
+      type: list[object]
+      properties:
+        path: string
+        purpose: string
+      description: Files that are nice to have
+  # Semantic I/O (what DATA skill works with)
+  reads:
+    type: list[object]
+    properties:
+      type: string   # e.g. api_contracts, db_schema
+      from: string   # source doc_type
+    description: Data formats skill reads
+  produces:
+    type: list[object]
+    properties:
+      type: string   # e.g. go_code, tests
+    description: Data formats skill creates
+
+# Section 3: WORKFLOW
+workflow:
+  presets:
+    type: list[string]
+    ref: factory.yaml#presets
+    description: Leaf presets only (backend, frontend, tma, cli)
+  receives_from:
+    type: list[object]
+    properties:
+      skill: string
+      docs: list[string]
+    description: Skills that hand off TO this skill
+  delegates_to:
+    type: list[object]
+    properties:
+      skill: string
+      docs: list[string]
+    description: Skills that receive FROM this skill
+  return_paths:
+    type: list[object]
+    properties:
+      skill: string
+      docs: list[string]
+    description: Return paths for bug fixes
+
+# Section 4: DOCUMENTS
+documents:
+  requires:
+    type: list[object]
+    properties:
+      doc_type: string
+      status: enum[draft, approved, archived]
+    description: Documents that must exist before activation
+  creates:
+    type: list[object]
+    properties:
+      doc_type: string
+      path: string
+      lifecycle: enum[per-feature, living, per-work-unit]
+      initial_status: enum[draft, approved]
+      trigger: string
+    description: Documents this skill creates
+  updates:
+    type: list[object]
+    properties:
+      doc_type: string
+      path: string
+      new_status: string
+      trigger: string
+    description: Documents this skill updates
+  archives:
+    type: list[object]
+    properties:
+      doc_type: string
+      destination: string
+      final_status: enum[archived]
+      trigger: string
+    description: Documents this skill archives
+
+# Section 5: VALIDATION
+validation:
+  pre_handoff:
+    protocols:
+      type: list[string]
+      ref: runtime.yaml#protocols
+      description: Validation protocols to run
+    checks:
+      type: list[string]
+      ref: runtime.yaml#checks
+      description: Specific checks to run
+  quality_gates:
+    type: list[object]
+    properties:
+      type: string
+      value: any
+    description: Quality thresholds (coverage_min, complexity_max)
+
+# Extensibility
+extensions:
+  custom_triggers:
+    type: list[string]
+    description: Project-specific triggers (prefix with project name)
+  custom_statuses:
+    type: list[string]
+    description: Project-specific statuses
+  custom_checks:
+    type: list[string]
+    description: Project-specific checks

@@ -1,0 +1,339 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://antigravity.dev/skill-schema-v3.json",
+  "title": "Antigravity Skill Schema V3",
+  "description": "Schema for validating Antigravity skill definitions",
+  "type": "object",
+  "required": [
+    "name",
+    "description",
+    "version",
+    "phase",
+    "category",
+    "presets"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Skill name (lowercase-with-hyphens)"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "description": "WHAT it does and WHEN to use it"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version"
+    },
+    "phase": {
+      "type": "string",
+      "enum": [
+        "discovery",
+        "definition",
+        "design",
+        "architecture",
+        "implementation",
+        "delivery",
+        "utility"
+      ],
+      "description": "Pipeline phase"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "analyst",
+        "technical",
+        "utility",
+        "meta"
+      ],
+      "description": "Output category"
+    },
+    "scope": {
+      "type": "string",
+      "enum": [
+        "project",
+        "global"
+      ],
+      "default": "project"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "presets": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "core",
+          "backend",
+          "frontend",
+          "fullstack",
+          "tma",
+          "cli",
+          "minimal",
+          "all"
+        ]
+      },
+      "minItems": 1
+    },
+    "receives_from": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "skill": {
+            "type": "string"
+          },
+          "docs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "skill"
+        ]
+      }
+    },
+    "delegates_to": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "skill": {
+            "type": "string"
+          },
+          "docs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "skill"
+        ]
+      }
+    },
+    "return_paths": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "skill": {
+            "type": "string"
+          },
+          "docs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "creates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "doc_type": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "lifecycle": {
+            "type": "string",
+            "enum": [
+              "per-feature",
+              "per-work-unit",
+              "living"
+            ]
+          },
+          "initial_status": {
+            "type": "string"
+          },
+          "trigger": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "doc_type",
+          "path"
+        ]
+      }
+    },
+    "requires": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "doc_type": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "updates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "doc_type": {
+            "type": "string"
+          },
+          "new_status": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "archives": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "doc_type": {
+            "type": "string"
+          },
+          "destination": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "mcp_servers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "required": {
+          "type": "array"
+        },
+        "optional": {
+          "type": "array"
+        }
+      }
+    },
+    "reads": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "from": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "produces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "pre_handoff": {
+      "type": "object",
+      "properties": {
+        "protocols": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "git",
+              "tdd",
+              "tech_debt",
+              "traceability",
+              "document_structure",
+              "language"
+            ]
+          }
+        },
+        "checks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "tests_pass",
+              "lint_clean",
+              "build_success",
+              "coverage_min",
+              "branch_not_main",
+              "branch_clean",
+              "commits_conventional",
+              "docs_updated",
+              "changelog_updated",
+              "work_unit_registry_updated",
+              "handoff_doc_created",
+              "approval_received"
+            ]
+          }
+        }
+      }
+    },
+    "quality_gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "value": {}
+        }
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "properties": {
+        "custom_triggers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "custom_statuses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "custom_checks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

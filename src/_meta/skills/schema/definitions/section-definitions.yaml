@@ -1,0 +1,184 @@
+# Section Definitions
+# Describes what each SKILL.md section means and when it's required
+# Used by validators and skill generators
+
+sections:
+  frontmatter:
+    description: YAML header with identity, workflow, documents
+    required: true
+    auto_generated: false
+    location: "Start of file between --- markers"
+    contains:
+      - name
+      - description
+      - version
+      - phase
+      - category
+      - presets
+      - receives_from
+      - delegates_to
+      - creates
+      - requires
+
+  header:
+    description: Skill name as H1 heading
+    required: true
+    auto_generated: true
+    format: "# {name}"
+
+  mode_block:
+    description: Operating mode block from shared section
+    required: false
+    auto_generated: true
+    include_path: "{{include: sections/mode-block.md}}"
+
+  when_to_activate:
+    description: Guidance on when agent should activate this skill
+    required_for: [analyst, utility]
+    auto_generated: false
+    format: "## When to Activate"
+
+  role_boundary:
+    description: What the skill does NOT do
+    required: false
+    auto_generated: false
+    format: "## Role Boundary"
+
+  brain_to_docs:
+    description: Iteration protocol - draft in brain, persist after approval
+    required: true
+    auto_generated: true
+    include_path: "{{include: sections/brain-to-docs.md}}"
+
+  tech_stack:
+    description: Technologies and tools the skill uses
+    required_for: [technical]
+    auto_generated: false
+    format: "## Tech Stack"
+    example: |
+      ## Tech Stack
+      - **Language:** Go 1.25+
+      - **Framework:** stdlib-first
+      - **Tools:** context7, sky-cli
+
+  critical_rules:
+    description: Hard requirements that must never be violated
+    required: false
+    auto_generated: false
+    format: "## Critical Rules"
+
+  workflow:
+    description: Pipeline position, receives/delegates relationships
+    required: true
+    auto_generated: false
+    format: "## Workflow"
+
+  protocols:
+    description: Validation rules like TDD, Git, Tech Debt
+    required_for: [technical]
+    auto_generated: true
+    include_paths:
+      - "{{include: sections/tdd-protocol.md}}"
+      - "{{include: sections/git-protocol.md}}"
+      - "{{include: sections/tech-debt-protocol.md}}"
+
+  team_collaboration:
+    description: How skill works with other skills
+    required: true
+    auto_generated: false
+    format: "## Team Collaboration"
+
+  when_to_delegate:
+    description: When and to whom to hand off work
+    required: true
+    auto_generated: false
+    format: "## When to Delegate"
+
+  document_lifecycle:
+    description: Document states and transitions
+    required: true
+    auto_generated: false
+    format: "## Document Lifecycle"
+
+  pre_handoff:
+    description: Validation before handing off
+    required: false
+    auto_generated: true
+    include_path: "{{include: sections/pre-handoff-validation.md}}"
+
+  handoff_protocol:
+    description: How to properly hand off to next skill
+    required: true
+    auto_generated: false
+    format: "## Handoff Protocol"
+
+  artifact_ownership:
+    description: What artifacts the skill owns
+    required: false
+    auto_generated: false
+    format: "## Artifact Ownership"
+
+  resources:
+    description: External resources and documentation
+    required: false
+    auto_generated: false
+    format: "## Resources"
+
+  language_requirements:
+    description: Language rules from shared section
+    required: true
+    auto_generated: true
+    include_path: "{{include: sections/language-requirements.md}}"
+
+  best_practices:
+    description: Best practices from shared section
+    required: false
+    auto_generated: true
+    include_path: "{{include: sections/antigravity-best-practices.md}}"
+
+# Required sections by category
+required_by_category:
+  analyst:
+    - frontmatter
+    - brain_to_docs
+    - document_lifecycle
+    - handoff_protocol
+    - language_requirements
+    - team_collaboration
+    - when_to_activate
+    - when_to_delegate
+    - workflow
+
+  technical:
+    - frontmatter
+    - brain_to_docs
+    - document_lifecycle
+    - handoff_protocol
+    - language_requirements
+    - protocols
+    - team_collaboration
+    - tech_stack
+    - when_to_delegate
+    - workflow
+
+  utility:
+    - frontmatter
+    - brain_to_docs
+    - document_lifecycle
+    - handoff_protocol
+    - language_requirements
+    - team_collaboration
+    - when_to_activate
+    - when_to_delegate
+    - workflow
+
+  meta:
+    - frontmatter
+    - brain_to_docs
+    - document_lifecycle
+    - handoff_protocol
+    - language_requirements
+    - team_collaboration
+    - when_to_activate
+    - when_to_delegate
+    - workflow

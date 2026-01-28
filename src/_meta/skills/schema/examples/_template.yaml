@@ -1,0 +1,47 @@
+# Skill Template
+# Clean template for creating new skills
+# Copy this file and fill in the values
+
+# IDENTITY
+name: skill-name              # lowercase-with-hyphens
+description: ""               # WHAT it does. WHEN to use it.
+version: 1.0.0
+phase: implementation         # discovery | definition | design | architecture | implementation | delivery | utility
+category: technical           # analyst | technical | utility | meta
+
+# WORKFLOW
+presets:
+  - backend                   # Leaf presets only
+
+receives_from:
+  - skill: tech-spec-writer
+    docs: [tech-spec]
+
+delegates_to:
+  - skill: qa-lead
+    docs: [service-implementation]
+
+# DOCUMENTS
+creates:
+  - doc_type: service-implementation
+    path: project/docs/active/backend/
+    lifecycle: per-feature
+    initial_status: draft
+    trigger: implementation_complete
+
+# CAPABILITIES (optional - inherits from category defaults)
+# mcp_servers: [context7, sky-cli]
+# dependencies: [go1.25]
+# context:
+#   required:
+#     - path: go.mod
+#       purpose: Go module file
+
+# VALIDATION (optional - inherits from category defaults)
+# pre_handoff:
+#   protocols: [git, tdd]
+#   checks: [tests_pass, lint_clean]
+
+# EXTENSIONS (optional - for project-specific enums)
+# extensions:
+#   custom_triggers: [my_project_event]

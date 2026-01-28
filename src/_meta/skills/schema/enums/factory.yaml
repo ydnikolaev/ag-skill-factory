@@ -1,0 +1,69 @@
+# Factory Enums
+# Used during skill creation and auto-generation
+# SSOT for factory-time decisions
+
+# Pipeline order for skill-matrix
+phases:
+  - discovery       # Idea extraction, interviews
+  - definition      # Requirements, user stories
+  - design          # UX/UI, design tokens
+  - architecture    # System design, API contracts
+  - implementation  # Code, tests
+  - delivery        # Deploy, docs, handoff
+  - utility         # Cross-phase helpers
+
+# Output type categories
+categories:
+  - analyst         # Requirements, stories, specs
+  - technical       # Code, tests, APIs
+  - utility         # Helpers, validators
+  - meta            # Skills that create skills
+
+# Team configurations (leaf presets only in skill frontmatter)
+# See preset-hierarchy.yaml for inheritance
+presets:
+  - core            # Discovery + definition only
+  - backend         # + backend implementation
+  - frontend        # + frontend implementation
+  - fullstack       # Backend + frontend
+  - tma             # Telegram Mini Apps
+  - cli             # CLI tools
+  - minimal         # Analyst + 1 technical
+  - all             # Everything
+
+# SKILL.md sections
+sections:
+  - frontmatter       # YAML header with identity
+  - header            # Skill name as H1
+  - mode_block        # Operating mode
+  - when_to_activate  # Activation guidance
+  - role_boundary     # What NOT to do
+  - brain_to_docs     # Iteration protocol
+  - tech_stack        # Technologies used
+  - critical_rules    # Hard requirements
+  - workflow          # Pipeline position, handoffs
+  - protocols         # Validation rules (TDD, Git, Tech Debt)
+  - team_collaboration # Working with other skills
+  - when_to_delegate  # Delegation rules
+  - document_lifecycle # Document states
+  - pre_handoff       # Pre-handoff validation
+  - handoff_protocol  # Handoff process
+  - artifact_ownership # What skill owns
+  - resources         # External resources
+  - language_requirements # Language rules
+  - best_practices    # Best practices
+
+# Document categories
+doc_categories:
+  - architecture
+  - backend
+  - bugs
+  - design
+  - discovery
+  - frontend
+  - infrastructure
+  - product
+  - project
+  - qa
+  - refactoring
+  - specs

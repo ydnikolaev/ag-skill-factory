@@ -1,0 +1,78 @@
+# Runtime Enums
+# Used during agent execution
+# SSOT for runtime decisions
+
+# Document lifecycle triggers
+triggers:
+  # Document events
+  - on_activation       # When skill activates
+  - on_complete         # When skill completes work
+  - on_handoff          # When handing off to next skill
+  - spec_approved       # Specification approved
+  - design_complete     # Design phase complete
+  - implementation_complete  # Implementation done
+  - qa_signoff          # QA approved
+  - user_approved       # User approved
+  - work_unit_opened    # New work unit started
+  - work_unit_closed    # Work unit completed
+
+# Document statuses
+statuses:
+  - draft               # Initial state
+  - in_progress         # Being worked on
+  - review              # Ready for review
+  - approved            # Approved by stakeholder
+  - archived            # Completed and archived
+  - obsolete            # Superseded by another doc
+
+# Document lifecycles
+lifecycles:
+  - per-feature         # One doc per feature
+  - per-work-unit       # One doc per work unit
+  - living              # Continuously updated
+
+# Skill scopes
+scopes:
+  - project             # Project-local skill
+  - global              # Available globally
+
+# Validation protocols
+protocols:
+  - git                 # Git protocol (branching, commits)
+  - tdd                 # Test-driven development
+  - tech_debt           # Tech debt tracking
+  - traceability        # Requirements traceability
+  - document_structure  # Document structure compliance
+  - language            # Language requirements
+  - handoff             # Handoff protocol
+
+# Pre-handoff checks
+checks:
+  # Code quality
+  - tests_pass          # All tests pass
+  - lint_clean          # No lint errors
+  - build_success       # Build succeeds
+  - coverage_min        # Coverage threshold met
+  
+  # Git state
+  - branch_not_main     # Not on main/master
+  - branch_clean        # No uncommitted changes
+  - commits_conventional # Conventional commits
+  
+  # Documentation
+  - docs_updated        # Relevant docs updated
+  - changelog_updated   # CHANGELOG.md updated
+  - work_unit_registry_updated  # Work unit tracked
+  
+  # Workflow
+  - handoff_doc_created # Handoff document exists
+  - approval_received   # Required approvals obtained
+  - artifact_registry_updated  # Artifact registry updated
+
+# MCP servers (known)
+mcp_servers:
+  - context7            # Documentation search
+  - sky-cli             # Project management
+  - github              # GitHub integration
+  - figma               # Design system
+  - telegram-docs       # Telegram API docs

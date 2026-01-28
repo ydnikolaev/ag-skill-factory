@@ -88,11 +88,40 @@ generate-teams:
 generate-pipelines:
 	@python3 scripts/generate_pipelines.py
 
-# Generate all (teams + pipelines)
+# Generate section matrix
 generate-sections:
 	@python3 scripts/generate_section_matrix.py
 
-generate-all: generate-teams generate-pipelines generate-sections
+# === SCHEMA V3 TARGETS ===
+
+# Generate JSON Schema from YAML schema
+json-schema:
+	@echo "📋 Generating JSON Schema..."
+	@python3 scripts/generate_json_schema.py
+
+# Validate skills against Schema V3 (src/)
+skill-validate:
+	@echo "🔍 Validating skills against Schema V3..."
+	@python3 scripts/validate_skills.py
+	@python3 scripts/validate_handoffs.py
+
+# Validate single skill: make skill-validate-single SKILL=backend-go-expert
+skill-validate-single:
+	@if [ -z "$(SKILL)" ]; then \
+		echo "Usage: make skill-validate-single SKILL=<skill-name>"; \
+		exit 1; \
+	fi
+	@python3 scripts/validate_skills.py --skill=$(SKILL)
+
+# Regenerate presets and pipelines
+presets-rebuild:
+	@echo "🔄 Rebuilding presets and pipelines..."
+	@python3 scripts/generate-presets.py
+	@python3 scripts/generate_pipelines.py
+
+# Generate all artifacts
+generate-all: json-schema generate-teams generate-pipelines generate-sections presets-rebuild
+	@echo "✅ All artifacts generated"
 
 # Build factory CLI binary
 build-factory:
